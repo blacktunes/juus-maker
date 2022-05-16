@@ -127,8 +127,8 @@ import domtoimage from 'dom-to-image'
 import ship from '@/assets/scripts/ship'
 
 const data = reactive({
-  bg: require('@/assets/images/bg.png'),
-  img: require('@/assets/images/img.png'),
+  bg: require('@/assets/images/bg.jpg'),
+  img: require('@/assets/images/img.jpg'),
   like: {
     flag: false,
     text: '999+'
