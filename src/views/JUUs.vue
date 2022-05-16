@@ -97,6 +97,8 @@ const content = ref(null)
 const screenshot = (flag) => {
   isScreenshot.value = true
   domtoimage.toPng(flag ? content.value.dom : juus.value, {
+    width: flag ? content.value.dom.offsetWidth : undefined,
+    height: flag ? content.value.dom.scrollHeight : undefined,
     imagePlaceholder: require('@/assets/images/empty.png')
   })
     .then((dataUrl) => {
