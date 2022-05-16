@@ -1,0 +1,222 @@
+.content
+  flex 1
+  display flex
+  flex-direction column
+  background #eff7ff
+  width 400px
+
+  &::-webkit-scrollbar
+    width 0
+    height 0
+
+  .info-wrapper
+    z-index 9
+    position sticky
+    top 0
+    width 100%
+    background #fff
+    border-radius 0 0 25px 25px
+    box-shadow 0 3px 20px 0px rgba(0, 0, 0, 0.5)
+
+    .tip
+      position absolute
+      top 5px
+      right 5px
+      color #85a7ff
+      user-select none
+
+    .info
+      display flex
+      align-items center
+      height 120px
+
+      .avatar
+        overflow hidden
+        width 65px
+        height 65px
+        border-radius 50%
+        border 2px solid #f7e5a2
+        margin-left 30px
+
+        img
+          width 100%
+          user-select none
+
+      .sep
+        margin 0 15px
+
+      .name
+        font-size 20px
+        margin-right 10px
+
+  .text-wrapper
+    z-index 8
+    position sticky
+    top 120px
+    padding-bottom 5px
+    background #eff7ff
+
+    .text
+      margin-top 10px
+      padding 20px 25px 40px 25px
+      font-size 18px
+
+    .line
+      border 1px solid #999
+      width 90%
+      margin-left 10%
+      transform scaleY(0.1)
+
+  .comment-list
+    flex 1
+    color #a1a1a2
+    background #eff7ff
+
+    .comment-card
+      position relative
+      box-sizing border-box
+      width 380px
+      margin 12px 5px 12px 15px
+      padding 15px
+      border-radius 5px
+      background #fff
+      display flex
+      flex-direction column
+
+      .comment
+        display flex
+        flex 1
+
+        &:hover
+          ~.comment-del
+            opacity 1
+
+        .avatar
+          overflow hidden
+          flex-shrink 0
+          width 45px
+          height 45px
+          border-radius 50%
+          border 1px solid #dedddb
+          margin 0 15px 0 10px
+          background #ddd
+          user-select none
+
+          img
+            width 100%
+            user-select none
+
+        .name
+          color #000
+          font-weight bold
+
+      .comment-del
+        opacity 0
+        position absolute
+        right 10px
+        top 5px
+        font-size 20px
+        cursor pointer
+        user-select none
+        transition opacity 0.25s
+
+        &:hover
+          opacity 1
+
+      .reply-num-wrapper
+        height 30px
+        margin-bottom 10px
+        display flex
+        align-items center
+        justify-content space-between
+        font-size 14px
+        user-select none
+
+        .reply-num
+          display flex
+          align-items center
+
+          img
+            cursor pointer
+
+          .text
+            margin-left 5px
+
+      .reply-list
+        display flex
+        flex-direction column
+
+        .reply
+          display flex
+          margin 10px 0px 10px 65px
+          position relative
+
+          &:hover
+            .reply-del
+              opacity 1
+
+          .reply-del
+            opacity 0
+            position absolute
+            right -5px
+            top -5px
+            font-size 20px
+            cursor pointer
+            user-select none
+            transition opacity 0.25s
+
+            &:hover
+              opacity 1
+
+          .avatar
+            overflow hidden
+            flex-shrink 0
+            width 45px
+            height 45px
+            border-radius 50%
+            border 1px solid #dedddb
+            margin 0 15px 0 10px
+            background #ddd
+            user-select none
+
+            img
+              width 100%
+              user-select none
+
+          .name
+            color #000
+            font-weight bold
+
+  .add-comment
+    position sticky
+    bottom 0
+    height 60px
+    width 100%
+    display flex
+    align-items center
+    justify-content space-between
+    background #fff
+    box-shadow 0 -1px 2px 0px rgba(0, 0, 0, 0.3)
+    cursor pointer
+
+    .left
+      display flex
+      align-items center
+      height 60px
+
+      .avatar
+        overflow hidden
+        width 45px
+        height 45px
+        border-radius 50%
+        border 1px solid #dedddb
+        margin 0 15px 0 10px
+        background #ddd
+
+      .text
+        font-size 20px
+        color #dfdfdf
+        user-select none
+
+    .right
+      margin-right 10px
