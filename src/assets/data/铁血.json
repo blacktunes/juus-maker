@@ -1,0 +1,224 @@
+{
+  "Z23": {
+    "avatar": "",
+    "name": "Zerstörer.23",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z2": {
+    "avatar": "",
+    "name": "Zerstörer2",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z28": {
+    "avatar": "",
+    "name": "Zerstörer28",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z46": {
+    "avatar": "",
+    "name": "viersech",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z35": {
+    "avatar": "",
+    "name": "Funf♡3536",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z36": {
+    "avatar": "",
+    "name": "Zech✛3536",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z1": {
+    "avatar": "",
+    "name": "L.Maaß",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z24": {
+    "avatar": "",
+    "name": "GreatDevil24",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "美因茨": {
+    "avatar": "",
+    "name": "Mainz",
+    "type": "轻巡",
+    "group": "铁血"
+  },
+  "莱比锡": {
+    "avatar": "",
+    "name": "Leipzig",
+    "type": "轻巡",
+    "group": "铁血"
+  },
+  "纽伦堡": {
+    "avatar": "",
+    "name": "Nürnberg",
+    "type": "轻巡",
+    "group": "铁血"
+  },
+  "马格德堡": {
+    "avatar": "",
+    "name": "Magdeburg",
+    "type": "轻巡",
+    "group": "铁血"
+  },
+  "希佩尔海军上将": {
+    "avatar": "",
+    "name": "R_Guitarist",
+    "type": "重巡",
+    "group": "铁血"
+  },
+  "欧根亲王": {
+    "avatar": "",
+    "name": "P.Eugen",
+    "type": "重巡",
+    "group": "铁血"
+  },
+  "罗恩": {
+    "avatar": "",
+    "name": "RoonDESU",
+    "type": "重巡",
+    "group": "铁血"
+  },
+  "德意志": {
+    "avatar": "",
+    "name": "SPEE_FIGHT",
+    "type": "重巡",
+    "group": "铁血"
+  },
+  "斯佩伯爵海军上将": {
+    "avatar": "",
+    "name": "GRAFSPEE",
+    "type": "重巡",
+    "group": "铁血"
+  },
+  "海因里希亲王": {
+    "avatar": "",
+    "name": "Eisen_Fight",
+    "type": "重巡",
+    "group": "铁血"
+  },
+  "阿达尔伯特亲王": {
+    "avatar": "",
+    "name": "PrinzAdalbert",
+    "type": "重巡",
+    "group": "铁血"
+  },
+  "齐柏林伯爵": {
+    "avatar": "",
+    "name": "TrägerZeepelin",
+    "type": "航母",
+    "group": "铁血"
+  },
+  "威悉": {
+    "avatar": "",
+    "name": "Weser",
+    "type": "航母",
+    "group": "铁血"
+  },
+  "彼得·史特拉塞": {
+    "avatar": "",
+    "name": "FlugzeugträgerB",
+    "type": "航母",
+    "group": "铁血"
+  },
+  "易北": {
+    "avatar": "",
+    "name": "Elbe",
+    "type": "航母",
+    "group": "铁血"
+  },
+  "腓特烈大帝": {
+    "avatar": "",
+    "name": "SymphonicStigma",
+    "type": "战列",
+    "group": "铁血"
+  },
+  "俾斯麦": {
+    "avatar": "",
+    "name": "Bismarck",
+    "type": "战列",
+    "group": "铁血"
+  },
+  "奥丁": {
+    "avatar": "",
+    "name": "Odin",
+    "type": "战列",
+    "group": "铁血"
+  },
+  "沙恩霍斯特": {
+    "avatar": "",
+    "name": "Scharnhorst",
+    "type": "战列",
+    "group": "铁血"
+  },
+  "格奈森瑙": {
+    "avatar": "",
+    "name": "Gneisenau",
+    "type": "战列",
+    "group": "铁血"
+  },
+  "乌尔里希·冯·胡滕": {
+    "avatar": "",
+    "name": "U.V.Hutten",
+    "type": "战列",
+    "group": "铁血"
+  },
+  "U-556": {
+    "avatar": "",
+    "name": "U.B.556",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-1206": {
+    "avatar": "",
+    "name": "U.B.1206",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-96": {
+    "avatar": "",
+    "name": "U.B.96",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-81": {
+    "avatar": "",
+    "name": "U-81",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-73": {
+    "avatar": "",
+    "name": "U-73",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-522": {
+    "avatar": "",
+    "name": "U-522",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-110": {
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/c/c3/bi3fdt1dfu12wpqx3bsps1rc1dc9ik0.jpg/85px-U-110头像.jpg",
+    "name": "HAI_110",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-37": {
+    "avatar": "",
+    "name": "UBoat37",
+    "type": "潜艇",
+    "group": "铁血"
+  }
+}
