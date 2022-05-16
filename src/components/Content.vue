@@ -22,7 +22,8 @@
       <div class="line"></div>
     </div>
     <div class="comment-list">
-      <div class="comment-card" v-for="(item, index) in data.comment" :key="`comment-${index}`">
+      <div class="comment-card" v-for="(item, index) in data.comment" :key="`comment-${index}`"
+        @dragend="commentDragend(index)" @dragover="commentDragover(index)">
         <div class="comment">
           <div class="avatar">
             <img v-if="item.avatar" :src="item.avatar" />
@@ -46,7 +47,9 @@
           </div>
         </div>
         <div class="reply-list">
-          <div class="reply" v-for="(reply, key) in item.reply" :key="`${index}-${key}`">
+          <div class="reply" v-for="(reply, key) in item.reply" :key="`${index}-${key}`"
+            @dragstart="replyDragstart(index)" @dragend="replyDragend(index, key)"
+            @dragover="replyDragover(index, key)">
             <div class="reply-del" @click="delReply(index, key)">×</div>
             <div class="avatar">
               <img v-if="reply.avatar" :src="reply.avatar" />
@@ -119,6 +122,45 @@ const commentChange = (key, index, e) => {
 
 const replyChange = (key, comment, index, e) => {
   data.comment[comment].reply[index][key] = e.target.innerText
+}
+
+let commentTarget = -1
+const commentDragend = (index) => {
+  if (index !== commentTarget && commentTarget >= 0) {
+    moveItem(data.comment, index, commentTarget)
+    commentTarget = -1
+  }
+}
+const commentDragover = (index) => {
+  if (index !== commentTarget) {
+    commentTarget = index
+  }
+}
+
+let commentIndex = -1
+let replyTarget = -1
+const replyDragstart = (index) => {
+  commentIndex = index
+}
+const replyDragend = (index, key) => {
+  if (index === commentIndex && key !== replyTarget && commentIndex >= 0 && replyTarget >= 0) {
+    moveItem(data.comment[index].reply, key, replyTarget)
+    commentIndex = -1
+    replyTarget = -1
+  }
+}
+const replyDragover = (index, key) => {
+  if (index === commentIndex && key !== replyTarget) replyTarget = key
+}
+
+const moveItem = (arr, index, target) => {
+  if (index > target) {
+    arr.splice(target, 0, arr[index])
+    arr.splice(index + 1, 1)
+  } else {
+    arr.splice(target + 1, 0, arr[index])
+    arr.splice(index, 1)
+  }
 }
 </script>
 
