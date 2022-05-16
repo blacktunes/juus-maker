@@ -32,7 +32,11 @@ const realHeight = computed(() => `${height * scale.value}px`)
 const setSize = () => {
   const h = window.innerWidth / width
   const v = window.innerHeight / height
-  scale.value = Math.min(h, v)
+  if (window.innerWidth > 550) {
+    scale.value = Math.min(h, v)
+  } else {
+    scale.value = h
+  }
 }
 setSize()
 
@@ -50,10 +54,6 @@ onMounted(() => {
 .main
   overflow hidden
   position absolute
-  top 0
-  right 0
-  bottom 0
-  left 0
   margin auto
 
   .wrapper
@@ -62,10 +62,19 @@ onMounted(() => {
     display flex
     justify-content center
     align-items center
-</style>
 
-<style lang="stylus">
-body
+@media only screen and (max-width 550px)
+  .main
+    top 0
+
+@media only screen and (min-width 550px)
+  .main
+    top 0
+    right 0
+    bottom 0
+    left 0
+
+<style lang='stylus'>, body
   margin 0
 
 img
