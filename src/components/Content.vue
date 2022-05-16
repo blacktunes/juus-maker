@@ -1,5 +1,5 @@
 <template>
-  <div class="content" :class="{ hidden: !isScreenshot }" ref="dom">
+  <div class="content" :class="{ scroll: !isScreenshot }" ref="dom">
     <div class="info-wrapper">
       <div class="tip">·FOLLOWING·</div>
       <div class="info">
@@ -21,52 +21,60 @@
       </div>
       <div class="line"></div>
     </div>
-    <div class="comment-list">
-      <div class="comment-card" v-for="(item, index) in data.comment" :key="`comment-${index}`"
-        @dragend="commentDragend(index)" @dragover="commentDragover(index)">
-        <div class="comment">
-          <div class="avatar">
-            <img v-if="item.avatar" :src="item.avatar" />
-          </div>
-          <div>
-            <span class="name" contenteditable @keydown.enter.prevent="" @input="commentChange('name', index, $event)">
-              {{ item.name }}.
-            </span>
-            <span contenteditable @keydown.enter.prevent="" @input="commentChange('text', index, $event)">
-              {{ item.text }}
-            </span>
-          </div>
-        </div>
-        <div class="comment-del" @click="delComment(index)">×</div>
-        <div class="reply-num-wrapper">
-          <div></div>
-          <div>reply</div>
-          <div class="reply-num">
-            <img src="@/assets/images/message_3.png" @click="addReply(index)" />
-            <div class="text">{{ item.reply.length }}</div>
-          </div>
-        </div>
-        <div class="reply-list">
-          <div class="reply" v-for="(reply, key) in item.reply" :key="`${index}-${key}`"
-            @dragstart="replyDragstart(index)" @dragend="replyDragend(index, key)"
-            @dragover="replyDragover(index, key)">
-            <div class="reply-del" @click="delReply(index, key)">×</div>
-            <div class="avatar">
-              <img v-if="reply.avatar" :src="reply.avatar" />
+    <div class="comment-list" ref="commentList">
+      <draggable tag="transition-group" :component-data="{ name: 'list', type: 'transition' }" v-model="data.comment"
+        :item-key="((item) => 'comment' + data.comment.indexOf(item))">
+        <template #item="{ element, index }">
+          <div class="comment-card" :key="`comment${index}`">
+            <div class="comment">
+              <div class="avatar">
+                <img v-if="element.avatar" :src="element.avatar" />
+              </div>
+              <div>
+                <span class="name" contenteditable @keydown.enter.prevent=""
+                  @input="commentChange('name', index, $event)">
+                  {{ element.name }}.
+                </span>
+                <span contenteditable @keydown.enter.prevent="" @input="commentChange('text', index, $event)">
+                  {{ element.text }}
+                </span>
+              </div>
             </div>
-            <div style="flex: 1">
-              <span class="name"><span contenteditable @keydown.enter.prevent=""
-                  @input="replyChange('name', index, key, $event)">
-                  {{ reply.name }}</span>
-                .
-              </span>
-              <span contenteditable @keydown.enter.prevent="" @input="replyChange('text', index, key, $event)">
-                {{ reply.text }}
-              </span>
+            <div class="comment-del" @click="delComment(index)">×</div>
+            <div class="reply-num-wrapper">
+              <div></div>
+              <div>reply</div>
+              <div class="reply-num">
+                <img src="@/assets/images/message_3.png" @click="addReply(index)" />
+                <div class="text">{{ element.reply.length }}</div>
+              </div>
+            </div>
+            <div class="reply-list">
+              <draggable v-model="element.reply" :item-key="((item) => 'reply' + element.reply.indexOf(item))">
+                <template #item="item">
+                  <div class="reply">
+                    <div class="reply-del" @click="delReply(index, item.index)">×</div>
+                    <div class="avatar">
+                      <img v-if="item.element.avatar" :src="item.element.avatar" />
+                    </div>
+                    <div style="flex: 1">
+                      <span class="name"><span contenteditable @keydown.enter.prevent=""
+                          @input="replyChange('name', index, item.index, $event)">
+                          {{ item.element.name }}</span>
+                        .
+                      </span>
+                      <span contenteditable @keydown.enter.prevent=""
+                        @input="replyChange('text', index, item.index, $event)">
+                        {{ item.element.text }}
+                      </span>
+                    </div>
+                  </div>
+                </template>
+              </draggable>
             </div>
           </div>
-        </div>
-      </div>
+        </template>
+      </draggable>
     </div>
     <div class="add-comment" @click="addComment">
       <div class="left">
@@ -79,20 +87,25 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import data from '@/store/data'
+import draggable from 'vuedraggable'
 
 defineProps(['isScreenshot'])
 
-const dom = ref()
+const dom = ref(null)
 defineExpose({ dom })
 
+const commentList = ref(null)
 const addComment = () => {
   data.comment.push({
     avatar: '',
     name: '这是名字',
     text: '这是内容',
     reply: []
+  })
+  nextTick(() => {
+    dom.value.scrollTop = commentList.value.scrollHeight
   })
 }
 
@@ -122,45 +135,6 @@ const commentChange = (key, index, e) => {
 
 const replyChange = (key, comment, index, e) => {
   data.comment[comment].reply[index][key] = e.target.innerText
-}
-
-let commentTarget = -1
-const commentDragend = (index) => {
-  if (index !== commentTarget && commentTarget >= 0) {
-    moveItem(data.comment, index, commentTarget)
-    commentTarget = -1
-  }
-}
-const commentDragover = (index) => {
-  if (index !== commentTarget) {
-    commentTarget = index
-  }
-}
-
-let commentIndex = -1
-let replyTarget = -1
-const replyDragstart = (index) => {
-  commentIndex = index
-}
-const replyDragend = (index, key) => {
-  if (index === commentIndex && key !== replyTarget && commentIndex >= 0 && replyTarget >= 0) {
-    moveItem(data.comment[index].reply, key, replyTarget)
-    commentIndex = -1
-    replyTarget = -1
-  }
-}
-const replyDragover = (index, key) => {
-  if (index === commentIndex && key !== replyTarget) replyTarget = key
-}
-
-const moveItem = (arr, index, target) => {
-  if (index > target) {
-    arr.splice(target, 0, arr[index])
-    arr.splice(index + 1, 1)
-  } else {
-    arr.splice(target + 1, 0, arr[index])
-    arr.splice(index, 1)
-  }
 }
 </script>
 

@@ -10,7 +10,8 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "dom-to-image": "^2.6.0",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
