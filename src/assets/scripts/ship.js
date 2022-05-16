@@ -2,7 +2,12 @@ const dataList = require.context('@/assets/data', false, /.json$/).keys().map(it
   return item.substring(2)
 })
 
-let data = {}
+let data = {
+  指挥官: {
+    avatar: require('@/assets/images/commander.jpg'),
+    name: '指挥官'
+  }
+}
 
 dataList.forEach(name => {
   data = { ...data, ...require(`@/assets/data/${name}`) }

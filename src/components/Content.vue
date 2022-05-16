@@ -8,7 +8,11 @@
         </div>
         <img src="@/assets/images/sep.png" class="sep" />
         <div class="name">
-          @<span contenteditable @keydown.enter.prevent="" @input="juusChange('name', $event)">
+          @<span
+            contenteditable
+            @keydown.enter.prevent=""
+            @input="juusChange('name', $event)"
+          >
             {{ data.juus.name }}
           </span>
         </div>
@@ -16,14 +20,23 @@
       </div>
     </div>
     <div class="text-wrapper">
-      <div class="text" contenteditable @keydown.enter.prevent="" @input="juusChange('text', $event)">
+      <div
+        class="text"
+        contenteditable
+        @keydown.enter.prevent=""
+        @input="juusChange('text', $event)"
+      >
         {{ data.juus.text }}
       </div>
       <div class="line"></div>
     </div>
     <div class="comment-list" ref="commentList">
-      <draggable tag="transition-group" :component-data="{ name: 'list', type: 'transition' }" v-model="data.comment"
-        :item-key="((item) => 'comment' + data.comment.indexOf(item))">
+      <draggable
+        tag="transition-group"
+        :component-data="{ name: 'list', type: 'transition' }"
+        v-model="data.comment"
+        :item-key="(item) => 'comment' + data.comment.indexOf(item)"
+      >
         <template #item="{ element, index }">
           <div class="comment-card" :key="`comment${index}`">
             <div class="comment">
@@ -31,11 +44,19 @@
                 <img v-if="element.avatar" :src="element.avatar" />
               </div>
               <div>
-                <span class="name" contenteditable @keydown.enter.prevent=""
-                  @input="commentChange('name', index, $event)">
+                <span
+                  class="name"
+                  contenteditable
+                  @keydown.enter.prevent=""
+                  @input="commentChange('name', index, $event)"
+                >
                   {{ element.name }}.
                 </span>
-                <span contenteditable @keydown.enter.prevent="" @input="commentChange('text', index, $event)">
+                <span
+                  contenteditable
+                  @keydown.enter.prevent=""
+                  @input="commentChange('text', index, $event)"
+                >
                   {{ element.text }}
                 </span>
               </div>
@@ -45,26 +66,47 @@
               <div></div>
               <div>reply</div>
               <div class="reply-num">
-                <img src="@/assets/images/message_3.png" @click="addReply(index)" />
+                <img
+                  src="@/assets/images/message_3.png"
+                  @click="addReply(index)"
+                />
                 <div class="text">{{ element.reply.length }}</div>
               </div>
             </div>
             <div class="reply-list">
-              <draggable v-model="element.reply" :item-key="((item) => 'reply' + element.reply.indexOf(item))">
+              <draggable
+                v-model="element.reply"
+                :item-key="(item) => 'reply' + element.reply.indexOf(item)"
+              >
                 <template #item="item">
                   <div class="reply">
-                    <div class="reply-del" @click="delReply(index, item.index)">×</div>
+                    <div class="reply-del" @click="delReply(index, item.index)">
+                      ×
+                    </div>
                     <div class="avatar">
-                      <img v-if="item.element.avatar" :src="item.element.avatar" />
+                      <img
+                        v-if="item.element.avatar"
+                        :src="item.element.avatar"
+                      />
                     </div>
                     <div style="flex: 1">
-                      <span class="name"><span contenteditable @keydown.enter.prevent=""
-                          @input="replyChange('name', index, item.index, $event)">
-                          {{ item.element.name }}</span>
+                      <span class="name"
+                        ><span
+                          contenteditable
+                          @keydown.enter.prevent=""
+                          @input="
+                            replyChange('name', index, item.index, $event)
+                          "
+                        >
+                          {{ item.element.name }}</span
+                        >
                         .
                       </span>
-                      <span contenteditable @keydown.enter.prevent=""
-                        @input="replyChange('text', index, item.index, $event)">
+                      <span
+                        contenteditable
+                        @keydown.enter.prevent=""
+                        @input="replyChange('text', index, item.index, $event)"
+                      >
                         {{ item.element.text }}
                       </span>
                     </div>
@@ -76,12 +118,23 @@
         </template>
       </draggable>
     </div>
-    <div class="add-comment" @click="addComment">
+    <div class="add-comment">
       <div class="left">
-        <div class="avatar"></div>
-        <div class="text">Add a comment...</div>
+        <div class="avatar">
+          <img v-if="input.avatar" :src="input.avatar" />
+        </div>
+        <input
+          class="input"
+          v-model="input.text"
+          placeholder="Add a comment..."
+          @keydown.enter="addComment"
+        />
       </div>
-      <img src="@/assets/images/message_2.png" class="right" />
+      <img
+        src="@/assets/images/message_2.png"
+        class="right"
+        @click="addComment"
+      />
     </div>
   </div>
 </template>
@@ -89,24 +142,26 @@
 <script setup>
 import { ref, nextTick } from 'vue'
 import data from '@/store/data'
+import input from '@/store/input'
 import draggable from 'vuedraggable'
 
 defineProps(['isScreenshot'])
 
 const dom = ref(null)
+const commentList = ref(null)
 defineExpose({ dom })
 
-const commentList = ref(null)
 const addComment = () => {
   data.comment.push({
-    avatar: '',
-    name: '这是名字',
-    text: '这是内容',
+    avatar: input.avatar,
+    name: input.name,
+    text: input.text || '谢谢你，碧蓝航线',
     reply: []
   })
   nextTick(() => {
     dom.value.scrollTop = commentList.value.scrollHeight
   })
+  input.text = ''
 }
 
 const delComment = (index) => {
@@ -115,10 +170,11 @@ const delComment = (index) => {
 
 const addReply = (index) => {
   data.comment?.[index].reply.push({
-    avatar: '',
-    name: '这是名字',
-    text: '这是内容'
+    avatar: input.avatar,
+    name: input.name,
+    text: input.text || '谢谢你，碧蓝航线'
   })
+  input.text = ''
 }
 
 const delReply = (index, key) => {

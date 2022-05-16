@@ -1,3 +1,12 @@
+avatar()
+  overflow hidden
+  border-radius 50%
+  background #ddd
+
+  img
+    width 100%
+    user-select none
+
 .content
   flex 1
   display flex
@@ -31,16 +40,11 @@
       height 120px
 
       .avatar
-        overflow hidden
         width 65px
         height 65px
-        border-radius 50%
         border 2px solid #f7e5a2
         margin-left 30px
-
-        img
-          width 100%
-          user-select none
+        avatar()
 
       .sep
         margin 0 15px
@@ -94,19 +98,12 @@
             opacity 1
 
         .avatar
-          overflow hidden
           flex-shrink 0
           width 45px
           height 45px
-          border-radius 50%
           border 1px solid #dedddb
           margin 0 15px 0 10px
-          background #ddd
-          user-select none
-
-          img
-            width 100%
-            user-select none
+          avatar()
 
         .name
           color #000
@@ -172,19 +169,12 @@
               opacity 1
 
           .avatar
-            overflow hidden
             flex-shrink 0
             width 45px
             height 45px
-            border-radius 50%
             border 1px solid #dedddb
             margin 0 15px 0 10px
-            background #ddd
-            user-select none
-
-            img
-              width 100%
-              user-select none
+            avatar()
 
           .name
             color #000
@@ -200,7 +190,6 @@
     justify-content space-between
     background #fff
     box-shadow 0 -1px 2px 0px rgba(0, 0, 0, 0.3)
-    cursor pointer
 
     .left
       display flex
@@ -208,21 +197,27 @@
       height 60px
 
       .avatar
-        overflow hidden
         width 45px
         height 45px
-        border-radius 50%
         border 1px solid #dedddb
         margin 0 15px 0 10px
-        background #ddd
+        avatar()
 
-      .text
+      .input
         font-size 20px
-        color #dfdfdf
+        color #666
+        padding 5px 10px
+        height 26px
+        border none
         user-select none
+
+        &::-webkit-input-placeholder
+          color #dfdfdf
 
     .right
       margin-right 10px
+      user-select none
+      cursor pointer
 
 .scroll
   overflow-x hidden
