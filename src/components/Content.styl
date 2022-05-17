@@ -1,13 +1,18 @@
-avatar()
-  overflow hidden
-  border-radius 50%
-  background #ddd
-  transition border-color 0.2s
+avatar(border = none)
+  position relative
   cursor pointer
 
-  img
-    width 100%
-    user-select none
+  div
+    box-sizing border-box
+    overflow hidden
+    background #ddd
+    border-radius 50%
+    border border
+    height 100%
+
+    img
+      width 100%
+      user-select none
 
 .content
   overflow-x hidden
@@ -42,9 +47,8 @@ avatar()
       .avatar
         width 65px
         height 65px
-        border 2px solid #f7e5a2
         margin-left 30px
-        avatar()
+        avatar(2px solid #f7e5a2)
 
       .sep
         margin 0 15px
@@ -101,9 +105,8 @@ avatar()
           flex-shrink 0
           width 45px
           height 45px
-          border 1px solid #dedddb
           margin 0 15px 0 10px
-          avatar()
+          avatar(1px solid #dedddb)
 
         .name
           color #000
@@ -172,9 +175,8 @@ avatar()
             flex-shrink 0
             width 45px
             height 45px
-            border 1px solid #dedddb
             margin 0 15px 0 10px
-            avatar()
+            avatar(1px solid #dedddb)
 
           .name
             color #000
@@ -200,9 +202,8 @@ avatar()
       .avatar
         width 45px
         height 45px
-        border 1px solid #dedddb
         margin 0 15px 0 10px
-        avatar()
+        avatar(1px solid #dedddb)
 
       .input
         font-size 20px
@@ -231,7 +232,17 @@ avatar()
   overflow-y scroll !important
 
 .avatar-highlight
-  border-color #111 !important
+  &:after
+    content ''
+    position absolute
+    box-sizing border-box
+    top -5px
+    left -5px
+    width calc(100% + 10px)
+    height calc(100% + 10px)
+    border-radius 50%
+    border 2px solid #333
+    animation fade 0.8s linear infinite alternate
 
 .list-enter-active
   transition all 0.2s

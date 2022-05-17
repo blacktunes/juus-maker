@@ -8,7 +8,9 @@
           :class="{ 'avatar-highlight': select.show && select.type === 1 }"
           @click="avatarClick(1)"
         >
-          <img v-if="data.juus.avatar" :src="data.juus.avatar" />
+          <div>
+            <img v-if="data.juus.avatar" :src="data.juus.avatar" />
+          </div>
         </div>
         <img src="@/assets/images/sep.png" class="sep" />
         <div class="name">
@@ -52,7 +54,9 @@
                 }"
                 @click="avatarClick(2, index)"
               >
-                <img v-if="element.avatar" :src="element.avatar" />
+                <div>
+                  <img v-if="element.avatar" :src="element.avatar" />
+                </div>
               </div>
               <div>
                 <span
@@ -105,10 +109,12 @@
                       }"
                       @click="avatarClick(3, index, item.index)"
                     >
-                      <img
-                        v-if="item.element.avatar"
-                        :src="item.element.avatar"
-                      />
+                      <div>
+                        <img
+                          v-if="item.element.avatar"
+                          :src="item.element.avatar"
+                        />
+                      </div>
                     </div>
                     <div style="flex: 1">
                       <span class="name"
@@ -146,7 +152,9 @@
           :class="{ 'avatar-highlight': select.show && select.type === 0 }"
           @click="avatarClick(0)"
         >
-          <img v-if="input.avatar" :src="input.avatar" />
+          <div>
+            <img v-if="input.avatar" :src="input.avatar" />
+          </div>
         </div>
         <input
           class="input"

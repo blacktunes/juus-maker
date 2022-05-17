@@ -56,7 +56,9 @@
       </div>
     </div>
   </div>
-  <SelectView v-if="select.show" />
+  <transition name="fade">
+    <SelectView v-show="select.show" />
+  </transition>
 </template>
 
 <script setup>
@@ -64,7 +66,7 @@ import { ref, computed } from 'vue'
 import domtoimage from 'dom-to-image'
 import Content from '@/components/Content.vue'
 import SelectView from '@/components/SelectView.vue'
-import ship from '@/assets/scripts/ship'
+import { getData } from '@/assets/scripts/ship'
 import data from '@/store/data'
 import tip from '@/store/tip'
 import { select } from '@/store/input'
@@ -137,18 +139,12 @@ const screenshot = (flag) => {
 defineExpose({ screenshot })
 
 // init
-data.juus = { key: '塔什干', ...ship['塔什干'], text: '北方联合的兔兔，超凶，嘎哦！' }
+data.juus = getData('塔什干', '北方联合的兔兔，超凶，嘎哦！')
 data.comment.push({
-  key: 'U-110',
-  ...ship['U-110'],
-  text: '嘎哦！~',
+  ...getData('U-110', '嘎哦！~'),
   reply: []
 })
-data.comment?.[0].reply.push({
-  key: '塔什干',
-  ...ship['塔什干'],
-  text: '嘎哦！！'
-})
+data.comment?.[0].reply.push(getData('塔什干', '嘎哦！！'))
 </script>
 
 <style lang="stylus" src="./JUUs.styl" scoped></style>

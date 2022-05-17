@@ -1,11 +1,14 @@
 <template>
   <div class="select-view">
     <div class="scroll-view">
-      <div class="item fixed">
+      <div class="fixed">
         <div class="avatar">
           <img v-if="avatarData.avatar" :src="avatarData.avatar" />
         </div>
-        <div class="name">{{ avatarData.key }} /<input v-model="avatarData.name" /></div>
+        <div class="name">
+          {{ avatarData.key }} /<input v-model="avatarData.name" />
+        </div>
+        <div class="close" @click="close">×</div>
       </div>
       <div
         v-for="(item, key) in ship"
@@ -49,9 +52,43 @@ const avatarData = computed(() => {
       return input
   }
 })
+
+const close = () => {
+  select.show = false
+}
 </script>
 
 <style lang="stylus" scoped>
+item()
+  display flex
+  align-items center
+  box-sizing border-box
+  align-items center
+  padding 10px 15px 10px 10px
+  margin 5px
+  user-select none
+  border 1px solid #ddd
+  border-radius 5px
+  background #fff
+
+  .avatar
+    overflow hidden
+    width 45px
+    height 45px
+    border 2px solid #dedddb
+    margin-right 10px
+    border-radius 50%
+    background #ddd
+
+    img
+      width 100%
+      user-select none
+
+  .name
+    flex 1
+    font-size 20px
+    font-weight bolder
+
 .select-view
   z-index 99
   position fixed
@@ -62,6 +99,7 @@ const avatarData = computed(() => {
   background rgba(255, 255, 255, 0.7)
   padding 20px 10px
   border-radius 5px 0 0 5px
+  color #444
 
   .scroll-view
     height 100%
@@ -86,52 +124,33 @@ const avatarData = computed(() => {
       background-color #aaa
 
     .item
-      display flex
-      align-items center
-      box-sizing border-box
-      align-items center
-      padding 10px 15px 10px 10px
-      margin 5px
-      user-select none
-      border 1px solid #ddd
-      border-radius 5px
-      background #fff
+      item()
 
-      .avatar
-        overflow hidden
-        width 45px
-        height 45px
-        border 2px solid #dedddb
-        margin-right 10px
-        border-radius 50%
-        background #ddd
-
-        img
-          width 100%
-          user-select none
-
-      .name
-        flex 1
-        font-size 20px
-        font-weight bolder
-        color #444
+      &:hover
+        background rgb(240, 240, 240)
 
 .fixed
   position sticky
   top 0
   margin-top 0 !important
   width 100%
+  item()
 
   input
     font-size 20px
     font-weight bolder
-    color #444
     padding 5px 10px
     border none
     width 240px
 
     &::-webkit-input-placeholder
       color #dfdfdf
+
+  .close
+    font-size 40px
+    line-height 40px
+    margin-bottom 3px
+    cursor pointer
 
 .highlight
   background #a2a2a2 !important

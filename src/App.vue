@@ -84,6 +84,22 @@ body
 img
   -webkit-user-drag none
 
+@keyframes fade
+  from
+    opacity 0
+
+  to
+    opacity 1
+
+.fade-enter-active, .fade-leave-active
+  transition all 0.3s
+
+.fade-enter-from, .fade-leave-to
+  opacity 0
+
+.fade-enter-to, .fade-leave-from
+  opacity 1
+
 .enter-enter-active, .enter-leave-active
   transition all 1s
 
