@@ -41,10 +41,10 @@
         tag="transition-group"
         :component-data="{ name: 'list', type: 'transition' }"
         v-model="data.comment"
-        :item-key="(item) => 'comment' + data.comment.indexOf(item)"
+        :item-key="(item) => `comment-${data.comment.indexOf(item)}`"
       >
         <template #item="{ element, index }">
-          <div class="comment-card" :key="`comment${index}`">
+          <div class="comment-card">
             <div class="comment">
               <div
                 class="avatar"

@@ -84,6 +84,9 @@ body
 img
   -webkit-user-drag none
 
+::-webkit-input-placeholder
+  color #dfdfdf
+
 @keyframes fade
   from
     opacity 0
