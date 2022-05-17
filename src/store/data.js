@@ -9,6 +9,7 @@ const data = reactive({
   },
   time: '刚刚',
   juus: {
+    key: '',
     avatar: '',
     name: '',
     text: ''

@@ -109,7 +109,7 @@
           opacity 1
           transform translateX(0)
 
-    .content
+    .content-wrapper
       z-index 3
       overflow hidden
 
@@ -119,17 +119,17 @@
           transform translateX(0)
 
 .menu-icon
-  user-select none
+  position fixed
+  top 44px
   height 35px
   padding 2px
   background #fff
   border-radius 5px 0 0 5px
-  cursor pointer
   opacity 0
   transform translateX(100%)
   transition all 0.2s
-  position fixed
-  top 44px
+  user-select none
+  cursor pointer
 
   &:hover
     opacity 1

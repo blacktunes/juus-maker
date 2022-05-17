@@ -31,6 +31,7 @@
           {{ data.time }}
         </div>
         <div
+          v-show="!select.show"
           class="menu-icon save-all"
           :class="{ hide: isScreenshot }"
           @click="screenshot(false)"
@@ -39,8 +40,13 @@
           <img src="@/assets/images/save.png" />
         </div>
       </div>
-      <Content class="content" :isScreenshot="isScreenshot" ref="content" />
+      <Content
+        class="content-wrapper"
+        :isScreenshot="isScreenshot"
+        ref="content"
+      />
       <div
+        v-show="!select.show"
         class="menu-icon save-right"
         :class="{ hide: isScreenshot }"
         @click="screenshot(true)"
@@ -50,21 +56,18 @@
       </div>
     </div>
   </div>
+  <SelectView v-if="select.show" />
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import domtoimage from 'dom-to-image'
 import Content from '@/components/Content.vue'
+import SelectView from '@/components/SelectView.vue'
 import ship from '@/assets/scripts/ship'
 import data from '@/store/data'
 import tip from '@/store/tip'
-
-const getData = (name) => {
-  return ship[name]
-    ? ship[name]
-    : { avatar: '', name: '' }
-}
+import { select } from '@/store/input'
 
 const changeBg = () => {
   const input = document.createElement('input')
@@ -134,20 +137,16 @@ const screenshot = (flag) => {
 defineExpose({ screenshot })
 
 // init
-const 塔什干 = getData('塔什干')
-const U110 = getData('U-110')
-data.juus.avatar = 塔什干.avatar
-data.juus.name = 塔什干.name
-data.juus.text = '北方联合的兔兔，超凶，嘎哦！'
+data.juus = { key: '塔什干', ...ship['塔什干'], text: '北方联合的兔兔，超凶，嘎哦！' }
 data.comment.push({
-  avatar: U110.avatar,
-  name: U110.name,
+  key: 'U-110',
+  ...ship['U-110'],
   text: '嘎哦！~',
   reply: []
 })
 data.comment?.[0].reply.push({
-  avatar: 塔什干.avatar,
-  name: 塔什干.name,
+  key: '塔什干',
+  ...ship['塔什干'],
   text: '嘎哦！！'
 })
 </script>

@@ -3,7 +3,11 @@
     <div class="info-wrapper">
       <div class="tip">·FOLLOWING·</div>
       <div class="info">
-        <div class="avatar">
+        <div
+          class="avatar"
+          :class="{ 'avatar-highlight': select.show && select.type === 1 }"
+          @click="avatarClick(1)"
+        >
           <img v-if="data.juus.avatar" :src="data.juus.avatar" />
         </div>
         <img src="@/assets/images/sep.png" class="sep" />
@@ -40,7 +44,14 @@
         <template #item="{ element, index }">
           <div class="comment-card" :key="`comment${index}`">
             <div class="comment">
-              <div class="avatar">
+              <div
+                class="avatar"
+                :class="{
+                  'avatar-highlight':
+                    select.show && select.type === 2 && select.index === index,
+                }"
+                @click="avatarClick(2, index)"
+              >
                 <img v-if="element.avatar" :src="element.avatar" />
               </div>
               <div>
@@ -83,7 +94,17 @@
                     <div class="reply-del" @click="delReply(index, item.index)">
                       ×
                     </div>
-                    <div class="avatar">
+                    <div
+                      class="avatar"
+                      :class="{
+                        'avatar-highlight':
+                          select.show &&
+                          select.type === 3 &&
+                          select.index === index &&
+                          select.key === item.index,
+                      }"
+                      @click="avatarClick(3, index, item.index)"
+                    >
                       <img
                         v-if="item.element.avatar"
                         :src="item.element.avatar"
@@ -120,7 +141,11 @@
     </div>
     <div class="add-comment">
       <div class="left">
-        <div class="avatar">
+        <div
+          class="avatar"
+          :class="{ 'avatar-highlight': select.show && select.type === 0 }"
+          @click="avatarClick(0)"
+        >
           <img v-if="input.avatar" :src="input.avatar" />
         </div>
         <input
@@ -140,7 +165,7 @@
 <script setup>
 import { ref, nextTick } from 'vue'
 import data from '@/store/data'
-import input from '@/store/input'
+import input, { select } from '@/store/input'
 import draggable from 'vuedraggable'
 
 defineProps(['isScreenshot'])
@@ -151,8 +176,7 @@ defineExpose({ dom })
 
 const addComment = () => {
   data.comment.push({
-    avatar: input.avatar,
-    name: input.name,
+    ...input,
     text: input.text || '谢谢你，碧蓝航线',
     reply: []
   })
@@ -168,8 +192,7 @@ const delComment = (index) => {
 
 const addReply = (index) => {
   data.comment?.[index].reply.push({
-    avatar: input.avatar,
-    name: input.name,
+    ...input,
     text: input.text || '谢谢你，碧蓝航线'
   })
   input.text = ''
@@ -189,6 +212,22 @@ const commentChange = (key, index, e) => {
 
 const replyChange = (key, comment, index, e) => {
   data.comment[comment].reply[index][key] = e.target.innerText
+}
+
+const avatarClick = (type, index, key) => {
+  if (select.show) {
+    if (select.type === type) {
+      select.show = false
+      return
+    } else {
+      select.type = type
+    }
+  } else {
+    select.type = type
+    select.show = true
+  }
+  select.index = index
+  select.key = key
 }
 </script>
 

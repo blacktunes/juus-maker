@@ -13,4 +13,11 @@ dataList.forEach(name => {
   data = { ...data, ...require(`@/assets/data/${name}`) }
 })
 
+const getData = (name) => {
+  return data[name]
+    ? data[name]
+    : { avatar: '', name: '' }
+}
+
+export { getData }
 export default data
