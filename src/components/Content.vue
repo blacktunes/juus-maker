@@ -130,11 +130,9 @@
           @keydown.enter="addComment"
         />
       </div>
-      <img
-        src="@/assets/images/message_2.png"
-        class="right"
-        @click="addComment"
-      />
+      <div class="right">
+        <img src="@/assets/images/message_2.png" @click="addComment" />
+      </div>
     </div>
   </div>
 </template>

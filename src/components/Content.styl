@@ -8,15 +8,13 @@ avatar()
     user-select none
 
 .content
+  overflow-x hidden
   flex 1
   display flex
   flex-direction column
   background #eff7ff
   width 400px
-
-  &::-webkit-scrollbar
-    width 0
-    height 0
+  box-shadow -1px 0 5px rgba(0, 0, 0, 0.5)
 
   .info-wrapper
     z-index 9
@@ -195,6 +193,7 @@ avatar()
       display flex
       align-items center
       height 60px
+      flex 1
 
       .avatar
         width 45px
@@ -209,18 +208,24 @@ avatar()
         padding 5px 10px
         height 26px
         border none
-        user-select none
+        width 240px
 
         &::-webkit-input-placeholder
           color #dfdfdf
 
     .right
-      margin-right 10px
+      display flex
+      justify-content center
+      align-items center
+      height 60px
+      width 60px
       user-select none
       cursor pointer
 
+      img
+        height 45px
+
 .scroll
-  overflow-x hidden
   overflow-y scroll
 
 .list-enter-active

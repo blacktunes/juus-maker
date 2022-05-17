@@ -1,22 +1,18 @@
 <template>
-  <div class="menu">
-    <div class="menu-icon" @click="screenshot(false)">
-      <img src="@/assets/images/share.png" />
+  <div class="juus" ref="juus">
+    <div class="bg" @click="changeBg" :title="tip.bg">
+      <img :src="data.bg" />
     </div>
-    <div class="menu-icon" @click="screenshot(true)">
-      <img src="@/assets/images/share.png" />
-    </div>
-    <div class="menu-icon" @click="changeBg">
-      <img src="@/assets/images/img_icon.png" />
-    </div>
-  </div>
-  <div ref="juus">
-    <img :src="data.bg" class="bg" />
     <div class="juus-wrapper">
       <div class="image">
         <img src="@/assets/images/logo.jpg" class="logo" />
         <div class="img-wrapper">
-          <img :src="data.img" class="img" @click="changeImg" />
+          <img
+            :src="data.img"
+            class="img"
+            @click="changeImg"
+            :title="tip.img"
+          />
         </div>
         <div class="icon-left">
           <img :src="likeImg" class="icon like" @click="setLike" />
@@ -34,11 +30,26 @@
         <div class="text text-right" contenteditable @keydown.enter.prevent="">
           {{ data.time }}
         </div>
+        <div
+          class="menu-icon save-all"
+          :class="{ hide: isScreenshot }"
+          @click="screenshot(false)"
+          :title="tip.screenshot"
+        >
+          <img src="@/assets/images/save.png" />
+        </div>
       </div>
-      <Content :isScreenshot="isScreenshot" ref="content" />
+      <Content class="content" :isScreenshot="isScreenshot" ref="content" />
+      <div
+        class="menu-icon save-right"
+        :class="{ hide: isScreenshot }"
+        @click="screenshot(true)"
+        :title="tip.screenshotTalk"
+      >
+        <img src="@/assets/images/save.png" />
+      </div>
     </div>
   </div>
-  <div class="select-wrapper"></div>
 </template>
 
 <script setup>
@@ -47,6 +58,7 @@ import domtoimage from 'dom-to-image'
 import Content from '@/components/Content.vue'
 import ship from '@/assets/scripts/ship'
 import data from '@/store/data'
+import tip from '@/store/tip'
 
 const getData = (name) => {
   return ship[name]
@@ -106,6 +118,10 @@ const screenshot = (flag) => {
       link.download = `JUUs-${Date.now()}.png`
       link.href = dataUrl
       link.click()
+      // const img = new Image()
+      // img.src = dataUrl
+      // const win = window.open('')
+      // win.document.body.appendChild(img)
     })
     .catch((error) => {
       console.error('截图保存错误', error)
@@ -114,6 +130,8 @@ const screenshot = (flag) => {
       isScreenshot.value = false
     })
 }
+
+defineExpose({ screenshot })
 
 // init
 const 塔什干 = getData('塔什干')

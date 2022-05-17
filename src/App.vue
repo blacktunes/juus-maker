@@ -1,19 +1,21 @@
 <template>
   <transition name="enter">
-    <div
-      class="main"
-      :style="{ width: realWidth, height: realHeight }"
-      v-if="ready"
-    >
+    <div>
       <div
-        class="wrapper"
-        :style="{
-          transform: `scale(${scale})`,
-          width: `${width}px`,
-          height: `${height}px`,
-        }"
+        class="main"
+        :style="{ width: realWidth, height: realHeight }"
+        v-if="ready"
       >
-        <JUUs />
+        <div
+          class="wrapper"
+          :style="{
+            transform: `scale(${scale})`,
+            width: `${width}px`,
+            height: `${height}px`,
+          }"
+        >
+          <JUUs />
+        </div>
       </div>
     </div>
   </transition>
@@ -73,8 +75,10 @@ onMounted(() => {
     right 0
     bottom 0
     left 0
+</style>
 
-<style lang='stylus'>, body
+<style lang='stylus'>
+body
   margin 0
 
 img
