@@ -17,6 +17,25 @@
           <JUUs />
         </div>
       </div>
+      <div class="info">
+        <a
+          class="icon"
+          href="https://github.com/blacktunes/juus-maker"
+          target="_blank"
+        >
+          <img src="@/assets/images/github.png" />
+        </a>
+        <a
+          class="icon"
+          href="https://space.bilibili.com/1384118"
+          target="_blank"
+        >
+          <img src="@/assets/images/bilibili.png" />
+        </a>
+        <div class="tip">
+          <img src="@/assets/images/info.png" />
+        </div>
+      </div>
     </div>
   </transition>
 </template>
@@ -64,6 +83,44 @@ onMounted(() => {
     display flex
     justify-content center
     align-items center
+
+.info
+  z-index 999
+  top 0
+  right 0
+  position fixed
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  width 35px
+  background #fff
+  border-bottom-left-radius 10px
+  padding 5px
+  border 1px solid #ddd
+  border-top none
+  border-right none
+  transition all 0.3s
+  transform translateY(-85px)
+
+  &:hover
+    transform translateY(0)
+
+    .tip
+      opacity 0
+      height 0
+
+  .icon
+    width 100%
+
+    img
+      width 100%
+
+  .tip
+    overflow hidden
+    opacity 1
+    height 30px
+    transition all 0.3s
 
 @media only screen and (max-width 550px)
   .main
