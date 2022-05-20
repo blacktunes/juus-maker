@@ -173,7 +173,7 @@
 <script setup>
 import { ref, nextTick } from 'vue'
 import data from '@/store/data'
-import input, { select } from '@/store/input'
+import input, { select, resetSelectData } from '@/store/input'
 import draggable from 'vuedraggable'
 
 defineProps(['isScreenshot'])
@@ -195,6 +195,7 @@ const addComment = () => {
 }
 
 const delComment = (index) => {
+  resetSelectData()
   data.comment.splice(index, 1)
 }
 
@@ -207,6 +208,7 @@ const addReply = (index) => {
 }
 
 const delReply = (index, key) => {
+  resetSelectData()
   data.comment?.[index].reply.splice(key, 1)
 }
 

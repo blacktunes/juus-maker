@@ -25,14 +25,16 @@
     </div>
     <div class="search">
       <input v-model="searchText" placeholder="Search" @keydown.esc="clear" />
-      <div class="clear" @click="clear">Clear</div>
+      <transition name="fade">
+        <div class="clear" @click="clear" v-show="searchText">×</div>
+      </transition>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
-import ship from '@/assets/scripts/ship'
+import ship, { getData } from '@/assets/scripts/ship'
 import input, { select } from '@/store/input'
 import data from '@/store/data'
 
@@ -42,17 +44,37 @@ const clear = () => {
 }
 
 const showData = computed(() => {
+  const temp = {
+    指挥官: getData('指挥官')
+  }
+  const used = []
   if (searchText.value) {
-    const temp = {}
     for (const key in ship) {
-      if (key === '指挥官' || key.toLowerCase().includes(searchText.value.toLowerCase())) {
-        temp[key] = ship[key]
+      try {
+        const reg = new RegExp(searchText.value, 'gi')
+        if (reg.test(key)) {
+          if (!temp[key]) temp[key] = ship[key]
+        }
+      } catch (e) {
+        break
       }
     }
-    return temp
   } else {
-    return ship
+    used.push(data.juus.key)
+    data.comment.forEach(comment => {
+      if (!used.includes(comment.key)) used.push(comment.key)
+      comment.reply.forEach(reply => {
+        if (!used.includes(reply.key)) used.push(reply.key)
+      })
+    })
+    for (const key of used) {
+      temp[key] = ship[key]
+    }
+    for (const key in ship) {
+      if (!temp[key]) temp[key] = ship[key]
+    }
   }
+  return temp
 })
 
 const change = (name) => {
@@ -158,35 +180,38 @@ item()
         background rgb(240, 240, 240)
 
   .search
+    position relative
     height 50px
-    display flex
-    align-items center
-    justify-content center
     padding 10px
     margin-top 10px
     border-top 1px solid #aaa
 
     input
-      flex 1
-      height 30px
-      padding 5px 20px
-      border-radius 5px 0 0 5px
+      box-sizing border-box
+      width 100%
+      height 50px
+      padding 5px 45px 5px 20px
+      border-radius 5px
       border 2px solid #aaa
-      border-right none
       outline none
       font-size 20px
       color #444
 
     div
-      border-radius 0 5px 5px 0
+      position absolute
+      top 50%
+      right 20px
       border 2px solid #aaa
+      border-radius 50%
       outline none
-      width 80px
-      height 40px
-      line-height 40px
+      width 20px
+      height 20px
+      line-height 20px
       text-align center
       user-select none
       cursor pointer
+      transform translateY(-50%)
+      color #444
 
 .fixed
   position sticky

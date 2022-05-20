@@ -14,5 +14,12 @@ const select = reactive({
   key: 0
 })
 
-export { select }
+const resetSelectData = () => {
+  select.show = false
+  select.type = 0
+  select.index = 0
+  select.key = 0
+}
+
+export { select, resetSelectData }
 export default input
