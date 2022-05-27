@@ -1,14 +1,14 @@
 <template>
   <div class="juus" ref="juus">
     <div class="bg" @click="changeBg" :title="tip.bg">
-      <img :src="data.bg" />
+      <img :src="data.list[data.index].bg" />
     </div>
     <div class="juus-wrapper">
       <div class="image">
         <img src="@/assets/images/logo.jpg" class="logo" />
         <div class="img-wrapper">
           <img
-            :src="data.img"
+            :src="data.list[data.index].img"
             class="img"
             @click="changeImg"
             :title="tip.img"
@@ -23,12 +23,12 @@
         </div>
         <div class="text text-left">
           <span contenteditable @keydown.enter.prevent="">
-            {{ data.like.text }}
+            {{ data.list[data.index].like.text }}
           </span>
           次赞
         </div>
         <div class="text text-right" contenteditable @keydown.enter.prevent="">
-          {{ data.time }}
+          {{ data.list[data.index].time }}
         </div>
         <div
           v-show="!select.show"
@@ -80,7 +80,7 @@ const changeBg = () => {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = (e) => {
-        data.bg = e.target.result
+        data.list[data.index].bg = e.target.result
       }
     }
   }
@@ -96,16 +96,16 @@ const changeImg = () => {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = (e) => {
-        data.img = e.target.result
+        data.list[data.index].img = e.target.result
       }
     }
   }
   input.click()
 }
 
-const likeImg = computed(() => data.like.flag ? require('@/assets/images/like_2.png') : require('@/assets/images/like.png'))
+const likeImg = computed(() => data.list[data.index].like.flag ? require('@/assets/images/like_2.png') : require('@/assets/images/like.png'))
 const setLike = () => {
-  data.like.flag = !data.like.flag
+  data.list[data.index].like.flag = !data.list[data.index].like.flag
 }
 
 const isScreenshot = ref(false)
@@ -139,12 +139,12 @@ const screenshot = (flag) => {
 defineExpose({ screenshot })
 
 // init
-data.juus = getData('塔什干', '北方联合的兔兔，超凶，嘎哦！')
-data.comment.push({
+data.list[data.index].juus = getData('塔什干', '北方联合的兔兔，超凶，嘎哦！')
+data.list[data.index].comment.push({
   ...getData('U-110', '嘎哦！~'),
   reply: []
 })
-data.comment?.[0].reply.push(getData('塔什干', '嘎哦！！'))
+data.list[data.index].comment?.[0].reply.push(getData('塔什干', '嘎哦！！'))
 </script>
 
 <style lang="stylus" src="./JUUs.styl" scoped></style>

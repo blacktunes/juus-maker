@@ -60,8 +60,8 @@ const showData = computed(() => {
       }
     }
   } else {
-    used.push(data.juus.key)
-    data.comment.forEach(comment => {
+    used.push(data.list[data.index].juus.key)
+    data.list[data.index].comment.forEach(comment => {
       if (!used.includes(comment.key)) used.push(comment.key)
       comment.reply.forEach(reply => {
         if (!used.includes(reply.key)) used.push(reply.key)
@@ -88,11 +88,11 @@ const avatarData = computed(() => {
     case 0:
       return input
     case 1:
-      return data.juus
+      return data.list[data.index].juus
     case 2:
-      return data.comment[select.index]
+      return data.list[data.index].comment[select.index]
     case 3:
-      return data.comment[select.index].reply[select.key]
+      return data.list[data.index].comment[select.index].reply[select.key]
     default:
       return input
   }

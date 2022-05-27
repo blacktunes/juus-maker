@@ -9,7 +9,7 @@
           @click="avatarClick(1)"
         >
           <div>
-            <img v-if="data.juus.avatar" :src="data.juus.avatar" />
+            <img v-if="data.list[data.index].juus.avatar" :src="data.list[data.index].juus.avatar" />
           </div>
         </div>
         <img src="@/assets/images/sep.png" class="sep" />
@@ -19,7 +19,7 @@
             @keydown.enter.prevent=""
             @input="juusChange('name', $event)"
           >
-            {{ data.juus.name }}
+            {{ data.list[data.index].juus.name }}
           </span>
         </div>
         <img src="@/assets/images/icon.png" />
@@ -32,7 +32,7 @@
         @keydown.enter.prevent=""
         @input="juusChange('text', $event)"
       >
-        {{ data.juus.text }}
+        {{ data.list[data.index].juus.text }}
       </div>
       <div class="line"></div>
     </div>
@@ -40,8 +40,8 @@
       <draggable
         tag="transition-group"
         :component-data="{ name: 'list', type: 'transition' }"
-        v-model="data.comment"
-        :item-key="(item) => `comment-${data.comment.indexOf(item)}`"
+        v-model="data.list[data.index].comment"
+        :item-key="(item) => `comment-${data.list[data.index].comment.indexOf(item)}`"
       >
         <template #item="{ element, index }">
           <div class="comment-card">
@@ -183,7 +183,7 @@ const commentList = ref(null)
 defineExpose({ dom })
 
 const addComment = () => {
-  data.comment.push({
+  data.list[data.index].comment.push({
     ...input,
     text: input.text || '谢谢你，碧蓝航线',
     reply: []
@@ -196,11 +196,11 @@ const addComment = () => {
 
 const delComment = (index) => {
   resetSelectData()
-  data.comment.splice(index, 1)
+  data.list[data.index].comment.splice(index, 1)
 }
 
 const addReply = (index) => {
-  data.comment?.[index].reply.push({
+  data.list[data.index].comment?.[index].reply.push({
     ...input,
     text: input.text || '谢谢你，碧蓝航线'
   })
@@ -209,19 +209,19 @@ const addReply = (index) => {
 
 const delReply = (index, key) => {
   resetSelectData()
-  data.comment?.[index].reply.splice(key, 1)
+  data.list[data.index].comment?.[index].reply.splice(key, 1)
 }
 
 const juusChange = (key, e) => {
-  data.juus[key] = e.target.innerText
+  data.list[data.index].juus[key] = e.target.innerText
 }
 
 const commentChange = (key, index, e) => {
-  data.comment[index][key] = e.target.innerText
+  data.list[data.index].comment[index][key] = e.target.innerText
 }
 
 const replyChange = (key, comment, index, e) => {
-  data.comment[comment].reply[index][key] = e.target.innerText
+  data.list[data.index].comment[comment].reply[index][key] = e.target.innerText
 }
 
 const avatarClick = (type, index, key) => {
