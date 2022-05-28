@@ -25,7 +25,7 @@
             {{ data.list[data.index].juus.name }}
           </span>
         </div>
-        <img src="@/assets/images/icon.png" />
+        <img src="@/assets/images/icon.png" style="margin-right: 10px" />
       </div>
     </div>
     <div class="text-wrapper">

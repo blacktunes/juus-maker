@@ -45,6 +45,7 @@ avatar(border = none)
       height 120px
 
       .avatar
+        flex-shrink 0
         width 65px
         height 65px
         margin-left 30px
@@ -57,6 +58,9 @@ avatar(border = none)
         font-size 20px
         font-weight bold
         margin-right 10px
+        text-overflow ellipsis
+        white-space nowrap
+        overflow hidden
 
   .text-wrapper
     z-index 8

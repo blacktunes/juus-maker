@@ -1,6 +1,7 @@
-import { nextTick, reactive, toRaw, watch } from 'vue'
+import { nextTick, reactive, toRaw, toRef, watch } from 'vue'
+import { getData } from '@/assets/scripts/ship'
 
-const defaultItem = {
+export const defaultItem = {
   img: require('@/assets/images/img.jpg'),
   bg: require('@/assets/images/bg.jpg'),
   like: {
@@ -8,13 +9,15 @@ const defaultItem = {
     text: '999+'
   },
   time: '刚刚',
-  juus: {
-    key: '',
-    avatar: '',
-    name: '',
-    text: ''
-  },
-  comment: []
+  juus: getData('塔什干', '北方联合的兔兔，超凶，嘎哦！'),
+  comment: [
+    {
+      ...getData('U-110', '嘎哦！~'),
+      reply: [
+        getData('塔什干', '嘎哦！！')
+      ]
+    }
+  ]
 }
 
 const data = reactive({
@@ -27,10 +30,17 @@ const data = reactive({
 })
 
 const setWatch = () => {
+  data.index = localStorage.getItem('last-index') || 0
+
   watch(data.list, () => {
     nextTick(() => {
       updateDB()
     })
+  })
+
+  const index = toRef(data, 'index')
+  watch(index, () => {
+    localStorage.setItem('last-index', data.index)
   })
 }
 
@@ -46,7 +56,7 @@ _db.onsuccess = function (event) {
       .get(0)
     request.onsuccess = (e) => {
       try {
-        data.list = JSON.parse(e.target.result.data)
+        data.list = JSON.parse(e.target.result?.data || '[]')
       } finally {
         setWatch()
       }
@@ -54,6 +64,7 @@ _db.onsuccess = function (event) {
   } else {
     updateDB()
     setWatch()
+    data.home = false
   }
 }
 

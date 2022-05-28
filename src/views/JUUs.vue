@@ -54,15 +54,17 @@
       >
         <img src="@/assets/images/save.png" />
       </div>
-      <div v-show="!select.show" class="back" @click="back">
-        <img src="@/assets/images/back.png" />
-        <span>返回</span>
-      </div>
+      <transition name="fade">
+        <div v-show="!isScreenshot" class="back" @click="back">
+          <img src="@/assets/images/back.png" />
+          <span>返回</span>
+        </div>
+      </transition>
     </div>
+    <transition name="fade">
+      <SelectView v-show="select.show" />
+    </transition>
   </div>
-  <transition name="fade">
-    <SelectView v-show="select.show" />
-  </transition>
 </template>
 
 <script setup>
@@ -70,7 +72,6 @@ import { ref, computed } from 'vue'
 import domtoimage from 'dom-to-image'
 import Content from '@/components/Content.vue'
 import SelectView from '@/components/SelectView.vue'
-import { getData } from '@/assets/scripts/ship'
 import data from '@/store/data'
 import tip from '@/store/tip'
 import { select } from '@/store/input'
@@ -113,6 +114,7 @@ const setLike = () => {
 }
 
 const back = () => {
+  select.show = false
   data.home = true
 }
 
@@ -145,14 +147,6 @@ const screenshot = (flag) => {
 }
 
 defineExpose({ screenshot })
-
-// init
-data.list[data.index].juus = getData('塔什干', '北方联合的兔兔，超凶，嘎哦！')
-data.list[data.index].comment.push({
-  ...getData('U-110', '嘎哦！~'),
-  reply: []
-})
-data.list[data.index].comment?.[0].reply.push(getData('塔什干', '嘎哦！！'))
 </script>
 
 <style lang="stylus" src="./JUUs.styl" scoped></style>
