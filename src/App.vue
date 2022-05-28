@@ -29,7 +29,11 @@
     </div>
   </div>
   <transition name="fade">
-    <div class="horizontal" v-if="horizontalTip && shouldHorizontal" @click="horizontalTip = false">
+    <div
+      class="horizontal"
+      v-if="horizontalTip && shouldHorizontal"
+      @click="horizontalTip = false"
+    >
       <div class="bg"></div>
       <div class="item">
         <div class="img">

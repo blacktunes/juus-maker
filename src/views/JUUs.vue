@@ -54,6 +54,10 @@
       >
         <img src="@/assets/images/save.png" />
       </div>
+      <div v-show="!select.show" class="back" @click="back">
+        <img src="@/assets/images/back.png" />
+        <span>返回</span>
+      </div>
     </div>
   </div>
   <transition name="fade">
@@ -106,6 +110,10 @@ const changeImg = () => {
 const likeImg = computed(() => data.list[data.index].like.flag ? require('@/assets/images/like_2.png') : require('@/assets/images/like.png'))
 const setLike = () => {
   data.list[data.index].like.flag = !data.list[data.index].like.flag
+}
+
+const back = () => {
+  data.home = true
 }
 
 const isScreenshot = ref(false)

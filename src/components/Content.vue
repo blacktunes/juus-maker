@@ -9,7 +9,10 @@
           @click="avatarClick(1)"
         >
           <div>
-            <img v-if="data.list[data.index].juus.avatar" :src="data.list[data.index].juus.avatar" />
+            <img
+              v-if="data.list[data.index].juus.avatar"
+              :src="data.list[data.index].juus.avatar"
+            />
           </div>
         </div>
         <img src="@/assets/images/sep.png" class="sep" />
@@ -41,7 +44,9 @@
         tag="transition-group"
         :component-data="{ name: 'list', type: 'transition' }"
         v-model="data.list[data.index].comment"
-        :item-key="(item) => `comment-${data.list[data.index].comment.indexOf(item)}`"
+        :item-key="
+          (item) => `comment-${data.list[data.index].comment.indexOf(item)}`
+        "
       >
         <template #item="{ element, index }">
           <div class="comment-card">
@@ -83,7 +88,7 @@
               <div class="reply-num">
                 <img
                   src="@/assets/images/message_3.png"
-                  @click="addReply(index)"
+                  @click="addReply(index, $event)"
                 />
                 <div class="text">{{ element.reply.length }}</div>
               </div>
@@ -189,7 +194,7 @@ const addComment = () => {
     reply: []
   })
   nextTick(() => {
-    dom.value.scrollTop = commentList.value.scrollHeight
+    dom.value.scrollTo({ top: commentList.value.scrollHeight, behavior: 'smooth' })
   })
   input.text = ''
 }
@@ -199,10 +204,17 @@ const delComment = (index) => {
   data.list[data.index].comment.splice(index, 1)
 }
 
-const addReply = (index) => {
+const addReply = (index, e) => {
   data.list[data.index].comment?.[index].reply.push({
     ...input,
     text: input.text || '谢谢你，碧蓝航线'
+  })
+  nextTick(() => {
+    const top =
+      e.target.parentElement.parentElement.parentElement.nextElementSibling
+        ? e.target.parentElement.parentElement.parentElement.nextElementSibling.offsetTop - 640 + 24
+        : commentList.value.scrollHeight
+    dom.value.scrollTo({ top, behavior: 'smooth' })
   })
   input.text = ''
 }

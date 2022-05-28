@@ -1,8 +1,8 @@
 import { nextTick, reactive, toRaw, watch } from 'vue'
 
 const defaultItem = {
-  bg: require('@/assets/images/bg.jpg'),
   img: require('@/assets/images/img.jpg'),
+  bg: require('@/assets/images/bg.jpg'),
   like: {
     flag: false,
     text: '999+'
@@ -18,7 +18,9 @@ const defaultItem = {
 }
 
 const data = reactive({
+  home: true,
   index: 0,
+  bg: require('@/assets/images/bg.jpg'),
   list: [
     { ...defaultItem }
   ]
@@ -39,19 +41,13 @@ _db.onsuccess = function (event) {
   db = event.target.result
 
   if (hasDB) {
-    const temp = []
     const request = db.transaction('data', 'readonly')
       .objectStore('data')
-      .openCursor(0)
+      .get(0)
     request.onsuccess = (e) => {
-      const cursor = e.target.result
-      if (cursor) {
-        temp.push(cursor.value.data)
-        cursor.continue()
-      } else {
-        if (temp.length > 0) {
-          data.list = temp
-        }
+      try {
+        data.list = JSON.parse(e.target.result.data)
+      } finally {
         setWatch()
       }
     }
@@ -73,8 +69,8 @@ export const updateDB = () => {
   db.transaction('data', 'readwrite')
     .objectStore('data')
     .put({
-      id: data.index,
-      data: JSON.parse(JSON.stringify(toRaw(data.list[data.index])))
+      id: 0,
+      data: JSON.stringify(toRaw(data.list))
     })
 }
 
