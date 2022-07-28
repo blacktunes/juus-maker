@@ -2,8 +2,8 @@ import { nextTick, reactive, toRaw, toRef, watch } from 'vue'
 import { getData } from '@/assets/scripts/ship'
 
 export const defaultItem = {
-  img: require('@/assets/images/img.jpg'),
-  bg: require('@/assets/images/bg.jpg'),
+  img: 'https://patchwiki.biligame.com/images/blhx/d/d7/47ho3fxsc16dnjl59ivd6uf4j1pmaw6.png',
+  bg: 'https://patchwiki.biligame.com/images/blhx/e/e8/bhdanvql92zw4a24kv7xcif6i6rlbqk.png',
   like: {
     flag: false,
     text: '999+'
@@ -23,7 +23,7 @@ export const defaultItem = {
 const data = reactive({
   home: true,
   index: 0,
-  bg: require('@/assets/images/bg.jpg'),
+  bg: 'https://patchwiki.biligame.com/images/blhx/e/e8/bhdanvql92zw4a24kv7xcif6i6rlbqk.png',
   list: [
     { ...defaultItem }
   ]
