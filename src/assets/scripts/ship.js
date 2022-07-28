@@ -1,22 +1,49 @@
-const dataList = require.context('@/assets/data', false, /.json$/).keys().map(item => {
+import { reactive } from 'vue'
+
+const dataList = require.context('@/assets/data', false, /.txt$/).keys().map(item => {
   return item.substring(2)
 })
 
-let data = {
+const loadTxt = text => {
+  const list = {}
+  let group = ''
+  let type = ''
+
+  text.split('\n').forEach(item => {
+    if (item.startsWith('===')) {
+      type = item.replaceAll('=', '').replace('\r', '')
+      return
+    }
+    if (item.startsWith('==')) {
+      group = item.replaceAll('=', '').replace('阵营', '').replace('\r', '')
+      return
+    }
+    if (item.includes('@')) {
+      const temp = item.replace(/\{|\}|小图标\||<br>/g, '').replace('\r', '').split('@')
+      const key = temp[0].split('|')[0]
+      list[key] = {
+        avatar: '',
+        name: temp[1],
+        type,
+        group
+      }
+    }
+  })
+
+  return list
+}
+
+const avatar = require('@/assets/data/avatar.json')
+
+let data = reactive({
   指挥官: {
     avatar: require('@/assets/images/commander.jpg'),
     name: '指挥官'
   }
-}
-
-let avatar = {}
+})
 
 dataList.forEach(name => {
-  if (name === 'avatar.json') {
-    avatar = require(`@/assets/data/${name}`)
-  } else {
-    data = { ...data, ...require(`@/assets/data/${name}`) }
-  }
+  data = { ...data, ...loadTxt(require(`@/assets/data/${name}`).txt) }
 })
 
 for (const key in data) {
