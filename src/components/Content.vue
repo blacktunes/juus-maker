@@ -64,13 +64,15 @@
                 </div>
               </div>
               <div>
-                <span
-                  class="name"
-                  contenteditable
-                  @keydown.enter.prevent=""
-                  @input="commentChange('name', index, $event)"
-                >
-                  {{ element.name }}.
+                <span class="name">
+                  <span
+                    contenteditable
+                    @keydown.enter.prevent=""
+                    @input="commentChange('name', index, $event)"
+                  >
+                    {{ element.name }}
+                  </span>
+                  .
                 </span>
                 <span
                   contenteditable
