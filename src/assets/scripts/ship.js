@@ -39,6 +39,10 @@ let data = reactive({
   指挥官: {
     avatar: require('@/assets/images/commander.jpg'),
     name: '指挥官'
+  },
+  自定义: {
+    avatar: '',
+    name: '自定义'
   }
 })
 

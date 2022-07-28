@@ -17,7 +17,11 @@
         :class="{ highlight: key === avatarData.key }"
         @click="change(key)"
       >
-        <div class="avatar">
+        <div
+          class="avatar"
+          :style="{cursor: key === '自定义' ? 'pointer' : ''}"
+          @click="setAvatar"
+        >
           <img v-if="item.avatar" :src="item.avatar" />
         </div>
         <div class="name">{{ key }}</div>
@@ -45,7 +49,8 @@ const clear = () => {
 
 const showData = computed(() => {
   const temp = {
-    指挥官: getData('指挥官')
+    指挥官: getData('指挥官'),
+    自定义: getData('自定义')
   }
   const used = []
   if (searchText.value) {
@@ -100,6 +105,22 @@ const avatarData = computed(() => {
 
 const close = () => {
   select.show = false
+}
+
+const setAvatar = () => {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.accept = 'image/*'
+  input.onchange = () => {
+    if (input.files[0]) {
+      const file = new FileReader()
+      file.readAsDataURL(input.files[0])
+      file.onload = (e) => {
+        ship.自定义.avatar = e.target.result
+      }
+    }
+  }
+  input.click()
 }
 </script>
 
