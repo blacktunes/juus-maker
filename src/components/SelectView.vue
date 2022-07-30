@@ -20,7 +20,7 @@
         <div
           class="avatar"
           :style="{cursor: key === '自定义' ? 'pointer' : ''}"
-          @click="setAvatar"
+          @click.stop="setAvatar(key)"
         >
           <img v-if="item.avatar" :src="item.avatar" />
         </div>
@@ -107,7 +107,8 @@ const close = () => {
   select.show = false
 }
 
-const setAvatar = () => {
+const setAvatar = (key) => {
+  if (key !== '自定义') return
   const input = document.createElement('input')
   input.type = 'file'
   input.accept = 'image/*'
