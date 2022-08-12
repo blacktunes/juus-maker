@@ -1,5 +1,10 @@
 <template>
   <div class="juus" ref="juus">
+    <div
+      class="mask"
+      @click.stop="stopPlay"
+      v-show="setting.play"
+    ></div>
     <div class="bg" @click="changeBg" :title="tip.bg">
       <img :src="data.list[data.index].bg" />
     </div>
@@ -32,7 +37,7 @@
         </div>
         <div
           v-show="!select.show"
-          class="menu-icon save-all"
+          class="menu menu-icon save-all"
           :class="{ hide: isScreenshot }"
           @click="screenshot(false)"
           :title="tip.screenshot"
@@ -47,12 +52,19 @@
       />
       <div
         v-show="!select.show"
-        class="menu-icon save-right"
+        class="menu save-right"
         :class="{ hide: isScreenshot }"
-        @click="screenshot(true)"
-        :title="tip.screenshotTalk"
       >
-        <img src="@/assets/images/save.png" />
+        <div
+          class="menu-icon"
+          @click="screenshot(true)"
+          :title="tip.screenshotTalk"
+        >
+          <img src="@/assets/images/save.png" />
+        </div>
+        <div class="menu-icon" style="margin-top: 6px" @click="autoPlay">
+          <img src="@/assets/images/play.png" />
+        </div>
       </div>
       <transition name="fade">
         <div v-show="!isScreenshot" class="back" @click="back">
@@ -73,7 +85,7 @@ import domtoimage from 'dom-to-image'
 import Content from '@/components/Content.vue'
 import SelectView from '@/components/SelectView.vue'
 import data from '@/store/data'
-import tip from '@/store/tip'
+import { tip, setting } from '@/store/setting'
 import { select } from '@/store/input'
 
 const changeBg = () => {
@@ -84,7 +96,7 @@ const changeBg = () => {
     if (input.files[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
-      file.onload = (e) => {
+      file.onload = e => {
         data.list[data.index].bg = e.target.result
       }
     }
@@ -100,7 +112,7 @@ const changeImg = () => {
     if (input.files[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
-      file.onload = (e) => {
+      file.onload = e => {
         data.list[data.index].img = e.target.result
       }
     }
@@ -108,7 +120,11 @@ const changeImg = () => {
   input.click()
 }
 
-const likeImg = computed(() => data.list[data.index].like.flag ? require('@/assets/images/like_2.png') : require('@/assets/images/like.png'))
+const likeImg = computed(() =>
+  data.list[data.index].like.flag
+    ? require('@/assets/images/like_2.png')
+    : require('@/assets/images/like.png')
+)
 const setLike = () => {
   data.list[data.index].like.flag = !data.list[data.index].like.flag
 }
@@ -121,14 +137,15 @@ const back = () => {
 const isScreenshot = ref(false)
 const juus = ref(null)
 const content = ref(null)
-const screenshot = (flag) => {
+const screenshot = flag => {
   isScreenshot.value = true
-  domtoimage.toPng(flag ? content.value.dom : juus.value, {
-    width: flag ? content.value.dom.offsetWidth : undefined,
-    height: flag ? content.value.dom.scrollHeight : undefined,
-    imagePlaceholder: require('@/assets/images/empty.png')
-  })
-    .then((dataUrl) => {
+  domtoimage
+    .toPng(flag ? content.value.dom : juus.value, {
+      width: flag ? content.value.dom.offsetWidth : undefined,
+      height: flag ? content.value.dom.scrollHeight : undefined,
+      imagePlaceholder: require('@/assets/images/empty.png')
+    })
+    .then(dataUrl => {
       const link = document.createElement('a')
       link.download = `JUUs-${Date.now()}.png`
       link.href = dataUrl
@@ -138,12 +155,20 @@ const screenshot = (flag) => {
       // const win = window.open('')
       // win.document.body.appendChild(img)
     })
-    .catch((error) => {
+    .catch(error => {
       console.error('截图保存错误', error)
     })
     .finally(() => {
       isScreenshot.value = false
     })
+}
+
+const autoPlay = () => {
+  content.value.autoPlay()
+}
+
+const stopPlay = () => {
+  content.value.reset()
 }
 
 defineExpose({ screenshot })

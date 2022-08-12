@@ -165,12 +165,21 @@ import data from '@/store/data'
 import input, { select, resetSelectData } from '@/store/input'
 import draggable from 'vuedraggable'
 import Avatar from '@/components/common/Avatar'
+import { setting } from '@/store/setting'
 
 defineProps(['isScreenshot'])
 
 const dom = ref(null)
 const commentList = ref(null)
-defineExpose({ dom })
+
+const scrollToBottom = () => {
+  nextTick(() => {
+    dom.value.scrollTo({
+      top: commentList.value.scrollHeight,
+      behavior: 'smooth'
+    })
+  })
+}
 
 const addComment = () => {
   data.list[data.index].comment.push({
@@ -178,12 +187,7 @@ const addComment = () => {
     text: input.text || '谢谢你，碧蓝航线',
     reply: []
   })
-  nextTick(() => {
-    dom.value.scrollTo({
-      top: commentList.value.scrollHeight,
-      behavior: 'smooth'
-    })
-  })
+  scrollToBottom()
   input.text = ''
 }
 
@@ -240,6 +244,86 @@ const avatarClick = (type, index, key) => {
   select.index = index
   select.key = key
 }
+
+let tempList = []
+
+const _addComment = i => {
+  if (!setting.play) return
+
+  data.list[data.index].comment.push({
+    ...tempList[i],
+    reply: []
+  })
+  nextTick(() => {
+    scrollToBottom()
+
+    if (tempList[i].reply.length > 0) {
+      setTimeout(() => {
+        _addReply(i, 0)
+      }, 1000)
+    } else {
+      if (tempList[i + 1]) {
+        setTimeout(() => {
+          _addComment(i + 1)
+        }, 1000)
+      } else {
+        setting.play = false
+      }
+    }
+  })
+}
+
+const _addReply = (i, j) => {
+  if (!setting.play) return
+
+  data.list[data.index].comment?.[i].reply.push(tempList[i].reply[j])
+  nextTick(() => {
+    scrollToBottom()
+
+    if (tempList[i].reply[j + 1]) {
+      setTimeout(() => {
+        _addReply(i, j + 1)
+      }, 1000)
+    } else {
+      if (tempList[i + 1]) {
+        setTimeout(() => {
+          _addComment(i + 1)
+        }, 1000)
+      } else {
+        setting.play = false
+      }
+    }
+  })
+}
+
+const autoPlay = () => {
+  if (setting.play) return
+
+  setting.play = true
+
+  tempList = data.list[data.index].comment
+  data.list[data.index].comment = []
+
+  setTimeout(() => {
+    _addComment(0)
+  }, 100)
+}
+
+const reset = () => {
+  setting.play = false
+  data.list[data.index].comment = tempList
+  tempList = []
+  nextTick(() => {
+    dom.value.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  })
+}
+
+window.test = autoPlay
+
+defineExpose({ dom, autoPlay, reset })
 </script>
 
 <style lang="stylus" src="./Content.styl" scoped></style>

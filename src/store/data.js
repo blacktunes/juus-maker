@@ -1,5 +1,6 @@
 import { nextTick, reactive, toRaw, toRef, watch } from 'vue'
 import { getData } from '@/assets/scripts/ship'
+import { setting } from './setting'
 
 export const defaultItem = {
   img: 'https://patchwiki.biligame.com/images/blhx/d/d7/47ho3fxsc16dnjl59ivd6uf4j1pmaw6.png',
@@ -33,6 +34,8 @@ const setWatch = () => {
   data.index = localStorage.getItem('last-index') || 0
 
   watch(data.list, () => {
+    if (setting.play) return
+
     nextTick(() => {
       updateDB()
     })

@@ -1,3 +1,5 @@
+import { reactive } from 'vue'
+
 const tip = {
   bg: '修改背景图',
   img: '修改图片',
@@ -5,4 +7,8 @@ const tip = {
   screenshotTalk: '保存对话截图'
 }
 
-export default tip
+const setting = reactive({
+  play: false
+})
+
+export { setting, tip }

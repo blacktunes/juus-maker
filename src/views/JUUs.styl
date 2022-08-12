@@ -137,23 +137,25 @@
     color #eee
     font-size 24px
 
-.menu-icon
+.menu
   position fixed
   top 44px
+  opacity 0
+  transform translateX(100%)
+  transition all 0.2s
+  user-select none
+
+  &:hover
+    opacity 1
+    transform translateX(0)
+
+.menu-icon
   height 35px
   padding 2px
   background #fff
   background linear-gradient(to right, #fff, transparent)
   border-radius 5px 0 0 5px
-  opacity 0
-  transform translateX(100%)
-  transition all 0.2s
-  user-select none
   cursor pointer
-
-  &:hover
-    opacity 1
-    transform translateX(0)
 
   img
     height 100%
@@ -168,3 +170,9 @@
 
 .hide
   display none
+
+.mask
+  position fixed
+  width 100%
+  height 100%
+  z-index 999
