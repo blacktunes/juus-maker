@@ -1,22 +1,3 @@
-avatar(border = none)
-  position relative
-  cursor pointer
-
-  div
-    box-sizing border-box
-    overflow hidden
-    background #ddd
-    border-radius 50%
-    border border
-    height 100%
-
-    img
-      width 100%
-      height 100%
-      object-fit cover
-      object-position center
-      user-select none
-
 .content
   overflow-x hidden
   flex 1
@@ -46,13 +27,6 @@ avatar(border = none)
       display flex
       align-items center
       height 120px
-
-      .avatar
-        flex-shrink 0
-        width 65px
-        height 65px
-        margin-left 30px
-        avatar(2px solid #f7e5a2)
 
       .sep
         margin 0 13px 0 15px
@@ -108,13 +82,6 @@ avatar(border = none)
         &:hover
           ~.comment-del
             opacity 1
-
-        .avatar
-          flex-shrink 0
-          width 45px
-          height 45px
-          margin 0 15px 0 10px
-          avatar(1px solid #dedddb)
 
         .name
           color #000
@@ -179,13 +146,6 @@ avatar(border = none)
             &:hover
               opacity 1
 
-          .avatar
-            flex-shrink 0
-            width 45px
-            height 45px
-            margin 0 15px 0 10px
-            avatar(1px solid #dedddb)
-
           .name
             color #000
             font-weight bold
@@ -206,12 +166,6 @@ avatar(border = none)
       align-items center
       height 60px
       flex 1
-
-      .avatar
-        width 45px
-        height 45px
-        margin 0 15px 0 10px
-        avatar(1px solid #dedddb)
 
       .input
         font-size 20px
@@ -235,19 +189,6 @@ avatar(border = none)
 
 .scroll
   overflow-y scroll !important
-
-.avatar-highlight
-  &:after
-    content ''
-    position absolute
-    box-sizing border-box
-    top -5px
-    left -5px
-    width calc(100% + 10px)
-    height calc(100% + 10px)
-    border-radius 50%
-    border 2px solid #333
-    animation fade 0.8s linear infinite alternate
 
 .list-enter-active
   transition all 0.2s

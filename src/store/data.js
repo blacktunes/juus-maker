@@ -47,7 +47,7 @@ const setWatch = () => {
 let hasDB = true
 let db
 const _db = window.indexedDB.open('juus', 1)
-_db.onsuccess = function (event) {
+_db.onsuccess = event => {
   db = event.target.result
 
   if (hasDB) {

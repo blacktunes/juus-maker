@@ -3,18 +3,14 @@
     <div class="info-wrapper">
       <div class="tip">·FOLLOWING·</div>
       <div class="info">
-        <div
-          class="avatar"
-          :class="{ 'avatar-highlight': select.show && select.type === 1 }"
+        <Avatar
+          :highlight="select.show && select.type === 1"
+          :src="data.list[data.index].juus.avatar"
+          :type="2"
+          :width="65"
+          style="margin-left: 30px"
           @click="avatarClick(1)"
-        >
-          <div>
-            <img
-              v-if="data.list[data.index].juus.avatar"
-              :src="data.list[data.index].juus.avatar"
-            />
-          </div>
-        </div>
+        />
         <img src="@/assets/images/sep.png" class="sep" />
         <div class="name">
           @<span
@@ -45,24 +41,20 @@
         :component-data="{ name: 'list', type: 'transition' }"
         v-model="data.list[data.index].comment"
         :item-key="
-          (item) => `comment-${data.list[data.index].comment.indexOf(item)}`
+          item => `comment-${data.list[data.index].comment.indexOf(item)}`
         "
       >
         <template #item="{ element, index }">
           <div class="comment-card">
             <div class="comment">
-              <div
-                class="avatar"
-                :class="{
-                  'avatar-highlight':
-                    select.show && select.type === 2 && select.index === index,
-                }"
+              <Avatar
+                :highlight="
+                  select.show && select.type === 2 && select.index === index
+                "
+                :src="element.avatar"
+                style="margin: 0 15px 0 10px"
                 @click="avatarClick(2, index)"
-              >
-                <div>
-                  <img v-if="element.avatar" :src="element.avatar" />
-                </div>
-              </div>
+              />
               <div>
                 <span class="name">
                   <span
@@ -98,31 +90,24 @@
             <div class="reply-list">
               <draggable
                 v-model="element.reply"
-                :item-key="(item) => 'reply' + element.reply.indexOf(item)"
+                :item-key="item => 'reply' + element.reply.indexOf(item)"
               >
                 <template #item="item">
                   <div class="reply">
                     <div class="reply-del" @click="delReply(index, item.index)">
                       ×
                     </div>
-                    <div
-                      class="avatar"
-                      :class="{
-                        'avatar-highlight':
-                          select.show &&
-                          select.type === 3 &&
-                          select.index === index &&
-                          select.key === item.index,
-                      }"
+                    <Avatar
+                      :highlight="
+                        select.show &&
+                        select.type === 3 &&
+                        select.index === index &&
+                        select.key === item.index
+                      "
+                      :src="item.element.avatar"
+                      style="margin: 0 15px 0 10px"
                       @click="avatarClick(3, index, item.index)"
-                    >
-                      <div>
-                        <img
-                          v-if="item.element.avatar"
-                          :src="item.element.avatar"
-                        />
-                      </div>
-                    </div>
+                    />
                     <div style="flex: 1">
                       <span class="name"
                         ><span
@@ -154,15 +139,12 @@
     </div>
     <div class="add-comment">
       <div class="left">
-        <div
-          class="avatar"
-          :class="{ 'avatar-highlight': select.show && select.type === 0 }"
+        <Avatar
+          :highlight="select.show && select.type === 0"
+          :src="input.avatar"
+          style="margin: 0 15px 0 10px"
           @click="avatarClick(0)"
-        >
-          <div>
-            <img v-if="input.avatar" :src="input.avatar" />
-          </div>
-        </div>
+        />
         <input
           class="input"
           v-model="input.text"
@@ -182,6 +164,7 @@ import { ref, nextTick } from 'vue'
 import data from '@/store/data'
 import input, { select, resetSelectData } from '@/store/input'
 import draggable from 'vuedraggable'
+import Avatar from '@/components/common/Avatar'
 
 defineProps(['isScreenshot'])
 
@@ -196,12 +179,15 @@ const addComment = () => {
     reply: []
   })
   nextTick(() => {
-    dom.value.scrollTo({ top: commentList.value.scrollHeight, behavior: 'smooth' })
+    dom.value.scrollTo({
+      top: commentList.value.scrollHeight,
+      behavior: 'smooth'
+    })
   })
   input.text = ''
 }
 
-const delComment = (index) => {
+const delComment = index => {
   resetSelectData()
   data.list[data.index].comment.splice(index, 1)
 }
@@ -212,10 +198,11 @@ const addReply = (index, e) => {
     text: input.text || '谢谢你，碧蓝航线'
   })
   nextTick(() => {
-    const top =
+    const temp =
       e.target.parentElement.parentElement.parentElement.nextElementSibling
-        ? e.target.parentElement.parentElement.parentElement.nextElementSibling.offsetTop - 640 + 24
-        : commentList.value.scrollHeight
+    const top = temp
+      ? temp.offsetTop - 640 + 24
+      : commentList.value.scrollHeight
     dom.value.scrollTo({ top, behavior: 'smooth' })
   })
   input.text = ''

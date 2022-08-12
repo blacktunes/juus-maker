@@ -2,9 +2,7 @@
   <div class="select-view">
     <div class="scroll-view">
       <div class="fixed">
-        <div class="avatar">
-          <img v-if="avatarData.avatar" :src="avatarData.avatar" />
-        </div>
+        <Avatar :src="avatarData.avatar" style="margin-right: 10px" />
         <div class="name">
           {{ avatarData.key }} /<input v-model="avatarData.name" />
         </div>
@@ -17,13 +15,12 @@
         :class="{ highlight: key === avatarData.key }"
         @click="change(key)"
       >
-        <div
-          class="avatar"
-          :style="{cursor: key === '自定义' ? 'pointer' : ''}"
-          @click.stop="setAvatar(key)"
-        >
-          <img v-if="item.avatar" :src="item.avatar" />
-        </div>
+        <Avatar
+          :src="item.avatar"
+          style="margin-right: 10px"
+          :style="{ cursor: key === '自定义' ? 'pointer' : 'default' }"
+          @click="setAvatar(key, $event)"
+        />
         <div class="name">{{ key }}</div>
       </div>
     </div>
@@ -41,6 +38,7 @@ import { ref, computed } from 'vue'
 import ship, { getData } from '@/assets/scripts/ship'
 import input, { select } from '@/store/input'
 import data from '@/store/data'
+import Avatar from '@/components/common/Avatar'
 
 const searchText = ref('')
 const clear = () => {
@@ -82,7 +80,7 @@ const showData = computed(() => {
   return temp
 })
 
-const change = (name) => {
+const change = name => {
   avatarData.value.key = name
   avatarData.value.avatar = ship[name].avatar
   avatarData.value.name = ship[name].name
@@ -107,8 +105,10 @@ const close = () => {
   select.show = false
 }
 
-const setAvatar = (key) => {
+const setAvatar = (key, e) => {
   if (key !== '自定义') return
+
+  e.stopPropagation()
   const input = document.createElement('input')
   input.type = 'file'
   input.accept = 'image/*'
@@ -116,7 +116,7 @@ const setAvatar = (key) => {
     if (input.files[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
-      file.onload = (e) => {
+      file.onload = e => {
         ship.自定义.avatar = e.target.result
       }
     }
@@ -137,22 +137,6 @@ item()
   border 1px solid #ddd
   border-radius 5px
   background #fff
-
-  .avatar
-    overflow hidden
-    width 45px
-    height 45px
-    border 2px solid #dedddb
-    margin-right 10px
-    border-radius 50%
-    background #ddd
-
-    img
-      width 100%
-      height 100%
-      object-fit cover
-      object-position center
-      user-select none
 
   .name
     flex 1
@@ -239,6 +223,7 @@ item()
       color #444
 
 .fixed
+  z-index 9
   position sticky
   top 0
   margin-top 0 !important
