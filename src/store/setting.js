@@ -8,7 +8,8 @@ const tip = {
 }
 
 const setting = reactive({
-  play: false
+  play: false,
+  interval: 1500
 })
 
 export { setting, tip }

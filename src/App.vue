@@ -10,7 +10,7 @@
         }"
       >
         <transition name="fade">
-          <HomeView v-if="data.home" />
+          <Index v-if="data.home" />
           <JUUs v-else />
         </transition>
       </div>
@@ -51,7 +51,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import HomeView from '@/views/HomeView.vue'
+import Index from '@/views/Index.vue'
 import JUUs from '@/views/JUUs.vue'
 import data from '@/store/data'
 

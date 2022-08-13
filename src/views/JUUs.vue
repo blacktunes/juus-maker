@@ -1,10 +1,6 @@
 <template>
   <div class="juus" ref="juus">
-    <div
-      class="mask"
-      @click.stop="stopPlay"
-      v-show="setting.play"
-    ></div>
+    <div class="mask" @click.stop="stopPlay" v-show="setting.play"></div>
     <div class="bg" @click="changeBg" :title="tip.bg">
       <img :src="data.list[data.index].bg" />
     </div>
@@ -83,7 +79,7 @@
 import { ref, computed } from 'vue'
 import domtoimage from 'dom-to-image'
 import Content from '@/components/Content.vue'
-import SelectView from '@/components/SelectView.vue'
+import SelectView from '@/components/Select.vue'
 import data from '@/store/data'
 import { tip, setting } from '@/store/setting'
 import { select } from '@/store/input'
@@ -146,14 +142,17 @@ const screenshot = flag => {
       imagePlaceholder: require('@/assets/images/empty.png')
     })
     .then(dataUrl => {
-      const link = document.createElement('a')
-      link.download = `JUUs-${Date.now()}.png`
-      link.href = dataUrl
-      link.click()
-      // const img = new Image()
-      // img.src = dataUrl
-      // const win = window.open('')
-      // win.document.body.appendChild(img)
+      if (process.env.NODE_ENV === 'development') {
+        const img = new Image()
+        img.src = dataUrl
+        const win = window.open('')
+        win.document.body.appendChild(img)
+      } else {
+        const link = document.createElement('a')
+        link.download = `JUUs-${Date.now()}.png`
+        link.href = dataUrl
+        link.click()
+      }
     })
     .catch(error => {
       console.error('截图保存错误', error)

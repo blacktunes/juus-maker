@@ -260,12 +260,12 @@ const _addComment = i => {
     if (tempList[i].reply.length > 0) {
       setTimeout(() => {
         _addReply(i, 0)
-      }, 1000)
+      }, setting.interval)
     } else {
       if (tempList[i + 1]) {
         setTimeout(() => {
           _addComment(i + 1)
-        }, 1000)
+        }, setting.interval)
       } else {
         setting.play = false
       }
@@ -283,12 +283,12 @@ const _addReply = (i, j) => {
     if (tempList[i].reply[j + 1]) {
       setTimeout(() => {
         _addReply(i, j + 1)
-      }, 1000)
+      }, setting.interval)
     } else {
       if (tempList[i + 1]) {
         setTimeout(() => {
           _addComment(i + 1)
-        }, 1000)
+        }, setting.interval)
       } else {
         setting.play = false
       }

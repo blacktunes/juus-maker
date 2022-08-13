@@ -2,7 +2,10 @@
   <div class="select-view">
     <div class="scroll-view">
       <div class="fixed">
-        <Avatar :src="avatarData.avatar" style="margin-right: 10px" />
+        <Avatar
+          :src="avatarData.avatar"
+          style="margin-right: 10px; cursor: default"
+        />
         <div class="name">
           {{ avatarData.key }} /<input v-model="avatarData.name" />
         </div>
@@ -35,7 +38,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import ship, { getData } from '@/assets/scripts/ship'
+import ship, { getData } from '@/assets/data'
 import input, { select } from '@/store/input'
 import data from '@/store/data'
 import Avatar from '@/components/common/Avatar'

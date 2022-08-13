@@ -1,5 +1,5 @@
 import { nextTick, reactive, toRaw, toRef, watch } from 'vue'
-import { getData } from '@/assets/scripts/ship'
+import { getData } from '@/assets/data'
 import { setting } from './setting'
 
 export const defaultItem = {
