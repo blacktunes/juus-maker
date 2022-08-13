@@ -40,8 +40,11 @@
 import { ref, computed } from 'vue'
 import ship, { getData } from '@/assets/data'
 import input, { select } from '@/store/input'
-import data from '@/store/juus'
+import juus from '@/store/juus'
+import talk from '@/store/talk'
 import Avatar from '@/components/common/Avatar'
+
+const emit = defineEmits(['close'])
 
 const searchText = ref('')
 const clear = () => {
@@ -66,12 +69,15 @@ const showData = computed(() => {
       }
     }
   } else {
-    used.push(data.list[data.index].juus.key)
-    data.list[data.index].comment.forEach(comment => {
+    used.push(juus.list[juus.index].juus.key)
+    juus.list[juus.index].comment.forEach(comment => {
       if (!used.includes(comment.key)) used.push(comment.key)
       comment.reply.forEach(reply => {
         if (!used.includes(reply.key)) used.push(reply.key)
       })
+    })
+    talk.list.forEach(comment => {
+      used.push(comment.key)
     })
     for (const key of used) {
       temp[key] = ship[key]
@@ -94,11 +100,13 @@ const avatarData = computed(() => {
     case 0:
       return input
     case 1:
-      return data.list[data.index].juus
+      return juus.list[juus.index].juus
     case 2:
-      return data.list[data.index].comment[select.index]
+      return juus.list[juus.index].comment[select.index]
     case 3:
-      return data.list[data.index].comment[select.index].reply[select.key]
+      return juus.list[juus.index].comment[select.index].reply[select.key]
+    case 4:
+      return talk.list[select.index]
     default:
       return input
   }
@@ -106,6 +114,7 @@ const avatarData = computed(() => {
 
 const close = () => {
   select.show = false
+  emit('close')
 }
 
 const setAvatar = (key, e) => {

@@ -297,7 +297,7 @@ const _addReply = (i, j) => {
 }
 
 const autoPlay = () => {
-  if (setting.play) return
+  if (setting.play || data.list[data.index].comment.length < 1) return
 
   setting.play = true
 

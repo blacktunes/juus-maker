@@ -14,6 +14,12 @@ img
 ::-webkit-input-placeholder
   color #dfdfdf
 
+.mask
+  position fixed
+  width 100%
+  height 100%
+  z-index 999
+
 @keyframes fade
   from
     opacity 0
@@ -30,6 +36,15 @@ img
 .fade-enter-to, .fade-leave-from
   opacity 1
 
+.slide-enter-active, .slide-leave-active
+  transition all 0.3s
+
+.slide-enter-from, .slide-leave-to
+  transform translateX(100%)
+
+.slide-enter-to, .slide-leave-from
+  transform translateX(0)
+
 .enter-enter-active, .enter-leave-active
   transition all 1s
 
@@ -38,4 +53,13 @@ img
 
 .enter-enter-to, .enter-leave-from
   filter none
+
+.list-enter-active
+  transition all 0.2s
+
+.list-enter-from
+  transform scaleY(0)
+
+.list-enter-to
+  transform scaleY(1)
 </style>
