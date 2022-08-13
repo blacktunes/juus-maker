@@ -1,5 +1,5 @@
 <template>
-  <div class="content" :class="{ scroll: !isScreenshot }" ref="dom">
+  <div class="content" :class="{ scroll: !screenshot }" ref="dom">
     <div class="info-wrapper">
       <div class="tip">·FOLLOWING·</div>
       <div class="info">
@@ -160,14 +160,14 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
-import data from '@/store/data'
-import input, { select, resetSelectData } from '@/store/input'
-import draggable from 'vuedraggable'
 import Avatar from '@/components/common/Avatar'
+import input, { resetSelectData, select } from '@/store/input'
+import data from '@/store/juus'
 import { setting } from '@/store/setting'
+import { nextTick, ref } from 'vue'
+import draggable from 'vuedraggable'
 
-defineProps(['isScreenshot'])
+defineProps(['screenshot'])
 
 const dom = ref(null)
 const commentList = ref(null)

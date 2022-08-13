@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import data, { defaultItem } from '@/store/data'
+import data, { defaultItem } from '@/store/juus'
 import { computed } from '@vue/runtime-core'
 
 const bg = computed(() => data.index >= 0 && data.list?.[data.index]?.bg ? data.list[data.index].bg : data.bg)

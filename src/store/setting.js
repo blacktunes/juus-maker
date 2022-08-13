@@ -8,6 +8,7 @@ const tip = {
 }
 
 const setting = reactive({
+  screenshot: false,
   play: false,
   interval: 1500
 })

@@ -34,7 +34,7 @@
         <div
           v-show="!select.show"
           class="menu menu-icon save-all"
-          :class="{ hide: isScreenshot }"
+          :class="{ hide: setting.screenshot }"
           @click="screenshot(false)"
           :title="tip.screenshot"
         >
@@ -43,13 +43,13 @@
       </div>
       <Content
         class="content-wrapper"
-        :isScreenshot="isScreenshot"
+        :screenshot="setting.screenshot"
         ref="content"
       />
       <div
         v-show="!select.show"
         class="menu save-right"
-        :class="{ hide: isScreenshot }"
+        :class="{ hide: setting.screenshot }"
       >
         <div
           class="menu-icon"
@@ -63,26 +63,26 @@
         </div>
       </div>
       <transition name="fade">
-        <div v-show="!isScreenshot" class="back" @click="back">
+        <div v-show="!setting.screenshot" class="back" @click="back">
           <img src="@/assets/images/back.png" />
           <span>返回</span>
         </div>
       </transition>
     </div>
     <transition name="fade">
-      <SelectView v-show="select.show" />
+      <ShipSelect v-show="select.show" class="select" />
     </transition>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
-import domtoimage from 'dom-to-image'
-import Content from '@/components/Content.vue'
-import SelectView from '@/components/Select.vue'
-import data from '@/store/data'
+import Content from '@/components/JUUs/Content.vue'
+import ShipSelect from '@/components/ShipSelect.vue'
+import data from '@/store/juus'
 import { tip, setting } from '@/store/setting'
 import { select } from '@/store/input'
+import _screenshot from '@/assets/scripts/screenshot'
 
 const changeBg = () => {
   const input = document.createElement('input')
@@ -130,36 +130,14 @@ const back = () => {
   data.home = true
 }
 
-const isScreenshot = ref(false)
 const juus = ref(null)
 const content = ref(null)
 const screenshot = flag => {
-  isScreenshot.value = true
-  domtoimage
-    .toPng(flag ? content.value.dom : juus.value, {
-      width: flag ? content.value.dom.offsetWidth : undefined,
-      height: flag ? content.value.dom.scrollHeight : undefined,
-      imagePlaceholder: require('@/assets/images/empty.png')
-    })
-    .then(dataUrl => {
-      if (process.env.NODE_ENV === 'development') {
-        const img = new Image()
-        img.src = dataUrl
-        const win = window.open('')
-        win.document.body.appendChild(img)
-      } else {
-        const link = document.createElement('a')
-        link.download = `JUUs-${Date.now()}.png`
-        link.href = dataUrl
-        link.click()
-      }
-    })
-    .catch(error => {
-      console.error('截图保存错误', error)
-    })
-    .finally(() => {
-      isScreenshot.value = false
-    })
+  _screenshot(
+    flag ? content.value.dom : juus.value,
+    flag ? content.value.dom.offsetWidth : undefined,
+    flag ? content.value.dom.scrollHeight : undefined
+  )
 }
 
 const autoPlay = () => {

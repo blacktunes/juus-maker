@@ -40,7 +40,7 @@
 import { ref, computed } from 'vue'
 import ship, { getData } from '@/assets/data'
 import input, { select } from '@/store/input'
-import data from '@/store/data'
+import data from '@/store/juus'
 import Avatar from '@/components/common/Avatar'
 
 const searchText = ref('')
@@ -148,11 +148,8 @@ item()
 
 .select-view
   z-index 99
-  position fixed
-  top 40px
-  left 115px
-  width 628px
-  height 620px
+  box-sizing border-box
+  height 100vh
   display flex
   flex-direction column
   background rgba(255, 255, 255, 0.7)
