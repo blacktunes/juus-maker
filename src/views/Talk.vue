@@ -2,6 +2,11 @@
   <div class="main">
     <div class="mask" @click.stop="stopPlay" v-show="setting.play"></div>
     <div class="talk-wrapper" ref="dom">
+      <div class="title">
+        <span class="title-text" contenteditable @input="titleChange($event)">
+          {{ data.title }}
+        </span>
+      </div>
       <div class="talk-list" ref="listDom">
         <draggable
           tag="transition-group"
@@ -161,6 +166,10 @@ const addImage = () => {
   input.click()
 }
 
+const titleChange = e => {
+  data.title = e.target.innerText
+}
+
 const textChange = (index, e) => {
   data.list[index].text = e.target.innerText
 }
@@ -176,7 +185,7 @@ const avatarClick = (type, index) => {
 
 const screenshot = () => {
   reset()
-  _screenshot(dom.value, dom.value.offsetWidth, listDom.value.scrollHeight + 60)
+  _screenshot(dom.value, dom.value.offsetWidth, listDom.value.scrollHeight + 60 + 50)
 }
 
 let tempList = []
@@ -251,6 +260,22 @@ bottomBar()
     min-height 100vh
     background #eff7ff
 
+    .title
+      display flex
+      justify-content center
+      align-items center
+      height 50px
+      background #4c5b70
+      color #ddd
+      font-size 16px
+      font-weight bold
+
+      .title-text
+        max-width 60%
+        white-space nowrap
+        overflow hidden
+        text-overflow ellipsis
+
     .talk-list
       flex 1
       overflow-x hidden
@@ -274,6 +299,7 @@ bottomBar()
           border-radius 5px
           background rgb(76, 91, 112)
           color #fff
+          width fit-content
 
           &:hover
             .del
