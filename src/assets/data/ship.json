@@ -1,0 +1,2030 @@
+{
+  "拉菲": {
+    "avatar": "",
+    "name": "Lafite.82",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "格里德利": {
+    "avatar": "",
+    "name": "GL_SaraNo1",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "哈曼": {
+    "avatar": "",
+    "name": "DD_Hammann",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "埃尔德里奇": {
+    "avatar": "",
+    "name": "EldridgeCoil",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "贝奇": {
+    "avatar": "",
+    "name": "USSBACHE",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "西姆斯": {
+    "avatar": "",
+    "name": "Sims",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "弗莱彻": {
+    "avatar": "",
+    "name": "Fletcher",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "杰金斯": {
+    "avatar": "",
+    "name": "DD.Jenkins",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "拉德福特": {
+    "avatar": "",
+    "name": "DD.Radford",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "尼古拉斯": {
+    "avatar": "",
+    "name": "DD.Nick",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "库珀": {
+    "avatar": "",
+    "name": "BlackCat",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "艾伦·萨姆纳": {
+    "avatar": "",
+    "name": "A.M.Sumner",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "英格拉罕": {
+    "avatar": "",
+    "name": "Ingraham",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "布里斯托尔": {
+    "avatar": "",
+    "name": "Bristol",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "贝利": {
+    "avatar": "",
+    "name": "Rabbit.Bailey",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "查尔斯·奥斯本": {
+    "avatar": "",
+    "name": "L.B.Charles",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "撒切尔": {
+    "avatar": "",
+    "name": "L.B.Thatcher",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "奥利克": {
+    "avatar": "",
+    "name": "L.B.Aulick",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "斯彭斯": {
+    "avatar": "",
+    "name": "L.B.Spence",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "斯坦利": {
+    "avatar": "",
+    "name": "L.B.Stanly",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "莫里森": {
+    "avatar": "",
+    "name": "Bear-MKII",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "杜威": {
+    "avatar": "",
+    "name": "Dewey",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "莫里": {
+    "avatar": "",
+    "name": "Maury",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "霍比": {
+    "avatar": "",
+    "name": "Hobby",
+    "type": "驱逐",
+    "group": "白鹰"
+  },
+  "里士满": {
+    "avatar": "",
+    "name": "Richmond",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "孟菲斯": {
+    "avatar": "",
+    "name": "Memphis",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "克利夫兰": {
+    "avatar": "",
+    "name": "Cleveland☆Knight",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "蒙彼利埃": {
+    "avatar": "",
+    "name": "Cleve-FC.1",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "丹佛": {
+    "avatar": "",
+    "name": "Cleve-FC.2",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "哥伦比亚": {
+    "avatar": "",
+    "name": "Cleve-FC.3",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "伯明翰": {
+    "avatar": "",
+    "name": "Cleve-FC.4",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "海伦娜": {
+    "avatar": "",
+    "name": "HelenaSG",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "圣路易斯": {
+    "avatar": "",
+    "name": "Lucky Lou",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "火奴鲁鲁": {
+    "avatar": "",
+    "name": "Honolulu",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "圣地亚哥": {
+    "avatar": "",
+    "name": "NO1Sandiego！",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "里诺": {
+    "avatar": "",
+    "name": "HerosAides",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "康克德": {
+    "avatar": "",
+    "name": "Sweet.Concord",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "比洛克西": {
+    "avatar": "",
+    "name": "Biloxi",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "博伊西": {
+    "avatar": "",
+    "name": "USSBOISE",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "布鲁克林": {
+    "avatar": "",
+    "name": "Brooklyn",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "菲尼克斯": {
+    "avatar": "",
+    "name": "PhoenixBurn",
+    "type": "轻巡",
+    "group": "白鹰"
+  },
+  "布莱默顿": {
+    "avatar": "",
+    "name": "Bremerton",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "巴尔的摩": {
+    "avatar": "",
+    "name": "Justice_B",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "威奇塔": {
+    "avatar": "",
+    "name": "G.Wichita",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "印第安纳波利斯": {
+    "avatar": "",
+    "name": "Indianapolis",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "马布尔黑德": {
+    "avatar": "",
+    "name": "Marblehead",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "明尼阿波利斯": {
+    "avatar": "",
+    "name": "Minnie.Hunter",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "昆西": {
+    "avatar": "",
+    "name": "Quincy",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "文森斯": {
+    "avatar": "",
+    "name": "Vincennes",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "阿斯托利亚": {
+    "avatar": "",
+    "name": "Nasty.Asty",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "波特兰": {
+    "avatar": "",
+    "name": "INDI_LOVE",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "旧金山": {
+    "avatar": "",
+    "name": "HappyEveryDay!",
+    "type": "重巡",
+    "group": "白鹰"
+  },
+  "萨拉托加": {
+    "avatar": "",
+    "name": "SisterSara",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "企业": {
+    "avatar": "",
+    "name": "Enterprise",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "约克城": {
+    "avatar": "",
+    "name": "YorkTown",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "埃塞克斯": {
+    "avatar": "",
+    "name": "EssexG1",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "长岛": {
+    "avatar": "",
+    "name": "L.I.",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "大黄蜂": {
+    "avatar": "",
+    "name": "CarVesGAL6",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "香格里拉": {
+    "avatar": "",
+    "name": "Shangri-La",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "普林斯顿": {
+    "avatar": "",
+    "name": "Princeton",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "独立": {
+    "avatar": "",
+    "name": "Independence",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "无畏": {
+    "avatar": "",
+    "name": "The_Fighting_I",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "提康德罗加": {
+    "avatar": "",
+    "name": "Ticonderoga",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "卡萨布兰卡": {
+    "avatar": "",
+    "name": "Casablanca",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "马萨诸塞": {
+    "avatar": "",
+    "name": "2700P.Justice",
+    "type": "战列",
+    "group": "白鹰"
+  },
+  "南达科他": {
+    "avatar": "",
+    "name": "SoDakX",
+    "type": "战列",
+    "group": "白鹰"
+  },
+  "内华达": {
+    "avatar": "",
+    "name": "Nevada",
+    "type": "战列",
+    "group": "白鹰"
+  },
+  "新泽西": {
+    "avatar": "",
+    "name": "BlackDragon",
+    "type": "战列",
+    "group": "白鹰"
+  },
+  "佐治亚": {
+    "avatar": "",
+    "name": "GA",
+    "type": "战列",
+    "group": "白鹰"
+  },
+  "宾夕法尼亚": {
+    "avatar": "",
+    "name": "Pennsylvania",
+    "type": "战列",
+    "group": "白鹰"
+  },
+  "亚利桑那": {
+    "avatar": "",
+    "name": "Arizona",
+    "type": "战列",
+    "group": "白鹰"
+  },
+  "大青花鱼": {
+    "avatar": "",
+    "name": "G_Albacore",
+    "type": "潜艇",
+    "group": "白鹰"
+  },
+  "棘鳍": {
+    "avatar": "",
+    "name": "Cavalla",
+    "type": "潜艇",
+    "group": "白鹰"
+  },
+  "射水鱼": {
+    "avatar": "",
+    "name": "CharmArcher",
+    "type": "潜艇",
+    "group": "白鹰"
+  },
+  "女灶神": {
+    "avatar": "",
+    "name": "Vestal",
+    "type": "其他",
+    "group": "白鹰"
+  },
+  "女将": {
+    "avatar": "",
+    "name": "ThornyA",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "标枪": {
+    "avatar": "",
+    "name": "Javelin☆",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "伊卡洛斯": {
+    "avatar": "",
+    "name": "Icarus_Wing",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "吸血鬼": {
+    "avatar": "",
+    "name": "Vampire",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "小天鹅": {
+    "avatar": "",
+    "name": "Cygnet",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "爱斯基摩人": {
+    "avatar": "",
+    "name": "Eskimo",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "命运女神": {
+    "avatar": "",
+    "name": "Fortune",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "贾维斯": {
+    "avatar": "",
+    "name": "Jervis",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "天后": {
+    "avatar": "",
+    "name": "Juno",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "丘比特": {
+    "avatar": "",
+    "name": "Jupiter",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "格伦维尔": {
+    "avatar": "",
+    "name": "Grenville",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "萤火虫": {
+    "avatar": "",
+    "name": "Glowworm",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "南安普顿": {
+    "avatar": "",
+    "name": "MINAMIpton",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "贝尔法斯特": {
+    "avatar": "",
+    "name": "Belfast_inService",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "谢菲尔德": {
+    "avatar": "",
+    "name": "ShiningS",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "爱丁堡": {
+    "avatar": "",
+    "name": "☆Royal Maid☆",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "欧若拉": {
+    "avatar": "",
+    "name": "AuroraRose",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "天狼星": {
+    "avatar": "",
+    "name": "forMaster_Sirius",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "小贝法": {
+    "avatar": "",
+    "name": "Royal Maid Little",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "赫敏": {
+    "avatar": "",
+    "name": "Hermione",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "纽卡斯尔": {
+    "avatar": "",
+    "name": "Newcastle",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "黛朵": {
+    "avatar": "",
+    "name": "Dido_Doll",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "黑太子": {
+    "avatar": "",
+    "name": "White Princess",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "海王星": {
+    "avatar": "",
+    "name": "Neptune",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "牙买加": {
+    "avatar": "",
+    "name": "TheFightingJ",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "格拉斯哥": {
+    "avatar": "",
+    "name": "Glasgow",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "佩内洛珀": {
+    "avatar": "",
+    "name": "Penelope",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "卡律布狄斯": {
+    "avatar": "",
+    "name": "Charybdis",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "司战女神": {
+    "avatar": "",
+    "name": "Bellona",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "萨福克": {
+    "avatar": "",
+    "name": "Suffolk",
+    "type": "重巡",
+    "group": "皇家"
+  },
+  "肯特": {
+    "avatar": "",
+    "name": "Kent",
+    "type": "重巡",
+    "group": "皇家"
+  },
+  "德雷克": {
+    "avatar": "",
+    "name": "Drake",
+    "type": "重巡",
+    "group": "皇家"
+  },
+  "柴郡": {
+    "avatar": "",
+    "name": "CaitSith",
+    "type": "重巡",
+    "group": "皇家"
+  },
+  "独角兽": {
+    "avatar": "",
+    "name": "UnicornI72",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "光辉": {
+    "avatar": "",
+    "name": "Illustrious",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "半人马": {
+    "avatar": "",
+    "name": "CenAlpha",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "皇家方舟": {
+    "avatar": "",
+    "name": "ArkRoyal_Defense",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "可畏": {
+    "avatar": "",
+    "name": "Formidable",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "胜利": {
+    "avatar": "",
+    "name": "Victorious",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "不挠": {
+    "avatar": "",
+    "name": "Indomitable",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "英仙座": {
+    "avatar": "",
+    "name": "Per",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "鹰": {
+    "avatar": "",
+    "name": "Eagle",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "光荣": {
+    "avatar": "",
+    "name": "Glorius",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "威尔士亲王": {
+    "avatar": "",
+    "name": "TywysogWales",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "君主": {
+    "avatar": "",
+    "name": "Monarch",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "豪": {
+    "avatar": "",
+    "name": "Howe_Cookies",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "英勇": {
+    "avatar": "",
+    "name": "Cmdr_Valiant",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "伊丽莎白女王": {
+    "avatar": "",
+    "name": "QueenEliz",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "厌战": {
+    "avatar": "",
+    "name": "warspite",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "约克公爵": {
+    "avatar": "",
+    "name": "D_O_Y",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "英王乔治五世": {
+    "avatar": "",
+    "name": "King.George.V",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "胡德": {
+    "avatar": "",
+    "name": "Mighty_Hood",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "前卫": {
+    "avatar": "",
+    "name": "Vanguard",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "复仇": {
+    "avatar": "",
+    "name": "Revenge",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "阿贝克隆比": {
+    "avatar": "",
+    "name": "Abercrombie",
+    "type": "其他",
+    "group": "皇家"
+  },
+  "不知火": {
+    "avatar": "",
+    "name": "KoubaiStaff_unofficial",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "霞": {
+    "avatar": "",
+    "name": "fuwarin1118",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "绫波": {
+    "avatar": "",
+    "name": "AYANAMIN",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "睦月": {
+    "avatar": "",
+    "name": "Mutsuki",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "卯月": {
+    "avatar": "",
+    "name": "Uduki",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "如月": {
+    "avatar": "",
+    "name": "Kisaragi",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "晓": {
+    "avatar": "",
+    "name": "NINJA-AKATSUKI",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "雷": {
+    "avatar": "",
+    "name": "RAI",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "电": {
+    "avatar": "",
+    "name": "DEN",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "白露": {
+    "avatar": "",
+    "name": "Shiratsuyu",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "时雨": {
+    "avatar": "",
+    "name": "LuckyShigure",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "雪风": {
+    "avatar": "",
+    "name": "SnowStorm",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "夕立": {
+    "avatar": "",
+    "name": "NikuSuki",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "吹雪": {
+    "avatar": "",
+    "name": "bukkitoku1",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "黑潮": {
+    "avatar": "",
+    "name": "Nin_Kuroshio",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "满潮": {
+    "avatar": "",
+    "name": "Michishio ",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "荒潮": {
+    "avatar": "",
+    "name": "Arashio",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "北风": {
+    "avatar": "",
+    "name": "Kitakaze",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "响": {
+    "avatar": "",
+    "name": "HibikiChannel",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "凉月": {
+    "avatar": "",
+    "name": "Puuta",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "大潮": {
+    "avatar": "",
+    "name": "Ooshio",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "朝潮": {
+    "avatar": "",
+    "name": "Asashio",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "春月": {
+    "avatar": "",
+    "name": "HARUTSUKI",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "阳炎": {
+    "avatar": "",
+    "name": "Kagerō",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "花月": {
+    "avatar": "",
+    "name": "FlowerMoon",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "新月JP": {
+    "avatar": "",
+    "name": "Niizuki",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "宵月": {
+    "avatar": "",
+    "name": "Yoizuki",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "浦波": {
+    "avatar": "",
+    "name": "Uranami",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "若叶": {
+    "avatar": "",
+    "name": "NutLove",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "海风": {
+    "avatar": "",
+    "name": "Umikaze",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "山风": {
+    "avatar": "",
+    "name": "Yamakaze",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "岛风": {
+    "avatar": "",
+    "name": "Hayaizo",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "长波": {
+    "avatar": "",
+    "name": "Naganami",
+    "type": "驱逐",
+    "group": "重樱"
+  },
+  "鬼怒": {
+    "avatar": "",
+    "name": "RageofONI",
+    "type": "轻巡",
+    "group": "重樱"
+  },
+  "五十铃": {
+    "avatar": "",
+    "name": "Isuzuzu",
+    "type": "轻巡",
+    "group": "重樱"
+  },
+  "长良": {
+    "avatar": "",
+    "name": "Nagara_CA",
+    "type": "轻巡",
+    "group": "重樱"
+  },
+  "由良": {
+    "avatar": "",
+    "name": "Yura",
+    "type": "轻巡",
+    "group": "重樱"
+  },
+  "阿武隈": {
+    "avatar": "",
+    "name": "AbuAbu",
+    "type": "轻巡",
+    "group": "重樱"
+  },
+  "夕张": {
+    "avatar": "",
+    "name": "Kagakubu.org",
+    "type": "轻巡",
+    "group": "重樱"
+  },
+  "川内": {
+    "avatar": "",
+    "name": "Zendai",
+    "type": "轻巡",
+    "group": "重樱"
+  },
+  "神通": {
+    "avatar": "",
+    "name": "Jintuu",
+    "type": "轻巡",
+    "group": "重樱"
+  },
+  "能代": {
+    "avatar": "",
+    "name": "Nshiro",
+    "type": "轻巡",
+    "group": "重樱"
+  },
+  "阿贺野": {
+    "avatar": "",
+    "name": "FinalOTU",
+    "type": "轻巡",
+    "group": "重樱"
+  },
+  "妙高": {
+    "avatar": "",
+    "name": "Myoko_CA",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "爱宕": {
+    "avatar": "",
+    "name": "Atago",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "伊吹": {
+    "avatar": "",
+    "name": "lbuki",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "摩耶": {
+    "avatar": "",
+    "name": "Maya",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "鸟海": {
+    "avatar": "",
+    "name": "ToriUmi",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "铃谷": {
+    "avatar": "",
+    "name": "Suzu☆",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "熊野": {
+    "avatar": "",
+    "name": "Kuma☆",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "最上": {
+    "avatar": "",
+    "name": "Mogami",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "三隈": {
+    "avatar": "",
+    "name": "Mikuma",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "青叶": {
+    "avatar": "",
+    "name": "REPORTER_AOBA",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "高雄": {
+    "avatar": "",
+    "name": "Takao",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "筑摩": {
+    "avatar": "",
+    "name": "ChiKUMA",
+    "type": "重巡",
+    "group": "重樱"
+  },
+  "赤城": {
+    "avatar": "",
+    "name": "Ootori_Shikikan",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "加贺": {
+    "avatar": "",
+    "name": "Ran_mew",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "翔鹤": {
+    "avatar": "",
+    "name": "KADEKURU",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "瑞鹤": {
+    "avatar": "",
+    "name": "Zuikaku",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "祥凤": {
+    "avatar": "",
+    "name": "SHOHO",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "龙凤": {
+    "avatar": "",
+    "name": "PhoenixWhale",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "大凤": {
+    "avatar": "",
+    "name": "OutrangeTH",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "苍龙": {
+    "avatar": "",
+    "name": "Ino·Shika·Cho",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "飞龙": {
+    "avatar": "",
+    "name": "GoKou",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "信浓": {
+    "avatar": "",
+    "name": "Shinano",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "龙骧": {
+    "avatar": "",
+    "name": "Ryūjō",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "千代田": {
+    "avatar": "",
+    "name": "Chiyoda",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "千岁": {
+    "avatar": "",
+    "name": "Chitose",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "葛城": {
+    "avatar": "",
+    "name": "Misato",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "白龙": {
+    "avatar": "",
+    "name": "Hakuryū",
+    "type": "航母",
+    "group": "重樱"
+  },
+  "长门": {
+    "avatar": "",
+    "name": "SakuraCombinedFleet",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "比叡": {
+    "avatar": "",
+    "name": "Hiei",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "金刚": {
+    "avatar": "",
+    "name": "BarrowYoko",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "雾岛": {
+    "avatar": "",
+    "name": "KirinnKS",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "三笠": {
+    "avatar": "",
+    "name": "Mikasa",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "骏河": {
+    "avatar": "",
+    "name": "S8u6r6ug8A",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "天城": {
+    "avatar": "",
+    "name": "Amagi",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "扶桑": {
+    "avatar": "",
+    "name": "Fusō",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "山城": {
+    "avatar": "",
+    "name": "Yamashiro",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "纪伊": {
+    "avatar": "",
+    "name": "Kii",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "伊势": {
+    "avatar": "",
+    "name": "Isei",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "出云": {
+    "avatar": "",
+    "name": "Izumo",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "土佐": {
+    "avatar": "",
+    "name": "Tosa",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "榛名": {
+    "avatar": "",
+    "name": "Haruna",
+    "type": "战列",
+    "group": "重樱"
+  },
+  "吾妻": {
+    "avatar": "",
+    "name": "AzumaB65",
+    "type": "其他",
+    "group": "重樱"
+  },
+  "伊58": {
+    "avatar": "",
+    "name": "I58_sensuisenntai",
+    "type": "其他",
+    "group": "重樱"
+  },
+  "伊26": {
+    "avatar": "",
+    "name": "I26_sensuisenntai",
+    "type": "其他",
+    "group": "重樱"
+  },
+  "伊25": {
+    "avatar": "",
+    "name": "I25_sensuisenntai",
+    "type": "其他",
+    "group": "重樱"
+  },
+  "伊19": {
+    "avatar": "",
+    "name": "I19_sensuisenntai",
+    "type": "其他",
+    "group": "重樱"
+  },
+  "明石": {
+    "avatar": "",
+    "name": "akashi_TUUHAN",
+    "type": "其他",
+    "group": "重樱"
+  },
+  "樫野": {
+    "avatar": "",
+    "name": "Kashino",
+    "type": "其他",
+    "group": "重樱"
+  },
+  "Z23": {
+    "avatar": "",
+    "name": "Zerstörer.23",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z2": {
+    "avatar": "",
+    "name": "Zerstörer2",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z28": {
+    "avatar": "",
+    "name": "Zerstörer28",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z46": {
+    "avatar": "",
+    "name": "viersech",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z35": {
+    "avatar": "",
+    "name": "Funf♡3536",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z36": {
+    "avatar": "",
+    "name": "Zech✛3536",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z1": {
+    "avatar": "",
+    "name": "L.Maaß",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "Z24": {
+    "avatar": "",
+    "name": "GreatDevil24",
+    "type": "驱逐",
+    "group": "铁血"
+  },
+  "美因茨": {
+    "avatar": "",
+    "name": "Mainz",
+    "type": "轻巡",
+    "group": "铁血"
+  },
+  "莱比锡": {
+    "avatar": "",
+    "name": "Leipzig",
+    "type": "轻巡",
+    "group": "铁血"
+  },
+  "纽伦堡": {
+    "avatar": "",
+    "name": "Nürnberg",
+    "type": "轻巡",
+    "group": "铁血"
+  },
+  "马格德堡": {
+    "avatar": "",
+    "name": "Magdeburg",
+    "type": "轻巡",
+    "group": "铁血"
+  },
+  "埃尔宾": {
+    "avatar": "",
+    "name": "Elbing",
+    "type": "轻巡",
+    "group": "铁血"
+  },
+  "埃姆登": {
+    "avatar": "",
+    "name": "Emden",
+    "type": "轻巡",
+    "group": "铁血"
+  },
+  "希佩尔海军上将": {
+    "avatar": "",
+    "name": "R_Guitarist",
+    "type": "重巡/超巡",
+    "group": "铁血"
+  },
+  "欧根亲王": {
+    "avatar": "",
+    "name": "P.Eugen",
+    "type": "重巡/超巡",
+    "group": "铁血"
+  },
+  "罗恩": {
+    "avatar": "",
+    "name": "RoonDESU",
+    "type": "重巡/超巡",
+    "group": "铁血"
+  },
+  "德意志": {
+    "avatar": "",
+    "name": "SPEE_FIGHT",
+    "type": "重巡/超巡",
+    "group": "铁血"
+  },
+  "斯佩伯爵海军上将": {
+    "avatar": "",
+    "name": "GRAFSPEE",
+    "type": "重巡/超巡",
+    "group": "铁血"
+  },
+  "海因里希亲王": {
+    "avatar": "",
+    "name": "Eisen_Fight",
+    "type": "重巡/超巡",
+    "group": "铁血"
+  },
+  "阿达尔伯特亲王": {
+    "avatar": "",
+    "name": "PrinzAdalbert",
+    "type": "重巡/超巡",
+    "group": "铁血"
+  },
+  "约克DE": {
+    "avatar": "",
+    "name": "Yorck",
+    "type": "重巡/超巡",
+    "group": "铁血"
+  },
+  "埃吉尔": {
+    "avatar": "",
+    "name": "Aegir",
+    "type": "重巡/超巡",
+    "group": "铁血"
+  },
+  "齐柏林伯爵": {
+    "avatar": "",
+    "name": "TrägerZeepelin",
+    "type": "航母",
+    "group": "铁血"
+  },
+  "威悉": {
+    "avatar": "",
+    "name": "Weser",
+    "type": "航母",
+    "group": "铁血"
+  },
+  "彼得·史特拉塞": {
+    "avatar": "",
+    "name": "FlugzeugträgerB",
+    "type": "航母",
+    "group": "铁血"
+  },
+  "易北": {
+    "avatar": "",
+    "name": "Elbe",
+    "type": "航母",
+    "group": "铁血"
+  },
+  "奥古斯特·冯·帕塞瓦尔": {
+    "avatar": "",
+    "name": "August.V.Parseval",
+    "type": "航母",
+    "group": "铁血"
+  },
+  "腓特烈大帝": {
+    "avatar": "",
+    "name": "SymphonicStigma",
+    "type": "战列/战巡",
+    "group": "铁血"
+  },
+  "俾斯麦": {
+    "avatar": "",
+    "name": "Bismarck",
+    "type": "战列/战巡",
+    "group": "铁血"
+  },
+  "奥丁": {
+    "avatar": "",
+    "name": "Odin",
+    "type": "战列/战巡",
+    "group": "铁血"
+  },
+  "沙恩霍斯特": {
+    "avatar": "",
+    "name": "Scharnhorst",
+    "type": "战列/战巡",
+    "group": "铁血"
+  },
+  "格奈森瑙": {
+    "avatar": "",
+    "name": "Gneisenau",
+    "type": "战列/战巡",
+    "group": "铁血"
+  },
+  "乌尔里希·冯·胡滕": {
+    "avatar": "",
+    "name": "U.V.Hutten",
+    "type": "战列/战巡",
+    "group": "铁血"
+  },
+  "图林根": {
+    "avatar": "",
+    "name": "Thüringen",
+    "type": "战列/战巡",
+    "group": "铁血"
+  },
+  "塞德利茨": {
+    "avatar": "",
+    "name": "Seydlitz",
+    "type": "战列/战巡",
+    "group": "铁血"
+  },
+  "吕佐夫": {
+    "avatar": "",
+    "name": "Lützow",
+    "type": "战列/战巡",
+    "group": "铁血"
+  },
+  "U-556": {
+    "avatar": "",
+    "name": "U.B.556",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-1206": {
+    "avatar": "",
+    "name": "U.B.1206",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-96": {
+    "avatar": "",
+    "name": "U.B.96",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-81": {
+    "avatar": "",
+    "name": "U-81",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-73": {
+    "avatar": "",
+    "name": "U-73",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-522": {
+    "avatar": "",
+    "name": "U-522",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-110": {
+    "avatar": "",
+    "name": "HAI_110",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "U-37": {
+    "avatar": "",
+    "name": "UBoat37",
+    "type": "潜艇",
+    "group": "铁血"
+  },
+  "逸仙": {
+    "avatar": "",
+    "name": "YIXIAN",
+    "type": "",
+    "group": "东煌"
+  },
+  "平海": {
+    "avatar": "",
+    "name": "PINGHAI",
+    "type": "",
+    "group": "东煌"
+  },
+  "宁海": {
+    "avatar": "",
+    "name": "NINGHAI",
+    "type": "",
+    "group": "东煌"
+  },
+  "鞍山": {
+    "avatar": "",
+    "name": "Anshan1",
+    "type": "",
+    "group": "东煌"
+  },
+  "抚顺": {
+    "avatar": "",
+    "name": "Fushun2",
+    "type": "",
+    "group": "东煌"
+  },
+  "长春": {
+    "avatar": "",
+    "name": "ChangChun",
+    "type": "",
+    "group": "东煌"
+  },
+  "太原": {
+    "avatar": "",
+    "name": "TaiYuan",
+    "type": "",
+    "group": "东煌"
+  },
+  "应瑞": {
+    "avatar": "",
+    "name": "Yingrui",
+    "type": "",
+    "group": "东煌"
+  },
+  "肇和": {
+    "avatar": "",
+    "name": "Zhaohe",
+    "type": "",
+    "group": "东煌"
+  },
+  "海天": {
+    "avatar": "",
+    "name": "HaiTien",
+    "type": "",
+    "group": "东煌"
+  },
+  "海圻": {
+    "avatar": "",
+    "name": "HaiChi",
+    "type": "",
+    "group": "东煌"
+  },
+  "镇海": {
+    "avatar": "",
+    "name": "ChenHai",
+    "type": "",
+    "group": "东煌"
+  },
+  "阿芙乐尔": {
+    "avatar": "",
+    "name": "Aurora1900",
+    "type": "",
+    "group": "北方联合"
+  },
+  "苏维埃罗西亚": {
+    "avatar": "",
+    "name": "Proj23.Ros",
+    "type": "",
+    "group": "北方联合"
+  },
+  "塔什干": {
+    "avatar": "",
+    "name": "Ташкент",
+    "type": "",
+    "group": "北方联合"
+  },
+  "水星纪念": {
+    "avatar": "",
+    "name": "Pamiat' Merkuria",
+    "type": "",
+    "group": "北方联合"
+  },
+  "威严": {
+    "avatar": "",
+    "name": "Grozny",
+    "type": "",
+    "group": "北方联合"
+  },
+  "恰巴耶夫": {
+    "avatar": "",
+    "name": "Chapaev",
+    "type": "",
+    "group": "北方联合"
+  },
+  "甘古特": {
+    "avatar": "",
+    "name": "Gangut",
+    "type": "",
+    "group": "北方联合"
+  },
+  "明斯克": {
+    "avatar": "",
+    "name": "Minsk",
+    "type": "",
+    "group": "北方联合"
+  },
+  "神速": {
+    "avatar": "",
+    "name": "cнежок",
+    "type": "",
+    "group": "北方联合"
+  },
+  "洪亮": {
+    "avatar": "",
+    "name": "Громкий",
+    "type": "",
+    "group": "北方联合"
+  },
+  "摩尔曼斯克": {
+    "avatar": "",
+    "name": "Мурманск",
+    "type": "",
+    "group": "北方联合"
+  },
+  "雷鸣": {
+    "avatar": "",
+    "name": "ремящий",
+    "type": "",
+    "group": "北方联合"
+  },
+  "塔林": {
+    "avatar": "",
+    "name": "Tallinn",
+    "type": "",
+    "group": "北方联合"
+  },
+  "基洛夫": {
+    "avatar": "",
+    "name": "Киров",
+    "type": "",
+    "group": "北方联合"
+  },
+  "苏维埃贝拉罗斯": {
+    "avatar": "",
+    "name": "Proj23.Bel",
+    "type": "",
+    "group": "北方联合"
+  },
+  "喀琅施塔得": {
+    "avatar": "",
+    "name": "Кронштадт",
+    "type": "",
+    "group": "北方联合"
+  },
+  "基辅": {
+    "avatar": "",
+    "name": "Киев",
+    "type": "",
+    "group": "北方联合"
+  },
+  "伏尔加": {
+    "avatar": "",
+    "name": "Волга",
+    "type": "",
+    "group": "北方联合"
+  },
+  "灵敏": {
+    "avatar": "",
+    "name": "Сообразительный",
+    "type": "",
+    "group": "北方联合"
+  },
+  "阿尔汉格尔斯克": {
+    "avatar": "",
+    "name": "Архангельск",
+    "type": "",
+    "group": "北方联合"
+  },
+  "凯旋": {
+    "avatar": "",
+    "name": "Le.Triomphant",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "絮库夫": {
+    "avatar": "",
+    "name": "P.P.O",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "路易九世": {
+    "avatar": "",
+    "name": "S.Louis",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "香槟": {
+    "avatar": "",
+    "name": "Champagne",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "黎塞留": {
+    "avatar": "",
+    "name": "Richelieu",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "加斯科涅": {
+    "avatar": "",
+    "name": "GascogneT8",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "让·巴尔": {
+    "avatar": "",
+    "name": "PirateKnight",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "恶毒": {
+    "avatar": "",
+    "name": "VivaLaze",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "敦刻尔克": {
+    "avatar": "",
+    "name": "gateaumistress",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "拉·加利索尼埃": {
+    "avatar": "",
+    "name": "Inquisition_G",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "沃克兰": {
+    "avatar": "",
+    "name": "Vauquelin",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "塔尔图": {
+    "avatar": "",
+    "name": "Tartu",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "阿尔及利亚": {
+    "avatar": "",
+    "name": "Algérie",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "鲁莽": {
+    "avatar": "",
+    "name": "L.Téméraire",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "倔强": {
+    "avatar": "",
+    "name": "L.Opiniâtre",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "贝亚恩": {
+    "avatar": "",
+    "name": "Béarn",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "圣女贞德": {
+    "avatar": "",
+    "name": "Jeanne d'Arc",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "埃米尔·贝尔汀": {
+    "avatar": "",
+    "name": "DancerEmile",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "福尔班": {
+    "avatar": "",
+    "name": "Forbin",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "勒马尔": {
+    "avatar": "",
+    "name": "LeMars",
+    "type": "",
+    "group": "自由鸢尾&维希教廷"
+  },
+  "维托里奥·维内托": {
+    "avatar": "",
+    "name": "VV_Veneto",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "利托里奥": {
+    "avatar": "",
+    "name": "VV_Littorio",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "特伦托": {
+    "avatar": "",
+    "name": "Da Trento",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "的里雅斯特": {
+    "avatar": "",
+    "name": "Trieste",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "龙骑兵": {
+    "avatar": "",
+    "name": "S_Carabiniere",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "波拉": {
+    "avatar": "",
+    "name": "Pola",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "扎拉": {
+    "avatar": "",
+    "name": "Zara",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "文琴佐·焦贝蒂": {
+    "avatar": "",
+    "name": "G.B",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "西南风": {
+    "avatar": "",
+    "name": "Libeccio",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "西北风": {
+    "avatar": "",
+    "name": "Maestrale",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "托里拆利": {
+    "avatar": "",
+    "name": "Torricelli",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "天鹰": {
+    "avatar": "",
+    "name": "Aquila",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "阿布鲁齐公爵": {
+    "avatar": "",
+    "name": "C_Abruzzi",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "尼科洛索·达雷科": {
+    "avatar": "",
+    "name": "Captain.Da.Recco",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "帝国": {
+    "avatar": "",
+    "name": "orepmI",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "庞培·马格诺": {
+    "avatar": "",
+    "name": "PompeyTheGreat",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "莱昂纳多·达·芬奇": {
+    "avatar": "",
+    "name": "DaVinci",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "朱塞佩·加里波第": {
+    "avatar": "",
+    "name": "Giuseppe",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "埃曼努埃尔·佩萨格诺": {
+    "avatar": "",
+    "name": "Emanuele",
+    "type": "",
+    "group": "撒丁帝国"
+  },
+  "阿尔弗雷多·奥里亚尼": {
+    "avatar": "",
+    "name": "Alfredo",
+    "type": "",
+    "group": "撒丁帝国"
+  }
+}
