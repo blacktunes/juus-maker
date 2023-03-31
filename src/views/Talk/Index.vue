@@ -1,65 +1,72 @@
 <template>
-  <div class="main">
-    <div class="mask" @click.stop="stopPlay" v-show="setting.play"></div>
-    <transition name="left">
-      <TalkSelect class="talk-wrapper" v-if="data.home" />
-    </transition>
-    <transition name="right">
-      <Talk class="talk-wrapper" ref="talkRef" v-if="!data.home" />
-    </transition>
-    <transition name="slide">
-      <div v-if="!setting.play" class="menu-wrapper">
-        <ShipSelect class="select" :show-close="false" />
-        <transition name="slide">
-          <div class="menu-mask" v-if="data.home">懒得想UI，先这样吧</div>
-        </transition>
-        <div class="menu">
-          <div class="talk-menu" v-if="!data.home">
-            <div
-              class="icon"
-              style="width: 30px; height: 30px"
-              @click="screenshot"
-            >
-              <img src="@/assets/images/save.png" />
+  <transition name="enter">
+    <div class="main" v-show="ready">
+      <div class="mask" @click.stop="stopPlay" v-show="setting.play"></div>
+      <transition name="left">
+        <TalkSelect class="talk-wrapper" v-if="data.home" />
+      </transition>
+      <transition name="right">
+        <Talk class="talk-wrapper" ref="talkRef" v-if="!data.home" />
+      </transition>
+      <transition name="slide">
+        <div v-if="!setting.play" class="menu-wrapper">
+          <ShipSelect class="select" :show-close="false" />
+          <transition name="slide">
+            <div class="menu-mask" v-if="data.home">懒得想UI，先这样吧</div>
+          </transition>
+          <div class="menu">
+            <div class="talk-menu" v-if="!data.home">
+              <div
+                class="icon"
+                style="width: 30px; height: 30px"
+                @click="screenshot"
+              >
+                <img src="@/assets/images/save.png" />
+              </div>
+              <div
+                class="icon"
+                style="width: 30px; height: 30px"
+                @click="autoPlay"
+              >
+                <img src="@/assets/images/play.png" />
+              </div>
+              <div class="sep"></div>
             </div>
-            <div
+            <a class="icon" href="/" target="_blank">
+              <img src="@/assets/images/commander.png" />
+            </a>
+            <a
               class="icon"
-              style="width: 30px; height: 30px"
-              @click="autoPlay"
+              style="
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                margin: 0 3px;
+              "
+              href="https://github.com/blacktunes/juus-maker"
+              target="_blank"
             >
-              <img src="@/assets/images/play.png" />
-            </div>
-            <div class="sep"></div>
+              <img src="@/assets/images/github.png" />
+            </a>
+            <a
+              class="icon"
+              href="https://space.bilibili.com/1384118"
+              target="_blank"
+            >
+              <img src="@/assets/images/bilibili.png" />
+            </a>
           </div>
-          <a class="icon" href="/" target="_blank">
-            <img src="@/assets/images/commander.png" />
-          </a>
-          <a
-            class="icon"
-            style="border-radius: 50%; width: 30px; height: 30px; margin: 0 3px"
-            href="https://github.com/blacktunes/juus-maker"
-            target="_blank"
-          >
-            <img src="@/assets/images/github.png" />
-          </a>
-          <a
-            class="icon"
-            href="https://space.bilibili.com/1384118"
-            target="_blank"
-          >
-            <img src="@/assets/images/bilibili.png" />
-          </a>
         </div>
-      </div>
-    </transition>
-  </div>
+      </transition>
+    </div>
+  </transition>
 </template>
 
 <script setup>
 import ShipSelect from '@/components/ShipSelect.vue'
 import { setting } from '@/store/setting'
 import data, { getDB } from '@/store/talk'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import Talk from './Talk.vue'
 import TalkSelect from './TalkSelect.vue'
 
@@ -79,6 +86,10 @@ const stopPlay = () => {
 
 getDB()
 
+const ready = ref(false)
+onMounted(() => {
+  ready.value = true
+})
 </script>
 
 <style lang="stylus" scoped>

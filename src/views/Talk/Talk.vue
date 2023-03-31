@@ -99,7 +99,7 @@ import Avatar from '@/components/common/Avatar'
 import input, { resetSelectData, select } from '@/store/input'
 import { setting } from '@/store/setting'
 import data from '@/store/talk'
-import { nextTick, ref, computed } from 'vue'
+import { nextTick, ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import draggable from 'vuedraggable'
 
 const tempList = ref([])
@@ -225,12 +225,7 @@ const _addComment = i => {
 const stopPlay = () => {
   setting.play = false
   tempList.value = []
-  nextTick(() => {
-    listDom.value.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  })
+  scrollToBottom()
 }
 
 const reset = () => {
@@ -239,6 +234,14 @@ const reset = () => {
   input.avatar = ship['指挥官'].avatar
   input.name = '指挥官'
 }
+
+let timer = null
+onMounted(() => {
+  timer = setTimeout(scrollToBottom, 320)
+})
+onBeforeUnmount(() => {
+  clearTimeout(timer)
+})
 
 defineExpose({ screenshot, autoPlay, stopPlay })
 </script>
