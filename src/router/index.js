@@ -1,16 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Index from '@/views/JUUs/Index.vue'
 
 const routes = [
   {
     path: '/',
     name: 'juus',
-    component: Index
+    component: () => import('@/views/JUUs/Index.vue')
   },
   {
     path: '/talk',
     name: 'talk',
-    component: () => import('@/views/Talk.vue')
+    component: () => import('@/views/Talk/Index.vue')
   },
   {
     path: '/:pathMatch(.*)*',

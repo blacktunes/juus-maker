@@ -9,7 +9,7 @@
         <div class="name">
           {{ avatarData.key }} /<input v-model="avatarData.name" />
         </div>
-        <div class="close" @click="close">×</div>
+        <div v-if="showClose" class="close" @click="close">×</div>
       </div>
       <div
         v-for="(item, key) in showData"
@@ -43,6 +43,13 @@ import input, { select } from '@/store/input'
 import juus from '@/store/juus'
 import talk from '@/store/talk'
 import Avatar from '@/components/common/Avatar'
+
+defineProps({
+  showClose: {
+    type: Boolean,
+    default: true
+  }
+})
 
 const emit = defineEmits(['close'])
 
@@ -80,10 +87,10 @@ const showData = computed(() => {
       used.push(comment.key)
     })
     for (const key of used) {
-      temp[key] = ship[key]
+      if (key) temp[key] = ship[key]
     }
     for (const key in ship) {
-      if (!temp[key]) temp[key] = ship[key]
+      if (key && !temp[key]) temp[key] = ship[key]
     }
   }
   return temp
@@ -106,7 +113,7 @@ const avatarData = computed(() => {
     case 3:
       return juus.list[juus.index].comment[select.index].reply[select.key]
     case 4:
-      return talk.list[select.index]
+      return talk.list[talk.index].list[select.index]
     default:
       return input
   }
@@ -258,7 +265,7 @@ item()
     cursor pointer
 
 .highlight
-  background #a2a2a2 !important
+  background #87cefa !important
 
   .name
     color #fff !important

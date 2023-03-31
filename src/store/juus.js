@@ -1,4 +1,4 @@
-import { nextTick, reactive, toRaw, toRef, watch } from 'vue'
+import { nextTick, reactive, toRef, toRaw, watch } from 'vue'
 import { getData } from '@/assets/data'
 import { setting } from './setting'
 
@@ -26,12 +26,12 @@ const data = reactive({
   index: 0,
   bg: 'https://patchwiki.biligame.com/images/blhx/e/e8/bhdanvql92zw4a24kv7xcif6i6rlbqk.png',
   list: [
-    { ...defaultItem }
+    JSON.parse(JSON.stringify(defaultItem))
   ]
 })
 
 const setWatch = () => {
-  data.index = localStorage.getItem('last-index') || 0
+  data.index = localStorage.getItem('juus-last-index') || 0
 
   watch(data.list, () => {
     if (setting.play) return
@@ -43,41 +43,12 @@ const setWatch = () => {
 
   const index = toRef(data, 'index')
   watch(index, () => {
-    localStorage.setItem('last-index', data.index)
+    localStorage.setItem('juus-last-index', data.index)
   })
 }
 
 let hasDB = true
 let db
-const _db = window.indexedDB.open('juus', 1)
-_db.onsuccess = event => {
-  db = event.target.result
-
-  if (hasDB) {
-    const request = db.transaction('data', 'readonly')
-      .objectStore('data')
-      .get(0)
-    request.onsuccess = (e) => {
-      try {
-        data.list = JSON.parse(e.target.result?.data || '[]')
-      } finally {
-        setWatch()
-      }
-    }
-  } else {
-    updateDB()
-    setWatch()
-    data.home = false
-  }
-}
-
-_db.onupgradeneeded = (e) => {
-  db = e.target.result
-  if (!db.objectStoreNames.contains('data')) {
-    hasDB = false
-    db.createObjectStore('data', { keyPath: 'id' })
-  }
-}
 
 export const updateDB = () => {
   db.transaction('data', 'readwrite')
@@ -86,6 +57,39 @@ export const updateDB = () => {
       id: 0,
       data: JSON.stringify(toRaw(data.list))
     })
+}
+
+export const getDB = () => {
+  console.log('GET - JUUs indexedDB...')
+  const _db = window.indexedDB.open('juus', 1)
+  _db.onsuccess = event => {
+    db = event.target.result
+
+    if (hasDB) {
+      const request = db.transaction('data', 'readonly')
+        .objectStore('data')
+        .get(0)
+      request.onsuccess = (e) => {
+        try {
+          data.list = JSON.parse(e.target.result?.data || '[]')
+        } finally {
+          setWatch()
+        }
+      }
+    } else {
+      updateDB()
+      setWatch()
+      data.home = false
+    }
+  }
+
+  _db.onupgradeneeded = (e) => {
+    db = e.target.result
+    if (!db.objectStoreNames.contains('data')) {
+      hasDB = false
+      db.createObjectStore('data', { keyPath: 'id' })
+    }
+  }
 }
 
 export default data
