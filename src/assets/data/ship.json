@@ -311,6 +311,12 @@
     "type": "重巡",
     "group": "白鹰"
   },
+  "北安普敦": {
+    "avatar": "",
+    "name": "Northampton",
+    "type": "重巡",
+    "group": "白鹰"
+  },
   "萨拉托加": {
     "avatar": "",
     "name": "SisterSara",
@@ -380,6 +386,12 @@
   "卡萨布兰卡": {
     "avatar": "",
     "name": "Casablanca",
+    "type": "航母",
+    "group": "白鹰"
+  },
+  "兰利": {
+    "avatar": "",
+    "name": "Langley",
     "type": "航母",
     "group": "白鹰"
   },
@@ -521,6 +533,18 @@
     "type": "驱逐",
     "group": "皇家"
   },
+  "英雄": {
+    "avatar": "",
+    "name": "Hero",
+    "type": "驱逐",
+    "group": "皇家"
+  },
+  "勇敢": {
+    "avatar": "",
+    "name": "Hardy",
+    "type": "驱逐",
+    "group": "皇家"
+  },
   "南安普顿": {
     "avatar": "",
     "name": "MINAMIpton",
@@ -623,6 +647,18 @@
     "type": "轻巡",
     "group": "皇家"
   },
+  "斯库拉": {
+    "avatar": "",
+    "name": "Scylla",
+    "type": "轻巡",
+    "group": "皇家"
+  },
+  "普利茅斯": {
+    "avatar": "",
+    "name": "Plymouth",
+    "type": "轻巡",
+    "group": "皇家"
+  },
   "萨福克": {
     "avatar": "",
     "name": "Suffolk",
@@ -707,6 +743,24 @@
     "type": "航母",
     "group": "皇家"
   },
+  "忒修斯": {
+    "avatar": "",
+    "name": "Theseus",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "怨仇": {
+    "avatar": "",
+    "name": "Implacable",
+    "type": "航母",
+    "group": "皇家"
+  },
+  "百眼巨人": {
+    "avatar": "",
+    "name": "Argus",
+    "type": "航母",
+    "group": "皇家"
+  },
   "威尔士亲王": {
     "avatar": "",
     "name": "TywysogWales",
@@ -770,6 +824,12 @@
   "复仇": {
     "avatar": "",
     "name": "Revenge",
+    "type": "战列/战巡",
+    "group": "皇家"
+  },
+  "皇家橡树": {
+    "avatar": "",
+    "name": "RoyalOak",
     "type": "战列/战巡",
     "group": "皇家"
   },
@@ -1411,7 +1471,7 @@
   },
   "希佩尔海军上将": {
     "avatar": "",
-    "name": "R_Guitarist",
+    "name": "R-Guitarist",
     "type": "重巡/超巡",
     "group": "铁血"
   },
@@ -1547,6 +1607,12 @@
     "type": "战列/战巡",
     "group": "铁血"
   },
+  "鲁普雷希特亲王": {
+    "avatar": "",
+    "name": "Prinz-Rupprecht",
+    "type": "战列/战巡",
+    "group": "铁血"
+  },
   "U-556": {
     "avatar": "",
     "name": "U.B.556",
@@ -1667,6 +1733,24 @@
     "type": "",
     "group": "东煌"
   },
+  "定安": {
+    "avatar": "",
+    "name": "Ting An",
+    "type": "",
+    "group": "东煌"
+  },
+  "华甲": {
+    "avatar": "",
+    "name": "Hua Jia",
+    "type": "",
+    "group": "东煌"
+  },
+  "哈尔滨": {
+    "avatar": "",
+    "name": "Bin Jiang",
+    "type": "",
+    "group": "东煌"
+  },
   "阿芙乐尔": {
     "avatar": "",
     "name": "Aurora1900",
@@ -1784,6 +1868,18 @@
   "阿尔汉格尔斯克": {
     "avatar": "",
     "name": "Архангельск",
+    "type": "",
+    "group": "北方联合"
+  },
+  "古比雪夫": {
+    "avatar": "",
+    "name": "Kuybyshev",
+    "type": "",
+    "group": "北方联合"
+  },
+  "契卡洛夫": {
+    "avatar": "",
+    "name": "Chkalov",
     "type": "",
     "group": "北方联合"
   },
