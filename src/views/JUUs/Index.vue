@@ -1,14 +1,11 @@
 <template>
   <transition name="enter">
     <div class="main" v-show="ready">
-      <div
-        class="wrapper"
-        :style="{
-          transform: `scale(${scale})`,
-          width: `${width}px`,
-          height: `${height}px`,
-        }"
-      >
+      <div class="wrapper" :style="{
+        transform: `scale(${scale})`,
+        width: `${width}px`,
+        height: `${height}px`,
+      }">
         <transition name="fade">
           <JUUsSelect v-if="data.home" />
           <JUUs v-else />
@@ -17,26 +14,21 @@
     </div>
   </transition>
   <div class="info">
-    <a
-      class="icon"
-      href="https://github.com/blacktunes/juus-maker"
-      target="_blank"
-    >
+    <a class="icon" href="https://github.com/blacktunes/juus-maker" target="_blank">
       <img src="@/assets/images/github.png" />
     </a>
     <a class="icon" href="https://space.bilibili.com/1384118" target="_blank">
       <img src="@/assets/images/bilibili.png" />
+    </a>
+    <a class="icon" href="/talk" target="_blank">
+      <img src="@/assets/images/commander.png" />
     </a>
     <div class="tip">
       <img src="@/assets/images/info.png" />
     </div>
   </div>
   <transition name="fade">
-    <div
-      class="horizontal"
-      v-if="horizontalTip && shouldHorizontal"
-      @click="horizontalTip = false"
-    >
+    <div class="horizontal" v-if="horizontalTip && shouldHorizontal" @click="horizontalTip = false">
       <div class="bg"></div>
       <div class="item">
         <div class="img">
@@ -53,14 +45,14 @@
 import { ref, computed, onMounted } from 'vue'
 import JUUsSelect from './JUUsSelect.vue'
 import JUUs from './JUUs.vue'
-import data from '@/store/juus'
+import data, { getDB } from '@/store/juus'
 
 const width = 1280
 const height = 720
 const scale = ref(1)
 const realWidth = computed(() => `${width * scale.value}px`)
 const realHeight = computed(() => `${height * scale.value}px`)
-const infoScale = computed(() => `scale(${Math.min(1, h.value)}) translateY(-80px)`)
+const infoScale = computed(() => `scale(${Math.min(1, h.value)}) translateY(-115px)`)
 const infoHoverScale = computed(() => `scale(${Math.min(1, h.value)}) translateY(0)`)
 
 const h = ref(1)
@@ -81,6 +73,8 @@ const shouldHorizontal = computed(() => windowWidth.value <= 550 && v.value > h.
 window.onresize = () => {
   setSize()
 }
+
+getDB()
 
 const ready = ref(false)
 onMounted(() => {

@@ -59,8 +59,8 @@ const showJUUs = (index) => {
 }
 
 const addJUUs = () => {
-  data.list.push(defaultItem)
-  showJUUs(data.list.length - 1)
+  data.list.unshift(JSON.parse(JSON.stringify(defaultItem)))
+  showJUUs(0)
 }
 
 const delJUUs = (index) => {
