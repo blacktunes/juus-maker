@@ -1,12 +1,20 @@
 import { nextTick, reactive, toRaw, watch } from 'vue'
 import { setting } from './setting'
 
-export const defaultItem = {
+export const defaultItem: Omit<TalkData, 'time'> = {
   title: '谢谢你，碧蓝航线',
   list: []
 }
 
-const data = reactive({
+const data = reactive<{
+  home: boolean
+  name: {
+    name: string
+    avatar: string
+  }
+  index: number
+  list: TalkData[]
+}>({
   home: true,
   name: {
     name: '指挥官',
@@ -45,7 +53,7 @@ const setNameWatch = () => {
 }
 
 let hasDB = true
-let db
+let db: IDBDatabase
 
 const updateTalk = () => {
   db.transaction('data', 'readwrite')
@@ -70,7 +78,7 @@ export const getDB = () => {
   const _db = window.indexedDB.open('talk')
 
   _db.onsuccess = event => {
-    db = event.target.result
+    db = (event.target as IDBOpenDBRequest).result
 
     if (hasDB) {
       db.transaction('data', 'readonly')
@@ -78,7 +86,7 @@ export const getDB = () => {
         .get(0)
         .onsuccess = (e) => {
           try {
-            data.list = JSON.parse(e.target.result?.data || '[]')
+            data.list = JSON.parse((e.target as IDBRequest).result?.data || '[]')
           } finally {
             setTalkWatch()
           }
@@ -89,7 +97,7 @@ export const getDB = () => {
         .get(1)
         .onsuccess = (e) => {
           try {
-            data.name = JSON.parse(e.target.result?.data || '{}')
+            data.name = JSON.parse((e.target as IDBRequest).result?.data || '{}')
           } finally {
             setNameWatch()
           }
@@ -102,8 +110,8 @@ export const getDB = () => {
     }
   }
 
-  _db.onupgradeneeded = (e) => {
-    db = e.target.result
+  _db.onupgradeneeded = event => {
+    db = (event.target as IDBOpenDBRequest).result
     if (!db.objectStoreNames.contains('data')) {
       hasDB = false
       db.createObjectStore('data', { keyPath: 'id' })

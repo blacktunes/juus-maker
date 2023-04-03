@@ -62,7 +62,7 @@
   </transition>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import ShipSelect from '@/components/ShipSelect.vue'
 import { setting } from '@/store/setting'
 import data, { getDB } from '@/store/talk'
@@ -70,7 +70,7 @@ import { ref, onMounted } from 'vue'
 import Talk from './Talk.vue'
 import TalkSelect from './TalkSelect.vue'
 
-const talkRef = ref(null)
+const talkRef = ref<InstanceType<typeof Talk> | null>(null)
 
 const screenshot = () => {
   talkRef.value?.screenshot()

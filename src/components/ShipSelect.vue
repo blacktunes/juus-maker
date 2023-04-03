@@ -7,7 +7,8 @@
           style="margin-right: 10px; cursor: default"
         />
         <div class="name">
-          {{ avatarData.key }} /<input v-model="avatarData.name" />
+          <span>{{ avatarData.key }} /</span>
+          <input v-model="avatarData.name" />
         </div>
         <div v-if="showClose" class="close" @click="close">×</div>
       </div>
@@ -16,13 +17,13 @@
         :key="item.name"
         class="item"
         :class="{ highlight: key === avatarData.key }"
-        @click="change(key)"
+        @click="change(String(key))"
       >
         <Avatar
           :src="item.avatar"
           style="margin-right: 10px"
           :style="{ cursor: key === '自定义' ? 'pointer' : 'default' }"
-          @click="setAvatar(key, $event)"
+          @click="setAvatar(String(key), $event)"
         />
         <div class="name">{{ key }}</div>
       </div>
@@ -36,13 +37,13 @@
   </div>
 </template>
 
-<script setup>
-import { ref, computed } from 'vue'
+<script lang="ts" setup>
 import ship, { getData } from '@/assets/data'
+import Avatar from '@/components/common/Avatar.vue'
 import input, { select } from '@/store/input'
 import juus from '@/store/juus'
 import talk from '@/store/talk'
-import Avatar from '@/components/common/Avatar'
+import { computed, ref } from 'vue'
 
 defineProps({
   showClose: {
@@ -59,11 +60,16 @@ const clear = () => {
 }
 
 const showData = computed(() => {
-  const temp = {
+  const temp: {
+    [name: string]: {
+      avatar: string
+      name: string
+    }
+  } = {
     指挥官: getData('指挥官'),
     自定义: getData('自定义')
   }
-  const used = []
+  const used: string[] = []
   if (searchText.value) {
     for (const key in ship) {
       try {
@@ -77,13 +83,13 @@ const showData = computed(() => {
     }
   } else {
     used.push(juus.list[juus.index].juus.key)
-    juus.list[juus.index].comment.forEach(comment => {
+    juus.list?.[juus.index].comment.forEach(comment => {
       if (!used.includes(comment.key)) used.push(comment.key)
       comment.reply.forEach(reply => {
         if (!used.includes(reply.key)) used.push(reply.key)
       })
     })
-    talk.list.forEach(comment => {
+    talk.list?.[talk.index]?.list.forEach(comment => {
       used.push(comment.key)
     })
     for (const key of used) {
@@ -96,7 +102,7 @@ const showData = computed(() => {
   return temp
 })
 
-const change = name => {
+const change = (name: string) => {
   avatarData.value.key = name
   avatarData.value.avatar = ship[name].avatar
   avatarData.value.name = ship[name].name
@@ -124,7 +130,7 @@ const close = () => {
   emit('close')
 }
 
-const setAvatar = (key, e) => {
+const setAvatar = (key: string, e: Event) => {
   if (key !== '自定义') return
 
   e.stopPropagation()
@@ -132,11 +138,11 @@ const setAvatar = (key, e) => {
   input.type = 'file'
   input.accept = 'image/*'
   input.onchange = () => {
-    if (input.files[0]) {
+    if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = e => {
-        ship.自定义.avatar = e.target.result
+        ship.自定义.avatar = e.target?.result as string || ''
       }
     }
   }
@@ -158,9 +164,14 @@ item()
   background #fff
 
   .name
+    display flex
+    align-items center
     flex 1
     font-size 20px
     font-weight bolder
+
+    span
+      flex-shrink 0
 
 .select-view
   z-index 99
@@ -183,8 +194,8 @@ item()
     align-content flex-start
 
     &::-webkit-scrollbar
-      width 10px
-      height 10px
+      width 5px
+      height 5px
 
     &::-webkit-scrollbar-track
       box-shadow inset 0 0 6px rgba(0, 0, 0, 0.4)
@@ -206,7 +217,7 @@ item()
 
   .search
     position relative
-    height 50px
+    height 40px
     padding 10px
     margin-top 10px
     border-top 1px solid #aaa
@@ -214,7 +225,7 @@ item()
     input
       box-sizing border-box
       width 100%
-      height 50px
+      height 40px
       padding 5px 45px 5px 20px
       border-radius 5px
       border 2px solid #aaa
@@ -254,9 +265,8 @@ item()
     border none
     width 240px
     color #444
-
-    &::-webkit-input-placeholder
-      color #dfdfdf
+    overflow hidden
+    text-overflow ellipsis
 
   .close
     font-size 40px

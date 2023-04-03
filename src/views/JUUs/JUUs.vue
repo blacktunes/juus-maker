@@ -75,7 +75,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, computed } from 'vue'
 import Content from '@/components/JUUs/Content.vue'
 import ShipSelect from '@/components/ShipSelect.vue'
@@ -89,11 +89,11 @@ const changeBg = () => {
   input.type = 'file'
   input.accept = 'image/*'
   input.onchange = () => {
-    if (input.files[0]) {
+    if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = e => {
-        data.list[data.index].bg = e.target.result
+        data.list[data.index].bg = e.target?.result as string || ''
       }
     }
   }
@@ -105,11 +105,11 @@ const changeImg = () => {
   input.type = 'file'
   input.accept = 'image/*'
   input.onchange = () => {
-    if (input.files[0]) {
+    if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = e => {
-        data.list[data.index].img = e.target.result
+        data.list[data.index].img = e.target?.result as string || ''
       }
     }
   }
@@ -130,22 +130,28 @@ const back = () => {
   data.home = true
 }
 
-const juus = ref(null)
-const content = ref(null)
-const screenshot = flag => {
-  _screenshot(
-    flag ? content.value.dom : juus.value,
-    flag ? content.value.dom.offsetWidth : undefined,
-    flag ? content.value.dom.scrollHeight : undefined
-  )
+const juus = ref<HTMLElement | null>(null)
+const content = ref<InstanceType<typeof Content> | null>(null)
+const screenshot = (flag?: boolean) => {
+  if (flag) {
+    if (content.value?.dom) {
+      _screenshot(
+        content.value.dom,
+        content.value.dom.offsetWidth,
+        content.value.dom.scrollHeight
+      )
+    }
+  } else {
+    if (juus.value) _screenshot(juus.value)
+  }
 }
 
 const autoPlay = () => {
-  content.value.autoPlay()
+  content.value?.autoPlay()
 }
 
 const stopPlay = () => {
-  content.value.reset()
+  content.value?.stopPlay()
 }
 
 defineExpose({ screenshot })

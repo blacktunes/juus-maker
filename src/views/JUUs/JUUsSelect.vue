@@ -45,15 +45,15 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import data, { defaultItem } from '@/store/juus'
 import { computed } from '@vue/runtime-core'
 
 const bg = computed(() => data.index >= 0 && data.list?.[data.index]?.bg ? data.list[data.index].bg : data.bg)
 
-const getLikeImg = (flag) => flag ? require('@/assets/images/like_2.png') : require('@/assets/images/like.png')
+const getLikeImg = (flag: boolean) => flag ? require('@/assets/images/like_2.png') : require('@/assets/images/like.png')
 
-const showJUUs = (index) => {
+const showJUUs = (index: number) => {
   data.index = index
   data.home = false
 }
@@ -63,7 +63,7 @@ const addJUUs = () => {
   showJUUs(0)
 }
 
-const delJUUs = (index) => {
+const delJUUs = (index: number) => {
   data.list.splice(index, 1)
 }
 </script>

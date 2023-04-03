@@ -45,17 +45,17 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import data, { defaultItem } from '@/store/talk'
 
-const getAvatar = item => {
+const getAvatar = (item: TalkData) => {
   if (item.list.length < 1) {
-    return null
+    return
   }
   return item.list[item.list.length - 1].avatar
 }
 
-const getLastText = item => {
+const getLastText = (item: TalkData) => {
   if (item.list.length < 1) {
     return '无历史消息'
   }
@@ -63,21 +63,21 @@ const getLastText = item => {
   return `${item.list[item.list.length - 1].name}: ${img ? '[图片]' : item.list[item.list.length - 1].text}`
 }
 
-const nameChange = e => {
-  data.name.name = e.target.innerText
+const nameChange = (e: Event) => {
+  data.name.name = (e.target as HTMLInputElement).innerText
 }
 
-const setAvatar = (e) => {
+const setAvatar = (e: Event) => {
   e.stopPropagation()
   const input = document.createElement('input')
   input.type = 'file'
   input.accept = 'image/*'
   input.onchange = () => {
-    if (input.files[0]) {
+    if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = e => {
-        data.name.avatar = e.target.result
+        data.name.avatar = e.target?.result as string || ''
       }
     }
   }
@@ -90,11 +90,11 @@ const addTalk = () => {
   data.home = false
 }
 
-const delTalk = (index) => {
+const delTalk = (index: number) => {
   data.list.splice(index, 1)
 }
 
-const showTalk = (index) => {
+const showTalk = (index: number) => {
   data.index = index
   data.home = false
 }
@@ -129,6 +129,7 @@ const showTalk = (index) => {
         object-position center
 
 .talk-list
+  overflow auto
   padding 5px
 
   .talk
