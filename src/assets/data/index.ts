@@ -2,7 +2,12 @@ import { reactive } from 'vue'
 
 const avatar = require('@/assets/data/avatar.json')
 
-const data = reactive({
+const data = reactive<{
+  [name: string]: {
+    avatar: string
+    name: string
+  }
+}>({
   指挥官: {
     avatar: require('@/assets/images/commander.jpg'),
     name: '指挥官'
@@ -18,7 +23,7 @@ for (const key in data) {
   if (avatar[key]) data[key].avatar = avatar[key]
 }
 
-const getData = (key, text) => {
+const getData = (key: string, text = '') => {
   return {
     key,
     text,

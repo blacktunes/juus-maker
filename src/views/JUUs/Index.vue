@@ -41,7 +41,7 @@
   </transition>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue'
 import JUUsSelect from './JUUsSelect.vue'
 import JUUs from './JUUs.vue'

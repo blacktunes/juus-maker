@@ -2,7 +2,7 @@ import { nextTick, reactive, toRef, toRaw, watch } from 'vue'
 import { getData } from '@/assets/data'
 import { setting } from './setting'
 
-export const defaultItem = {
+export const defaultItem: JUUsData = {
   img: 'https://patchwiki.biligame.com/images/blhx/d/d7/47ho3fxsc16dnjl59ivd6uf4j1pmaw6.png',
   bg: 'https://patchwiki.biligame.com/images/blhx/e/e8/bhdanvql92zw4a24kv7xcif6i6rlbqk.png',
   like: {
@@ -21,7 +21,12 @@ export const defaultItem = {
   ]
 }
 
-const data = reactive({
+const data = reactive<{
+  home: boolean
+  index: number
+  bg: string
+  list: JUUsData[]
+}>({
   home: true,
   index: 0,
   bg: 'https://patchwiki.biligame.com/images/blhx/e/e8/bhdanvql92zw4a24kv7xcif6i6rlbqk.png',
@@ -31,7 +36,7 @@ const data = reactive({
 })
 
 const setWatch = () => {
-  data.index = localStorage.getItem('juus-last-index') || 0
+  data.index = Number(localStorage.getItem('juus-last-index')) || 0
 
   watch(data.list, () => {
     if (setting.play) return
@@ -43,12 +48,12 @@ const setWatch = () => {
 
   const index = toRef(data, 'index')
   watch(index, () => {
-    localStorage.setItem('juus-last-index', data.index)
+    localStorage.setItem('juus-last-index', String(data.index))
   })
 }
 
 let hasDB = true
-let db
+let db: IDBDatabase
 
 export const updateDB = () => {
   db.transaction('data', 'readwrite')
@@ -63,19 +68,18 @@ export const getDB = () => {
   console.log('GET - JUUs indexedDB...')
   const _db = window.indexedDB.open('juus', 1)
   _db.onsuccess = event => {
-    db = event.target.result
-
+    db = (event.target as IDBOpenDBRequest).result
     if (hasDB) {
-      const request = db.transaction('data', 'readonly')
+      db.transaction('data', 'readonly')
         .objectStore('data')
         .get(0)
-      request.onsuccess = (e) => {
-        try {
-          data.list = JSON.parse(e.target.result?.data || '[]')
-        } finally {
-          setWatch()
+        .onsuccess = (e) => {
+          try {
+            data.list = JSON.parse((e.target as IDBRequest).result?.data || '[]')
+          } finally {
+            setWatch()
+          }
         }
-      }
     } else {
       updateDB()
       setWatch()
@@ -83,8 +87,8 @@ export const getDB = () => {
     }
   }
 
-  _db.onupgradeneeded = (e) => {
-    db = e.target.result
+  _db.onupgradeneeded = event => {
+    db = (event.target as IDBOpenDBRequest).result
     if (!db.objectStoreNames.contains('data')) {
       hasDB = false
       db.createObjectStore('data', { keyPath: 'id' })

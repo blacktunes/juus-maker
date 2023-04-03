@@ -25,7 +25,7 @@
         tag="transition-group"
         :component-data="{ name: 'list', type: 'transition' }"
         v-model="talkList"
-        :item-key="item => `comment-${talkList.indexOf(item)}`"
+        :item-key="(item: ReplyItem) => `comment-${talkList.indexOf(item)}`"
       >
         <template #item="{ element, index }">
           <div
@@ -92,17 +92,17 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import ship from '@/assets/data'
 import _screenshot from '@/assets/scripts/screenshot'
-import Avatar from '@/components/common/Avatar'
+import Avatar from '@/components/common/Avatar.vue'
 import input, { resetSelectData, select } from '@/store/input'
 import { setting } from '@/store/setting'
 import data from '@/store/talk'
-import { nextTick, ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import draggable from 'vuedraggable'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import draggable from '@marshallswain/vuedraggable'
 
-const tempList = ref([])
+const tempList = ref<ReplyItem[]>([])
 const talkList = computed({
   get: () => setting.play ? tempList.value : data.list[data.index].list,
   set: (val) => {
@@ -117,19 +117,19 @@ const back = () => {
   data.home = true
 }
 
-const dom = ref(null)
-const listDom = ref(null)
+const dom = ref<HTMLElement | null>(null)
+const listDom = ref<HTMLElement | null>(null)
 
 const scrollToBottom = () => {
   nextTick(() => {
-    listDom.value.scrollTo({
-      top: listDom.value.scrollHeight,
+    listDom.value?.scrollTo({
+      top: listDom.value?.scrollHeight,
       behavior: 'smooth'
     })
   })
 }
 
-const addComment = img => {
+const addComment = (img?: string) => {
   data.list[data.index].list.push({
     ...input,
     img,
@@ -140,7 +140,7 @@ const addComment = img => {
   timeUpdate()
 }
 
-const delComment = index => {
+const delComment = (index: number) => {
   resetSelectData()
   data.list[data.index].list.splice(index, 1)
   timeUpdate()
@@ -151,33 +151,33 @@ const addImage = () => {
   input.type = 'file'
   input.accept = 'image/*'
   input.onchange = () => {
-    if (input.files[0]) {
+    if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = e => {
-        addComment(e.target.result)
+        addComment(e.target?.result as string)
       }
     }
   }
   input.click()
 }
 
-const titleChange = e => {
-  data.list[data.index].title = e.target.innerText
+const titleChange = (e: Event) => {
+  data.list[data.index].title = (e.target as HTMLInputElement).innerText
   timeUpdate()
 }
 
-const textChange = (index, e) => {
-  data.list[data.index].list[index].text = e.target.innerText
+const textChange = (index: number, e: Event) => {
+  data.list[data.index].list[index].text = (e.target as HTMLInputElement).innerText
   timeUpdate()
 }
 
-const nameChange = (index, e) => {
-  data.list[data.index].list[index].name = e.target.innerText
+const nameChange = (index: number, e: Event) => {
+  data.list[data.index].list[index].name = (e.target as HTMLInputElement).innerText
   timeUpdate()
 }
 
-const avatarClick = (type, index) => {
+const avatarClick = (type: number, index = 0) => {
   select.type = type
   select.index = index
 }
@@ -187,8 +187,10 @@ const timeUpdate = () => {
 }
 
 const screenshot = () => {
-  reset()
-  _screenshot(dom.value, dom.value.offsetWidth, listDom.value.scrollHeight + 60 + 50)
+  if (dom.value && listDom.value) {
+    reset()
+    _screenshot(dom.value, dom.value.offsetWidth, listDom.value.scrollHeight + 60 + 50)
+  }
 }
 
 const autoPlay = () => {
@@ -205,7 +207,7 @@ const autoPlay = () => {
   }, 100)
 }
 
-const _addComment = i => {
+const _addComment = (i: number) => {
   if (!setting.play) return
 
   tempList.value.push(data.list[data.index].list[i])
@@ -235,7 +237,7 @@ const reset = () => {
   input.name = '指挥官'
 }
 
-let timer = null
+let timer: number
 onMounted(() => {
   timer = setTimeout(scrollToBottom, 320)
 })

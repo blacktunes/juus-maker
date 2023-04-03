@@ -35,16 +35,18 @@
       </div>
       <div class="line"></div>
     </div>
-    <div class="comment-list" ref="commentList">
+    <div class="comment-list" ref="listDom">
       <draggable
         tag="transition-group"
         :component-data="{ name: 'list', type: 'transition' }"
-        v-model="data.list[data.index].comment"
+        v-model="juusList"
         :item-key="
-          item => `comment-${data.list[data.index].comment.indexOf(item)}`
+          (item: JUUsComment) => `comment-${juusList.indexOf(item)}`
         "
       >
-        <template #item="{ element, index }">
+        <template
+          #item="{ element, index }: { element: JUUsComment, index: number }"
+        >
           <div class="comment-card">
             <div class="comment">
               <Avatar
@@ -90,7 +92,7 @@
             <div class="reply-list">
               <draggable
                 v-model="element.reply"
-                :item-key="item => 'reply' + element.reply.indexOf(item)"
+                :item-key="(item: ReplyItem) => 'reply' + element.reply.indexOf(item)"
               >
                 <template #item="item">
                   <div class="reply">
@@ -159,23 +161,33 @@
   </div>
 </template>
 
-<script setup>
-import Avatar from '@/components/common/Avatar'
+<script lang="ts" setup>
+import Avatar from '@/components/common/Avatar.vue'
 import input, { resetSelectData, select } from '@/store/input'
 import data from '@/store/juus'
 import { setting } from '@/store/setting'
-import { nextTick, ref } from 'vue'
-import draggable from 'vuedraggable'
+import { nextTick, ref, computed } from 'vue'
+import draggable from '@marshallswain/vuedraggable'
 
 defineProps(['screenshot'])
 
-const dom = ref(null)
-const commentList = ref(null)
+const tempList = ref<JUUsComment[]>([])
+const juusList = computed({
+  get: () => setting.play ? tempList.value : data.list[data.index].comment,
+  set: (val) => {
+    if (!setting.play) {
+      data.list[data.index].comment = val
+    }
+  }
+})
+
+const dom = ref<HTMLElement | null>(null)
+const listDom = ref<HTMLElement | null>(null)
 
 const scrollToBottom = () => {
   nextTick(() => {
-    dom.value.scrollTo({
-      top: commentList.value.scrollHeight,
+    dom.value?.scrollTo({
+      top: listDom.value?.scrollHeight,
       behavior: 'smooth'
     })
   })
@@ -191,45 +203,53 @@ const addComment = () => {
   input.text = ''
 }
 
-const delComment = index => {
+const delComment = (index: number) => {
   resetSelectData()
   data.list[data.index].comment.splice(index, 1)
 }
 
-const addReply = (index, e) => {
+const addReply = (index: number, e: Event) => {
   data.list[data.index].comment?.[index].reply.push({
     ...input,
     text: input.text || '谢谢你，碧蓝航线'
   })
   nextTick(() => {
     const temp =
-      e.target.parentElement.parentElement.parentElement.nextElementSibling
-    const top = temp
-      ? temp.offsetTop - 640 + 24
-      : commentList.value.scrollHeight
-    dom.value.scrollTo({ top, behavior: 'smooth' })
+      (e.target as HTMLElement)?.parentElement?.parentElement?.parentElement?.nextElementSibling
+    if (temp && listDom.value && dom.value) {
+      const top = temp
+        ? (temp as HTMLElement).offsetTop - 640 + 24
+        : listDom.value.scrollHeight
+      dom.value.scrollTo({ top, behavior: 'smooth' })
+    }
   })
   input.text = ''
 }
 
-const delReply = (index, key) => {
+const delReply = (index: number, key: number) => {
   resetSelectData()
   data.list[data.index].comment?.[index].reply.splice(key, 1)
 }
 
-const juusChange = (key, e) => {
-  data.list[data.index].juus[key] = e.target.innerText
+const juusChange = (key: 'name' | 'text', e: Event) => {
+  data.list[data.index].juus[key] = (e.target as HTMLInputElement).innerText
 }
 
-const commentChange = (key, index, e) => {
-  data.list[data.index].comment[index][key] = e.target.innerText
+const commentChange = (key: 'name' | 'text', index: number, e: Event) => {
+  data.list[data.index].comment[index][key] = (e.target as HTMLInputElement).innerText
 }
 
-const replyChange = (key, comment, index, e) => {
-  data.list[data.index].comment[comment].reply[index][key] = e.target.innerText
+const replyChange = (key: 'name' | 'text', comment: number, index: number, e: Event) => {
+  data.list[data.index].comment[comment].reply[index][key] = (e.target as HTMLInputElement).innerText
 }
 
-const avatarClick = (type, index, key) => {
+interface AvatarClick {
+  (type: 0 | 1): void
+  (type: 2, index: number): void
+  (type: 3, index: number, key: number): void
+}
+
+const avatarClick = ((type: 0 | 1 | 2 | 3, index = 0, key = 0) => {
   if (select.show) {
     if (select.type === type) {
       select.show = false
@@ -241,89 +261,84 @@ const avatarClick = (type, index, key) => {
     select.type = type
     select.show = true
   }
-  select.index = index
-  select.key = key
-}
-
-let tempList = []
-
-const _addComment = i => {
-  if (!setting.play) return
-
-  data.list[data.index].comment.push({
-    ...tempList[i],
-    reply: []
-  })
-  nextTick(() => {
-    scrollToBottom()
-
-    if (tempList[i].reply.length > 0) {
-      setTimeout(() => {
-        _addReply(i, 0)
-      }, setting.interval)
-    } else {
-      if (tempList[i + 1]) {
-        setTimeout(() => {
-          _addComment(i + 1)
-        }, setting.interval)
-      } else {
-        setting.play = false
-      }
-    }
-  })
-}
-
-const _addReply = (i, j) => {
-  if (!setting.play) return
-
-  data.list[data.index].comment?.[i].reply.push(tempList[i].reply[j])
-  nextTick(() => {
-    scrollToBottom()
-
-    if (tempList[i].reply[j + 1]) {
-      setTimeout(() => {
-        _addReply(i, j + 1)
-      }, setting.interval)
-    } else {
-      if (tempList[i + 1]) {
-        setTimeout(() => {
-          _addComment(i + 1)
-        }, setting.interval)
-      } else {
-        setting.play = false
-      }
-    }
-  })
-}
+  select.index = index as number
+  select.key = key as number
+}) as AvatarClick
 
 const autoPlay = () => {
   if (setting.play || data.list[data.index].comment.length < 1) return
 
   setting.play = true
 
-  tempList = data.list[data.index].comment
-  data.list[data.index].comment = []
+  tempList.value = []
 
   setTimeout(() => {
     _addComment(0)
   }, 100)
 }
 
-const reset = () => {
-  setting.play = false
-  data.list[data.index].comment = tempList
-  tempList = []
+const _addComment = (i: number) => {
+  if (!setting.play) return
+
+  tempList.value.push({
+    ...data.list[data.index].comment[i],
+    reply: []
+  })
+
   nextTick(() => {
-    dom.value.scrollTo({
+    scrollToBottom()
+
+    if (data.list[data.index].comment[i].reply.length > 0) {
+      setTimeout(() => {
+        _addReply(i, 0)
+      }, setting.interval)
+    } else {
+      if (data.list[data.index].comment[i + 1]) {
+        setTimeout(() => {
+          _addComment(i + 1)
+        }, setting.interval)
+      } else {
+        setting.play = false
+      }
+    }
+  })
+}
+
+const _addReply = (i: number, j: number) => {
+  if (!setting.play) return
+
+  tempList.value[i].reply.push(data.list[data.index].comment[i].reply[j])
+  nextTick(() => {
+    scrollToBottom()
+
+    if (data.list[data.index].comment[i].reply[j + 1]) {
+      setTimeout(() => {
+        _addReply(i, j + 1)
+      }, setting.interval)
+    } else {
+      if (data.list[data.index].comment[i + 1]) {
+        setTimeout(() => {
+          _addComment(i + 1)
+        }, setting.interval)
+      } else {
+        setting.play = false
+      }
+    }
+  })
+}
+
+const stopPlay = () => {
+  setting.play = false
+  tempList.value = []
+  nextTick(() => {
+    dom.value?.scrollTo({
       top: 0,
       behavior: 'smooth'
     })
   })
 }
 
-window.test = autoPlay
-
-defineExpose({ dom, autoPlay, reset })
+defineExpose({ dom, autoPlay, stopPlay })
 </script>
 
 <style lang="stylus" src="./Content.styl" scoped></style>

@@ -1,7 +1,7 @@
 import domtoimage from 'dom-to-image'
 import { setting } from '@/store/setting'
 
-export default function (dom, width, height) {
+export default function (dom: Node, width?: number, height?: number) {
   setting.screenshot = true
   domtoimage
     .toPng(dom, {
@@ -14,7 +14,7 @@ export default function (dom, width, height) {
         const img = new Image()
         img.src = dataUrl
         const win = window.open('')
-        win.document.body.appendChild(img)
+        if (win) win.document.body.appendChild(img)
       } else {
         const link = document.createElement('a')
         link.download = `JUUs-${Date.now()}.png`

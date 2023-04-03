@@ -5,19 +5,24 @@ module.exports = {
   },
   extends: [
     'plugin:vue/vue3-essential',
-    '@vue/standard'
+    '@vue/standard',
+    '@vue/typescript/recommended'
   ],
   parserOptions: {
-    parser: '@babel/eslint-parser'
+    ecmaVersion: 2020
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'off',
+    '@typescript-eslint/no-var-requires': 'off'
   },
-  globals: {
-    defineEmits: 'readonly',
-    defineProps: 'readonly',
-    defineExpose: 'readonly'
-  }
+  overrides: [
+    {
+      files: ['*.ts', '*.vue'],
+      rules: {
+        'no-undef': 'off'
+      }
+    }
+  ]
 }
