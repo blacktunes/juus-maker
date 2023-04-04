@@ -74,7 +74,7 @@ const updateName = () => {
 }
 
 export const getDB = () => {
-  console.log('GET - Talk indexedDB...')
+  console.log('GET - Talk indexDB...')
   const _db = window.indexedDB.open('talk')
 
   _db.onsuccess = event => {

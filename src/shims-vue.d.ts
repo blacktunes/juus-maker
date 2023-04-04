@@ -32,3 +32,17 @@ interface TalkData {
   time: number
   list: ReplyItem[]
 }
+
+interface ShipData {
+  avatar: string
+  key: string
+  alias: string
+  name: string
+  data: {
+    param0?: unknown
+    param1: string
+    param2: string
+    param3: string
+    param4: string
+  }
+}
