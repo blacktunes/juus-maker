@@ -213,12 +213,15 @@ const delJUUs = (index: number) => {
         align-items center
 
         .like-img
-          width 32px
-          height 32px
+          width 42px
+          height 42px
           user-select none
 
+          img
+            height 100%
+
         .like-num
-          margin-left 30px
+          margin-left 25px
           font-size 20px
 
 .add

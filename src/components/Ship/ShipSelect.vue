@@ -74,46 +74,69 @@
           </div>
         </template>
       </transition>
-      <transition-group name="horizontal-list">
+      <!-- <transition-group name="horizontal-list"> -->
+      <div
+        class="item"
+        :class="{ highlight: player.key === avatarData.key }"
+        @click="change(player.key)"
+        key="player"
+      >
+        <Avatar
+          :src="player.avatar"
+          style="margin-right: 10px; cursor: default"
+        />
+        <div class="name">{{ player.key }}</div>
+      </div>
+      <div
+        v-for="item in showData"
+        :key="item.key"
+        class="item"
+        :class="{ highlight: item.key === avatarData.key }"
+        @click="change(item.key)"
+      >
+        <Avatar
+          :src="item.avatar"
+          style="margin-right: 10px; cursor: default"
+        />
+        <div class="name">{{ item.key }}</div>
         <div
-          class="item"
-          :class="{ highlight: player.key === avatarData.key }"
-          @click="change(player.key)"
-          key="player"
+          class="del-ship"
+          @click.stop="delShip(item.key)"
+          v-if="item.data.param3 === '自定义'"
         >
-          <Avatar
-            :src="player.avatar"
-            style="margin-right: 10px; cursor: default"
-          />
-          <div class="name">{{ player.key }}</div>
+          ×
         </div>
-        <div
-          v-for="item in showData"
-          :key="item.key"
-          class="item"
-          :class="{ highlight: item.key === avatarData.key }"
-          @click="change(item.key)"
-        >
-          <Avatar
-            :src="item.avatar"
-            style="margin-right: 10px; cursor: default"
-          />
-          <div class="name">{{ item.key }}</div>
-          <div
-            class="del-ship"
-            @click.stop="delShip(item.key)"
-            v-if="item.data.param3 === '自定义'"
-          >
-            ×
-          </div>
-        </div>
-      </transition-group>
+      </div>
+      <!-- </transition-group> -->
     </div>
     <div class="search">
       <input v-model="searchText" placeholder="Search" @keydown.esc="clear" />
       <transition name="fade">
         <div class="clear" @click="clear" v-show="searchText">×</div>
       </transition>
+      <div class="filter">
+        <svg
+          viewBox="0 0 1025 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+        >
+          <path
+            d="M1024 0H0v1024h1024V0z"
+            fill="#8a8a8a"
+            fill-opacity=".01"
+          ></path>
+          <path
+            d="M85.12 106.88a42.24 42.24 0 0 0-42.24 42.24 42.88 42.88 0 0 0 42.24 42.88V106.88zM938.88 192a42.24 42.24 0 0 0 42.24-42.88 41.6 41.6 0 0 0-42.24-42.24V192zM85.12 192h853.76V106.88H85.12V192zM85.12 448a42.88 42.88 0 0 0-42.24 42.88 42.24 42.24 0 0 0 42.24 42.24V448zM320 533.12a42.24 42.24 0 0 0 42.88-42.24A42.88 42.88 0 0 0 320 448v85.12z m-234.88 0H320V448H85.12v85.12zM85.12 789.12a42.88 42.88 0 0 0 0 85.76v-85.76zM320 874.88a42.88 42.88 0 0 0 0-85.76v85.76z m-234.88 0H320v-85.76H85.12v85.76zM672 320A224 224 0 1 0 896 544 224 224 0 0 0 672 320z m0 362.88a138.88 138.88 0 1 1 138.88-138.88 138.88 138.88 0 0 1-138.88 138.88z"
+            fill="#8a8a8a"
+          ></path>
+          <path
+            d="M819.84 652.8a42.88 42.88 0 1 0-64 60.16l64-60.16z m88.32 210.56a43.52 43.52 0 0 0 64 0 42.24 42.24 0 0 0 0-60.16l-64 60.16z m-149.12-150.4l149.12 150.4 64-60.16-152.32-150.4-64 60.16z"
+            fill="#8a8a8a"
+          ></path>
+        </svg>
+      </div>
     </div>
   </div>
 </template>
@@ -408,6 +431,7 @@ item()
           background rgb(240, 240, 240)
 
   .search
+    display flex
     position relative
     height 40px
     padding 10px
@@ -419,13 +443,14 @@ item()
       width 100%
       height 40px
       padding 5px 45px 5px 20px
-      border-radius 5px
+      border-radius 10px 0 0 10px
       border 2px solid #aaa
+      border-right none
       outline none
       font-size 20px
       color #444
 
-    div
+    .clear
       position absolute
       top 50%
       right 20px
@@ -440,6 +465,20 @@ item()
       cursor pointer
       transform translateY(-50%)
       color #444
+
+    .filter
+      display flex
+      justify-content center
+      align-items center
+      height 40px
+      width 50px
+      box-sizing border-box
+      border-radius 0 10px 10px 0
+      border 2px solid #aaa
+      cursor pointer
+
+      &:hover
+        background #fff
 
 .fixed
   z-index 9

@@ -3,19 +3,19 @@
     <div class="main" v-show="ready">
       <div class="mask" @click.stop="stopPlay" v-show="setting.play"></div>
       <transition name="left">
-        <TalkSelect class="talk-wrapper" v-if="data.home" />
+        <TalkSelect class="talk-wrapper" v-show="data.home" />
       </transition>
       <transition name="right">
         <Talk class="talk-wrapper" ref="talkRef" v-if="!data.home" />
       </transition>
       <transition name="slide">
-        <div v-if="!setting.play" class="menu-wrapper">
+        <div v-show="!setting.play" class="menu-wrapper">
           <ShipSelect class="select" :show-close="false" />
           <transition name="slide">
-            <div class="menu-mask" v-if="data.home">懒得想UI，先这样吧</div>
+            <div class="menu-mask" v-show="data.home">懒得想UI，先这样吧</div>
           </transition>
           <div class="menu">
-            <div class="talk-menu" v-if="!data.home">
+            <div class="talk-menu" v-show="!data.home">
               <div
                 class="icon"
                 style="width: 30px; height: 30px"
@@ -63,7 +63,7 @@
 </template>
 
 <script lang="ts" setup>
-import ShipSelect from '@/components/ShipSelect.vue'
+import ShipSelect from '@/components/Ship/ShipSelect.vue'
 import { setting } from '@/store/setting'
 import data, { getDB } from '@/store/talk'
 import { ref, onMounted } from 'vue'
