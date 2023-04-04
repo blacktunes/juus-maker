@@ -1,20 +1,29 @@
 <template>
   <transition name="enter">
     <div class="main" v-show="ready">
-      <div class="wrapper" :style="{
-        transform: `scale(${scale})`,
-        width: `${width}px`,
-        height: `${height}px`,
-      }">
+      <div
+        class="wrapper"
+        :style="{
+          transform: `scale(${scale})`,
+          width: `${width}px`,
+          height: `${height}px`
+        }"
+      >
         <transition name="fade">
-          <JUUsSelect v-if="data.home" />
-          <JUUs v-else />
+          <JUUsSelect v-show="data.home" />
+        </transition>
+        <transition name="fade">
+          <JUUs v-show="!data.home" />
         </transition>
       </div>
     </div>
   </transition>
   <div class="info">
-    <a class="icon" href="https://github.com/blacktunes/juus-maker" target="_blank">
+    <a
+      class="icon"
+      href="https://github.com/blacktunes/juus-maker"
+      target="_blank"
+    >
       <img src="@/assets/images/github.png" />
     </a>
     <a class="icon" href="https://space.bilibili.com/1384118" target="_blank">
@@ -28,7 +37,11 @@
     </div>
   </div>
   <transition name="fade">
-    <div class="horizontal" v-if="horizontalTip && shouldHorizontal" @click="horizontalTip = false">
+    <div
+      class="horizontal"
+      v-if="horizontalTip && shouldHorizontal"
+      @click="horizontalTip = false"
+    >
       <div class="bg"></div>
       <div class="item">
         <div class="img">

@@ -78,7 +78,7 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
 import Content from '@/components/JUUs/Content.vue'
-import ShipSelect from '@/components/ShipSelect.vue'
+import ShipSelect from '@/components/Ship/ShipSelect.vue'
 import data from '@/store/juus'
 import { tip, setting } from '@/store/setting'
 import { select } from '@/store/input'
