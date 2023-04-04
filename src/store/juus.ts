@@ -66,7 +66,7 @@ export const updateDB = () => {
 
 export const getDB = () => {
   console.log('GET - JUUs indexDB...')
-  const _db = window.indexedDB.open('juus', 1)
+  const _db = window.indexedDB.open('juus')
   _db.onsuccess = event => {
     db = (event.target as IDBOpenDBRequest).result
     if (hasDB) {
