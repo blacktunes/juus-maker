@@ -4,6 +4,9 @@ body
 img
   -webkit-user-drag none
 
+input
+  border 2px solid #ddd
+
 ::-webkit-input-placeholder
   color #dfdfdf
 
@@ -55,3 +58,15 @@ img
 
 .list-enter-to
   transform scaleY(1)
+
+.horizontal-list-enter-active
+  transition all 0.3s
+  transform-origin left
+
+.horizontal-list-enter-from
+  transform translateX(-100%)
+  opacity 0
+
+.horizontal-list-enter-to
+  transform translateX(0)
+  opacity 1

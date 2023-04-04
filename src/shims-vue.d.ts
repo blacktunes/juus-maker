@@ -34,6 +34,7 @@ interface TalkData {
 }
 
 interface ShipData {
+  empty?: boolean
   avatar: string
   key: string
   alias: string

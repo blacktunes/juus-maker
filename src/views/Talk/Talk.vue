@@ -93,7 +93,6 @@
 </template>
 
 <script lang="ts" setup>
-import ship from '@/assets/data'
 import _screenshot from '@/assets/scripts/screenshot'
 import Avatar from '@/components/common/Avatar.vue'
 import input, { resetSelectData, select } from '@/store/input'
@@ -233,7 +232,7 @@ const stopPlay = () => {
 const reset = () => {
   select.type = 0
   input.key = '指挥官'
-  input.avatar = ship['指挥官'].avatar
+  input.avatar = require('@/assets/images/commander.jpg')
   input.name = '指挥官'
 }
 
