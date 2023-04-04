@@ -1,37 +1,60 @@
 import { reactive } from 'vue'
 
-const avatar = require('@/assets/data/avatar.json')
+const data = reactive<ShipData[]>(require('@/assets/data/ship.json'))
 
-const data = reactive<{
-  [name: string]: {
-    avatar: string
-    name: string
+const getData = (key: string, text = ''): ShipData & { text: string } => {
+  if (key === '指挥官') {
+    return {
+      key,
+      text,
+      avatar: require('@/assets/images/commander.jpg'),
+      name: '指挥官',
+      alias: '',
+      data: {
+        param1: '',
+        param2: '',
+        param3: '',
+        param4: ''
+      }
+    }
   }
-}>({
-  指挥官: {
-    avatar: require('@/assets/images/commander.jpg'),
-    name: '指挥官'
-  },
-  自定义: {
-    avatar: '',
-    name: '自定义'
-  },
-  ...require('@/assets/data/ship.json')
-})
 
-for (const key in data) {
-  if (avatar[key]) data[key].avatar = avatar[key]
-}
+  if (key === '自定义') {
+    return {
+      key,
+      text,
+      avatar: '',
+      name: '',
+      alias: '',
+      data: {
+        param1: '',
+        param2: '',
+        param3: '',
+        param4: ''
+      }
+    }
+  }
 
-const getData = (key: string, text = '') => {
+  const index = data.findIndex(item => item.key === key)
+
   return {
-    key,
     text,
     ...(
-      data[key]
-        ? { avatar: data[key].avatar, name: data[key].name }
-        : { avatar: '', name: '' }
-    )
+      index !== -1
+        ? data[index]
+        : {
+            avatar: '',
+            name: '',
+            alias: '',
+            data: {
+              param1: '',
+              param2: '',
+              param3: '',
+              param4: ''
+            }
+          }
+    ),
+    key
   }
 }
 

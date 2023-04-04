@@ -13,19 +13,16 @@
         <div v-if="showClose" class="close" @click="close">×</div>
       </div>
       <div
-        v-for="(item, key) in showData"
-        :key="item.name"
+        v-for="item in showData"
+        :key="item.key"
         class="item"
-        :class="{ highlight: key === avatarData.key }"
-        @click="change(String(key))"
+        :class="{ highlight: item.key === avatarData.key }"
+        @click="change(item.key)"
       >
         <Avatar
           :src="item.avatar"
-          style="margin-right: 10px"
-          :style="{ cursor: key === '自定义' ? 'pointer' : 'default' }"
-          @click="setAvatar(String(key), $event)"
-        />
-        <div class="name">{{ key }}</div>
+          style="margin-right: 10px"        />
+        <div class="name">{{ item.key }}</div>
       </div>
     </div>
     <div class="search">
@@ -60,52 +57,57 @@ const clear = () => {
 }
 
 const showData = computed(() => {
-  const temp: {
-    [name: string]: {
-      avatar: string
-      name: string
-    }
-  } = {
-    指挥官: getData('指挥官'),
-    自定义: getData('自定义')
-  }
+  const temp: ShipData[] = [
+    getData('指挥官')
+  ]
   const used: string[] = []
   if (searchText.value) {
-    for (const key in ship) {
+    for (const i in ship) {
       try {
         const reg = new RegExp(searchText.value, 'gi')
-        if (reg.test(key)) {
-          if (!temp[key]) temp[key] = ship[key]
+        if (reg.test(ship[i].key) || reg.test(ship[i].name) || reg.test(ship[i].alias)) {
+          if (temp.findIndex(item => item.key === ship[i].key) === -1) {
+            temp.push(ship[i])
+          }
         }
       } catch (e) {
         break
       }
     }
   } else {
-    used.push(juus.list[juus.index].juus.key)
-    juus.list?.[juus.index].comment.forEach(comment => {
-      if (!used.includes(comment.key)) used.push(comment.key)
-      comment.reply.forEach(reply => {
-        if (!used.includes(reply.key)) used.push(reply.key)
+    if (!juus.home) {
+      used.push(juus.list[juus.index].juus.key)
+      juus.list?.[juus.index].comment.forEach(comment => {
+        if (!used.includes(comment.key)) used.push(comment.key)
+        comment.reply.forEach(reply => {
+          if (!used.includes(reply.key)) used.push(reply.key)
+        })
       })
-    })
-    talk.list?.[talk.index]?.list.forEach(comment => {
-      used.push(comment.key)
-    })
-    for (const key of used) {
-      if (key) temp[key] = ship[key]
     }
-    for (const key in ship) {
-      if (key && !temp[key]) temp[key] = ship[key]
+    if (!talk.home) {
+      talk.list?.[talk.index]?.list.forEach(comment => {
+        used.push(comment.key)
+      })
+    }
+    for (const key of used) {
+      if (key && key !== '指挥官') {
+        temp.push(getData(key))
+      }
+    }
+    for (const i in ship) {
+      if (temp.findIndex(item => item.key === ship[i].key) === -1) {
+        temp.push(ship[i])
+      }
     }
   }
   return temp
 })
 
 const change = (name: string) => {
+  const data = getData(name)
   avatarData.value.key = name
-  avatarData.value.avatar = ship[name].avatar
-  avatarData.value.name = ship[name].name
+  avatarData.value.avatar = data.avatar
+  avatarData.value.name = data.name || data.alias || data.key
 }
 
 const avatarData = computed(() => {
@@ -130,24 +132,24 @@ const close = () => {
   emit('close')
 }
 
-const setAvatar = (key: string, e: Event) => {
-  if (key !== '自定义') return
+// const setAvatar = (key: string, e: Event) => {
+//   if (key !== '自定义') return
 
-  e.stopPropagation()
-  const input = document.createElement('input')
-  input.type = 'file'
-  input.accept = 'image/*'
-  input.onchange = () => {
-    if (input.files?.[0]) {
-      const file = new FileReader()
-      file.readAsDataURL(input.files[0])
-      file.onload = e => {
-        ship.自定义.avatar = e.target?.result as string || ''
-      }
-    }
-  }
-  input.click()
-}
+//   e.stopPropagation()
+//   const input = document.createElement('input')
+//   input.type = 'file'
+//   input.accept = 'image/*'
+//   input.onchange = () => {
+//     if (input.files?.[0]) {
+//       const file = new FileReader()
+//       file.readAsDataURL(input.files[0])
+//       file.onload = e => {
+//         ship.自定义.avatar = e.target?.result as string || ''
+//       }
+//     }
+//   }
+//   input.click()
+// }
 </script>
 
 <style lang="stylus" scoped>
