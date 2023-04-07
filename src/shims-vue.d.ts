@@ -33,6 +33,8 @@ interface TalkData {
   list: ReplyItem[]
 }
 
+type ShipLevel = '普通' | '稀有' | '精锐' | '超稀有' | '海上传奇' | '最高方案' | '决战方案' | ''
+
 interface ShipData {
   empty?: boolean
   avatar: string
@@ -42,7 +44,7 @@ interface ShipData {
   data: {
     param0?: unknown
     param1: string
-    param2: string
+    param2: ShipLevel
     param3: string
     param4: string
   }

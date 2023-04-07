@@ -7,19 +7,4 @@ const input = reactive({
   text: ''
 })
 
-const select = reactive({
-  show: false,
-  type: 0,
-  index: 0,
-  key: 0
-})
-
-const resetSelectData = () => {
-  select.show = false
-  select.type = 0
-  select.index = 0
-  select.key = 0
-}
-
-export { select, resetSelectData }
 export default input
