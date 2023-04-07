@@ -95,11 +95,12 @@
 <script lang="ts" setup>
 import _screenshot from '@/assets/scripts/screenshot'
 import Avatar from '@/components/common/Avatar.vue'
-import input, { resetSelectData, select } from '@/store/input'
+import input from '@/store/input'
+import { resetSelectData, select } from '@/store/select'
 import { setting } from '@/store/setting'
 import data from '@/store/talk'
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import draggable from '@marshallswain/vuedraggable'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const tempList = ref<ReplyItem[]>([])
 const talkList = computed({

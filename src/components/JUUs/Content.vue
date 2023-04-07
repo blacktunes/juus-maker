@@ -163,7 +163,8 @@
 
 <script lang="ts" setup>
 import Avatar from '@/components/common/Avatar.vue'
-import input, { resetSelectData, select } from '@/store/input'
+import input from '@/store/input'
+import { resetSelectData, select } from '@/store/select'
 import data from '@/store/juus'
 import { setting } from '@/store/setting'
 import { nextTick, ref, computed } from 'vue'

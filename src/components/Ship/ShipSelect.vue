@@ -2,10 +2,7 @@
   <div class="select-view">
     <div class="scroll-view">
       <div class="fixed">
-        <Avatar
-          :src="avatarData.avatar"
-          style="margin-right: 10px; cursor: default"
-        />
+        <Avatar :src="avatarData.avatar" />
         <div class="name">
           <span>{{ avatarData.key }} /</span>
           <input v-model="avatarData.name" />
@@ -32,7 +29,11 @@
       <transition name="horizontal-list">
         <template v-if="!customInput.show">
           <div class="custom">
-            <Avatar :src="customInput.avatar" @click.stop="createCustom" />
+            <Avatar
+              :src="customInput.avatar"
+              @click.stop="createCustom"
+              style="cursor: pointer"
+            />
             <input
               type="text"
               v-model="customInput.key"
@@ -81,11 +82,11 @@
         @click="change(player.key)"
         key="player"
       >
-        <Avatar
-          :src="player.avatar"
-          style="margin-right: 10px; cursor: default"
-        />
-        <div class="name">{{ player.key }}</div>
+        <Avatar :src="player.avatar" />
+        <div>
+          <div class="name">{{ player.key }}</div>
+          <div class="alias">你</div>
+        </div>
       </div>
       <div
         v-for="item in showData"
@@ -94,11 +95,11 @@
         :class="{ highlight: item.key === avatarData.key }"
         @click="change(item.key)"
       >
-        <Avatar
-          :src="item.avatar"
-          style="margin-right: 10px; cursor: default"
-        />
-        <div class="name">{{ item.key }}</div>
+        <Avatar :src="item.avatar" :level="item.data.param2" />
+        <div>
+          <div class="name">{{ item.key }}</div>
+          <div class="alias">{{ item.name || item.alias || item.key }}</div>
+        </div>
         <div
           class="del-ship"
           @click.stop="delShip(item.key)"
@@ -109,12 +110,13 @@
       </div>
       <!-- </transition-group> -->
     </div>
+    <ShipFilter />
     <div class="search">
       <input v-model="searchText" placeholder="Search" @keydown.esc="clear" />
       <transition name="fade">
         <div class="clear" @click="clear" v-show="searchText">×</div>
       </transition>
-      <div class="filter">
+      <div class="filter" @click="onFilterClick">
         <svg
           viewBox="0 0 1025 1024"
           version="1.1"
@@ -143,12 +145,14 @@
 
 <script lang="ts" setup>
 import ship, { getData } from '@/assets/data'
-import Avatar from '@/components/common/Avatar.vue'
 import custom from '@/store/custom'
-import input, { select } from '@/store/input'
+import input from '@/store/input'
 import juus from '@/store/juus'
+import { filter, select } from '@/store/select'
 import talk from '@/store/talk'
 import { computed, nextTick, reactive, ref } from 'vue'
+import Avatar from '../common/Avatar2.vue'
+import ShipFilter from './ShipFilter.vue'
 
 defineProps({
   showClose: {
@@ -168,22 +172,44 @@ const player = getData('指挥官')
 
 const showData = computed(() => {
   const temp: ShipData[] = []
-  const used: string[] = []
-  const list = [...custom.value, ...ship]
+  let list = [...custom.value, ...ship]
+
+  if (filter.param1.size > 0 || filter.param2.size > 0 || filter.param3.size > 0 || filter.param4.size > 0) {
+    list = list.filter(item => {
+      const flag = [false, false, false, false]
+
+      for (let i = 0; i < 4; i++) {
+        const index = i + 1
+        if (filter[`param${index as 1 | 2 | 3 | 4}`].size > 0) {
+          for (const name of filter[`param${index as 1 | 2 | 3 | 4}`]) {
+            if (item.data[`param${index as 1 | 2 | 3 | 4}`].includes(name)) {
+              flag[i] = true
+              break
+            }
+          }
+        } else {
+          flag[i] = true
+        }
+      }
+
+      return flag[0] && flag[1] && flag[2] && flag[3]
+    })
+  }
+
   if (searchText.value) {
     for (const i in list) {
       try {
         const reg = new RegExp(searchText.value, 'gi')
         if (reg.test(list[i].key) || reg.test(list[i].name) || reg.test(list[i].alias)) {
-          if (temp.findIndex(item => item.key === list[i].key) === -1) {
-            temp.push(list[i])
-          }
+          temp.push(list[i])
         }
       } catch (e) {
         break
       }
     }
   } else {
+    const used: string[] = []
+
     if (!juus.home) {
       used.push(juus.list[juus.index].juus.key)
       juus.list?.[juus.index].comment.forEach(comment => {
@@ -212,6 +238,7 @@ const showData = computed(() => {
       }
     }
   }
+
   return temp
 })
 
@@ -241,6 +268,7 @@ const avatarData = computed(() => {
 
 const close = () => {
   select.show = false
+  filter.show = false
   emit('close')
 }
 
@@ -307,8 +335,8 @@ const addCustom = () => {
       data: {
         param1: '',
         param2: '',
-        param3: '自定义',
-        param4: ''
+        param3: '其它',
+        param4: '自定义'
       }
     })
   } else {
@@ -319,6 +347,11 @@ const addCustom = () => {
   customInput.key = ''
   customInput.avatar = ''
 }
+
+const onFilterClick = () => {
+  filter.show = !filter.show
+}
+
 </script>
 
 <style lang="stylus" scoped>
@@ -390,6 +423,9 @@ item()
         .del-ship
           opacity 1
 
+      .alias
+        font-size 14px
+
       .del-ship
         color #888
         opacity 0
@@ -413,7 +449,6 @@ item()
         padding 0 5px
         box-sizing border-box
         border-radius 10px 0 0 10px
-        margin-left 6px
         font-size 22px
 
       .custom-btn
@@ -434,7 +469,7 @@ item()
     display flex
     position relative
     height 40px
-    padding 10px
+    padding 10px 10px 10px 5px
     margin-top 10px
     border-top 1px solid #aaa
 
@@ -453,7 +488,7 @@ item()
     .clear
       position absolute
       top 50%
-      right 20px
+      right 65px
       border 2px solid #aaa
       border-radius 50%
       outline none
@@ -508,6 +543,6 @@ item()
 .highlight
   background #87cefa !important
 
-  .name
+  .name, .alias
     color #fff !important
 </style>

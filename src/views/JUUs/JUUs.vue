@@ -81,7 +81,7 @@ import Content from '@/components/JUUs/Content.vue'
 import ShipSelect from '@/components/Ship/ShipSelect.vue'
 import data from '@/store/juus'
 import { tip, setting } from '@/store/setting'
-import { select } from '@/store/input'
+import { select } from '@/store/select'
 import _screenshot from '@/assets/scripts/screenshot'
 
 const changeBg = () => {
