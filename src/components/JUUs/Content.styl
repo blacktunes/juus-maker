@@ -29,15 +29,20 @@
       height 120px
 
       .sep
-        margin 0 13px 0 15px
+        margin 0 10px 0 15px
 
       .name
+        display flex
+        max-width 200px
+        margin-right 10px
         font-size 20px
         font-weight bold
-        margin-right 10px
-        text-overflow ellipsis
-        white-space nowrap
-        overflow hidden
+
+        .name-text
+          text-overflow ellipsis
+          white-space nowrap
+          overflow hidden
+
 
   .text-wrapper
     z-index 8

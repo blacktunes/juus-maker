@@ -75,7 +75,6 @@
           </div>
         </template>
       </transition>
-      <!-- <transition-group name="horizontal-list"> -->
       <div
         class="item"
         :class="{ highlight: player.key === avatarData.key }"
@@ -103,14 +102,15 @@
         <div
           class="del-ship"
           @click.stop="delShip(item.key)"
-          v-if="item.data.param3 === '自定义'"
+          v-if="item.data.param4 === '自定义'"
         >
           ×
         </div>
       </div>
-      <!-- </transition-group> -->
     </div>
-    <ShipFilter />
+    <transition name="fade">
+      <ShipFilter v-show="filter.show" />
+    </transition>
     <div class="search">
       <input v-model="searchText" placeholder="Search" @keydown.esc="clear" />
       <transition name="fade">
@@ -221,7 +221,7 @@ const showData = computed(() => {
     }
     if (!talk.home) {
       talk.list?.[talk.index]?.list.forEach(comment => {
-        used.push(comment.key)
+        if (!used.includes(comment.key)) used.push(comment.key)
       })
     }
     for (const key of used) {
@@ -378,6 +378,7 @@ item()
       flex-shrink 0
 
 .select-view
+  position relative
   z-index 99
   box-sizing border-box
   height 100vh
@@ -510,13 +511,12 @@ item()
       box-sizing border-box
       border-radius 0 10px 10px 0
       border 2px solid #aaa
+      background #fff
       cursor pointer
-
-      &:hover
-        background #fff
+      background #fff
 
 .fixed
-  z-index 9
+  z-index 999
   position sticky
   top 0
   margin-top 0 !important
@@ -545,4 +545,5 @@ item()
 
   .name, .alias
     color #fff !important
+    text-shadow 1px 1px 3px rgba(0,0,0,0.5)
 </style>
