@@ -13,7 +13,9 @@
         />
         <img src="@/assets/images/sep.png" class="sep" />
         <div class="name">
-          @<span
+          <span>@</span>
+          <span
+            class="name-text"
             contenteditable
             @keydown.enter.prevent=""
             @input="juusChange('name', $event)"
