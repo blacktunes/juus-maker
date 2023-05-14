@@ -32,9 +32,24 @@
         :key="`talk-${index}`"
         @click="showTalk(index)"
       >
-        <div class="talk-avatar">
-          <img :src="getAvatar(item)" />
-        </div>
+        <template v-for="(avatarList, key) in [getAvatar(item)]" :key="key">
+          <div v-if="avatarList.size === 2" class="talk-avatar">
+            <img :src="[...avatarList.values()][1]" />
+          </div>
+          <div
+            v-else
+            class="talk-avatar"
+            :class="{
+              gird: avatarList.size > 2
+            }"
+          >
+            <img
+              v-for="avatar in avatarList"
+              :src="avatar"
+              :key="`${index}-${avatar}`"
+            />
+          </div>
+        </template>
         <div class="talk-text">
           <div class="talk-title">{{ item.title }}</div>
           <div class="talk-last">{{ getLastText(item) }}</div>
@@ -49,10 +64,16 @@
 import data, { defaultItem } from '@/store/talk'
 
 const getAvatar = (item: TalkData) => {
+  const avatarList: Set<string> = new Set()
   if (item.list.length < 1) {
-    return
+    return avatarList
   }
-  return item.list[item.list.length - 1].avatar
+  avatarList.add(data.name.avatar)
+  for (const _item of item.list) {
+    avatarList.add(_item.avatar)
+    if (avatarList.size === 4) break
+  }
+  return avatarList
 }
 
 const getLastText = (item: TalkData) => {
@@ -191,4 +212,9 @@ const showTalk = (index: number) => {
 
       &:hover
         opacity 1
+
+.gird
+  display grid
+  grid-template-columns repeat(auto-fill, 50%)
+  justify-items stretch
 </style>

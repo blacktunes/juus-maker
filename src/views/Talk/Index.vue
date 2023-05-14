@@ -110,6 +110,7 @@ onMounted(() => {
     font-size 20px
     font-weight bold
     background rgba(245, 245, 245, 0.6)
+    user-select none
 
   .menu-wrapper
     z-index 99
