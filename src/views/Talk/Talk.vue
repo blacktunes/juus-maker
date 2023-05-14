@@ -66,7 +66,7 @@
                 <span contenteditable @input="textChange(index, $event)">
                   {{ element.text }}
                 </span>
-                <img class="img" v-if="element.img" :src="element.img" />
+                <img class="img" v-if="element.img" :src="element.img" @click.stop="imgChange(index)" />
                 <div class="del" @click.stop="delComment(index)">×</div>
               </div>
             </div>
@@ -174,6 +174,23 @@ const titleChange = (e: Event) => {
 const textChange = (index: number, e: Event) => {
   data.list[data.index].list[index].text = (e.target as HTMLInputElement).innerText
   timeUpdate()
+}
+
+const imgChange = (index: number) => {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.accept = 'image/*'
+  input.onchange = () => {
+    if (input.files?.[0]) {
+      const file = new FileReader()
+      file.readAsDataURL(input.files[0])
+      file.onload = e => {
+        data.list[data.index].list[index].img = e.target?.result as string
+        timeUpdate()
+      }
+    }
+  }
+  input.click()
 }
 
 const nameChange = (index: number, e: Event) => {
@@ -374,4 +391,5 @@ bottomBar()
 
 .img
   width 100%
+  cursor pointer
 </style>
