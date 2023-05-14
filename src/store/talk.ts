@@ -24,15 +24,7 @@ const data = reactive<{
   list: []
 })
 
-watch(() => data.home, () => {
-  if (data.home) {
-    data.list.sort((a, b) => b.time - a.time)
-  }
-})
-
 const setTalkWatch = () => {
-  data.list.sort((a, b) => b.time - a.time)
-
   watch(data.list, () => {
     if (setting.play) return
 

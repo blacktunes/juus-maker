@@ -28,7 +28,7 @@
     <div class="talk-list">
       <div
         class="talk"
-        v-for="(item, index) in data.list"
+        v-for="(item, index) in list"
         :key="`talk-${index}`"
         @click="showTalk(index)"
       >
@@ -54,7 +54,7 @@
           <div class="talk-title">{{ item.title }}</div>
           <div class="talk-last">{{ getLastText(item) }}</div>
         </div>
-        <div class="del" @click.stop="delTalk(index)">×</div>
+        <div class="del" @click.stop="delTalk(item.time)">×</div>
       </div>
     </div>
   </div>
@@ -62,6 +62,7 @@
 
 <script lang="ts" setup>
 import data, { defaultItem } from '@/store/talk'
+import { computed } from 'vue'
 
 const getAvatar = (item: TalkData) => {
   const avatarList: Set<string> = new Set()
@@ -75,6 +76,12 @@ const getAvatar = (item: TalkData) => {
   }
   return avatarList
 }
+
+const list = computed(() => {
+  const temp: TalkData[] = JSON.parse(JSON.stringify(data.list))
+  temp.sort((a, b) => b.time - a.time)
+  return temp
+})
 
 const getLastText = (item: TalkData) => {
   if (item.list.length < 1) {
@@ -111,8 +118,11 @@ const addTalk = () => {
   data.home = false
 }
 
-const delTalk = (index: number) => {
-  data.list.splice(index, 1)
+const delTalk = (time: number) => {
+  const index = data.list.findIndex(item => item.time === time)
+  if (index !== -1) {
+    data.list.splice(index, 1)
+  }
 }
 
 const showTalk = (index: number) => {
