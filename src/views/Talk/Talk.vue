@@ -31,6 +31,9 @@
           <div
             class="item"
             :class="{ right: element.key === '指挥官' }"
+            :style="{
+              padding: element.key === '指挥官' ? '0 20px 0 5px' : ''
+            }"
             @click="avatarClick(4, index)"
           >
             <Avatar
@@ -43,6 +46,7 @@
             />
             <div v-else-if="element.key !== '指挥官'" class="empty"></div>
             <div
+              style="max-width: 85%"
               :style="{
                 marginLeft: element.key === '指挥官' ? '45px' : ''
               }"
@@ -288,11 +292,13 @@ bottomBar()
   .talk-list
     flex 1
     overflow-x hidden
-    padding 10px 0px 10px 15px
+    padding 10px 0
 
     .item
+      box-sizing border-box
       display flex
       width 100%
+      padding 0 10px 0 15px
 
       .empty
         width 45px
@@ -300,6 +306,9 @@ bottomBar()
       .name
         font-weight bold
         margin-left 10px
+        text-overflow ellipsis
+        white-space nowrap
+        overflow hidden
 
       .text
         position relative
@@ -309,6 +318,7 @@ bottomBar()
         background #fff
         color $text-color
         width fit-content
+        max-width 90%
         box-shadow 0px 0px 6px rgba(0, 0, 0, 0.12)
 
         &:hover

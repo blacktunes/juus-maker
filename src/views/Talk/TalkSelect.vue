@@ -25,6 +25,7 @@
         </svg>
       </div>
     </div>
+    <div class="sep"></div>
     <div class="talk-list">
       <div
         class="talk"
@@ -158,6 +159,12 @@ const showTalk = (index: number) => {
         height 100%
         object-fit cover
         object-position center
+
+.sep
+  align-self center
+  width 90%
+  margin-top 5px
+  border-top 1px solid rgba(0, 0, 0, 0.1)
 
 .talk-list
   overflow auto
