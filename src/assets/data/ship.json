@@ -130,6 +130,19 @@
     }
   },
   {
+    "key": "俾斯麦Zwei",
+    "alias": "奥德莉亚Zwei",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/94/r31i9b5tceodk8tudla10ddt3smkbrb.jpg/60px-%E4%BF%BE%E6%96%AF%E9%BA%A6Zwei%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,战列",
+      "param2": "海上传奇",
+      "param3": "铁血",
+      "param4": ","
+    }
+  },
+  {
     "key": "吾妻",
     "alias": "猉",
     "name": "AzumaB65",
@@ -763,7 +776,7 @@
       "param1": "前排先锋,驱逐",
       "param2": "超稀有",
       "param3": "重樱",
-      "param4": ",誓约"
+      "param4": ",专属兵装, 誓约"
     }
   },
   {
@@ -2093,6 +2106,32 @@
     }
   },
   {
+    "key": "奥托·冯·阿尔文斯莱本",
+    "alias": "奥莉薇娅·冯·阿诺德",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/12/7wcgkwdps13aoe0gwqpfhljkuil2q6b.jpg/60px-%E5%A5%A5%E6%89%98%C2%B7%E5%86%AF%C2%B7%E9%98%BF%E5%B0%94%E6%96%87%E6%96%AF%E8%8E%B1%E6%9C%AC%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,驱逐",
+      "param2": "超稀有",
+      "param3": "铁血",
+      "param4": ","
+    }
+  },
+  {
+    "key": "雷根斯堡",
+    "alias": "瑞吉娜",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/b/bc/pn0gdx9ltvf2bbjyo8e1p63204xewb7.jpg/60px-%E9%9B%B7%E6%A0%B9%E6%96%AF%E5%A0%A1%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,轻巡",
+      "param2": "超稀有",
+      "param3": "铁血",
+      "param4": ","
+    }
+  },
+  {
     "key": "绀紫之心",
     "alias": "",
     "name": "",
@@ -2232,7 +2271,7 @@
       "param1": "前排先锋,驱逐",
       "param2": "超稀有",
       "param3": "维纳斯假期",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -2245,7 +2284,7 @@
       "param1": "后排主力,战列",
       "param2": "超稀有",
       "param3": "维纳斯假期",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -2258,7 +2297,7 @@
       "param1": "前排先锋,重巡",
       "param2": "超稀有",
       "param3": "维纳斯假期",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -2271,7 +2310,33 @@
       "param1": "前排先锋,轻巡",
       "param2": "超稀有",
       "param3": "维纳斯假期",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
+    }
+  },
+  {
+    "key": "露娜",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/0/08/02v4dhnwem1cus31ewkmyaw759p1okh.jpg/60px-%E9%9C%B2%E5%A8%9C%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,轻航",
+      "param2": "超稀有",
+      "param3": "维纳斯假期",
+      "param4": "联动,专属兵装"
+    }
+  },
+  {
+    "key": "环",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/0/03/tgh8v18asg3wfn2m1i401xekexsx0y6.jpg/60px-%E7%8E%AF%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,战巡",
+      "param2": "超稀有",
+      "param3": "维纳斯假期",
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -2555,6 +2620,19 @@
     "data": {
       "param0": "0",
       "param1": "后排主力,战列",
+      "param2": "超稀有",
+      "param3": ",其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "U-556·META",
+    "alias": "优可可洛·META",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/1f/lzcbql1ll8gswywmjetdn7ldc4w9m5c.jpg/60px-U-556%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "潜艇,潜艇",
       "param2": "超稀有",
       "param3": ",其他",
       "param4": "META,"
@@ -3220,7 +3298,7 @@
       "param1": "前排先锋,轻巡",
       "param2": "精锐",
       "param3": "皇家",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -3818,7 +3896,7 @@
       "param1": "后排主力,战巡",
       "param2": "精锐",
       "param3": "铁血",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -4169,7 +4247,7 @@
       "param1": "前排先锋,轻巡",
       "param2": "精锐",
       "param3": "自由鸢尾",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -5629,6 +5707,32 @@
     }
   },
   {
+    "key": "小可畏",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/12/gemkkfesafwcqmr4d5x1xz0rj2wbi5n.jpg/60px-%E5%B0%8F%E5%8F%AF%E7%95%8F%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,航母",
+      "param2": "精锐",
+      "param3": "皇家",
+      "param4": ",特殊"
+    }
+  },
+  {
+    "key": "亚德",
+    "alias": "阿黛尔",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/7d/3x72t0ocfx6osu5puilricvf30sl6t5.jpg/60px-%E4%BA%9A%E5%BE%B7%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,轻航",
+      "param2": "精锐",
+      "param3": "铁血",
+      "param4": ","
+    }
+  },
+  {
     "key": "涅普顿",
     "alias": "",
     "name": "",
@@ -5768,7 +5872,7 @@
       "param1": "后排主力,战列",
       "param2": "精锐",
       "param3": "维纳斯假期",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -5781,7 +5885,7 @@
       "param1": "后排主力,航母",
       "param2": "精锐",
       "param3": "维纳斯假期",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -5794,7 +5898,7 @@
       "param1": "前排先锋,轻巡",
       "param2": "精锐",
       "param3": "维纳斯假期",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -8145,6 +8249,19 @@
     "data": {
       "param0": "0",
       "param1": "前排先锋,重巡",
+      "param2": "超稀有",
+      "param3": "皇家",
+      "param4": "改造"
+    }
+  },
+  {
+    "key": "纳尔逊.改",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/70/pkw3udm3a5hhnvr3rho1ov42isvvb2j.jpg/60px-%E7%BA%B3%E5%B0%94%E9%80%8A%E6%94%B9%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,战列",
       "param2": "超稀有",
       "param3": "皇家",
       "param4": "改造"
