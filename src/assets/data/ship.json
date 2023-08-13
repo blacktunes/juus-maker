@@ -133,7 +133,7 @@
     "key": "俾斯麦Zwei",
     "alias": "奥德莉亚Zwei",
     "name": "",
-    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/94/r31i9b5tceodk8tudla10ddt3smkbrb.jpg/60px-%E4%BF%BE%E6%96%AF%E9%BA%A6Zwei%E5%A4%B4%E5%83%8F.jpg",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/94/2xb3s4l5pauohbxezyv5lj8tttnuvtu.jpg/60px-%E4%BF%BE%E6%96%AF%E9%BA%A6Zwei%E5%A4%B4%E5%83%8F.jpg",
     "data": {
       "param0": "0",
       "param1": "后排主力,战列",
@@ -230,6 +230,32 @@
       "param1": "前排先锋,超巡",
       "param2": "决战方案",
       "param3": "自由鸢尾",
+      "param4": "方案,"
+    }
+  },
+  {
+    "key": "奇尔沙治",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/6/65/cnsrg8xu4qgrixso3ts7dsej2hxiyo1.jpg/60px-%E5%A5%87%E5%B0%94%E6%B2%99%E6%B2%BB%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,航战",
+      "param2": "决战方案",
+      "param3": "白鹰",
+      "param4": "方案,"
+    }
+  },
+  {
+    "key": "兴登堡",
+    "alias": "希尔德加德",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/f/fd/8hf4yi79uwrgpbxjuwewq5gncmgo9gh.jpg/60px-%E5%85%B4%E7%99%BB%E5%A0%A1%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,重巡",
+      "param2": "决战方案",
+      "param3": "铁血",
       "param4": "方案,"
     }
   },
@@ -412,7 +438,7 @@
       "param1": "后排主力,战列",
       "param2": "超稀有",
       "param3": "皇家",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -669,7 +695,7 @@
     "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/7b/age684c06x5h0h19uog16jxsebzzii7.jpg/60px-%E6%98%8E%E7%9F%B3%E5%A4%B4%E5%83%8F.jpg",
     "data": {
       "param0": "0",
-      "param1": ",维修",
+      "param1": "后排主力,维修",
       "param2": "超稀有",
       "param3": "重樱",
       "param4": ",誓约"
@@ -763,7 +789,7 @@
       "param1": "前排先锋,驱逐",
       "param2": "超稀有",
       "param3": "铁血",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -1127,7 +1153,7 @@
       "param1": "后排主力,战列",
       "param2": "超稀有",
       "param3": "撒丁帝国",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -1335,7 +1361,7 @@
       "param1": "前排先锋,重巡",
       "param2": "超稀有",
       "param3": "维希教廷",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -1374,7 +1400,7 @@
       "param1": "前排先锋,轻巡",
       "param2": "超稀有",
       "param3": "皇家",
-      "param4": ","
+      "param4": ",誓约"
     }
   },
   {
@@ -2109,7 +2135,7 @@
     "key": "奥托·冯·阿尔文斯莱本",
     "alias": "奥莉薇娅·冯·阿诺德",
     "name": "",
-    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/12/7wcgkwdps13aoe0gwqpfhljkuil2q6b.jpg/60px-%E5%A5%A5%E6%89%98%C2%B7%E5%86%AF%C2%B7%E9%98%BF%E5%B0%94%E6%96%87%E6%96%AF%E8%8E%B1%E6%9C%AC%E5%A4%B4%E5%83%8F.jpg",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/12/slnty6ri7uyn8r8nbbwu03949izzm1d.jpg/60px-%E5%A5%A5%E6%89%98%C2%B7%E5%86%AF%C2%B7%E9%98%BF%E5%B0%94%E6%96%87%E6%96%AF%E8%8E%B1%E6%9C%AC%E5%A4%B4%E5%83%8F.jpg",
     "data": {
       "param0": "0",
       "param1": "前排先锋,驱逐",
@@ -2122,12 +2148,51 @@
     "key": "雷根斯堡",
     "alias": "瑞吉娜",
     "name": "",
-    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/b/bc/pn0gdx9ltvf2bbjyo8e1p63204xewb7.jpg/60px-%E9%9B%B7%E6%A0%B9%E6%96%AF%E5%A0%A1%E5%A4%B4%E5%83%8F.jpg",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/b/bc/k5q7emoo2e5pb2oqfjviowlr2gtlwvm.jpg/60px-%E9%9B%B7%E6%A0%B9%E6%96%AF%E5%A0%A1%E5%A4%B4%E5%83%8F.jpg",
     "data": {
       "param0": "0",
       "param1": "前排先锋,轻巡",
       "param2": "超稀有",
       "param3": "铁血",
+      "param4": ","
+    }
+  },
+  {
+    "key": "阿蒂利奥·雷戈洛",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/7a/gxmykkd9680drpfib6hqdnu8di1tzg7.jpg/60px-%E9%98%BF%E8%92%82%E5%88%A9%E5%A5%A5%C2%B7%E9%9B%B7%E6%88%88%E6%B4%9B%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,驱逐",
+      "param2": "超稀有",
+      "param3": "撒丁帝国",
+      "param4": ","
+    }
+  },
+  {
+    "key": "戈里齐亚",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/7a/okx06ecz5bghgmyr4jre1cophkcccgp.jpg/60px-%E6%88%88%E9%87%8C%E9%BD%90%E4%BA%9A%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,重巡",
+      "param2": "超稀有",
+      "param3": "撒丁帝国",
+      "param4": ","
+    }
+  },
+  {
+    "key": "马赛曲",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/7d/a3v3bq8n8yf5l9fmwa5h1epd69ytxhc.jpg/60px-%E9%A9%AC%E8%B5%9B%E6%9B%B2%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,轻巡",
+      "param2": "超稀有",
+      "param3": "维希教廷",
       "param4": ","
     }
   },
@@ -2401,7 +2466,7 @@
       "param1": "前排先锋,轻巡",
       "param2": "超稀有",
       "param3": "SSSS",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -2414,7 +2479,7 @@
       "param1": "后排主力,战列",
       "param2": "超稀有",
       "param3": "SSSS",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -2427,7 +2492,7 @@
       "param1": "前排先锋,重巡",
       "param2": "超稀有",
       "param3": "SSSS",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -2440,7 +2505,33 @@
       "param1": "后排主力,航母",
       "param2": "超稀有",
       "param3": "SSSS",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
+    }
+  },
+  {
+    "key": "第二代",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/79/t4kbabvfeuuyply6v1tzw70acqizf3v.jpg/60px-%E7%AC%AC%E4%BA%8C%E4%BB%A3%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,航战",
+      "param2": "超稀有",
+      "param3": "SSSS",
+      "param4": "联动,专属兵装"
+    }
+  },
+  {
+    "key": "公主",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/97/c4r4fcqqzz1pt8mvj27ztwhvv6055af.jpg/60px-%E5%85%AC%E4%B8%BB%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,运输",
+      "param2": "超稀有",
+      "param3": "SSSS",
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -2629,10 +2720,23 @@
     "key": "U-556·META",
     "alias": "优可可洛·META",
     "name": "",
-    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/1f/lzcbql1ll8gswywmjetdn7ldc4w9m5c.jpg/60px-U-556%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/1f/gncwx2jiv42avjzbz2s0sunec5p8da8.jpg/60px-U-556%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
     "data": {
       "param0": "0",
       "param1": "潜艇,潜艇",
+      "param2": "超稀有",
+      "param3": ",其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "阿尔及利亚·META",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/0/07/i83hh0c3bz688j182383pbaso3nythk.jpg/60px-%E9%98%BF%E5%B0%94%E5%8F%8A%E5%88%A9%E4%BA%9A%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,重巡",
       "param2": "超稀有",
       "param3": ",其他",
       "param4": "META,"
@@ -2817,7 +2921,7 @@
       "param1": "后排主力,战列",
       "param2": "最高方案",
       "param3": "自由鸢尾",
-      "param4": "方案,"
+      "param4": "方案,誓约"
     }
   },
   {
@@ -2882,7 +2986,7 @@
       "param1": "前排先锋,轻巡",
       "param2": "最高方案",
       "param3": "东煌",
-      "param4": "方案,"
+      "param4": "方案,誓约"
     }
   },
   {
@@ -2895,6 +2999,45 @@
       "param1": "后排主力,航母",
       "param2": "最高方案",
       "param3": "北方联合",
+      "param4": "方案,"
+    }
+  },
+  {
+    "key": "四万十",
+    "alias": "虒",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/3/3e/3ws33xdsoz2xs849ob35zev6f3lm7g7.jpg/60px-%E5%9B%9B%E4%B8%87%E5%8D%81%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,轻巡",
+      "param2": "最高方案",
+      "param3": "重樱",
+      "param4": "方案,"
+    }
+  },
+  {
+    "key": "菲利克斯·舒尔茨",
+    "alias": "弗郎西斯卡·舒伯特",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/96/n6nw5i0e4xh53g767nr26onngckowgr.jpg/60px-%E8%8F%B2%E5%88%A9%E5%85%8B%E6%96%AF%C2%B7%E8%88%92%E5%B0%94%E8%8C%A8%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,驱逐",
+      "param2": "最高方案",
+      "param3": "铁血",
+      "param4": "方案,"
+    }
+  },
+  {
+    "key": "弗兰德尔",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/6/6f/9ud39qpqu68bbmdxk6njiut2cvhvgkp.jpg/60px-%E5%BC%97%E5%85%B0%E5%BE%B7%E5%B0%94%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,战列",
+      "param2": "最高方案",
+      "param3": "维希教廷",
       "param4": "方案,"
     }
   },
@@ -2999,7 +3142,7 @@
       "param1": "前排先锋,重巡",
       "param2": "精锐",
       "param3": "白鹰",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -3142,7 +3285,7 @@
       "param1": "后排主力,航母",
       "param2": "精锐",
       "param3": "白鹰",
-      "param4": ",誓约"
+      "param4": ",专属兵装, 誓约"
     }
   },
   {
@@ -3178,7 +3321,7 @@
     "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/a/a5/2ztgow0n53udxgdtvdk25wv928937ze.jpg/60px-%E5%A5%B3%E7%81%B6%E7%A5%9E%E5%A4%B4%E5%83%8F.jpg",
     "data": {
       "param0": "0",
-      "param1": ",维修",
+      "param1": "后排主力,维修",
       "param2": "精锐",
       "param3": "白鹰",
       "param4": ","
@@ -4260,7 +4403,7 @@
       "param1": "潜艇,潜艇",
       "param2": "精锐",
       "param3": "自由鸢尾",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -4494,7 +4637,7 @@
       "param1": "前排先锋,驱逐",
       "param2": "精锐",
       "param3": "自由鸢尾",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -5723,12 +5866,38 @@
     "key": "亚德",
     "alias": "阿黛尔",
     "name": "",
-    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/7d/3x72t0ocfx6osu5puilricvf30sl6t5.jpg/60px-%E4%BA%9A%E5%BE%B7%E5%A4%B4%E5%83%8F.jpg",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/7d/auewsrxbk0mto2mypbeh2cgzdmbquki.jpg/60px-%E4%BA%9A%E5%BE%B7%E5%A4%B4%E5%83%8F.jpg",
     "data": {
       "param0": "0",
       "param1": "后排主力,轻航",
       "param2": "精锐",
       "param3": "铁血",
+      "param4": ","
+    }
+  },
+  {
+    "key": "小大凤",
+    "alias": "小鹩",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/d/dc/n73n5mslkacdedndcnomq6t49z199iu.jpg/60px-%E5%B0%8F%E5%A4%A7%E5%87%A4%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,航母",
+      "param2": "精锐",
+      "param3": "重樱",
+      "param4": ",特殊"
+    }
+  },
+  {
+    "key": "安德烈亚·多利亚",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/6/6d/4vu8wpqynfty2o77vi7x6ecpqtxj94v.jpg/60px-%E5%AE%89%E5%BE%B7%E7%83%88%E4%BA%9A%C2%B7%E5%A4%9A%E5%88%A9%E4%BA%9A%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,战列",
+      "param2": "精锐",
+      "param3": "撒丁帝国",
       "param4": ","
     }
   },
@@ -5950,7 +6119,7 @@
       "param1": "前排先锋,轻巡",
       "param2": "精锐",
       "param3": "SSSS",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -5963,7 +6132,7 @@
       "param1": "前排先锋,重巡",
       "param2": "精锐",
       "param3": "SSSS",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -5976,7 +6145,7 @@
       "param1": "后排主力,战列",
       "param2": "精锐",
       "param3": "SSSS",
-      "param4": "联动,"
+      "param4": "联动,专属兵装"
     }
   },
   {
@@ -6130,6 +6299,32 @@
     "data": {
       "param0": "0",
       "param1": "前排先锋,轻巡",
+      "param2": "精锐",
+      "param3": ",其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "女灶神·META",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/f/fe/88at6nkpe36ntq4if91glvct9snskn4.jpg/60px-%E5%A5%B3%E7%81%B6%E7%A5%9E%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,维修",
+      "param2": "精锐",
+      "param3": ",其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "旗风·META",
+    "alias": "樋·META",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/5/59/00xxm5bxn8q6zmx87u22i6i0txoubr8.jpg/60px-%E6%97%97%E9%A3%8E%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,驱逐",
       "param2": "精锐",
       "param3": ",其他",
       "param4": "META,"
@@ -8043,7 +8238,7 @@
       "param1": "前排先锋,驱逐",
       "param2": "普通",
       "param3": "重樱",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -8258,7 +8453,7 @@
     "key": "纳尔逊.改",
     "alias": "",
     "name": "",
-    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/70/pkw3udm3a5hhnvr3rho1ov42isvvb2j.jpg/60px-%E7%BA%B3%E5%B0%94%E9%80%8A%E6%94%B9%E5%A4%B4%E5%83%8F.jpg",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/70/s884krlu82gcw93qebs0jeo7foukiwr.jpg/60px-%E7%BA%B3%E5%B0%94%E9%80%8A%E6%94%B9%E5%A4%B4%E5%83%8F.jpg",
     "data": {
       "param0": "0",
       "param1": "后排主力,战列",
