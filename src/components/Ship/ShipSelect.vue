@@ -324,7 +324,7 @@ item()
   margin 5px
   user-select none
   border 1px solid #ddd
-  border-radius 5px
+  border-radius 10px
   background #fff
 
   .name
@@ -444,7 +444,7 @@ item()
       width 100%
       height 40px
       padding 5px 45px 5px 20px
-      border-radius 10px 0 0 10px
+      border-radius 5px 0 0 5px
       border 2px solid #aaa
       border-right none
       outline none
@@ -474,7 +474,7 @@ item()
       height 40px
       width 50px
       box-sizing border-box
-      border-radius 0 10px 10px 0
+      border-radius 0 5px 5px 0
       border 2px solid #aaa
       background #fff
       cursor pointer

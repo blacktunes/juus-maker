@@ -145,26 +145,15 @@ const hide = () => { filter.show = false }
     left 15px
     right 20px
     height fit-content
-    border-radius 5px
+    border-radius 10px 10px 5px 5px
     background rgba(255, 255, 255, 0.9)
     user-select none
     color #fff
     font-weight bold
 
     &::-webkit-scrollbar
-      width 5px
-      height 5px
-
-    &::-webkit-scrollbar-track
-      box-shadow inset 0 0 6px rgba(0, 0, 0, 0.4)
-      border-radius 4px
-
-    &::-webkit-scrollbar-thumb
-      box-shadow inset 0 0 6px rgba(0, 0, 0, 0.3)
-      border-radius 4px
-
-    &::-webkit-scrollbar-thumb:active
-      background-color #aaa
+      width 0
+      height 0
 
     .btn-group
       display flex
@@ -213,7 +202,7 @@ const hide = () => { filter.show = false }
       display flex
       align-items center
       justify-content center
-      background rgba(255, 255, 255, 0.7)
+      background rgba(230, 230, 230, 0.7)
 
       .reset, .submit
         box-sizing border-box
