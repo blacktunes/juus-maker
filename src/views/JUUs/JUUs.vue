@@ -114,6 +114,7 @@ import { ref, computed } from 'vue'
 import Content from '@/components/JUUs/Content.vue'
 import data from '@/store/juus'
 import { tip, setting } from '@/store/setting'
+import input from '@/store/input'
 import { select } from '@/store/select'
 import _screenshot from '@/assets/scripts/screenshot'
 
@@ -166,6 +167,10 @@ const back = () => {
 const juus = ref<HTMLElement | null>(null)
 const content = ref<InstanceType<typeof Content> | null>(null)
 const screenshot = (flag?: boolean) => {
+  select.type = 0
+  input.key = '指挥官'
+  input.avatar = require('@/assets/images/commander.jpg')
+  input.name = '指挥官'
   if (flag) {
     if (content.value?.dom) {
       _screenshot(content.value.dom, content.value.dom.offsetWidth, content.value.dom.scrollHeight)

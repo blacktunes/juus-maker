@@ -1,59 +1,82 @@
 <template>
   <transition name="enter">
-    <div class="main" v-show="ready">
-      <div class="mask" @click.stop="stopPlay" v-show="setting.play"></div>
-      <transition name="left">
-        <TalkSelect class="talk-wrapper" v-show="data.home" />
-      </transition>
-      <transition name="right">
-        <Talk class="talk-wrapper" ref="talkRef" v-if="!data.home" />
-      </transition>
-      <transition name="slide">
-        <div v-show="!setting.play" class="menu-wrapper">
-          <ShipSelect class="select" :show-close="false" />
-          <transition name="slide">
-            <div class="menu-mask" v-show="data.home">懒得想UI，先这样吧</div>
-          </transition>
-          <div class="menu">
-            <div class="talk-menu" v-show="!data.home">
-              <div
-                class="icon"
-                style="width: 30px; height: 30px"
-                @click="screenshot"
-              >
+    <div
+      class="main"
+      v-show="ready"
+    >
+      <div
+        class="mask"
+        @click.stop="stopPlay"
+        v-show="setting.play"
+      ></div>
+      <div class="talk-wrapper">
+        <transition name="left">
+          <TalkSelect v-show="data.home" />
+        </transition>
+        <transition name="right">
+          <Talk
+            ref="talkRef"
+            v-if="!data.home"
+          />
+        </transition>
+        <div class="menu">
+          <template v-if="!data.home">
+            <div
+              class="btn"
+              @click="screenshot"
+            >
+              <div class="img">
                 <img src="@/assets/images/save.png" />
               </div>
-              <div
-                class="icon"
-                style="width: 30px; height: 30px"
-                @click="autoPlay"
-              >
+              <span>保存截图</span>
+            </div>
+            <div
+              class="btn"
+              @click="autoPlay"
+            >
+              <div class="img">
                 <img src="@/assets/images/play.png" />
               </div>
-              <div class="sep"></div>
+              <span>自动播放</span>
             </div>
-            <a class="icon" href="/" target="_blank">
-              <img src="@/assets/images/commander.png" />
-            </a>
+          </template>
+        </div>
+      </div>
+      <transition name="slide">
+        <div class="menu-wrapper">
+          <ShipSelect
+            class="select"
+            :show-close="false"
+          />
+          <transition name="slide">
+            <div
+              class="menu-mask"
+              v-show="data.home || setting.play"
+            ></div>
+          </transition>
+          <div class="link">
             <a
-              class="icon"
-              style="
-                border-radius: 50%;
-                width: 30px;
-                height: 30px;
-                margin: 0 3px;
-              "
+              class="btn"
               href="https://github.com/blacktunes/juus-maker"
               target="_blank"
             >
-              <img src="@/assets/images/github.png" />
+              Github
             </a>
+            <span>·</span>
             <a
-              class="icon"
+              class="btn"
               href="https://space.bilibili.com/1384118"
               target="_blank"
             >
-              <img src="@/assets/images/bilibili.png" />
+              Bilibili
+            </a>
+            <span>·</span>
+            <a
+              class="btn"
+              href="/"
+              target="_blank"
+            >
+              JUUs
             </a>
           </div>
         </div>
@@ -105,11 +128,12 @@ onMounted(() => {
     align-items center
     position absolute
     width 100%
-    height calc(100% - 60px)
+    height calc(100% - 30px)
     color #000
     font-size 20px
     font-weight bold
-    background rgba(245, 245, 245, 0.6)
+    background rgba(255, 255, 255, 0.6)
+    backdrop-filter blur(5px)
     user-select none
 
   .menu-wrapper
@@ -126,39 +150,55 @@ onMounted(() => {
       height 0
       background #f6fbff
 
-    .menu
+    .link
       display flex
+      height 30px
+      width 100%
       align-items center
       justify-content center
-      height 40px
-      padding 10px 5px
-      background #eee
+      background #ddd
 
-      .talk-menu
-        display flex
-        align-items center
-        justify-content center
+      a, span
+        color #666
+        font-size 16px
+        user-select none
 
-        .sep
-          height 20px
-          border 1px solid #bbb
-          margin 0 5px 0 6px
+      a
+        text-decoration none
 
-      .icon
-        display flex
-        width 35px
-        height 35px
-        cursor pointer
-
-        img
-          width 100%
+      span
+        margin 0 10px
 
   .talk-wrapper
     display flex
     flex-direction column
     max-width 100vw
-    min-height 100vh
+    min-height calc(100vh - 30px)
     background #eff7ff
+
+    .menu
+      display flex
+      justify-content flex-end
+      align-items center
+      height 30px
+      width 100%
+      background #ddd
+
+      .btn
+        display flex
+        align-items center
+        color #666
+        font-size 12px
+        margin-right 10px
+        user-select none
+        cursor pointer
+
+        .img
+          width 25px
+          height 25px
+
+          img
+            width 100%
 
 @media only screen and (min-width 400px)
   .talk-wrapper

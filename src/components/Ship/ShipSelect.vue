@@ -320,7 +320,7 @@ item()
   align-items center
   box-sizing border-box
   align-items center
-  padding 10px 15px 10px 10px
+  padding 10px
   margin 5px
   user-select none
   border 1px solid #ddd
@@ -404,32 +404,6 @@ item()
 
         &:hover
           opacity 1
-
-    .custom
-      height 70px
-      item()
-
-      input
-        width 130px
-        height 40px
-        padding 0 5px
-        box-sizing border-box
-        border-radius 10px 0 0 10px
-        font-size 22px
-
-      .custom-btn
-        display flex
-        justify-content center
-        align-items center
-        width 40px
-        height 40px
-        border 2px solid #ddd
-        border-left none
-        box-sizing border-box
-        cursor pointer
-
-        &:hover
-          background rgb(240, 240, 240)
 
   .search
     display flex

@@ -1,15 +1,24 @@
 <template>
-  <div>
+  <div style="flex: 1">
     <div class="title">
       <div class="user">
-        <div class="avatar" @click="setAvatar($event)">
+        <div
+          class="avatar"
+          @click="setAvatar($event)"
+        >
           <img :src="data.name.avatar" />
         </div>
-        <span contenteditable @input="nameChange($event)">
+        <span
+          contenteditable
+          @input="nameChange($event)"
+        >
           {{ data.name.name }}
         </span>
       </div>
-      <div style="cursor: pointer" @click="addTalk">
+      <div
+        style="cursor: pointer"
+        @click="addTalk"
+      >
         <svg
           style="height: 30px"
           viewBox="0 0 1024 1024"
@@ -33,8 +42,14 @@
         :key="`talk-${index}`"
         @click="showTalk(index)"
       >
-        <template v-for="(avatarList, key) in [getAvatar(item)]" :key="key">
-          <div v-if="avatarList.size === 2" class="talk-avatar">
+        <template
+          v-for="(avatarList, key) in [getAvatar(item)]"
+          :key="key"
+        >
+          <div
+            v-if="avatarList.size === 2"
+            class="talk-avatar"
+          >
             <img :src="[...avatarList.values()][1]" />
           </div>
           <div
@@ -55,7 +70,12 @@
           <div class="talk-title">{{ item.title }}</div>
           <div class="talk-last">{{ getLastText(item) }}</div>
         </div>
-        <div class="del" @click.stop="delTalk(item.time)">×</div>
+        <div
+          class="del"
+          @click.stop="delTalk(item.time)"
+        >
+          ×
+        </div>
       </div>
     </div>
   </div>
@@ -89,7 +109,9 @@ const getLastText = (item: TalkData) => {
     return '无历史消息'
   }
   const img = item.list[item.list.length - 1].img
-  return `${item.list[item.list.length - 1].name}: ${img ? '[图片]' : item.list[item.list.length - 1].text}`
+  return `${item.list[item.list.length - 1].name}: ${
+    img ? '[图片]' : item.list[item.list.length - 1].text
+  }`
 }
 
 const nameChange = (e: Event) => {
@@ -105,8 +127,8 @@ const setAvatar = (e: Event) => {
     if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
-      file.onload = e => {
-        data.name.avatar = e.target?.result as string || ''
+      file.onload = (e) => {
+        data.name.avatar = (e.target?.result as string) || ''
       }
     }
   }
@@ -120,7 +142,7 @@ const addTalk = () => {
 }
 
 const delTalk = (time: number) => {
-  const index = data.list.findIndex(item => item.time === time)
+  const index = data.list.findIndex((item) => item.time === time)
   if (index !== -1) {
     data.list.splice(index, 1)
   }

@@ -26,6 +26,7 @@
         :component-data="{ name: 'list', type: 'transition' }"
         v-model="talkList"
         :item-key="(item: ReplyItem) => `comment-${talkList.indexOf(item)}`"
+        delay="50"
       >
         <template #item="{ element, index }">
           <div
@@ -278,12 +279,6 @@ bottomBar()
   background #eee
 
 .talk-wrapper
-  display flex
-  flex-direction column
-  max-width 100vw
-  min-height 100vh
-  background #eff7ff
-
   .title
     display flex
     justify-content flex-start
