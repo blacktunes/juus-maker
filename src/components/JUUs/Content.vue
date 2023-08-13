@@ -45,6 +45,7 @@
         :item-key="
           (item: JUUsComment) => `comment-${juusList.indexOf(item)}`
         "
+        delay="50"
       >
         <template
           #item="{ element, index }: { element: JUUsComment, index: number }"
@@ -176,8 +177,8 @@ defineProps(['screenshot'])
 
 const tempList = ref<JUUsComment[]>([])
 const juusList = computed({
-  get: () => setting.play ? tempList.value : data.list[data.index].comment,
-  set: (val) => {
+  get: () => (setting.play ? tempList.value : data.list[data.index].comment),
+  set: val => {
     if (!setting.play) {
       data.list[data.index].comment = val
     }
@@ -217,8 +218,8 @@ const addReply = (index: number, e: Event) => {
     text: input.text || '谢谢你，碧蓝航线'
   })
   nextTick(() => {
-    const temp =
-      (e.target as HTMLElement)?.parentElement?.parentElement?.parentElement?.nextElementSibling
+    const temp = (e.target as HTMLElement)?.parentElement?.parentElement
+      ?.parentElement?.nextElementSibling
     if (temp && listDom.value && dom.value) {
       const top = temp
         ? (temp as HTMLElement).offsetTop - 640 + 24
@@ -239,11 +240,20 @@ const juusChange = (key: 'name' | 'text', e: Event) => {
 }
 
 const commentChange = (key: 'name' | 'text', index: number, e: Event) => {
-  data.list[data.index].comment[index][key] = (e.target as HTMLInputElement).innerText
+  data.list[data.index].comment[index][key] = (
+    e.target as HTMLInputElement
+  ).innerText
 }
 
-const replyChange = (key: 'name' | 'text', comment: number, index: number, e: Event) => {
-  data.list[data.index].comment[comment].reply[index][key] = (e.target as HTMLInputElement).innerText
+const replyChange = (
+  key: 'name' | 'text',
+  comment: number,
+  index: number,
+  e: Event
+) => {
+  data.list[data.index].comment[comment].reply[index][key] = (
+    e.target as HTMLInputElement
+  ).innerText
 }
 
 interface AvatarClick {

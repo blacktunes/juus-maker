@@ -15,27 +15,30 @@
         <transition name="fade">
           <JUUs v-show="!data.home" />
         </transition>
+        <div class="link">
+          <a
+            class="icon"
+            href="https://github.com/blacktunes/juus-maker"
+            target="_blank"
+          >
+            Github
+          </a>
+          <span>·</span>
+          <a
+            class="icon"
+            href="https://space.bilibili.com/1384118"
+            target="_blank"
+          >
+            Bilibili
+          </a>
+          <span>·</span>
+          <a class="icon" href="/talk" target="_blank">
+            舰娘聊天
+          </a>
+        </div>
       </div>
     </div>
   </transition>
-  <div class="info">
-    <a
-      class="icon"
-      href="https://github.com/blacktunes/juus-maker"
-      target="_blank"
-    >
-      <img src="@/assets/images/github.png" />
-    </a>
-    <a class="icon" href="https://space.bilibili.com/1384118" target="_blank">
-      <img src="@/assets/images/bilibili.png" />
-    </a>
-    <a class="icon" href="/talk" target="_blank">
-      <img src="@/assets/images/commander.png" />
-    </a>
-    <div class="tip">
-      <img src="@/assets/images/info.png" />
-    </div>
-  </div>
   <transition name="fade">
     <div
       class="horizontal"
@@ -60,28 +63,26 @@ import JUUsSelect from './JUUsSelect.vue'
 import JUUs from './JUUs.vue'
 import data, { getDB } from '@/store/juus'
 
+// 计算窗口尺寸
 const width = 1280
 const height = 720
+const bottom = 50
 const scale = ref(1)
 const realWidth = computed(() => `${width * scale.value}px`)
-const realHeight = computed(() => `${height * scale.value}px`)
-const infoScale = computed(() => `scale(${Math.min(1, h.value)}) translateY(-115px)`)
-const infoHoverScale = computed(() => `scale(${Math.min(1, h.value)}) translateY(0)`)
-
-const h = ref(1)
-const v = ref(1)
-const windowWidth = ref(width)
-
-const setSize = () => {
-  windowWidth.value = window.innerWidth
-  h.value = window.innerWidth / width
-  v.value = window.innerHeight / height
-  scale.value = Math.min(h.value, v.value)
-}
-setSize()
+const realHeight = computed(() => `${(height + bottom) * scale.value}px`)
 
 const horizontalTip = ref(true)
-const shouldHorizontal = computed(() => windowWidth.value <= 550 && v.value > h.value)
+const shouldHorizontal = ref(false)
+
+const setSize = () => {
+  shouldHorizontal.value =
+    window.innerWidth <= 550 && window.innerWidth < window.innerHeight
+  scale.value = Math.min(
+    window.innerWidth / width,
+    window.innerHeight / (height + bottom)
+  )
+}
+setSize()
 
 window.onresize = () => {
   setSize()
@@ -114,52 +115,23 @@ onMounted(() => {
     align-items center
     transform-origin left top
 
-.info
-  z-index 999
-  top 0
-  right 0
+.link
   position fixed
+  bottom -30px
   display flex
-  flex-direction column
-  align-items center
+  width 100%
   justify-content center
-  width 35px
-  background #fff
-  border-bottom-left-radius 10px
-  padding 5px 5px 0 5px
-  border 1px solid #ddd
-  border-top none
-  border-right none
-  transition all 0.3s
-  transform v-bind(infoScale)
-  transform-origin top right
-  user-select none
 
-  &:hover
-    padding 5px
-    transform v-bind(infoHoverScale)
+  a, span
+    color #666
+    font-size 20px
+    user-select none
 
-    .tip
-      opacity 0
-      margin-top 0
-      height 0
+  a
+    text-decoration none
 
-  .icon
-    display flex
-    width 100%
-
-    img
-      width 100%
-
-  .tip
-    overflow hidden
-    opacity 1
-    margin-top 5px
-    height 35px
-    transition all 0.3s
-
-    img
-      height 100%
+  span
+    margin 0 10px
 
 .horizontal
   position fixed
