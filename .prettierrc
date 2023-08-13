@@ -1,7 +1,0 @@
-{
-  "semi": false,
-  "singleQuote": true,
-  "prettier.printWidth": 120,
-  "trailingComma": "none",
-  "arrowParens": "avoid"
-}

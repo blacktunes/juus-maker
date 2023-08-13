@@ -62,13 +62,13 @@
           <img src="@/assets/images/play.png" />
         </div>
       </div>
-      <transition name="fade">
-        <div v-show="!setting.screenshot" class="back" @click="back">
-          <img src="@/assets/images/back.png" />
-          <span>返回</span>
-        </div>
-      </transition>
     </div>
+    <transition name="fade">
+      <div v-show="!setting.screenshot" class="back" @click="back">
+        <img src="@/assets/images/back.png" />
+        <span>返回</span>
+      </div>
+    </transition>
     <transition name="fade">
       <ShipSelect v-show="select.show" class="select" />
     </transition>
@@ -93,7 +93,7 @@ const changeBg = () => {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = e => {
-        data.list[data.index].bg = e.target?.result as string || ''
+        data.list[data.index].bg = (e.target?.result as string) || ''
       }
     }
   }
@@ -109,7 +109,7 @@ const changeImg = () => {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = e => {
-        data.list[data.index].img = e.target?.result as string || ''
+        data.list[data.index].img = (e.target?.result as string) || ''
       }
     }
   }

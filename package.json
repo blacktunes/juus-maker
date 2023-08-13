@@ -35,6 +35,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "^8.0.3",
     "fs-extra": "^11.0.0",
+    "prettier-plugin-stylus-supremacy": "^1.0.4",
     "puppeteer": "^19.3.0",
     "stylus": "^0.55.0",
     "stylus-loader": "^6.1.0",

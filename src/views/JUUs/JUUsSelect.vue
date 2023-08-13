@@ -49,9 +49,16 @@
 import data, { defaultItem } from '@/store/juus'
 import { computed } from '@vue/runtime-core'
 
-const bg = computed(() => data.index >= 0 && data.list?.[data.index]?.bg ? data.list[data.index].bg : data.bg)
+const bg = computed(() =>
+  data.index >= 0 && data.list?.[data.index]?.bg
+    ? data.list[data.index].bg
+    : data.bg
+)
 
-const getLikeImg = (flag: boolean) => flag ? require('@/assets/images/like_2.png') : require('@/assets/images/like.png')
+const getLikeImg = (flag: boolean) =>
+  flag
+    ? require('@/assets/images/like_2.png')
+    : require('@/assets/images/like.png')
 
 const showJUUs = (index: number) => {
   data.index = index
@@ -64,7 +71,10 @@ const addJUUs = () => {
 }
 
 const delJUUs = (index: number) => {
-  data.list.splice(index, 1)
+  const flag = confirm('是否删除该JUUs')
+  if (flag) {
+    data.list.splice(index, 1)
+  }
 }
 </script>
 
@@ -99,6 +109,7 @@ const delJUUs = (index: number) => {
     overflow hidden
     width 1050px
     height 550px
+    backdrop-filter blur(30px)
     background rgba(200, 200, 200, 0.5)
     box-shadow 3px 3px 5px rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0, 0, 0, 0.5)
     border-radius 5px
@@ -166,8 +177,8 @@ const delJUUs = (index: number) => {
           .avatar
             position relative
             cursor pointer
-            width 70px
-            height 70px
+            width 65px
+            height 65px
 
             div
               box-sizing border-box
@@ -193,8 +204,11 @@ const delJUUs = (index: number) => {
             text-align center
 
       .img
-        width 80px
+        width 70px
         margin auto 20px
+        display flex
+        align-items center
+        justify-content center
 
         img
           width 100%

@@ -7,74 +7,33 @@
           <span>{{ avatarData.key }} /</span>
           <input v-model="avatarData.name" />
         </div>
-        <div v-if="showClose" class="close" @click="close">×</div>
-      </div>
-      <template v-if="customInput.show">
-        <div class="item" style="cursor: pointer" @click.stop="createCustom">
-          <svg
-            style="height: 30px"
-            viewBox="0 0 1024 1024"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            width="40"
-            height="40"
-          >
-            <path
-              d="M512 832a32 32 0 0 0 32-32v-256h256a32 32 0 0 0 0-64h-256V224a32 32 0 0 0-64 0v256H224a32 32 0 0 0 0 64h256v256a32 32 0 0 0 32 32"
-              fill="#8a8a8a"
-            ></path>
-          </svg>
+        <div
+          v-if="showClose"
+          class="close"
+          @click="close"
+        >
+          ×
         </div>
-      </template>
-      <transition name="horizontal-list">
-        <template v-if="!customInput.show">
-          <div class="custom">
-            <Avatar
-              :src="customInput.avatar"
-              @click.stop="createCustom"
-              style="cursor: pointer"
-            />
-            <input
-              type="text"
-              v-model="customInput.key"
-              ref="customRef"
-              @keydown.enter="addCustom"
-            />
-            <div class="custom-btn" @click.stop="cancalCustom">
-              <svg
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-              >
-                <path
-                  d="M872.96 810.666667a36.977778 36.977778 0 0 1 3.697778 55.182222 40.106667 40.106667 0 0 1-55.466667 3.697778l-3.697778-3.697778-95.857777-95.857778-117.76-118.044444A36.977778 36.977778 0 0 1 600.177778 597.333333a39.822222 39.822222 0 0 1 54.044444-4.266666l3.697778 3.697777 213.902222 213.902223z m0-604.728889l-7.395556 7.395555L209.351111 865.848889a44.942222 44.942222 0 0 1-58.88-3.697778 39.253333 39.253333 0 0 1-3.697778-51.484444l3.697778-3.697778L455.111111 504.604444 165.262222 213.333333a35.555556 35.555556 0 0 1-3.697778-51.484444l3.697778-3.697778a39.253333 39.253333 0 0 1 51.484445-3.697778l3.697777 3.697778L512 449.422222 806.4 154.453333a45.226667 45.226667 0 0 1 59.164444 3.697778c11.093333 14.791111 22.186667 33.28 7.395556 47.786667z"
-                  fill="#999999"
-                ></path>
-              </svg>
-            </div>
-            <div
-              class="custom-btn"
-              style="border-radius: 0 10px 10px 0"
-              @click.stop="addCustom"
-            >
-              <svg
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                width="34"
-                height="34"
-              >
-                <path
-                  d="M878.933333 282.737778a53.475556 53.475556 0 0 0-69.973333 0L398.222222 641.706667l-162.133333-161.848889a52.906667 52.906667 0 0 0-69.973333 0 52.906667 52.906667 0 0 0 0 69.973333l197.12 197.12a53.191111 53.191111 0 0 0 69.973333 0L878.933333 352.711111a52.906667 52.906667 0 0 0 0-69.973333z"
-                  fill="#999999"
-                ></path>
-              </svg>
-            </div>
-          </div>
-        </template>
-      </transition>
+      </div>
+      <div
+        class="item"
+        style="cursor: pointer"
+        @click.stop="createCustom"
+      >
+        <svg
+          style="height: 30px"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+        >
+          <path
+            d="M512 832a32 32 0 0 0 32-32v-256h256a32 32 0 0 0 0-64h-256V224a32 32 0 0 0-64 0v256H224a32 32 0 0 0 0 64h256v256a32 32 0 0 0 32 32"
+            fill="#8a8a8a"
+          ></path>
+        </svg>
+      </div>
       <div
         class="item"
         :class="{ highlight: player.key === avatarData.key }"
@@ -94,7 +53,10 @@
         :class="{ highlight: item.key === avatarData.key }"
         @click="change(item.key)"
       >
-        <Avatar :src="item.avatar" :level="item.data.param2" />
+        <Avatar
+          :src="item.avatar"
+          :level="item.data.param2"
+        />
         <div>
           <div class="name">{{ item.key }}</div>
           <div class="alias">{{ item.name || item.alias || item.key }}</div>
@@ -112,11 +74,24 @@
       <ShipFilter v-show="filter.show" />
     </transition>
     <div class="search">
-      <input v-model="searchText" placeholder="Search" @keydown.esc="clear" />
+      <input
+        v-model="searchText"
+        placeholder="Search"
+        @keydown.esc="clear"
+      />
       <transition name="fade">
-        <div class="clear" @click="clear" v-show="searchText">×</div>
+        <div
+          class="clear"
+          @click="clear"
+          v-show="searchText"
+        >
+          ×
+        </div>
       </transition>
-      <div class="filter" @click="onFilterClick">
+      <div
+        class="filter"
+        @click="onFilterClick"
+      >
         <svg
           viewBox="0 0 1025 1024"
           version="1.1"
@@ -150,7 +125,7 @@ import input from '@/store/input'
 import juus from '@/store/juus'
 import { filter, select } from '@/store/select'
 import talk from '@/store/talk'
-import { computed, nextTick, reactive, ref } from 'vue'
+import { computed, ref } from 'vue'
 import Avatar from '../common/Avatar2.vue'
 import ShipFilter from './ShipFilter.vue'
 
@@ -174,8 +149,13 @@ const showData = computed(() => {
   const temp: ShipData[] = []
   let list = [...custom.value, ...ship]
 
-  if (filter.param1.size > 0 || filter.param2.size > 0 || filter.param3.size > 0 || filter.param4.size > 0) {
-    list = list.filter(item => {
+  if (
+    filter.param1.size > 0 ||
+    filter.param2.size > 0 ||
+    filter.param3.size > 0 ||
+    filter.param4.size > 0
+  ) {
+    list = list.filter((item) => {
       const flag = [false, false, false, false]
 
       for (let i = 0; i < 4; i++) {
@@ -212,15 +192,15 @@ const showData = computed(() => {
 
     if (!juus.home) {
       used.push(juus.list[juus.index].juus.key)
-      juus.list?.[juus.index].comment.forEach(comment => {
+      juus.list?.[juus.index].comment.forEach((comment) => {
         if (!used.includes(comment.key)) used.push(comment.key)
-        comment.reply.forEach(reply => {
+        comment.reply.forEach((reply) => {
           if (!used.includes(reply.key)) used.push(reply.key)
         })
       })
     }
     if (!talk.home) {
-      talk.list?.[talk.index]?.list.forEach(comment => {
+      talk.list?.[talk.index]?.list.forEach((comment) => {
         if (!used.includes(comment.key)) used.push(comment.key)
       })
     }
@@ -233,7 +213,7 @@ const showData = computed(() => {
       }
     }
     for (const i in list) {
-      if (temp.findIndex(item => item.key === list[i].key) === -1) {
+      if (temp.findIndex((item) => item.key === list[i].key) === -1) {
         temp.push(list[i])
       }
     }
@@ -272,14 +252,6 @@ const close = () => {
   emit('close')
 }
 
-const customRef = ref<HTMLInputElement | null>(null)
-
-const customInput = reactive({
-  show: true,
-  avatar: '',
-  key: ''
-})
-
 const createCustom = () => {
   const input = document.createElement('input')
   input.type = 'file'
@@ -288,48 +260,28 @@ const createCustom = () => {
     if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
-      file.onload = e => {
-        customInput.avatar = e.target?.result as string || ''
-        customInput.show = false
-        nextTick(() => {
-          if (customRef.value) {
-            customRef.value.focus()
-          }
-        })
+      file.onload = (e) => {
+        const avatar = (e.target?.result as string) || ''
+        const key = prompt('请输入角色昵称') || ''
+        addCustom(avatar, key)
       }
     }
   }
   input.click()
 }
 
-const cancalCustom = () => {
-  customInput.show = true
-}
-
-const delShip = (key: string) => {
-  const index = custom.value.findIndex(item => item.key === key)
-  if (index !== -1) {
-    custom.value.splice(index, 1)
-  }
-}
-
-const addCustom = () => {
-  if (!customInput.key) {
+const addCustom = (avatar: string, key: string) => {
+  if (key.length < 1) {
     console.warn('key不能为空')
     return
   }
 
-  if (ship.findIndex(item => item.key === customInput.key) !== -1) {
-    console.warn('key已存在')
-    return
-  }
-
-  const index = custom.value.findIndex(item => item.key === customInput.key)
+  const index = custom.value.findIndex((item) => item.key === key)
 
   if (index === -1) {
     custom.value.unshift({
-      avatar: customInput.avatar,
-      key: customInput.key,
+      avatar: avatar,
+      key: key,
       alias: '',
       name: '',
       data: {
@@ -340,18 +292,26 @@ const addCustom = () => {
       }
     })
   } else {
-    custom.value[index].avatar = customInput.avatar
-    custom.value[index].key = customInput.key
+    const flag = confirm('该角色已存在，是否覆盖？')
+    if (!flag) return
+
+    custom.value[index].avatar = avatar
+    custom.value[index].key = key
   }
-  customInput.show = true
-  customInput.key = ''
-  customInput.avatar = ''
+}
+
+const delShip = (key: string) => {
+  const flag = confirm('是否删除该角色')
+  if (!flag) return
+  const index = custom.value.findIndex((item) => item.key === key)
+  if (index !== -1) {
+    custom.value.splice(index, 1)
+  }
 }
 
 const onFilterClick = () => {
   filter.show = !filter.show
 }
-
 </script>
 
 <style lang="stylus" scoped>
@@ -431,11 +391,16 @@ item()
         color #888
         opacity 0
         position absolute
-        right 5px
+        right 0
         top 0
         cursor pointer
         user-select none
         transition opacity 0.25s
+        width 15px
+        height 15px
+        display flex
+        justify-content center
+        align-items center
 
         &:hover
           opacity 1
@@ -545,5 +510,5 @@ item()
 
   .name, .alias
     color #fff !important
-    text-shadow 1px 1px 3px rgba(0,0,0,0.5)
+    text-shadow 1px 1px 3px rgba(0, 0, 0, 0.5)
 </style>
