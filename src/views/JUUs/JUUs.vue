@@ -1,12 +1,26 @@
 <template>
-  <div class="juus" ref="juus">
-    <div class="mask" @click.stop="stopPlay" v-show="setting.play"></div>
-    <div class="bg" @click="changeBg" :title="tip.bg">
+  <div
+    class="juus"
+    ref="juus"
+  >
+    <div
+      class="mask"
+      @click.stop="stopPlay"
+      v-show="setting.play"
+    ></div>
+    <div
+      class="bg"
+      @click="changeBg"
+      :title="tip.bg"
+    >
       <img :src="data.list[data.index].bg" />
     </div>
     <div class="juus-wrapper">
       <div class="image">
-        <img src="@/assets/images/logo.jpg" class="logo" />
+        <img
+          src="@/assets/images/logo.jpg"
+          class="logo"
+        />
         <div class="img-wrapper">
           <img
             :src="data.list[data.index].img"
@@ -16,19 +30,36 @@
           />
         </div>
         <div class="icon-left">
-          <img :src="likeImg" class="icon like" @click="setLike" />
-          <img src="@/assets/images/message.png" class="icon" />
+          <img
+            :src="likeImg"
+            class="icon like"
+            @click="setLike"
+          />
+          <img
+            src="@/assets/images/message.png"
+            class="icon"
+          />
         </div>
         <div class="icon-right">
-          <img src="@/assets/images/纸飞机.png" class="icon" />
+          <img
+            src="@/assets/images/纸飞机.png"
+            class="icon"
+          />
         </div>
         <div class="text text-left">
-          <span contenteditable @keydown.enter.prevent="">
+          <span
+            contenteditable
+            @keydown.enter.prevent=""
+          >
             {{ data.list[data.index].like.text }}
           </span>
           次赞
         </div>
-        <div class="text text-right" contenteditable @keydown.enter.prevent="">
+        <div
+          class="text text-right"
+          contenteditable
+          @keydown.enter.prevent=""
+        >
           {{ data.list[data.index].time }}
         </div>
         <div
@@ -58,27 +89,29 @@
         >
           <img src="@/assets/images/save.png" />
         </div>
-        <div class="menu-icon" style="margin-top: 6px" @click="autoPlay">
+        <div
+          class="menu-icon"
+          style="margin-top: 6px"
+          @click="autoPlay"
+        >
           <img src="@/assets/images/play.png" />
         </div>
       </div>
     </div>
-    <transition name="fade">
-      <div v-show="!setting.screenshot" class="back" @click="back">
-        <img src="@/assets/images/back.png" />
-        <span>返回</span>
-      </div>
-    </transition>
-    <transition name="fade">
-      <ShipSelect v-show="select.show" class="select" />
-    </transition>
+    <div
+      v-show="!setting.screenshot"
+      class="back"
+      @click="back"
+    >
+      <img src="@/assets/images/back.png" />
+      <span>返回</span>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
 import Content from '@/components/JUUs/Content.vue'
-import ShipSelect from '@/components/Ship/ShipSelect.vue'
 import data from '@/store/juus'
 import { tip, setting } from '@/store/setting'
 import { select } from '@/store/select'
@@ -92,7 +125,7 @@ const changeBg = () => {
     if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
-      file.onload = e => {
+      file.onload = (e) => {
         data.list[data.index].bg = (e.target?.result as string) || ''
       }
     }
@@ -108,7 +141,7 @@ const changeImg = () => {
     if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
-      file.onload = e => {
+      file.onload = (e) => {
         data.list[data.index].img = (e.target?.result as string) || ''
       }
     }
@@ -135,11 +168,7 @@ const content = ref<InstanceType<typeof Content> | null>(null)
 const screenshot = (flag?: boolean) => {
   if (flag) {
     if (content.value?.dom) {
-      _screenshot(
-        content.value.dom,
-        content.value.dom.offsetWidth,
-        content.value.dom.scrollHeight
-      )
+      _screenshot(content.value.dom, content.value.dom.offsetWidth, content.value.dom.scrollHeight)
     }
   } else {
     if (juus.value) _screenshot(juus.value)
