@@ -3,6 +3,7 @@
     class="ship-filter"
     @click.stop="hide"
   >
+    <div class="top"></div>
     <div
       class="filter-wrapper"
       @click.stop
@@ -154,19 +155,24 @@ item()
   width 100%
   left 0
   height 100%
+  box-sizing border-box
+  display flex
+  flex-direction column
+
+  .top
+    flex-shrink 0
+    height 100px
 
   .filter-wrapper
-    position absolute
-    top 100px
-    right 10px
-    left 10px
-    height 445px
+    flex 1
+    box-sizing border-box
     background rgba(255, 255, 255, 0.9)
     user-select none
     color #fff
     font-weight bold
+    height 435px
     padding 10px
-    margin 5px
+    margin 5px 15px
     border 1px solid #ddd
     border-radius 10px
 
@@ -227,16 +233,12 @@ item()
     display flex
     align-items center
     justify-content center
-    position absolute
-    right 10px
-    bottom 5px
-    left 10px
-    height 50px
     background #fff
     color #fff
     font-weight bold
+    height 55px
     padding 10px
-    margin 5px
+    margin 5px 15px
     border 1px solid #ddd
     border-radius 10px
 

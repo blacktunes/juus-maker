@@ -1,9 +1,9 @@
 <template>
   <div class="select-view">
     <div class="fixed">
-      <Avatar :src="avatarData.avatar" />
+      <Avatar class="avatar" :src="avatarData.avatar" />
       <div class="name">
-        <span>{{ avatarData.key }} /</span>
+        <span>{{ avatarData.key }}</span>
         <input v-model="avatarData.name" />
       </div>
       <div
@@ -340,8 +340,8 @@ item()
       flex-shrink 0
 
 .select-view
-  position relative
   z-index 99
+  position relative
   box-sizing border-box
   display flex
   flex-direction column
@@ -351,6 +351,7 @@ item()
   color #444
 
   .scroll-box
+    flex 1
     width 100%
     height 465px
     item()
@@ -458,18 +459,32 @@ item()
       cursor pointer
 
 .fixed
+  overflow hidden
   z-index 100
   flex-shrink 0
   width 100%
   height 80px
   item()
 
+  .avatar
+    margin-left 15px
+
+  .name
+    display flex
+    flex-direction column
+    align-items flex-start
+
+    span
+      font-size 14px
+      margin-left 5px
+      color #999
+
   input
     font-size 20px
     font-weight bolder
-    padding 5px 10px
+    padding 0 5px
     border none
-    width 240px
+    width 90%
     color #444
     overflow hidden
     text-overflow ellipsis

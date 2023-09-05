@@ -25,6 +25,7 @@ const outline = {
 
 <style lang="stylus" scoped>
 .avatar-2
+  flex-shrink 0
   position relative
   margin-right 10px
   width 45px
