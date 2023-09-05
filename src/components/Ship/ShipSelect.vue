@@ -1,72 +1,74 @@
 <template>
   <div class="select-view">
-    <div class="scroll-view">
-      <div class="fixed">
-        <Avatar :src="avatarData.avatar" />
-        <div class="name">
-          <span>{{ avatarData.key }} /</span>
-          <input v-model="avatarData.name" />
+    <div class="fixed">
+      <Avatar :src="avatarData.avatar" />
+      <div class="name">
+        <span>{{ avatarData.key }} /</span>
+        <input v-model="avatarData.name" />
+      </div>
+      <div
+        v-if="showClose"
+        class="close"
+        @click="close"
+      >
+        ×
+      </div>
+    </div>
+    <div class="scroll-box">
+      <div class="scroll-view">
+        <div
+          class="item"
+          style="cursor: pointer"
+          @click.stop="createCustom"
+        >
+          <svg
+            style="height: 30px"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+          >
+            <path
+              d="M512 832a32 32 0 0 0 32-32v-256h256a32 32 0 0 0 0-64h-256V224a32 32 0 0 0-64 0v256H224a32 32 0 0 0 0 64h256v256a32 32 0 0 0 32 32"
+              fill="#8a8a8a"
+            ></path>
+          </svg>
         </div>
         <div
-          v-if="showClose"
-          class="close"
-          @click="close"
+          class="item"
+          :class="{ highlight: player.key === avatarData.key }"
+          @click="change(player.key)"
+          key="player"
         >
-          ×
-        </div>
-      </div>
-      <div
-        class="item"
-        style="cursor: pointer"
-        @click.stop="createCustom"
-      >
-        <svg
-          style="height: 30px"
-          viewBox="0 0 1024 1024"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          width="40"
-          height="40"
-        >
-          <path
-            d="M512 832a32 32 0 0 0 32-32v-256h256a32 32 0 0 0 0-64h-256V224a32 32 0 0 0-64 0v256H224a32 32 0 0 0 0 64h256v256a32 32 0 0 0 32 32"
-            fill="#8a8a8a"
-          ></path>
-        </svg>
-      </div>
-      <div
-        class="item"
-        :class="{ highlight: player.key === avatarData.key }"
-        @click="change(player.key)"
-        key="player"
-      >
-        <Avatar :src="player.avatar" />
-        <div>
-          <div class="name">{{ player.key }}</div>
-          <div class="alias">你</div>
-        </div>
-      </div>
-      <div
-        v-for="item in showData"
-        :key="item.key"
-        class="item"
-        :class="{ highlight: item.key === avatarData.key }"
-        @click="change(item.key)"
-      >
-        <Avatar
-          :src="item.avatar"
-          :level="item.data.param2"
-        />
-        <div>
-          <div class="name">{{ item.key }}</div>
-          <div class="alias">{{ item.name || item.alias || item.key }}</div>
+          <Avatar :src="player.avatar" />
+          <div>
+            <div class="name">{{ player.key }}</div>
+            <div class="alias">你</div>
+          </div>
         </div>
         <div
-          class="del-ship"
-          @click.stop="delShip(item.key)"
-          v-if="item.data.param4 === '自定义'"
+          v-for="item in showData"
+          :key="item.key"
+          class="item"
+          :class="{ highlight: item.key === avatarData.key }"
+          @click="change(item.key)"
         >
-          ×
+          <Avatar
+            :src="item.avatar"
+            :level="item.data.param2"
+          />
+          <div>
+            <div class="name">{{ item.key }}</div>
+            <div class="alias">{{ item.name || item.alias || item.key }}</div>
+          </div>
+          <div
+            class="del-ship"
+            @click.stop="delShip(item.key)"
+            v-if="item.data.param4 === '自定义'"
+          >
+            ×
+          </div>
         </div>
       </div>
     </div>
@@ -76,7 +78,7 @@
     <div class="search">
       <input
         v-model="searchText"
-        placeholder="Search"
+        placeholder="请输入舰娘名/昵称"
         @keydown.esc="clear"
       />
       <transition name="fade">
@@ -96,21 +98,21 @@
           viewBox="0 0 1025 1024"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
+          width="20"
+          height="20"
         >
           <path
             d="M1024 0H0v1024h1024V0z"
-            fill="#8a8a8a"
+            fill="#bbb"
             fill-opacity=".01"
           ></path>
           <path
             d="M85.12 106.88a42.24 42.24 0 0 0-42.24 42.24 42.88 42.88 0 0 0 42.24 42.88V106.88zM938.88 192a42.24 42.24 0 0 0 42.24-42.88 41.6 41.6 0 0 0-42.24-42.24V192zM85.12 192h853.76V106.88H85.12V192zM85.12 448a42.88 42.88 0 0 0-42.24 42.88 42.24 42.24 0 0 0 42.24 42.24V448zM320 533.12a42.24 42.24 0 0 0 42.88-42.24A42.88 42.88 0 0 0 320 448v85.12z m-234.88 0H320V448H85.12v85.12zM85.12 789.12a42.88 42.88 0 0 0 0 85.76v-85.76zM320 874.88a42.88 42.88 0 0 0 0-85.76v85.76z m-234.88 0H320v-85.76H85.12v85.76zM672 320A224 224 0 1 0 896 544 224 224 0 0 0 672 320z m0 362.88a138.88 138.88 0 1 1 138.88-138.88 138.88 138.88 0 0 1-138.88 138.88z"
-            fill="#8a8a8a"
+            fill="#bbb"
           ></path>
           <path
             d="M819.84 652.8a42.88 42.88 0 1 0-64 60.16l64-60.16z m88.32 210.56a43.52 43.52 0 0 0 64 0 42.24 42.24 0 0 0 0-60.16l-64 60.16z m-149.12-150.4l149.12 150.4 64-60.16-152.32-150.4-64 60.16z"
-            fill="#8a8a8a"
+            fill="#bbb"
           ></path>
         </svg>
       </div>
@@ -341,95 +343,96 @@ item()
   position relative
   z-index 99
   box-sizing border-box
-  height 100vh
   display flex
   flex-direction column
   background rgba(255, 255, 255, 0.7)
-  padding 20px 10px 0 10px
+  padding 10px 20px 5px 10px
   border-radius 5px 0 0 5px
   color #444
 
-  .scroll-view
-    flex 1
+  .scroll-box
     width 100%
-    overflow-y scroll
-    display flex
-    flex-wrap wrap
-    justify-content flex-start
-    align-content flex-start
+    height 465px
+    item()
 
-    &::-webkit-scrollbar
-      width 5px
-      height 5px
+    .scroll-view
+      overflow-y scroll
+      display flex
+      flex-wrap wrap
+      justify-content flex-start
+      align-content flex-start
+      height 100%
 
-    &::-webkit-scrollbar-track
-      box-shadow inset 0 0 6px rgba(0, 0, 0, 0.4)
-      border-radius 4px
+      &::-webkit-scrollbar
+        width 5px
+        height 5px
 
-    &::-webkit-scrollbar-thumb
-      box-shadow inset 0 0 6px rgba(0, 0, 0, 0.3)
-      border-radius 4px
+      &::-webkit-scrollbar-track
+        box-shadow inset 0 0 6px rgba(0, 0, 0, 0.4)
+        border-radius 4px
 
-    &::-webkit-scrollbar-thumb:active
-      background-color #aaa
+      &::-webkit-scrollbar-thumb
+        box-shadow inset 0 0 6px rgba(0, 0, 0, 0.3)
+        border-radius 4px
 
-    .item
-      position relative
-      height 70px
-      item()
+      &::-webkit-scrollbar-thumb:active
+        background-color #aaa
 
-      &:hover
-        background rgb(240, 240, 240)
-
-        .del-ship
-          opacity 1
-
-      .alias
-        font-size 14px
-
-      .del-ship
-        color #888
-        opacity 0
-        position absolute
-        right 0
-        top 0
-        cursor pointer
-        user-select none
-        transition opacity 0.25s
-        width 15px
-        height 15px
-        display flex
-        justify-content center
-        align-items center
+      .item
+        position relative
+        height 70px
+        item()
 
         &:hover
-          opacity 1
+          background rgb(240, 240, 240)
+
+          .del-ship
+            opacity 1
+
+        .alias
+          font-size 14px
+
+        .del-ship
+          color #888
+          opacity 0
+          position absolute
+          right 0
+          top 0
+          cursor pointer
+          user-select none
+          transition opacity 0.25s
+          width 15px
+          height 15px
+          display flex
+          justify-content center
+          align-items center
+
+          &:hover
+            opacity 1
 
   .search
     display flex
     position relative
-    height 40px
-    padding 10px 10px 10px 5px
-    margin-top 10px
-    border-top 1px solid #aaa
+    width 100%
+    height 50px
+    item()
 
     input
       box-sizing border-box
       width 100%
-      height 40px
+      height 35px
       padding 5px 45px 5px 20px
-      border-radius 5px 0 0 5px
-      border 2px solid #aaa
-      border-right none
+      border-radius 17.5px
+      border 2px solid #ddd
       outline none
-      font-size 20px
-      color #444
+      font-size 16px
+      color #999
 
     .clear
       position absolute
       top 50%
-      right 65px
-      border 2px solid #aaa
+      right 55px
+      border 2px solid #ddd
       border-radius 50%
       outline none
       width 20px
@@ -439,26 +442,24 @@ item()
       user-select none
       cursor pointer
       transform translateY(-50%)
-      color #444
+      color #bbb
 
     .filter
       display flex
       justify-content center
       align-items center
-      height 40px
-      width 50px
+      height 35px
+      width 40px
+      margin-left 5px
       box-sizing border-box
-      border-radius 0 5px 5px 0
-      border 2px solid #aaa
+      border-radius 5px
+      border 2px solid #bbb
       background #fff
       cursor pointer
-      background #fff
 
 .fixed
-  z-index 999
-  position sticky
-  top 0
-  margin-top 0 !important
+  z-index 100
+  flex-shrink 0
   width 100%
   height 80px
   item()

@@ -1,24 +1,51 @@
 <template>
-  <div class="ship-filter" @click.stop="hide">
-    <div class="filter-wrapper" @click.stop>
-      <div v-for="(item, key) in data" :key="key" class="btn-group">
-        <div class="btn-label">{{ item.name }}</div>
-        <div class="btn-list">
-          <div class="btn" @click="resetType(key)">全部</div>
-          <div
-            v-for="name in item.list"
-            :key="name"
-            class="btn"
-            :class="{ highlight: filter[key].has(name) }"
-            @click.stop="addFilter(key, name)"
-          >
-            {{ name }}
+  <div
+    class="ship-filter"
+    @click.stop="hide"
+  >
+    <div
+      class="filter-wrapper"
+      @click.stop
+    >
+      <div class="scroll-view">
+        <div
+          v-for="(item, key) in data"
+          :key="key"
+          class="btn-group"
+        >
+          <div class="btn-label">{{ item.name }}</div>
+          <div class="btn-list">
+            <div
+              class="btn"
+              @click="resetType(key)"
+            >
+              全部
+            </div>
+            <div
+              v-for="name in item.list"
+              :key="name"
+              class="btn"
+              :class="{ highlight: filter[key].has(name) }"
+              @click.stop="addFilter(key, name)"
+            >
+              {{ name }}
+            </div>
           </div>
         </div>
       </div>
-      <div class="btn-group-2">
-        <div class="reset" @click="reset">重置</div>
-        <div class="submit" @click="hide">确定</div>
+    </div>
+    <div class="btn-wrapper">
+      <div
+        class="reset"
+        @click="reset"
+      >
+        重置
+      </div>
+      <div
+        class="submit"
+        @click="hide"
+      >
+        确定
       </div>
     </div>
   </div>
@@ -30,16 +57,7 @@ import { filter } from '@/store/select'
 const data = {
   param4: {
     name: '分类',
-    list: [
-      '改造',
-      '方案',
-      'META',
-      '联动',
-      '特殊',
-      '誓约',
-      '专属兵装',
-      '自定义'
-    ]
+    list: ['改造', '方案', 'META', '联动', '特殊', '誓约', '专属兵装', '自定义']
   },
   param1: {
     name: '类型',
@@ -65,15 +83,7 @@ const data = {
   },
   param2: {
     name: '稀有度',
-    list: [
-      '普通',
-      '稀有',
-      '精锐',
-      '超稀有',
-      '海上传奇',
-      '最高方案',
-      '决战方案'
-    ]
+    list: ['普通', '稀有', '精锐', '超稀有', '海上传奇', '最高方案', '决战方案']
   },
   param3: {
     name: '阵营',
@@ -123,11 +133,20 @@ const reset = () => {
   filter.param4.clear()
 }
 
-const hide = () => { filter.show = false }
-
+const hide = () => {
+  filter.show = false
+}
 </script>
 
 <style lang="stylus" scoped>
+item()
+  padding 10px
+  margin 5px
+  user-select none
+  border 1px solid #ddd
+  border-radius 10px
+  background #fff
+
 .ship-filter
   z-index 99
   position absolute
@@ -135,96 +154,112 @@ const hide = () => { filter.show = false }
   width 100%
   left 0
   height 100%
-  background rgba(0, 0, 0, 0.1)
 
   .filter-wrapper
-    overflow auto
-    max-height calc(100% - 120px)
     position absolute
-    bottom 10px
-    left 15px
-    right 20px
-    height fit-content
-    border-radius 10px 10px 5px 5px
+    top 100px
+    right 10px
+    left 10px
+    height 445px
     background rgba(255, 255, 255, 0.9)
     user-select none
     color #fff
     font-weight bold
+    padding 10px
+    margin 5px
+    border 1px solid #ddd
+    border-radius 10px
 
-    &::-webkit-scrollbar
-      width 0
-      height 0
+    .scroll-view
+      overflow auto
+      height 100%
 
-    .btn-group
-      display flex
-      align-items baseline
-      margin 5px
+      &::-webkit-scrollbar
+        width 0
+        height 0
 
-      .btn-label
-        z-index 0
-        flex-shrink 0
-        position relative
-        width 80px
-        height 30px
-        padding 3px 2px 2px 10px
-        background rgba(83, 112, 178, 0.7)
-
-        &:before
-          z-index -1
-          content ''
-          position absolute
-          height 100%
-          width 100%
-          top -3px
-          left -3px
-          border 1px solid rgba(255, 255, 255, 0.2)
-          box-sizing border-box
-          background rgba(90, 141, 255, 0.5)
-
-      .btn-list
+      .btn-group
         display flex
-        flex-wrap wrap
+        align-items baseline
+        margin 5px
 
-        .btn
-          box-sizing border-box
-          margin 5px
-          color #fff
-          height 35px
-          padding 5px 15px
-          background #7a8b9b
-          border-radius 3px
-          border 1px solid rgba(255, 255, 255, 0.5)
-          cursor pointer
+        .btn-label
+          z-index 0
+          flex-shrink 0
+          position relative
+          width 80px
+          height 30px
+          padding 3px 2px 2px 10px
+          background rgba(83, 112, 178, 0.7)
 
-    .btn-group-2
-      position sticky
-      bottom 0
+          &:before
+            z-index -1
+            content ''
+            position absolute
+            height 100%
+            width 100%
+            top -3px
+            left -3px
+            border 1px solid rgba(255, 255, 255, 0.2)
+            box-sizing border-box
+            background rgba(90, 141, 255, 0.5)
+
+        .btn-list
+          display flex
+          flex-wrap wrap
+          margin-left 20px
+
+          .btn
+            box-sizing border-box
+            margin 5px
+            color #fff
+            text-align center
+            min-width 22%
+            height 35px
+            padding 5px 15px
+            background #7a8b9b
+            border-radius 3px
+            border 1px solid rgba(255, 255, 255, 0.5)
+            cursor pointer
+
+  .btn-wrapper
+    display flex
+    align-items center
+    justify-content center
+    position absolute
+    right 10px
+    bottom 5px
+    left 10px
+    height 30px
+    background #fff
+    color #fff
+    font-weight bold
+    padding 10px
+    margin 5px
+    border 1px solid #ddd
+    border-radius 10px
+
+    .reset, .submit
+      box-sizing border-box
       display flex
-      align-items center
       justify-content center
-      background rgba(230, 230, 230, 0.7)
+      align-items center
+      width 100px
+      height 40px
+      margin 10px 20px
+      border-radius 3px
+      border 1px solid rgba(255, 255, 255, 0.5)
+      font-size 20px
+      font-weight bold
+      cursor pointer
 
-      .reset, .submit
-        box-sizing border-box
-        display flex
-        justify-content center
-        align-items center
-        width 100px
-        height 40px
-        margin 10px 20px
-        border-radius 3px
-        border 1px solid rgba(255, 255, 255, 0.5)
-        font-size 20px
-        font-weight bold
-        cursor pointer
+    .reset
+      background #ce6d64
 
-      .reset
-        background #ce6d64
-
-      .submit
-        background #558ad0
+    .submit
+      background #558ad0
 
 .highlight
-  background #87cefa !important
-  text-shadow 1px 1px 3px rgba(0,0,0,0.5)
+  background #8abdff !important
+  text-shadow 1px 1px 3px rgba(0, 0, 0, 0.5)
 </style>

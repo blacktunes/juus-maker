@@ -25,18 +25,13 @@
               class="btn"
               @click="screenshot"
             >
-              <div class="img">
-                <img src="@/assets/images/save.png" />
-              </div>
               <span>保存截图</span>
             </div>
+            <span>·</span>
             <div
               class="btn"
               @click="autoPlay"
             >
-              <div class="img">
-                <img src="@/assets/images/play.png" />
-              </div>
               <span>自动播放</span>
             </div>
           </template>
@@ -178,27 +173,22 @@ onMounted(() => {
 
     .menu
       display flex
-      justify-content flex-end
+      justify-content center
       align-items center
       height 30px
       width 100%
       background #ddd
+      color #666
 
       .btn
         display flex
         align-items center
-        color #666
         font-size 12px
-        margin-right 10px
         user-select none
         cursor pointer
 
-        .img
-          width 25px
-          height 25px
-
-          img
-            width 100%
+      span
+        margin 0 5px
 
 @media only screen and (min-width 400px)
   .talk-wrapper
