@@ -238,9 +238,8 @@ const showTalk = (index: number) => {
 
     .del
       position absolute
-      right 2px
-      top 50%
-      transform translateY(-50%)
+      top 0
+      right 5px
       color #000
       font-size 20px
       line-height 20px

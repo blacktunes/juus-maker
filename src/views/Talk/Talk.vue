@@ -1,7 +1,13 @@
 <template>
-  <div class="talk-wrapper" ref="dom">
+  <div
+    class="talk-wrapper"
+    ref="dom"
+  >
     <div class="title">
-      <div class="back" @click="back">
+      <div
+        class="back"
+        @click="back"
+      >
         <svg
           style="height: 25px"
           viewBox="0 0 1024 1024"
@@ -16,42 +22,46 @@
           ></path>
         </svg>
       </div>
-      <span class="title-text" contenteditable @input="titleChange($event)">
+      <span
+        class="title-text"
+        contenteditable
+        @input="titleChange($event)"
+      >
         {{ data.list[data.index].title }}
       </span>
     </div>
-    <div class="talk-list" ref="listDom">
+    <div
+      class="talk-list"
+      ref="listDom"
+    >
       <draggable
         tag="transition-group"
         :component-data="{ name: 'list', type: 'transition' }"
         v-model="talkList"
         :item-key="(item: ReplyItem) => `comment-${talkList.indexOf(item)}`"
-        delay="50"
+        animation="100"
+        delay="100"
+        chosen-class="chosen"
       >
         <template #item="{ element, index }">
           <div
             class="item"
             :class="{ right: element.key === '指挥官' }"
-            :style="{
-              padding: element.key === '指挥官' ? '0 20px 0 5px' : ''
-            }"
             @click="avatarClick(4, index)"
+            :style="{
+              paddingTop: index === 0 || element.key !== talkList[index - 1].key ? undefined : '0'
+            }"
           >
             <Avatar
               :highlight="select.type === 4 && select.index === index"
               :src="element.avatar"
-              v-if="
-                element.key !== '指挥官' &&
-                (index === 0 || element.key !== talkList[index - 1].key)
-              "
+              v-if="index === 0 || element.key !== talkList[index - 1].key"
             />
-            <div v-else-if="element.key !== '指挥官'" class="empty"></div>
             <div
-              style="max-width: 85%"
-              :style="{
-                marginLeft: element.key === '指挥官' ? '45px' : ''
-              }"
-            >
+              v-else
+              class="empty"
+            ></div>
+            <div style="max-width: 85%">
               <div
                 class="name"
                 v-if="
@@ -59,16 +69,32 @@
                   (index === 0 || element.key !== talkList[index - 1].key)
                 "
               >
-                <span contenteditable @input="nameChange(index, $event)">
+                <span
+                  contenteditable
+                  @input="nameChange(index, $event)"
+                >
                   {{ element.name }}
                 </span>
               </div>
               <div class="text">
-                <span contenteditable @input="textChange(index, $event)">
+                <span
+                  contenteditable
+                  @input="textChange(index, $event)"
+                >
                   {{ element.text }}
                 </span>
-                <img class="img" v-if="element.img" :src="element.img" @click.stop="imgChange(index)" />
-                <div class="del" @click.stop="delComment(index)">×</div>
+                <img
+                  class="img"
+                  v-if="element.img"
+                  :src="element.img"
+                  @click.stop="imgChange(index)"
+                />
+                <div
+                  class="del"
+                  @click.stop="delComment(index)"
+                >
+                  ×
+                </div>
               </div>
             </div>
           </div>
@@ -76,7 +102,11 @@
       </draggable>
     </div>
     <div class="add">
-      <Avatar :width="40" :src="input.avatar" @click="avatarClick(0)" />
+      <Avatar
+        :width="40"
+        :src="input.avatar"
+        @click="avatarClick(0)"
+      />
       <input
         class="input"
         v-model="input.text"
@@ -109,7 +139,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const tempList = ref<ReplyItem[]>([])
 const talkList = computed({
-  get: () => setting.play ? tempList.value : data.list[data.index].list,
+  get: () => (setting.play ? tempList.value : data.list[data.index].list),
   set: (val) => {
     if (!setting.play) {
       data.list[data.index].list = val
@@ -159,7 +189,7 @@ const addImage = () => {
     if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
-      file.onload = e => {
+      file.onload = (e) => {
         addComment(e.target?.result as string)
       }
     }
@@ -185,7 +215,7 @@ const imgChange = (index: number) => {
     if (input.files?.[0]) {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
-      file.onload = e => {
+      file.onload = (e) => {
         data.list[data.index].list[index].img = e.target?.result as string
         timeUpdate()
       }
@@ -307,10 +337,14 @@ bottomBar()
     padding 10px 0
 
     .item
+      position relative
       box-sizing border-box
       display flex
       width 100%
-      padding 0 10px 0 15px
+      padding 10px 10px 0 10px
+
+      &:hover
+        background rgba(100, 100, 100, 0.1)
 
       .empty
         width 45px
