@@ -82,6 +82,7 @@
 </template>
 
 <script lang="ts" setup>
+import input from '@/store/input'
 import data, { defaultItem } from '@/store/talk'
 import { computed } from 'vue'
 
@@ -115,24 +116,32 @@ const getLastText = (item: TalkData) => {
 }
 
 const nameChange = (e: Event) => {
-  data.name.name = (e.target as HTMLInputElement).innerText
+  const name = (e.target as HTMLInputElement).innerText
+  data.name.name = name
+  if (input.key === '指挥官') {
+    input.name = name
+  }
 }
 
 const setAvatar = (e: Event) => {
   e.stopPropagation()
-  const input = document.createElement('input')
-  input.type = 'file'
-  input.accept = 'image/*'
-  input.onchange = () => {
-    if (input.files?.[0]) {
+  const el = document.createElement('input')
+  el.type = 'file'
+  el.accept = 'image/*'
+  el.onchange = () => {
+    if (el.files?.[0]) {
       const file = new FileReader()
-      file.readAsDataURL(input.files[0])
+      file.readAsDataURL(el.files[0])
       file.onload = (e) => {
-        data.name.avatar = (e.target?.result as string) || ''
+        const avatar = (e.target?.result as string) || ''
+        data.name.avatar = avatar
+        if (input.key === '指挥官') {
+          input.avatar = avatar
+        }
       }
     }
   }
-  input.click()
+  el.click()
 }
 
 const addTalk = () => {

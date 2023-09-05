@@ -66,10 +66,8 @@
             <div style="max-width: 85%">
               <div
                 class="name"
-                v-if="
-                  element.key !== '指挥官' &&
-                  (index === 0 || element.key !== talkList[index - 1].key)
-                "
+                :class="{ 'right-text': element.key === '指挥官' }"
+                v-if="index === 0 || element.key !== talkList[index - 1].key"
               >
                 <span
                   contenteditable
@@ -292,8 +290,8 @@ const stopPlay = () => {
 const reset = () => {
   select.type = 0
   input.key = '指挥官'
-  input.avatar = require('@/assets/images/commander.jpg')
-  input.name = '指挥官'
+  input.avatar = data.name.avatar
+  input.name = data.name.name
 }
 
 let timer: number
@@ -421,6 +419,11 @@ $text-color = #555
       left -20px
       right unset !important
       color #000
+
+.right-text
+  text-align right
+  margin-right 10px
+  margin-left unset !important
 
 .img
   width 100%

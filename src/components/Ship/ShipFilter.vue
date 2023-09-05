@@ -170,7 +170,7 @@ item()
     user-select none
     color #fff
     font-weight bold
-    height 435px
+    height 100px
     padding 10px
     margin 5px 15px
     border 1px solid #ddd

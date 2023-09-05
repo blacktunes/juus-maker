@@ -1,7 +1,10 @@
 <template>
   <div class="select-view">
     <div class="fixed">
-      <Avatar class="avatar" :src="avatarData.avatar" />
+      <Avatar
+        class="avatar"
+        :src="avatarData.avatar"
+      />
       <div class="name">
         <span>{{ avatarData.key }}</span>
         <input v-model="avatarData.name" />
@@ -41,9 +44,9 @@
           @click="change(player.key)"
           key="player"
         >
-          <Avatar :src="player.avatar" />
+          <Avatar :src="defaultUser?.avatar || player.avatar" />
           <div>
-            <div class="name">{{ player.key }}</div>
+            <div class="name">{{ defaultUser?.name || player.key }}</div>
             <div class="alias">你</div>
           </div>
         </div>
@@ -131,12 +134,18 @@ import { computed, ref } from 'vue'
 import Avatar from '../common/Avatar2.vue'
 import ShipFilter from './ShipFilter.vue'
 
-defineProps({
-  showClose: {
-    type: Boolean,
-    default: true
+const props = withDefaults(
+  defineProps<{
+    showClose: boolean
+    defaultUser?: {
+      name: string
+      avatar: string
+    }
+  }>(),
+  {
+    showClose: true
   }
-})
+)
 
 const emit = defineEmits(['close'])
 
@@ -225,7 +234,7 @@ const showData = computed(() => {
 })
 
 const change = (name: string) => {
-  const data = getData(name)
+  const data = getData(name, undefined, props.defaultUser)
   avatarData.value.key = name
   avatarData.value.avatar = data.avatar
   avatarData.value.name = data.name || data.alias || data.key
@@ -353,7 +362,7 @@ item()
   .scroll-box
     flex 1
     width 100%
-    height 465px
+    height 100px
     item()
 
     .scroll-view

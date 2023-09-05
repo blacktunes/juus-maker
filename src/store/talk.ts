@@ -1,5 +1,6 @@
 import { nextTick, reactive, toRaw, watch } from 'vue'
 import { setting } from './setting'
+import input from './input'
 
 export const defaultItem: Omit<TalkData, 'time'> = {
   title: '谢谢你，碧蓝航线',
@@ -69,31 +70,30 @@ export const getDB = () => {
   console.log('GET - Talk indexDB...')
   const _db = window.indexedDB.open('talk')
 
-  _db.onsuccess = event => {
+  _db.onsuccess = (event) => {
     db = (event.target as IDBOpenDBRequest).result
 
     if (hasDB) {
-      db.transaction('data', 'readonly')
-        .objectStore('data')
-        .get(0)
-        .onsuccess = (e) => {
-          try {
-            data.list = JSON.parse((e.target as IDBRequest).result?.data || '[]')
-          } finally {
-            setTalkWatch()
-          }
+      db.transaction('data', 'readonly').objectStore('data').get(0).onsuccess = (e) => {
+        try {
+          data.list = JSON.parse((e.target as IDBRequest).result?.data || '[]')
+        } finally {
+          setTalkWatch()
         }
+      }
 
-      db.transaction('data', 'readonly')
-        .objectStore('data')
-        .get(1)
-        .onsuccess = (e) => {
-          try {
-            data.name = JSON.parse((e.target as IDBRequest).result?.data || '{}')
-          } finally {
-            setNameWatch()
+      db.transaction('data', 'readonly').objectStore('data').get(1).onsuccess = (e) => {
+        try {
+          const user = JSON.parse((e.target as IDBRequest).result?.data || 'false')
+          if (user) {
+            data.name = user
+            input.name = data.name.name
+            input.avatar = data.name.avatar
           }
+        } finally {
+          setNameWatch()
         }
+      }
     } else {
       updateTalk()
       updateName()
@@ -102,7 +102,7 @@ export const getDB = () => {
     }
   }
 
-  _db.onupgradeneeded = event => {
+  _db.onupgradeneeded = (event) => {
     db = (event.target as IDBOpenDBRequest).result
     if (!db.objectStoreNames.contains('data')) {
       hasDB = false

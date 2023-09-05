@@ -44,6 +44,7 @@
           <ShipSelect
             class="select"
             :show-close="innerWidth < 600"
+            :default-user="user"
             @close="onClose"
           />
           <transition name="slide">
@@ -87,7 +88,7 @@
 import ShipSelect from '@/components/Ship/ShipSelect.vue'
 import { setting } from '@/store/setting'
 import data, { getDB } from '@/store/talk'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import Talk from './Talk.vue'
 import TalkSelect from './TalkSelect.vue'
 
@@ -95,6 +96,11 @@ getDB()
 
 const mainDom = ref<HTMLElement | null>(null)
 const talkRef = ref<InstanceType<typeof Talk> | null>(null)
+
+const user = computed(() => ({
+  name: data.name.name,
+  avatar: data.name.avatar
+}))
 
 const screenshot = () => {
   talkRef.value?.screenshot()
