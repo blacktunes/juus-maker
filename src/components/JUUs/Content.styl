@@ -44,7 +44,6 @@
           white-space nowrap
           overflow hidden
 
-
   .text-wrapper
     z-index 8
     position sticky
@@ -53,8 +52,8 @@
     background #eff7ff
 
     .text
-      margin-top 10px
-      padding 20px 25px 40px 25px
+      margin 10px 2px 0 0
+      padding 20px 25px 30px 25px
       font-size 18px
 
     .line
@@ -80,13 +79,13 @@
       display flex
       flex-direction column
 
+      &:hover
+        .comment-del
+          opacity 1
+
       .comment
         display flex
         flex 1
-
-        &:hover
-          ~.comment-del
-            opacity 1
 
         .name
           color #000
@@ -96,7 +95,7 @@
         opacity 0
         position absolute
         right 10px
-        top 5px
+        top 10px
         font-size 20px
         cursor pointer
         user-select none
@@ -130,7 +129,7 @@
 
         .reply
           display flex
-          margin 10px 0px 10px 65px
+          padding 5px 0px 5px 65px
           position relative
           -webkit-user-drag element
 
@@ -141,8 +140,8 @@
           .reply-del
             opacity 0
             position absolute
-            right -5px
-            top -5px
+            right 5px
+            top 0
             font-size 20px
             cursor pointer
             user-select none
@@ -151,9 +150,13 @@
             &:hover
               opacity 1
 
-          .name
-            color #000
-            font-weight bold
+          .reply-item
+            flex 1
+            margin-right 15px
+
+            .name
+              color #000
+              font-weight bold
 
   .add-comment
     position sticky
@@ -192,5 +195,23 @@
       img
         width 100%
 
+.comment-text
+  white-space break-spaces
+  word-break break-all
+
 .scroll
   overflow-y scroll !important
+
+.chosen
+  cursor grabbing
+
+  &:before
+    content ''
+    box-sizing border-box
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    border 3px solid rgba(0, 0, 0, 0.2)
+    border-radius 10px

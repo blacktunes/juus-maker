@@ -223,6 +223,7 @@ item()
             cursor pointer
 
   .btn-wrapper
+    box-sizing border-box
     display flex
     align-items center
     justify-content center
@@ -230,7 +231,7 @@ item()
     right 10px
     bottom 5px
     left 10px
-    height 30px
+    height 50px
     background #fff
     color #fff
     font-weight bold

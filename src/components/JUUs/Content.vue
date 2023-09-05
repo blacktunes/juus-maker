@@ -1,5 +1,9 @@
 <template>
-  <div class="content" :class="{ scroll: !screenshot }" ref="dom">
+  <div
+    class="content"
+    :class="{ scroll: !screenshot }"
+    ref="dom"
+  >
     <div class="info-wrapper">
       <div class="tip">·FOLLOWING·</div>
       <div class="info">
@@ -11,7 +15,10 @@
           style="margin-left: 30px"
           @click="avatarClick(1)"
         />
-        <img src="@/assets/images/sep.png" class="sep" />
+        <img
+          src="@/assets/images/sep.png"
+          class="sep"
+        />
         <div class="name">
           <span>@</span>
           <span
@@ -23,7 +30,10 @@
             {{ data.list[data.index].juus.name }}
           </span>
         </div>
-        <img src="@/assets/images/icon.png" style="margin-right: 10px" />
+        <img
+          src="@/assets/images/icon.png"
+          style="margin-right: 10px"
+        />
       </div>
     </div>
     <div class="text-wrapper">
@@ -37,7 +47,10 @@
       </div>
       <div class="line"></div>
     </div>
-    <div class="comment-list" ref="listDom">
+    <div
+      class="comment-list"
+      ref="listDom"
+    >
       <draggable
         tag="transition-group"
         :component-data="{ name: 'list', type: 'transition' }"
@@ -45,17 +58,15 @@
         :item-key="
           (item: JUUsComment) => `comment-${juusList.indexOf(item)}`
         "
-        delay="50"
+        animation="100"
+        delay="100"
+        chosen-class="chosen"
       >
-        <template
-          #item="{ element, index }: { element: JUUsComment, index: number }"
-        >
+        <template #item="{ element, index }: { element: JUUsComment, index: number }">
           <div class="comment-card">
             <div class="comment">
               <Avatar
-                :highlight="
-                  select.show && select.type === 2 && select.index === index
-                "
+                :highlight="select.show && select.type === 2 && select.index === index"
                 :src="element.avatar"
                 style="margin: 0 15px 0 10px"
                 @click="avatarClick(2, index)"
@@ -72,6 +83,7 @@
                   .
                 </span>
                 <span
+                  class="comment-text"
                   contenteditable
                   @keydown.enter.prevent=""
                   @input="commentChange('text', index, $event)"
@@ -80,7 +92,12 @@
                 </span>
               </div>
             </div>
-            <div class="comment-del" @click="delComment(index)">×</div>
+            <div
+              class="comment-del"
+              @click="delComment(index)"
+            >
+              ×
+            </div>
             <div class="reply-num-wrapper">
               <div></div>
               <div>reply</div>
@@ -96,10 +113,16 @@
               <draggable
                 v-model="element.reply"
                 :item-key="(item: ReplyItem) => 'reply' + element.reply.indexOf(item)"
+                animation="100"
+                chosen-class="chosen"
+                group="reply"
               >
                 <template #item="item">
                   <div class="reply">
-                    <div class="reply-del" @click="delReply(index, item.index)">
+                    <div
+                      class="reply-del"
+                      @click="delReply(index, item.index)"
+                    >
                       ×
                     </div>
                     <Avatar
@@ -113,20 +136,19 @@
                       style="margin: 0 15px 0 10px"
                       @click="avatarClick(3, index, item.index)"
                     />
-                    <div style="flex: 1">
+                    <div class="reply-item">
                       <span class="name"
                         ><span
                           contenteditable
                           @keydown.enter.prevent=""
-                          @input="
-                            replyChange('name', index, item.index, $event)
-                          "
+                          @input="replyChange('name', index, item.index, $event)"
                         >
                           {{ item.element.name }}</span
                         >
                         .
                       </span>
                       <span
+                        class="comment-text"
                         contenteditable
                         @keydown.enter.prevent=""
                         @input="replyChange('text', index, item.index, $event)"
@@ -158,7 +180,10 @@
         />
       </div>
       <div class="right">
-        <img src="@/assets/images/message_2.png" @click="addComment" />
+        <img
+          src="@/assets/images/message_2.png"
+          @click="addComment"
+        />
       </div>
     </div>
   </div>
@@ -178,7 +203,7 @@ defineProps(['screenshot'])
 const tempList = ref<JUUsComment[]>([])
 const juusList = computed({
   get: () => (setting.play ? tempList.value : data.list[data.index].comment),
-  set: val => {
+  set: (val) => {
     if (!setting.play) {
       data.list[data.index].comment = val
     }
@@ -218,12 +243,10 @@ const addReply = (index: number, e: Event) => {
     text: input.text || '谢谢你，碧蓝航线'
   })
   nextTick(() => {
-    const temp = (e.target as HTMLElement)?.parentElement?.parentElement
-      ?.parentElement?.nextElementSibling
+    const temp = (e.target as HTMLElement)?.parentElement?.parentElement?.parentElement
+      ?.nextElementSibling
     if (temp && listDom.value && dom.value) {
-      const top = temp
-        ? (temp as HTMLElement).offsetTop - 640 + 24
-        : listDom.value.scrollHeight
+      const top = temp ? (temp as HTMLElement).offsetTop - 640 + 24 : listDom.value.scrollHeight
       dom.value.scrollTo({ top, behavior: 'smooth' })
     }
   })
@@ -240,17 +263,10 @@ const juusChange = (key: 'name' | 'text', e: Event) => {
 }
 
 const commentChange = (key: 'name' | 'text', index: number, e: Event) => {
-  data.list[data.index].comment[index][key] = (
-    e.target as HTMLInputElement
-  ).innerText
+  data.list[data.index].comment[index][key] = (e.target as HTMLInputElement).innerText
 }
 
-const replyChange = (
-  key: 'name' | 'text',
-  comment: number,
-  index: number,
-  e: Event
-) => {
+const replyChange = (key: 'name' | 'text', comment: number, index: number, e: Event) => {
   data.list[data.index].comment[comment].reply[index][key] = (
     e.target as HTMLInputElement
   ).innerText
