@@ -3,6 +3,7 @@
     <div
       class="main"
       v-show="ready"
+      ref="mainDom"
     >
       <div
         class="mask"
@@ -15,8 +16,9 @@
         </transition>
         <transition name="right">
           <Talk
-            ref="talkRef"
             v-if="!data.home"
+            ref="talkRef"
+            @avatar="onAvatarClick"
           />
         </transition>
         <div class="menu">
@@ -41,7 +43,8 @@
         <div class="menu-wrapper">
           <ShipSelect
             class="select"
-            :show-close="false"
+            :show-close="innerWidth < 600"
+            @close="onClose"
           />
           <transition name="slide">
             <div
@@ -88,6 +91,9 @@ import { ref, onMounted } from 'vue'
 import Talk from './Talk.vue'
 import TalkSelect from './TalkSelect.vue'
 
+getDB()
+
+const mainDom = ref<HTMLElement | null>(null)
 const talkRef = ref<InstanceType<typeof Talk> | null>(null)
 
 const screenshot = () => {
@@ -102,12 +108,38 @@ const stopPlay = () => {
   talkRef.value?.stopPlay()
 }
 
-getDB()
+const onAvatarClick = () => {
+  if (innerWidth.value < 600 && mainDom.value) {
+    mainDom.value.scrollTo({
+      left: mainDom.value.scrollWidth,
+      behavior: 'smooth'
+    })
+  }
+}
+
+const onClose = () => {
+  if (mainDom.value) {
+    mainDom.value.scrollTo({
+      left: 0,
+      behavior: 'smooth'
+    })
+  }
+}
 
 const ready = ref(false)
 onMounted(() => {
   ready.value = true
 })
+
+const innerWidth = ref(900)
+const setSize = () => {
+  innerWidth.value = window.innerWidth
+}
+setSize()
+
+window.onresize = () => {
+  setSize()
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -190,12 +222,20 @@ onMounted(() => {
       span
         margin 0 5px
 
-@media only screen and (min-width 400px)
+@media only screen and (min-width 800px)
   .talk-wrapper
     width 400px
     flex 0 0 400px
 
-@media only screen and (max-width 400px)
+@media only screen and (max-width 800px) and (min-width 600px)
+  .talk-wrapper
+    width 50vw
+    flex 0 0 50%
+
+@media only screen and (max-width 600px)
+  .main
+    overflow hidden
+
   .talk-wrapper
     width 100vw
     flex 0 0 100vw

@@ -53,13 +53,15 @@
             }"
           >
             <Avatar
+              v-if="index === 0 || element.key !== talkList[index - 1].key"
               :highlight="select.type === 4 && select.index === index"
               :src="element.avatar"
-              v-if="index === 0 || element.key !== talkList[index - 1].key"
+              @click.stop="avatarClick(4, index, true)"
             />
             <div
               v-else
               class="empty"
+              @click.stop="avatarClick(4, index, true)"
             ></div>
             <div style="max-width: 85%">
               <div
@@ -105,7 +107,7 @@
       <Avatar
         :width="40"
         :src="input.avatar"
-        @click="avatarClick(0)"
+        @click="avatarClick(0, undefined, true)"
       />
       <input
         class="input"
@@ -136,6 +138,10 @@ import { setting } from '@/store/setting'
 import data from '@/store/talk'
 import draggable from '@marshallswain/vuedraggable'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+
+const emit = defineEmits<{
+  (event: 'avatar'): void
+}>()
 
 const tempList = ref<ReplyItem[]>([])
 const talkList = computed({
@@ -229,9 +235,10 @@ const nameChange = (index: number, e: Event) => {
   timeUpdate()
 }
 
-const avatarClick = (type: number, index = 0) => {
+const avatarClick = (type: number, index = 0, event = false) => {
   select.type = type
   select.index = index
+  if (event) emit('avatar')
 }
 
 const timeUpdate = () => {
@@ -303,11 +310,6 @@ defineExpose({ screenshot, autoPlay, stopPlay })
 <style lang="stylus" scoped>
 $text-color = #555
 
-bottomBar()
-  height 40px
-  padding 10px 5px
-  background #eee
-
 .talk-wrapper
   .title
     display flex
@@ -342,9 +344,6 @@ bottomBar()
       display flex
       width 100%
       padding 10px 10px 0 10px
-
-      &:hover
-        background rgba(100, 100, 100, 0.1)
 
       .empty
         width 45px
@@ -393,18 +392,23 @@ bottomBar()
   display flex
   align-items center
   justify-content space-between
-  bottomBar()
+  box-sizing border-box
+  height 50px
+  padding 10px 5px
+  background #eee
 
   .input
     flex 1
-    width 0
-    font-size 20px
+    box-sizing border-box
+    width 100px
+    height 34px
+    font-size 18px
     color #666
-    padding 5px 10px
-    margin 0 8px
-    height 24px
-    border-radius 5px
-    border 1px solid #aaa
+    padding 5px 15px
+    margin 0 5px
+    border-radius 17px
+    border 2px solid #ddd
+    outline none
 
 .right
   flex-direction row-reverse
