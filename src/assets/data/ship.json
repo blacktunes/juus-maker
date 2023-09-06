@@ -2197,6 +2197,45 @@
     }
   },
   {
+    "key": "伴尔维",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/11/decc08tzo8wkqupvpdwql1rl7u2h36f.jpg/60px-%E4%BC%B4%E5%B0%94%E7%BB%B4%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,航母",
+      "param2": "超稀有",
+      "param3": "自由鸢尾",
+      "param4": ","
+    }
+  },
+  {
+    "key": "吉尚",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/b/ba/jimoqnaihtifq65fei4ckbn4cxkh4kj.jpg/60px-%E5%90%89%E5%B0%9A%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,轻巡",
+      "param2": "超稀有",
+      "param3": "自由鸢尾",
+      "param4": ","
+    }
+  },
+  {
+    "key": "克莱蒙梭",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/2/2a/39asch0ghkcm9o3nmvqlwx5d538duh7.jpg/60px-%E5%85%8B%E8%8E%B1%E8%92%99%E6%A2%AD%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,战列",
+      "param2": "超稀有",
+      "param3": "维希教廷",
+      "param4": ","
+    }
+  },
+  {
     "key": "绀紫之心",
     "alias": "",
     "name": "",
@@ -2595,7 +2634,7 @@
       "param0": "0",
       "param1": "后排主力,航母",
       "param2": "超稀有",
-      "param3": "余烬,其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2608,7 +2647,7 @@
       "param0": "0",
       "param1": "后排主力,航母",
       "param2": "超稀有",
-      "param3": "余烬,其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2621,7 +2660,7 @@
       "param0": "0",
       "param1": "前排先锋,轻巡",
       "param2": "超稀有",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2634,7 +2673,7 @@
       "param0": "0",
       "param1": "后排主力,航母",
       "param2": "超稀有",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2647,7 +2686,7 @@
       "param0": "0",
       "param1": "后排主力,战巡",
       "param2": "超稀有",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2660,7 +2699,7 @@
       "param0": "0",
       "param1": "后排主力,战巡",
       "param2": "超稀有",
-      "param3": "余烬,其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2673,7 +2712,7 @@
       "param0": "0",
       "param1": "后排主力,战巡",
       "param2": "超稀有",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2686,7 +2725,7 @@
       "param0": "0",
       "param1": "后排主力,战巡",
       "param2": "超稀有",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2699,7 +2738,7 @@
       "param0": "0",
       "param1": "后排主力,战列",
       "param2": "超稀有",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2712,7 +2751,7 @@
       "param0": "0",
       "param1": "后排主力,战列",
       "param2": "超稀有",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2725,7 +2764,7 @@
       "param0": "0",
       "param1": "潜艇,潜艇",
       "param2": "超稀有",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -2738,7 +2777,20 @@
       "param0": "0",
       "param1": "前排先锋,重巡",
       "param2": "超稀有",
-      "param3": ",其他",
+      "param3": "META-???,其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "神通·META",
+    "alias": "貎·META",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/97/14pj4oiqbf3lcz4q16o19n7etpr99eq.jpg/60px-%E7%A5%9E%E9%80%9A%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,轻巡",
+      "param2": "超稀有",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -3298,7 +3350,7 @@
       "param1": "后排主力,航母",
       "param2": "精锐",
       "param3": "白鹰",
-      "param4": ","
+      "param4": ",誓约"
     }
   },
   {
@@ -5902,6 +5954,45 @@
     }
   },
   {
+    "key": "絮弗伦",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/7a/je04y5f5dt05yxyx5nqdwy0ur8tcdsl.jpg/60px-%E7%B5%AE%E5%BC%97%E4%BC%A6%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,重巡",
+      "param2": "精锐",
+      "param3": "自由鸢尾",
+      "param4": ","
+    }
+  },
+  {
+    "key": "凯尔圣",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/d/d3/ntoapqdxadpzxcvf08omdkkufp95k4d.jpg/60px-%E5%87%AF%E5%B0%94%E5%9C%A3%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,驱逐",
+      "param2": "精锐",
+      "param3": "维希教廷",
+      "param4": ","
+    }
+  },
+  {
+    "key": "里昂",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/3/38/tpkj2xlf0c3k08egsj5bh7c7hrl2di9.jpg/60px-%E9%87%8C%E6%98%82%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,战列",
+      "param2": "精锐",
+      "param3": "自由鸢尾",
+      "param4": ","
+    }
+  },
+  {
     "key": "涅普顿",
     "alias": "",
     "name": "",
@@ -6183,7 +6274,7 @@
       "param0": "0",
       "param1": "后排主力,战列",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6196,7 +6287,7 @@
       "param0": "0",
       "param1": "后排主力,轻航",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6209,7 +6300,7 @@
       "param0": "0",
       "param1": "后排主力,轻航",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6222,7 +6313,7 @@
       "param0": "0",
       "param1": "后排主力,战列",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6235,7 +6326,7 @@
       "param0": "0",
       "param1": "前排先锋,轻巡",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6248,7 +6339,7 @@
       "param0": "0",
       "param1": "前排先锋,重巡",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6261,7 +6352,7 @@
       "param0": "0",
       "param1": "前排先锋,驱逐",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6274,7 +6365,7 @@
       "param0": "0",
       "param1": "前排先锋,驱逐",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6287,7 +6378,7 @@
       "param0": "0",
       "param1": "前排先锋,轻巡",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6300,7 +6391,7 @@
       "param0": "0",
       "param1": "前排先锋,轻巡",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6313,7 +6404,7 @@
       "param0": "0",
       "param1": "后排主力,维修",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -6326,7 +6417,7 @@
       "param0": "0",
       "param1": "前排先锋,驱逐",
       "param2": "精锐",
-      "param3": ",其他",
+      "param3": "META-???,其他",
       "param4": "META,"
     }
   },
@@ -8379,6 +8470,19 @@
     "data": {
       "param0": "0",
       "param1": "前排先锋,轻巡",
+      "param2": "超稀有",
+      "param3": "白鹰",
+      "param4": "改造"
+    }
+  },
+  {
+    "key": "西弗吉尼亚.改",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/1e/oxv6ziaxifig103aili8ef9or8dmjrf.jpg/60px-%E8%A5%BF%E5%BC%97%E5%90%89%E5%B0%BC%E4%BA%9A%E6%94%B9%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,战列",
       "param2": "超稀有",
       "param3": "白鹰",
       "param4": "改造"
