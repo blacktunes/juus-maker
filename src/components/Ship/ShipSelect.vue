@@ -136,7 +136,7 @@ import ShipFilter from './ShipFilter.vue'
 
 const props = withDefaults(
   defineProps<{
-    showClose: boolean
+    showClose?: boolean
     defaultUser?: {
       name: string
       avatar: string

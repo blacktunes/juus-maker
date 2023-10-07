@@ -1,7 +1,6 @@
 <template>
   <div
     class="ship-filter"
-    @click.stop="hide"
   >
     <div class="top"></div>
     <div
@@ -26,7 +25,7 @@
               v-for="name in item.list"
               :key="name"
               class="btn"
-              :class="{ highlight: filter[key].has(name) }"
+              :class="{ highlight: filterSetting[key].has(name) }"
               @click.stop="addFilter(key, name)"
             >
               {{ name }}
@@ -54,6 +53,31 @@
 
 <script lang="ts" setup>
 import { filter } from '@/store/select'
+import { reactive, watch } from 'vue'
+
+const filterSetting = reactive({
+  param1: new Set<string>(),
+  param2: new Set<string>(),
+  param3: new Set<string>(),
+  param4: new Set<string>()
+})
+
+watch(
+  () => filter.show,
+  () => {
+    if (filter.show) {
+      filterSetting.param1 = new Set([...filter.param1])
+      filterSetting.param2 = new Set([...filter.param2])
+      filterSetting.param3 = new Set([...filter.param3])
+      filterSetting.param4 = new Set([...filter.param4])
+    } else {
+      filter.param1 = new Set([...filterSetting.param1])
+      filter.param2 = new Set([...filterSetting.param2])
+      filter.param3 = new Set([...filterSetting.param3])
+      filter.param4 = new Set([...filterSetting.param4])
+    }
+  }
+)
 
 const data = {
   param4: {
@@ -116,7 +140,7 @@ const data = {
 }
 
 const addFilter = (type: 'param1' | 'param2' | 'param3' | 'param4', name: string) => {
-  const param = filter[type]
+  const param = filterSetting[type]
   if (param.has(name)) {
     param.delete(name)
   } else {
@@ -125,14 +149,14 @@ const addFilter = (type: 'param1' | 'param2' | 'param3' | 'param4', name: string
 }
 
 const resetType = (type: 'param1' | 'param2' | 'param3' | 'param4') => {
-  filter[type].clear()
+  filterSetting[type].clear()
 }
 
 const reset = () => {
-  filter.param1.clear()
-  filter.param2.clear()
-  filter.param3.clear()
-  filter.param4.clear()
+  filterSetting.param1.clear()
+  filterSetting.param2.clear()
+  filterSetting.param3.clear()
+  filterSetting.param4.clear()
 }
 
 const hide = () => {
