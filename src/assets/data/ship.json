@@ -1322,7 +1322,7 @@
       "param1": "前排先锋,重巡",
       "param2": "超稀有",
       "param3": "白鹰",
-      "param4": ","
+      "param4": ",誓约"
     }
   },
   {
@@ -1868,7 +1868,7 @@
       "param1": "后排主力,战巡",
       "param2": "超稀有",
       "param3": "铁血",
-      "param4": ","
+      "param4": ",誓约"
     }
   },
   {
@@ -6481,6 +6481,19 @@
     "data": {
       "param0": "0",
       "param1": "前排先锋,驱逐",
+      "param2": "精锐",
+      "param3": "META-???,其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "普林斯顿·META",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/90/e6s2kxe9w4nap7xh9m86i1994jpa1nm.jpg/60px-%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,轻航",
       "param2": "精锐",
       "param3": "META-???,其他",
       "param4": "META,"
