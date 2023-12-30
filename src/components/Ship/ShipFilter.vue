@@ -245,7 +245,7 @@ item()
             margin 5px
             color #fff
             text-align center
-            min-width 22%
+            min-width 100px
             height 35px
             padding 5px 15px
             background #7a8b9b

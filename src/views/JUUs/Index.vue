@@ -109,7 +109,6 @@ onMounted(() => {
 
 <style lang="stylus" scoped>
 .main
-  overflow hidden
   position absolute
   top 0
   right 0

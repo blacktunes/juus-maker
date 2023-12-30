@@ -372,6 +372,7 @@ item()
       justify-content flex-start
       align-content flex-start
       height 100%
+      width 100%
 
       &::-webkit-scrollbar
         width 5px
@@ -431,7 +432,7 @@ item()
       box-sizing border-box
       width 100%
       height 35px
-      padding 5px 45px 5px 20px
+      padding 5px 35px 5px 20px
       border-radius 17.5px
       border 2px solid #ddd
       outline none
@@ -441,7 +442,7 @@ item()
     .clear
       position absolute
       top 50%
-      right 55px
+      right 60px
       border 2px solid #ddd
       border-radius 50%
       outline none
