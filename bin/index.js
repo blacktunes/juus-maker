@@ -5,7 +5,7 @@ const path = require('path')
 let shipList = []
 
 puppeteer.launch({
-  headless: true,
+  headless: 'new',
   args: ['--no-sandbox']
 })
   .then(async browser => start(browser))
