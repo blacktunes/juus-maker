@@ -78,6 +78,19 @@
     }
   },
   {
+    "key": "苏维埃同盟",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/e/ee/rg7q3nfnjgqau1oplif032gaz4dxk92.jpg/60px-%E8%8B%8F%E7%BB%B4%E5%9F%83%E5%90%8C%E7%9B%9F%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,战列",
+      "param2": "海上传奇",
+      "param3": "北方联合",
+      "param4": ","
+    }
+  },
+  {
     "key": "乌尔里希·冯·胡滕",
     "alias": "乌尔里克·冯·胡贝尔",
     "name": "U.V.Hutten",
@@ -464,7 +477,7 @@
       "param1": "后排主力,,战列",
       "param2": "超稀有",
       "param3": "皇家",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -2379,6 +2392,32 @@
     }
   },
   {
+    "key": "寰昌",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/19/0ytrm3kspe5hh0ccai0ixs2n7jn4e8x.jpg/60px-%E5%AF%B0%E6%98%8C%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,战巡",
+      "param2": "超稀有",
+      "param3": "东煌",
+      "param4": ","
+    }
+  },
+  {
+    "key": "火力",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/9d/s5feopmgh1he4mj3462qkx2d2gut4qs.jpg/60px-%E7%81%AB%E5%8A%9B%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "超稀有",
+      "param3": "北方联合",
+      "param4": ","
+    }
+  },
+  {
     "key": "绀紫之心",
     "alias": "",
     "name": "",
@@ -3007,6 +3046,19 @@
     "alias": "",
     "name": "",
     "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/92/s1ic5hju41kdlicfjb0g4tlvu6x97zl.jpg/60px-%E5%9F%BA%E6%B4%9B%E5%A4%AB%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,轻巡",
+      "param2": "超稀有",
+      "param3": "META-???,其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "水星纪念·META",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/9e/hy9eqde60mcnz114n7y12ki5efob8ns.jpg/60px-%E6%B0%B4%E6%98%9F%E7%BA%AA%E5%BF%B5%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
     "data": {
       "param0": "0",
       "param1": "前排先锋,,轻巡",
@@ -4403,7 +4455,7 @@
       "param1": "前排先锋,,轻巡",
       "param2": "精锐",
       "param3": "东煌",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -4416,7 +4468,7 @@
       "param1": "前排先锋,,轻巡",
       "param2": "精锐",
       "param3": "东煌",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -6292,6 +6344,84 @@
     }
   },
   {
+    "key": "济安",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/c/c5/jzt62s3bbu075pyf4sc13mrq7s0bdkj.jpg/60px-%E6%B5%8E%E5%AE%89%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,轻巡",
+      "param2": "精锐",
+      "param3": "东煌",
+      "param4": ","
+    }
+  },
+  {
+    "key": "龙武",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/0/00/1bs52cu0e2ve6b436kthsdktpf9b4u6.jpg/60px-%E9%BE%99%E6%AD%A6%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "精锐",
+      "param3": "东煌",
+      "param4": ","
+    }
+  },
+  {
+    "key": "虎贲",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/6/66/5vm6l77we161mmx7wlpy9up86ibq88g.jpg/60px-%E8%99%8E%E8%B4%B2%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "精锐",
+      "param3": "东煌",
+      "param4": ","
+    }
+  },
+  {
+    "key": "飞云",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/5/5a/cvhhiw912jp43x559kcz45k24rxh56k.jpg/60px-%E9%A3%9E%E4%BA%91%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "精锐",
+      "param3": "东煌",
+      "param4": ","
+    }
+  },
+  {
+    "key": "凶猛",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/0/00/n0z9ztd9kt7gq91ddut8ajggda1782u.jpg/60px-%E5%87%B6%E7%8C%9B%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "精锐",
+      "param3": "北方联合",
+      "param4": ","
+    }
+  },
+  {
+    "key": "波尔塔瓦",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/6/6b/a5h2prixa6v65k87334ugqw10b31mxs.jpg/60px-%E6%B3%A2%E5%B0%94%E5%A1%94%E7%93%A6%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,战列",
+      "param2": "精锐",
+      "param3": "北方联合",
+      "param4": ","
+    }
+  },
+  {
     "key": "涅普顿",
     "alias": "",
     "name": "",
@@ -6767,6 +6897,19 @@
     "data": {
       "param0": "0",
       "param1": "后排主力,,重炮",
+      "param2": "精锐",
+      "param3": "META-???,其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "金伯利·META",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/c/cf/oktcratruf2258dvfyk33hd2kx0hcrn.jpg/60px-%E9%87%91%E4%BC%AF%E5%88%A9%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
       "param2": "精锐",
       "param3": "META-???,其他",
       "param4": "META,"
@@ -7861,7 +8004,7 @@
       "param1": "前排先锋,,驱逐",
       "param2": "稀有",
       "param3": "铁血",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -9087,6 +9230,19 @@
     }
   },
   {
+    "key": "太原.改",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/a/af/lc08cnp2y8u57q6o5puury7gugv0meo.jpg/60px-%E5%A4%AA%E5%8E%9F%E6%94%B9%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "超稀有",
+      "param3": "东煌",
+      "param4": "改造"
+    }
+  },
+  {
     "key": "逸仙.改",
     "alias": "",
     "name": "",
@@ -9200,6 +9356,19 @@
       "param1": "前排先锋,,轻巡",
       "param2": "超稀有",
       "param3": "北方联合",
+      "param4": "改造"
+    }
+  },
+  {
+    "key": "镇海.改",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/9/9d/6whbb99odze03lrh2bq59ae439ajsxi.jpg/60px-%E9%95%87%E6%B5%B7%E6%94%B9%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,轻航",
+      "param2": "超稀有",
+      "param3": "东煌",
       "param4": "改造"
     }
   },
