@@ -425,7 +425,7 @@
       "param1": "前排先锋,,轻巡",
       "param2": "超稀有",
       "param3": "皇家",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -919,7 +919,7 @@
       "param1": "潜艇,,潜艇",
       "param2": "超稀有",
       "param3": "重樱",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -1309,7 +1309,7 @@
       "param1": "前排先锋,,轻巡",
       "param2": "超稀有",
       "param3": "北方联合",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -2418,6 +2418,71 @@
     }
   },
   {
+    "key": "努比亚人",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/d/d8/se8p64edx2tkc8kgr0tfh3rrz9anbvp.jpg/60px-%E5%8A%AA%E6%AF%94%E4%BA%9A%E4%BA%BA%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "超稀有",
+      "param3": "皇家",
+      "param4": ","
+    }
+  },
+  {
+    "key": "可畏(μ兵装)",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/7/75/h0we5r3ea6fe3prbnbq9p0wvqa9ebm4.jpg/60px-%E5%8F%AF%E7%95%8F%28%CE%BC%E5%85%B5%E8%A3%85%29%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,航母",
+      "param2": "超稀有",
+      "param3": "皇家",
+      "param4": ",特殊"
+    }
+  },
+  {
+    "key": "欧根亲王(μ兵装)",
+    "alias": "萨沃伊亲王(μ兵装)",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/1b/de1t1q4z0czbjx49wzc9ftnokcchilj.jpg/60px-%E6%AC%A7%E6%A0%B9%E4%BA%B2%E7%8E%8B%28%CE%BC%E5%85%B5%E8%A3%85%29%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,重巡",
+      "param2": "超稀有",
+      "param3": "铁血",
+      "param4": ",特殊"
+    }
+  },
+  {
+    "key": "能代(μ兵装)",
+    "alias": "貅(μ兵装)",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/b/b9/2lnwd03dlre3aiybfemlfkqj1opf2em.jpg/60px-%E8%83%BD%E4%BB%A3%28%CE%BC%E5%85%B5%E8%A3%85%29%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,轻巡",
+      "param2": "超稀有",
+      "param3": "重樱",
+      "param4": ",特殊"
+    }
+  },
+  {
+    "key": "腓特烈·卡尔",
+    "alias": "腓德雷卡·卡尔",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/e/ef/1kizmuj5ssfjm1b6giw3pmom4r26wzv.jpg/60px-%E8%85%93%E7%89%B9%E7%83%88%C2%B7%E5%8D%A1%E5%B0%94%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,重巡",
+      "param2": "超稀有",
+      "param3": "铁血",
+      "param4": ","
+    }
+  },
+  {
     "key": "绀紫之心",
     "alias": "",
     "name": "",
@@ -3062,6 +3127,19 @@
     "data": {
       "param0": "0",
       "param1": "前排先锋,,轻巡",
+      "param2": "超稀有",
+      "param3": "META-???,其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "罗德尼·META",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/1/18/bmddytd4ao3zqc03zc0bn4lmyv0e2zq.jpg/60px-%E7%BD%97%E5%BE%B7%E5%B0%BC%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,战列",
       "param2": "超稀有",
       "param3": "META-???,其他",
       "param4": "META,"
@@ -4546,7 +4624,7 @@
       "param1": "前排先锋,,驱逐",
       "param2": "精锐",
       "param3": "白鹰",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -6422,6 +6500,84 @@
     }
   },
   {
+    "key": "利物浦",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/4/44/73rrlrp8ogxvcogg5zoudoq1gj77pq6.jpg/60px-%E5%88%A9%E7%89%A9%E6%B5%A6%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,轻巡",
+      "param2": "精锐",
+      "param3": "皇家",
+      "param4": ","
+    }
+  },
+  {
+    "key": "德文郡",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/2/2f/594bk8cd7oodh5b6q39mdpfabp8p7ld.jpg/60px-%E5%BE%B7%E6%96%87%E9%83%A1%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,重巡",
+      "param2": "精锐",
+      "param3": "皇家",
+      "param4": ","
+    }
+  },
+  {
+    "key": "金刚(μ兵装)",
+    "alias": "鲤(μ兵装)",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/5/57/fcwud2okok0f4jdq2ere9f7a6lkjy02.jpg/60px-%E9%87%91%E5%88%9A%28%CE%BC%E5%85%B5%E8%A3%85%29%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,战巡",
+      "param2": "精锐",
+      "param3": "重樱",
+      "param4": ",特殊"
+    }
+  },
+  {
+    "key": "鲁莽(μ兵装)",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/2/28/cjrdt5c8sl1fl1l3amwgpca2dh7do61.jpg/60px-%E9%B2%81%E8%8E%BD%28%CE%BC%E5%85%B5%E8%A3%85%29%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "精锐",
+      "param3": "自由鸢尾",
+      "param4": ",特殊"
+    }
+  },
+  {
+    "key": "博伊西(μ兵装)",
+    "alias": "树城(μ兵装)",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/5/5f/hda8afhpvn8io53kyf20ck4athodmgn.jpg/60px-%E5%8D%9A%E4%BC%8A%E8%A5%BF%28%CE%BC%E5%85%B5%E8%A3%85%29%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,轻巡",
+      "param2": "精锐",
+      "param3": "白鹰",
+      "param4": ",特殊"
+    }
+  },
+  {
+    "key": "小信浓",
+    "alias": "小鵗",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/b/b6/se70fvw8j5v127q28oujg19rv1iuxxe.jpg/60px-%E5%B0%8F%E4%BF%A1%E6%B5%93%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,航母",
+      "param2": "精锐",
+      "param3": "重樱",
+      "param4": ",特殊"
+    }
+  },
+  {
     "key": "涅普顿",
     "alias": "",
     "name": "",
@@ -6907,6 +7063,19 @@
     "alias": "",
     "name": "",
     "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/c/cf/oktcratruf2258dvfyk33hd2kx0hcrn.jpg/60px-%E9%87%91%E4%BC%AF%E5%88%A9%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "精锐",
+      "param3": "META-???,其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "吸血鬼·META",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/e/e4/8efx56ev6686i14ck6mopm4wnotfc54.jpg/60px-%E5%90%B8%E8%A1%80%E9%AC%BC%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
     "data": {
       "param0": "0",
       "param1": "前排先锋,,驱逐",
@@ -7835,7 +8004,7 @@
       "param1": "前排先锋,,轻巡",
       "param2": "稀有",
       "param3": "重樱",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -8030,7 +8199,7 @@
       "param1": "前排先锋,,驱逐",
       "param2": "稀有",
       "param3": "维希教廷",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -8589,7 +8758,7 @@
       "param1": "前排先锋,,驱逐",
       "param2": "普通",
       "param3": "皇家",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
