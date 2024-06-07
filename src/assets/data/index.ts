@@ -1,7 +1,9 @@
 import custom from '@/store/custom'
 import { reactive } from 'vue'
+import shipData from '@/assets/data/ship.json'
+import commander from '@/assets/images/commander.jpg'
 
-const data = reactive<ShipData[]>(require('@/assets/data/ship.json'))
+const data = reactive<ShipData[]>(shipData as ShipData[])
 
 const getData = (
   key: string,
@@ -12,7 +14,7 @@ const getData = (
     return {
       key,
       text,
-      avatar: defaultUser?.avatar || require('@/assets/images/commander.jpg'),
+      avatar: defaultUser?.avatar || commander,
       name: defaultUser?.name || '指挥官',
       alias: '',
       data: {

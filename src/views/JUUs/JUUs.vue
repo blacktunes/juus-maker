@@ -117,6 +117,9 @@ import { tip, setting } from '@/store/setting'
 import input from '@/store/input'
 import { select } from '@/store/select'
 import _screenshot from '@/assets/scripts/screenshot'
+import like from '@/assets/images/like.png'
+import like_2 from '@/assets/images/like_2.png'
+import commander from '@/assets/images/commander.jpg'
 
 const changeBg = () => {
   const input = document.createElement('input')
@@ -152,8 +155,8 @@ const changeImg = () => {
 
 const likeImg = computed(() =>
   data.list[data.index].like.flag
-    ? require('@/assets/images/like_2.png')
-    : require('@/assets/images/like.png')
+    ? like_2
+    : like
 )
 const setLike = () => {
   data.list[data.index].like.flag = !data.list[data.index].like.flag
@@ -169,7 +172,7 @@ const content = ref<InstanceType<typeof Content> | null>(null)
 const screenshot = (flag?: boolean) => {
   select.type = 0
   input.key = '指挥官'
-  input.avatar = require('@/assets/images/commander.jpg')
+  input.avatar = commander
   input.name = '指挥官'
   if (flag) {
     if (content.value?.dom) {

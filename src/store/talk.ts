@@ -1,6 +1,7 @@
 import { nextTick, reactive, toRaw, watch } from 'vue'
 import { setting } from './setting'
 import input from './input'
+import commander from '@/assets/images/commander.jpg'
 
 export const defaultItem: Omit<TalkData, 'time'> = {
   title: '谢谢你，碧蓝航线',
@@ -19,7 +20,7 @@ const data = reactive<{
   home: true,
   name: {
     name: '指挥官',
-    avatar: require('@/assets/images/commander.jpg')
+    avatar: commander
   },
   index: 0,
   list: []

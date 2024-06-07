@@ -12,7 +12,7 @@ export default function (dom: HTMLElement, width?: number, height?: number) {
     })
       .then((dataUrl) => {
         const title = `JUUs-${Date.now()}`
-        if (process.env.NODE_ENV === 'development') {
+        if (import.meta.env.MODE === 'development') {
           const img = new Image()
           img.src = dataUrl
           img.alt = title

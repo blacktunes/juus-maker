@@ -11,11 +11,19 @@
           :key="`home-${index}`"
           @click="showJUUs(index)"
         >
-          <div class="del" @click.stop="delJUUs(index)">×</div>
+          <div
+            class="del"
+            @click.stop="delJUUs(index)"
+          >
+            ×
+          </div>
           <div class="info">
             <div class="avatar">
               <div>
-                <img v-if="item.juus.avatar" :src="item.juus.avatar" />
+                <img
+                  v-if="item.juus.avatar"
+                  :src="item.juus.avatar"
+                />
               </div>
             </div>
             <div class="name">
@@ -37,7 +45,10 @@
             </div>
           </div>
         </div>
-        <div class="item add" @click="addJUUs">
+        <div
+          class="item add"
+          @click="addJUUs"
+        >
           <img src="@/assets/images/camera_add.png" />
         </div>
       </div>
@@ -48,17 +59,14 @@
 <script lang="ts" setup>
 import data, { defaultItem } from '@/store/juus'
 import { computed } from 'vue'
+import like from '@/assets/images/like.png'
+import like_2 from '@/assets/images/like_2.png'
 
 const bg = computed(() =>
-  data.index >= 0 && data.list?.[data.index]?.bg
-    ? data.list[data.index].bg
-    : data.bg
+  data.index >= 0 && data.list?.[data.index]?.bg ? data.list[data.index].bg : data.bg
 )
 
-const getLikeImg = (flag: boolean) =>
-  flag
-    ? require('@/assets/images/like_2.png')
-    : require('@/assets/images/like.png')
+const getLikeImg = (flag: boolean) => (flag ? like_2 : like)
 
 const showJUUs = (index: number) => {
   data.index = index
@@ -81,17 +89,17 @@ const delJUUs = (index: number) => {
 <style lang="stylus" scoped>
 .home-view
   position absolute
-  width 100%
-  height 100%
   display flex
   justify-content center
   align-items center
+  width 100%
+  height 100%
 
   .bg
-    z-index 1
     position absolute
     top 0
     left 0
+    z-index 1
     width 100%
     height 100%
     filter blur(10px)
@@ -101,36 +109,36 @@ const delJUUs = (index: number) => {
       position absolute
       top 0
       left 50%
-      transform translateX(-50%)
       height 100%
+      transform translateX(-50%)
 
   .home-wrapper
     z-index 2
+    display flex
     overflow hidden
     width 1050px
     height 550px
-    backdrop-filter blur(30px)
+    border-radius 5px
     background rgba(200, 200, 200, 0.5)
     box-shadow 3px 3px 5px rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0, 0, 0, 0.5)
-    border-radius 5px
-    display flex
+    backdrop-filter blur(30px)
 
     .item-list
-      width 100%
       overflow-y scroll
       margin 30px
+      width 100%
 
       &::-webkit-scrollbar
         width 15px
         height 15px
 
       &::-webkit-scrollbar-track
-        background-color rgba(200, 200, 200, 0.5)
         border-radius 10px
+        background-color rgba(200, 200, 200, 0.5)
 
       &::-webkit-scrollbar-thumb
-        background-color rgba(255, 255, 255, 0.9)
         border-radius 10px
+        background-color rgba(255, 255, 255, 0.9)
 
       &::-webkit-scrollbar-thumb:active
         background-color rgba(200, 200, 200, 0.9)
@@ -139,14 +147,14 @@ const delJUUs = (index: number) => {
         position relative
         display flex
         align-items center
+        margin-bottom 20px
         width 930px
         height 100px
-        background #eee
         border-radius 5px
-        margin-bottom 20px
-        user-select none
+        background #eee
         cursor pointer
         transition box-shadow 0.25s
+        user-select none
 
         &:hover
           box-shadow 1px 1px 10px rgba(0, 0, 0, 0.4)
@@ -155,14 +163,14 @@ const delJUUs = (index: number) => {
             opacity 1
 
         .del
-          opacity 0
           position absolute
-          right 10px
           top 5px
+          right 10px
           font-size 20px
+          opacity 0
           cursor pointer
-          user-select none
           transition opacity 0.25s
+          user-select none
 
           &:hover
             opacity 1
@@ -176,55 +184,55 @@ const delJUUs = (index: number) => {
 
           .avatar
             position relative
-            cursor pointer
             width 65px
             height 65px
+            cursor pointer
 
             div
-              box-sizing border-box
               overflow hidden
-              background #ddd
-              border-radius 50%
-              border 1px solid #666
+              box-sizing border-box
               padding 1px
               height 100%
+              border 1px solid #666
+              border-radius 50%
+              background #ddd
 
               img
                 width 100%
                 height 100%
+                user-select none
                 object-fit cover
                 object-position center
-                user-select none
 
           .name
+            overflow hidden
             width 100%
+            text-align center
             text-overflow ellipsis
             white-space nowrap
-            overflow hidden
-            text-align center
 
       .img
-        width 70px
-        margin auto 20px
         display flex
-        align-items center
         justify-content center
+        align-items center
+        margin auto 20px
+        width 70px
 
         img
           width 100%
 
       .text
         flex 1
-        font-size 20px
+        overflow hidden
         text-overflow ellipsis
         white-space nowrap
-        overflow hidden
+        font-size 20px
 
       .like
-        overflow hidden
-        flex 0 0 150px
         display flex
+        flex 0 0 150px
         align-items center
+        overflow hidden
 
         .like-img
           width 42px
