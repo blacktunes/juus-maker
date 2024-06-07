@@ -18,14 +18,11 @@
             ×
           </div>
           <div class="info">
-            <div class="avatar">
-              <div>
-                <img
-                  v-if="item.juus.avatar"
-                  :src="item.juus.avatar"
-                />
-              </div>
-            </div>
+            <Avatar
+              :width="70"
+              :img="item.juus.avatar"
+              :type="2"
+            />
             <div class="name">
               {{ item.juus.name }}
             </div>
@@ -61,6 +58,7 @@ import data, { defaultItem } from '@/store/juus'
 import { computed } from 'vue'
 import like from '@/assets/images/like.png'
 import like_2 from '@/assets/images/like_2.png'
+import Avatar from '@/components/common/Avatar3.vue'
 
 const bg = computed(() =>
   data.index >= 0 && data.list?.[data.index]?.bg ? data.list[data.index].bg : data.bg
