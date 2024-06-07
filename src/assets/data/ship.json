@@ -195,6 +195,32 @@
     }
   },
   {
+    "key": "阿尔萨斯",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/4/4c/kk8j2ts6b2y2m90qax2aacu06mqn8a6.jpg/60px-%E9%98%BF%E5%B0%94%E8%90%A8%E6%96%AF%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,战列",
+      "param2": "海上传奇",
+      "param3": "自由鸢尾",
+      "param4": ","
+    }
+  },
+  {
+    "key": "莫加多尔",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/c/c7/debujlo97h0aiq82kg9ux0lm6mdsp8q.jpg/60px-%E8%8E%AB%E5%8A%A0%E5%A4%9A%E5%B0%94%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "海上传奇",
+      "param3": "维希教廷",
+      "param4": ","
+    }
+  },
+  {
     "key": "吾妻",
     "alias": "猉",
     "name": "AzumaB65",
@@ -373,7 +399,7 @@
       "param1": "后排主力,,战列",
       "param2": "超稀有",
       "param3": "白鹰",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -2483,6 +2509,19 @@
     }
   },
   {
+    "key": "布伦努斯",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/2/20/9wnq55inovif19i07x6t21e0dqg85t0.jpg/60px-%E5%B8%83%E4%BC%A6%E5%8A%AA%E6%96%AF%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,重巡",
+      "param2": "超稀有",
+      "param3": "自由鸢尾",
+      "param4": ","
+    }
+  },
+  {
     "key": "绀紫之心",
     "alias": "",
     "name": "",
@@ -3140,6 +3179,19 @@
     "data": {
       "param0": "0",
       "param1": "后排主力,,战列",
+      "param2": "超稀有",
+      "param3": "META-???,其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "贝亚恩·META",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/b/b6/gyuzyqeynxtah1ryv7krdq3vkdop07n.jpg/60px-%E8%B4%9D%E4%BA%9A%E6%81%A9%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,航母",
       "param2": "超稀有",
       "param3": "META-???,其他",
       "param4": "META,"
@@ -4442,7 +4494,7 @@
       "param1": "后排主力,,战巡",
       "param2": "精锐",
       "param3": "铁血",
-      "param4": ","
+      "param4": ",专属兵装"
     }
   },
   {
@@ -6578,6 +6630,45 @@
     }
   },
   {
+    "key": "花剑",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/0/05/j5ampb3ki44k1civ34nsw6y34s6te3m.jpg/60px-%E8%8A%B1%E5%89%91%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "精锐",
+      "param3": "维希教廷",
+      "param4": ","
+    }
+  },
+  {
+    "key": "重剑",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/a/a6/e2ej7trea8grsc8zkhl3c7f9oq5mulv.jpg/60px-%E9%87%8D%E5%89%91%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,驱逐",
+      "param2": "精锐",
+      "param3": "维希教廷",
+      "param4": ","
+    }
+  },
+  {
+    "key": "小腓特烈",
+    "alias": "小腓德雷卡",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/c/cc/o415l7nmuu34iueq62v4e9na8z3wp9y.jpg/60px-%E5%B0%8F%E8%85%93%E7%89%B9%E7%83%88%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,战列",
+      "param2": "精锐",
+      "param3": "铁血",
+      "param4": ","
+    }
+  },
+  {
     "key": "涅普顿",
     "alias": "",
     "name": "",
@@ -7079,6 +7170,19 @@
     "data": {
       "param0": "0",
       "param1": "前排先锋,,驱逐",
+      "param2": "精锐",
+      "param3": "META-???,其他",
+      "param4": "META,"
+    }
+  },
+  {
+    "key": "福煦·META",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/2/2e/cnonu5bb4sojjarl4nc0h846bx4oepz.jpg/60px-%E7%A6%8F%E7%85%A6%C2%B7META%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "前排先锋,,重巡",
       "param2": "精锐",
       "param3": "META-???,其他",
       "param4": "META,"
@@ -9133,6 +9237,19 @@
     "data": {
       "param0": "0",
       "param1": "前排先锋,,轻巡",
+      "param2": "超稀有",
+      "param3": "白鹰",
+      "param4": "改造"
+    }
+  },
+  {
+    "key": "科罗拉多.改",
+    "alias": "",
+    "name": "",
+    "avatar": "https://patchwiki.biligame.com/images/blhx/thumb/8/8c/3ci08r2ezo7qvsf0fpfkqo7eg2iidh0.jpg/60px-%E7%A7%91%E7%BD%97%E6%8B%89%E5%A4%9A%E6%94%B9%E5%A4%B4%E5%83%8F.jpg",
+    "data": {
+      "param0": "0",
+      "param1": "后排主力,,战列",
       "param2": "超稀有",
       "param3": "白鹰",
       "param4": "改造"
