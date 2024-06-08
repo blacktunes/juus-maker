@@ -201,7 +201,7 @@ const showData = computed(() => {
   } else {
     const used: string[] = []
 
-    if (!currentJUUs.value) {
+    if (currentJUUs.value) {
       used.push(currentJUUs.value!.juus.key)
       currentJUUs.value!.comment.forEach((comment) => {
         if (!used.includes(comment.key)) used.push(comment.key)

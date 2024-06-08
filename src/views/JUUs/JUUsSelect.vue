@@ -67,6 +67,7 @@ defineProps<{
 const getLikeImg = (flag: boolean) => (flag ? like_2 : like)
 
 const showJUUs = (id: number) => {
+  setting.juus.home = false
   setting.juus.id = id
   setting.juus.lastID = data.juus.findIndex((item) => item.id === id)
 }

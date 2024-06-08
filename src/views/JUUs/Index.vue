@@ -15,6 +15,9 @@
     <div class="bg">
       <img :src="bg" />
     </div>
+    <Transition name="fade">
+      <Loading v-if="!ready" />
+    </Transition>
     <transition name="fade">
       <ShipSelect
         v-if="select.show"
@@ -22,13 +25,13 @@
       />
     </transition>
     <JUUsSelect :list="JUUsList" />
-    <JUUs v-show="!!currentJUUs" />
+    <JUUs v-show="!setting.juus.home && currentJUUs" />
     <div class="link">
       <Transition
-        name="test"
+        name="menu"
         mode="out-in"
       >
-        <div v-if="!currentJUUs">
+        <div v-if="setting.juus.home">
           <MenuBtn href="https://github.com/blacktunes/juus-maker">
             <template #icon>
               <Github />
@@ -70,7 +73,7 @@
             </template>
             自动播放
           </MenuBtn>
-          <MenuBtn>
+          <MenuBtn @click.stop="changeBg">
             <template #icon>
               <Image />
             </template>
@@ -87,14 +90,19 @@ import { loadJUUsDatabase } from '@/assets/scripts/database'
 import ShipSelect from '@/components/Ship/ShipSelect.vue'
 import { Bilibili, Github, Image } from '@/components/common/Icon'
 import MenuBtn from '@/components/common/MenuBtn.vue'
-import { data, currentJUUs, defaultBg } from '@/store/data'
+import { currentJUUs, data, defaultBg } from '@/store/data'
 import { select } from '@/store/select'
+import { setting } from '@/store/setting'
 import { Main } from 'star-rail-vue'
 import JUUs from './JUUs.vue'
 import JUUsSelect from './JUUsSelect.vue'
-import { setting } from '@/store/setting'
+import Loading from './Loading.vue'
 
-loadJUUsDatabase()
+const ready = ref(false)
+
+loadJUUsDatabase().then(() => {
+  setTimeout(() => (ready.value = true), 1000)
+})
 
 const JUUsList = computed(() => {
   let list = data.juus
@@ -106,8 +114,25 @@ const bg = computed(() => {
   if (currentJUUs.value) return currentJUUs.value.bg
   if (data.juus[setting.juus.lastID]?.bg) return data.juus[setting.juus.lastID].bg
   if (JUUsList.value[0]?.bg) return JUUsList.value[0].bg
-  return ''
+  return defaultBg
 })
+
+const changeBg = () => {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.accept = 'image/*'
+  input.onchange = () => {
+    if (input.files?.[0]) {
+      const file = new FileReader()
+      file.readAsDataURL(input.files[0])
+      file.onload = (e) => {
+        if (!currentJUUs.value) return
+        currentJUUs.value.bg = (e.target?.result as string) || ''
+      }
+    }
+  }
+  input.click()
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -127,6 +152,7 @@ const bg = computed(() => {
   position absolute
   top 0
   left 0
+  z-index -1
   z-index 1
   width 100%
   height calc(100% + 60px)
@@ -165,15 +191,15 @@ const bg = computed(() => {
     align-items flex-end
     overflow hidden
 
-.test-enter-active
-.test-leave-active
+.menu-enter-active
+.menu-leave-active
   transition all 0.3s
 
-.test-enter-from
-.test-leave-to
+.menu-enter-from
+.menu-leave-to
   max-height 0
 
-.test-enter-to
-.test-leave-from
+.menu-enter-to
+.menu-leave-from
   max-height 100%
 </style>

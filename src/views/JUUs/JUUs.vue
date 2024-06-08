@@ -122,23 +122,6 @@ import { select } from '@/store/select'
 import { setting, tip } from '@/store/setting'
 import { computed, ref } from 'vue'
 
-const changeBg = () => {
-  const input = document.createElement('input')
-  input.type = 'file'
-  input.accept = 'image/*'
-  input.onchange = () => {
-    if (input.files?.[0]) {
-      const file = new FileReader()
-      file.readAsDataURL(input.files[0])
-      file.onload = (e) => {
-        if (!currentJUUs.value) return
-        currentJUUs.value.bg = (e.target?.result as string) || ''
-      }
-    }
-  }
-  input.click()
-}
-
 const changeImg = () => {
   const input = document.createElement('input')
   input.type = 'file'
@@ -164,7 +147,7 @@ const setLike = () => {
 
 const back = () => {
   select.show = false
-  setting.juus.id = -1
+  setting.juus.home = true
 }
 
 const juus = ref<HTMLElement | null>(null)

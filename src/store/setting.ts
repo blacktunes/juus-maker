@@ -12,6 +12,7 @@ const setting = reactive<{
   play: boolean
   interval: number
   juus: {
+    home: boolean
     id?: number
     lastID: number
   }
@@ -20,6 +21,7 @@ const setting = reactive<{
   play: false,
   interval: 1500,
   juus: {
+    home: true,
     id: undefined,
     lastID: -1
   }
