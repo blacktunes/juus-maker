@@ -126,8 +126,8 @@
 <script lang="ts" setup>
 import ship, { getData } from '@/assets/data'
 import custom from '@/store/custom'
+import { currentJUUs } from '@/store/data'
 import input from '@/store/input'
-import juus from '@/store/juus'
 import { filter, select } from '@/store/select'
 import talk from '@/store/talk'
 import { computed, ref } from 'vue'
@@ -201,9 +201,9 @@ const showData = computed(() => {
   } else {
     const used: string[] = []
 
-    if (!juus.home) {
-      used.push(juus.list[juus.index].juus.key)
-      juus.list?.[juus.index].comment.forEach((comment) => {
+    if (!currentJUUs.value) {
+      used.push(currentJUUs.value!.juus.key)
+      currentJUUs.value!.comment.forEach((comment) => {
         if (!used.includes(comment.key)) used.push(comment.key)
         comment.reply.forEach((reply) => {
           if (!used.includes(reply.key)) used.push(reply.key)
@@ -245,11 +245,11 @@ const avatarData = computed(() => {
     case 0:
       return input
     case 1:
-      return juus.list[juus.index].juus
+      return currentJUUs.value!.juus
     case 2:
-      return juus.list[juus.index].comment[select.index]
+      return currentJUUs.value!.comment[select.index]
     case 3:
-      return juus.list[juus.index].comment[select.index].reply[select.key]
+      return currentJUUs.value!.comment[select.index].reply[select.key]
     case 4:
       return talk.list[talk.index].list[select.index]
     default:
@@ -329,34 +329,34 @@ const onFilterClick = () => {
 item()
   display flex
   align-items center
-  box-sizing border-box
   align-items center
-  padding 10px
+  box-sizing border-box
   margin 5px
-  user-select none
+  padding 10px
   border 1px solid #ddd
   border-radius 10px
   background #fff
+  user-select none
 
   .name
     display flex
-    align-items center
     flex 1
-    font-size 20px
+    align-items center
     font-weight bolder
+    font-size 20px
 
     span
       flex-shrink 0
 
 .select-view
-  z-index 99
   position relative
-  box-sizing border-box
+  z-index 99
   display flex
   flex-direction column
-  background rgba(255, 255, 255, 0.7)
+  box-sizing border-box
   padding 10px 20px 5px 10px
   border-radius 5px 0 0 5px
+  background rgba(255, 255, 255, 0.7)
   color #444
 
   .scroll-box
@@ -366,25 +366,25 @@ item()
     item()
 
     .scroll-view
-      overflow-y scroll
       display flex
       flex-wrap wrap
       justify-content flex-start
       align-content flex-start
-      height 100%
+      overflow-y scroll
       width 100%
+      height 100%
 
       &::-webkit-scrollbar
         width 5px
         height 5px
 
       &::-webkit-scrollbar-track
-        box-shadow inset 0 0 6px rgba(0, 0, 0, 0.4)
         border-radius 4px
+        box-shadow inset 0 0 6px rgba(0, 0, 0, 0.4)
 
       &::-webkit-scrollbar-thumb
-        box-shadow inset 0 0 6px rgba(0, 0, 0, 0.3)
         border-radius 4px
+        box-shadow inset 0 0 6px rgba(0, 0, 0, 0.3)
 
       &::-webkit-scrollbar-thumb:active
         background-color #aaa
@@ -404,74 +404,74 @@ item()
           font-size 14px
 
         .del-ship
-          color #888
-          opacity 0
           position absolute
-          right 0
           top 0
-          cursor pointer
-          user-select none
-          transition opacity 0.25s
-          width 15px
-          height 15px
+          right 0
           display flex
           justify-content center
           align-items center
+          width 15px
+          height 15px
+          color #888
+          opacity 0
+          cursor pointer
+          transition opacity 0.25s
+          user-select none
 
           &:hover
             opacity 1
 
   .search
-    display flex
     position relative
+    display flex
     width 100%
     height 50px
     item()
 
     input
       box-sizing border-box
+      padding 5px 35px 5px 20px
       width 100%
       height 35px
-      padding 5px 35px 5px 20px
-      border-radius 17.5px
-      border 2px solid #ddd
       outline none
-      font-size 16px
+      border 2px solid #ddd
+      border-radius 17.5px
       color #999
+      font-size 16px
 
     .clear
       position absolute
       top 50%
       right 60px
-      border 2px solid #ddd
-      border-radius 50%
-      outline none
       width 20px
       height 20px
-      line-height 20px
+      outline none
+      border 2px solid #ddd
+      border-radius 50%
+      color #bbb
       text-align center
-      user-select none
+      line-height 20px
       cursor pointer
       transform translateY(-50%)
-      color #bbb
+      user-select none
 
     .filter
       display flex
       justify-content center
       align-items center
-      height 35px
-      width 40px
-      margin-left 5px
       box-sizing border-box
-      border-radius 5px
+      margin-left 5px
+      width 40px
+      height 35px
       border 2px solid #bbb
+      border-radius 5px
       background #fff
       cursor pointer
 
 .fixed
-  overflow hidden
   z-index 100
   flex-shrink 0
+  overflow hidden
   width 100%
   height 80px
   item()
@@ -485,30 +485,31 @@ item()
     align-items flex-start
 
     span
-      font-size 14px
       margin-left 5px
       color #999
+      font-size 14px
 
   input
-    font-size 20px
-    font-weight bolder
-    padding 0 5px
-    border none
-    width 90%
-    color #444
     overflow hidden
+    padding 0 5px
+    width 90%
+    border none
+    color #444
     text-overflow ellipsis
+    font-weight bolder
+    font-size 20px
 
   .close
+    margin-bottom 3px
     font-size 40px
     line-height 40px
-    margin-bottom 3px
     cursor pointer
 
 .highlight
   background #87cefa !important
 
-  .name, .alias
+  .name
+  .alias
     color #fff !important
     text-shadow 1px 1px 3px rgba(0, 0, 0, 0.5)
 </style>

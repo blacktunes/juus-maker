@@ -32,22 +32,22 @@ defineProps<{
   box-sizing border-box
   padding 2px 5px
   height 40px
-  border 1px solid rgba(200, 200, 200, 0.5)
-  border-right-color transparent
-  border-left-color transparent
-  background #fff
+  border 2px solid rgba(222, 222, 222, 0.3)
+  border-right none
+  border-left none
+  background rgba(250, 250, 250, 0.2)
   cursor pointer
 
   &:first-child
-    border-left-color rgba(200, 200, 200, 0.5)
+    border-left 2px solid rgba(222, 222, 222, 0.3)
     border-radius 20px 0 0 20px
 
   &:last-child
-    border-right-color rgba(200, 200, 200, 0.5)
+    border-right 2px solid rgba(222, 222, 222, 0.3)
     border-radius 0 20px 20px 0
 
   &:hover
-    background #eff7ff
+    background rgba(222, 222, 222, 0.5)
 
   .icon
     display flex
@@ -59,7 +59,8 @@ defineProps<{
     width 30px
     height 30px
     border-radius 50%
-    background #eff7ff
+    background rgba(255,255,255,0.5)
+    color #666
 
     *
       width 100%
@@ -67,12 +68,12 @@ defineProps<{
 
   .text
     margin 0 5px
-    color #666
+    color #000
     font-size 20px
     user-select none
 
 a
-  color #666
+  color #000
   text-decoration none
   font-size 20px
   user-select none

@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="currentJUUs"
     class="juus"
     ref="juus"
   >
@@ -8,13 +9,13 @@
       @click.stop="stopPlay"
       v-show="setting.play"
     ></div>
-    <div
+    <!-- <div
       class="bg"
       @click="changeBg"
       :title="tip.bg"
     >
-      <img :src="data.list[data.index].bg" />
-    </div>
+      <img :src="currentJUUs.bg" />
+    </div> -->
     <div class="juus-wrapper">
       <div class="image">
         <img
@@ -23,7 +24,7 @@
         />
         <div class="img-wrapper">
           <img
-            :src="data.list[data.index].img"
+            :src="currentJUUs.img"
             class="img"
             @click="changeImg"
             :title="tip.img"
@@ -51,7 +52,7 @@
             contenteditable
             @keydown.enter.prevent=""
           >
-            {{ data.list[data.index].like.text }}
+            {{ currentJUUs.like.text }}
           </span>
           次赞
         </div>
@@ -60,7 +61,7 @@
           contenteditable
           @keydown.enter.prevent=""
         >
-          {{ data.list[data.index].time }}
+          {{ currentJUUs.time }}
         </div>
         <div
           v-show="!select.show"
@@ -110,16 +111,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
-import Content from '@/components/JUUs/Content.vue'
-import data from '@/store/juus'
-import { tip, setting } from '@/store/setting'
-import input from '@/store/input'
-import { select } from '@/store/select'
-import _screenshot from '@/assets/scripts/screenshot'
+import commander from '@/assets/images/commander.jpg'
 import like from '@/assets/images/like.png'
 import like_2 from '@/assets/images/like_2.png'
-import commander from '@/assets/images/commander.jpg'
+import _screenshot from '@/assets/scripts/screenshot'
+import Content from '@/components/JUUs/Content.vue'
+import { currentJUUs } from '@/store/data'
+import input from '@/store/input'
+import { select } from '@/store/select'
+import { setting, tip } from '@/store/setting'
+import { computed, ref } from 'vue'
 
 const changeBg = () => {
   const input = document.createElement('input')
@@ -130,7 +131,8 @@ const changeBg = () => {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = (e) => {
-        data.list[data.index].bg = (e.target?.result as string) || ''
+        if (!currentJUUs.value) return
+        currentJUUs.value.bg = (e.target?.result as string) || ''
       }
     }
   }
@@ -146,25 +148,23 @@ const changeImg = () => {
       const file = new FileReader()
       file.readAsDataURL(input.files[0])
       file.onload = (e) => {
-        data.list[data.index].img = (e.target?.result as string) || ''
+        if (!currentJUUs.value) return
+        currentJUUs.value.img = (e.target?.result as string) || ''
       }
     }
   }
   input.click()
 }
 
-const likeImg = computed(() =>
-  data.list[data.index].like.flag
-    ? like_2
-    : like
-)
+const likeImg = computed(() => (currentJUUs.value?.like.flag ? like_2 : like))
 const setLike = () => {
-  data.list[data.index].like.flag = !data.list[data.index].like.flag
+  if (!currentJUUs.value) return
+  currentJUUs.value.like.flag = !currentJUUs.value.like.flag
 }
 
 const back = () => {
   select.show = false
-  data.home = true
+  setting.juus.id = -1
 }
 
 const juus = ref<HTMLElement | null>(null)

@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="currentJUUs"
     class="content"
     :class="{ scroll: !screenshot }"
     ref="dom"
@@ -9,7 +10,7 @@
       <div class="info">
         <Avatar
           :highlight="select.show && select.type === 1"
-          :src="data.list[data.index].juus.avatar"
+          :src="currentJUUs.juus.avatar"
           :type="2"
           :width="65"
           style="margin-left: 30px"
@@ -27,7 +28,7 @@
             @keydown.enter.prevent=""
             @input="juusChange('name', $event)"
           >
-            {{ data.list[data.index].juus.name }}
+            {{ currentJUUs.juus.name }}
           </span>
         </div>
         <img
@@ -43,7 +44,7 @@
         @keydown.enter.prevent=""
         @input="juusChange('text', $event)"
       >
-        {{ data.list[data.index].juus.text }}
+        {{ currentJUUs.juus.text }}
       </div>
       <div class="line"></div>
     </div>
@@ -55,14 +56,12 @@
         tag="transition-group"
         :component-data="{ name: 'list', type: 'transition' }"
         v-model="juusList"
-        :item-key="
-          (item: JUUsComment) => `comment-${juusList.indexOf(item)}`
-        "
+        :item-key="(item: JUUsComment) => `comment-${juusList.indexOf(item)}`"
         animation="100"
         delay="100"
         chosen-class="chosen"
       >
-        <template #item="{ element, index }: { element: JUUsComment, index: number }">
+        <template #item="{ element, index }: { element: JUUsComment; index: number }">
           <div class="comment-card">
             <div class="comment">
               <Avatar
@@ -191,21 +190,21 @@
 
 <script lang="ts" setup>
 import Avatar from '@/components/common/Avatar.vue'
+import { currentJUUs } from '@/store/data'
 import input from '@/store/input'
 import { resetSelectData, select } from '@/store/select'
-import data from '@/store/juus'
 import { setting } from '@/store/setting'
-import { nextTick, ref, computed } from 'vue'
 import draggable from '@marshallswain/vuedraggable'
+import { computed, nextTick, ref } from 'vue'
 
 defineProps(['screenshot'])
 
 const tempList = ref<JUUsComment[]>([])
 const juusList = computed({
-  get: () => (setting.play ? tempList.value : data.list[data.index].comment),
+  get: () => (setting.play ? tempList.value : currentJUUs.value!.comment),
   set: (val) => {
     if (!setting.play) {
-      data.list[data.index].comment = val
+      currentJUUs.value!.comment = val
     }
   }
 })
@@ -223,7 +222,7 @@ const scrollToBottom = () => {
 }
 
 const addComment = () => {
-  data.list[data.index].comment.push({
+  currentJUUs.value!.comment.push({
     ...input,
     text: input.text || '谢谢你，碧蓝航线',
     reply: []
@@ -234,11 +233,11 @@ const addComment = () => {
 
 const delComment = (index: number) => {
   resetSelectData()
-  data.list[data.index].comment.splice(index, 1)
+  currentJUUs.value!.comment.splice(index, 1)
 }
 
 const addReply = (index: number, e: Event) => {
-  data.list[data.index].comment?.[index].reply.push({
+  currentJUUs.value!.comment?.[index].reply.push({
     ...input,
     text: input.text || '谢谢你，碧蓝航线'
   })
@@ -255,21 +254,19 @@ const addReply = (index: number, e: Event) => {
 
 const delReply = (index: number, key: number) => {
   resetSelectData()
-  data.list[data.index].comment?.[index].reply.splice(key, 1)
+  currentJUUs.value!.comment?.[index].reply.splice(key, 1)
 }
 
 const juusChange = (key: 'name' | 'text', e: Event) => {
-  data.list[data.index].juus[key] = (e.target as HTMLInputElement).innerText
+  currentJUUs.value!.juus[key] = (e.target as HTMLInputElement).innerText
 }
 
 const commentChange = (key: 'name' | 'text', index: number, e: Event) => {
-  data.list[data.index].comment[index][key] = (e.target as HTMLInputElement).innerText
+  currentJUUs.value!.comment[index][key] = (e.target as HTMLInputElement).innerText
 }
 
 const replyChange = (key: 'name' | 'text', comment: number, index: number, e: Event) => {
-  data.list[data.index].comment[comment].reply[index][key] = (
-    e.target as HTMLInputElement
-  ).innerText
+  currentJUUs.value!.comment[comment].reply[index][key] = (e.target as HTMLInputElement).innerText
 }
 
 interface AvatarClick {
@@ -295,7 +292,7 @@ const avatarClick = ((type: 0 | 1 | 2 | 3, index = 0, key = 0) => {
 }) as AvatarClick
 
 const autoPlay = () => {
-  if (setting.play || data.list[data.index].comment.length < 1) return
+  if (setting.play || currentJUUs.value!.comment.length < 1) return
 
   setting.play = true
 
@@ -310,19 +307,19 @@ const _addComment = (i: number) => {
   if (!setting.play) return
 
   tempList.value.push({
-    ...data.list[data.index].comment[i],
+    ...currentJUUs.value!.comment[i],
     reply: []
   })
 
   nextTick(() => {
     scrollToBottom()
 
-    if (data.list[data.index].comment[i].reply.length > 0) {
+    if (currentJUUs.value!.comment[i].reply.length > 0) {
       setTimeout(() => {
         _addReply(i, 0)
       }, setting.interval)
     } else {
-      if (data.list[data.index].comment[i + 1]) {
+      if (currentJUUs.value!.comment[i + 1]) {
         setTimeout(() => {
           _addComment(i + 1)
         }, setting.interval)
@@ -336,16 +333,16 @@ const _addComment = (i: number) => {
 const _addReply = (i: number, j: number) => {
   if (!setting.play) return
 
-  tempList.value[i].reply.push(data.list[data.index].comment[i].reply[j])
+  tempList.value[i].reply.push(currentJUUs.value!.comment[i].reply[j])
   nextTick(() => {
     scrollToBottom()
 
-    if (data.list[data.index].comment[i].reply[j + 1]) {
+    if (currentJUUs.value!.comment[i].reply[j + 1]) {
       setTimeout(() => {
         _addReply(i, j + 1)
       }, setting.interval)
     } else {
-      if (data.list[data.index].comment[i + 1]) {
+      if (currentJUUs.value!.comment[i + 1]) {
         setTimeout(() => {
           _addComment(i + 1)
         }, setting.interval)

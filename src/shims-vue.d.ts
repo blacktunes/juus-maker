@@ -16,13 +16,14 @@ interface ReplyItem {
 type JUUsComment = ReplyItem & { reply: ReplyItem[] }
 
 interface JUUsData {
+  id: number
+  time: number
   img: string
   bg: string
   like: {
     flag: boolean
     text: string
   }
-  time: string
   juus: ReplyItem
   comment: JUUsComment[]
 }

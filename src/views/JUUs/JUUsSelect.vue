@@ -1,15 +1,15 @@
 <template>
   <div class="home-view">
-    <div class="bg">
+    <!-- <div class="bg">
       <img :src="bg" />
-    </div>
+    </div> -->
     <div class="home-wrapper">
       <div class="item-list">
         <div
           class="item"
-          v-for="(item, index) in data.list"
+          v-for="(item, index) in list"
           :key="`home-${index}`"
-          @click="showJUUs(index)"
+          @click="showJUUs(item.id)"
         >
           <div
             class="del"
@@ -54,32 +54,33 @@
 </template>
 
 <script lang="ts" setup>
-import data, { defaultItem } from '@/store/juus'
-import { computed } from 'vue'
 import like from '@/assets/images/like.png'
 import like_2 from '@/assets/images/like_2.png'
 import Avatar from '@/components/common/Avatar3.vue'
+import { data, getDefaultJUUs } from '@/store/data'
+import { setting } from '@/store/setting'
 
-const bg = computed(() =>
-  data.index >= 0 && data.list?.[data.index]?.bg ? data.list[data.index].bg : data.bg
-)
+defineProps<{
+  list: JUUsData[]
+}>()
 
 const getLikeImg = (flag: boolean) => (flag ? like_2 : like)
 
-const showJUUs = (index: number) => {
-  data.index = index
-  data.home = false
+const showJUUs = (id: number) => {
+  setting.juus.id = id
+  setting.juus.lastID = data.juus.findIndex((item) => item.id === id)
 }
 
 const addJUUs = () => {
-  data.list.unshift(JSON.parse(JSON.stringify(defaultItem)))
-  showJUUs(0)
+  const newJuus = getDefaultJUUs()
+  data.juus.push(newJuus)
+  showJUUs(newJuus.id)
 }
 
 const delJUUs = (index: number) => {
   const flag = confirm('是否删除该JUUs')
   if (flag) {
-    data.list.splice(index, 1)
+    data.juus.splice(index, 1)
   }
 }
 </script>
@@ -99,7 +100,7 @@ const delJUUs = (index: number) => {
     left 0
     z-index 1
     width 100%
-    height 100%
+    height 110%
     filter blur(10px)
     user-select none
 

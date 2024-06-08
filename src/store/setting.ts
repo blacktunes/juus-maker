@@ -7,10 +7,22 @@ const tip = {
   screenshotTalk: '保存对话截图'
 }
 
-const setting = reactive({
+const setting = reactive<{
+  screenshot: boolean
+  play: boolean
+  interval: number
+  juus: {
+    id?: number
+    lastID: number
+  }
+}>({
   screenshot: false,
   play: false,
-  interval: 1500
+  interval: 1500,
+  juus: {
+    id: undefined,
+    lastID: -1
+  }
 })
 
 export { setting, tip }
