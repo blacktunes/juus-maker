@@ -5,24 +5,36 @@ const path = require('path')
 
 let shipList = []
 
-puppeteer.launch({
-  headless: 'new',
-  args: ['--no-sandbox']
-})
-  .then(async browser => start(browser))
+puppeteer
+  .launch({
+    headless: 'new',
+    args: ['--no-sandbox']
+  })
+  .then(async (browser) => start(browser))
 
-const getShipInfo = async page => {
+const getShipInfo = async (page) => {
   console.log(new Date().toLocaleString(), '获取图鉴列表')
   await page.goto('https://wiki.biligame.com/blhx/%E8%88%B0%E8%88%B9%E5%9B%BE%E9%89%B4')
-  shipList = await page.$$eval('.jntj-1', el => {
+  shipList = await page.$$eval('.jntj-1', (el) => {
     const _data = []
-    el.forEach(item => {
+    el.forEach((item) => {
       const name = item.children[1].children[0].innerText.split('\n')
+      const srcset = item.children[0].children[0].srcset.split(',')
+
+      let image = item.children[0].children[0].src
+      for (const source of srcset) {
+        const _source = source.trim()
+        if (_source.endsWith('2x')) {
+          image = _source.split(' ')[0]
+          break
+        }
+      }
+
       _data.push({
         key: name[0],
         alias: name[1] || '',
         name: '',
-        avatar: item.children[0].children[0].src,
+        avatar: image,
         data: JSON.parse(JSON.stringify(item.dataset))
       })
     })
@@ -31,12 +43,12 @@ const getShipInfo = async page => {
   })
 }
 
-const loadText = text => {
+const loadText = (text) => {
   const list = {}
   let group = ''
   let type = ''
 
-  text.split('\n').forEach(item => {
+  text.split('\n').forEach((item) => {
     if (item.startsWith('===')) {
       type = item.replaceAll('=', '').replace('\r', '')
       return
@@ -46,7 +58,10 @@ const loadText = text => {
       return
     }
     if (item.includes('@')) {
-      const temp = item.replace(/\{|\}|小图标\||<br>/g, '').replace('\r', '').split('@')
+      const temp = item
+        .replace(/\{|\}|小图标\||<br>/g, '')
+        .replace('\r', '')
+        .split('@')
       const key = temp[0].split('|')[0]
       list[key] = {
         name: temp[1],
@@ -71,12 +86,14 @@ const ID = {
 }
 
 const getNickname = async (page, id) => {
-  await page.goto(`https://wiki.biligame.com/blhx/index.php?title=JUUs动态舰船昵称分析&action=edit&section=${id}`)
+  await page.goto(
+    `https://wiki.biligame.com/blhx/index.php?title=JUUs动态舰船昵称分析&action=edit&section=${id}`
+  )
 
-  return loadText(await page.$eval('textarea', el => el.value))
+  return loadText(await page.$eval('textarea', (el) => el.value))
 }
 
-const getShip = async page => {
+const getShip = async (page) => {
   let temp = {}
 
   for (const key in ID) {
@@ -93,7 +110,7 @@ const getShip = async page => {
   console.log(new Date().toLocaleString(), `舰船数据已保存 - [${shipList.length}]`)
 }
 
-const start = async browser => {
+const start = async (browser) => {
   const page = await browser.newPage()
 
   await getShipInfo(page)
