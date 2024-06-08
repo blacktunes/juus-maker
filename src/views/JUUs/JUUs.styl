@@ -115,15 +115,6 @@
           opacity 1
           transform translateX(0)
 
-    .content-wrapper
-      z-index 3
-      overflow hidden
-
-      &:hover
-        ~.save-right
-          opacity 1
-          transform translateX(0)
-
 .back
   z-index 9
   display flex
@@ -143,40 +134,3 @@
     margin-top 5px
     color #eee
     font-size 24px
-
-.menu
-  position fixed
-  top 6px
-  opacity 0
-  transform translateX(100%)
-  transition all 0.2s
-  user-select none
-
-  &:hover
-    opacity 1
-    transform translateX(0)
-
-.menu-icon
-  display flex
-  justify-content center
-  align-items center
-  width 35px
-  height 30px
-  padding 2px
-  background rgba(255, 255, 255, 0.85)
-  border-radius 5px 0 0 5px
-  cursor pointer
-
-  img
-    height 90%
-
-.save-all
-  z-index -1
-  left -40px
-
-.save-right
-  z-index 1
-  left 610px
-
-.hide
-  display none

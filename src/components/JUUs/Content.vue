@@ -189,12 +189,14 @@
 </template>
 
 <script lang="ts" setup>
+import { emitter } from '@/assets/scripts/event'
 import Avatar from '@/components/common/Avatar.vue'
 import { currentJUUs } from '@/store/data'
 import input from '@/store/input'
 import { resetSelectData, select } from '@/store/select'
 import { setting } from '@/store/setting'
 import draggable from '@marshallswain/vuedraggable'
+import { screenshot as _screenshot } from 'star-rail-vue'
 import { computed, nextTick, ref } from 'vue'
 
 defineProps(['screenshot'])
@@ -364,7 +366,13 @@ const stopPlay = () => {
   })
 }
 
-defineExpose({ dom, autoPlay, stopPlay })
+emitter.on('play', autoPlay)
+emitter.on('stop', stopPlay)
+emitter.on('screenshot', () => {
+  if (dom.value) {
+    _screenshot(dom.value, { height: dom.value.scrollHeight })
+  }
+})
 </script>
 
 <style lang="stylus" src="./Content.styl" scoped></style>

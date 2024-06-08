@@ -12,20 +12,28 @@
       bottom: 60
     }"
   >
-    <div class="bg">
-      <img :src="bg" />
-    </div>
-    <Transition name="fade">
-      <Loading v-if="!ready" />
-    </Transition>
-    <transition name="fade">
-      <ShipSelect
-        v-if="select.show"
-        class="select"
+    <div
+      class="main-content"
+      ref="dom"
+    >
+      <div class="bg">
+        <img :src="bg" />
+      </div>
+      <Transition name="fade">
+        <Loading v-if="!ready" />
+      </Transition>
+      <transition name="fade">
+        <ShipSelect
+          v-if="select.show"
+          class="select"
+        />
+      </transition>
+      <JUUsSelect
+        v-show="setting.juus.home"
+        :list="JUUsList"
       />
-    </transition>
-    <JUUsSelect :list="JUUsList" />
-    <JUUs v-show="!setting.juus.home && currentJUUs" />
+      <JUUs v-show="!setting.juus.home && currentJUUs" />
+    </div>
     <div class="link">
       <Transition
         name="menu"
@@ -55,19 +63,19 @@
           </MenuBtn>
         </div>
         <div v-else>
-          <MenuBtn>
+          <MenuBtn @click.stop="saveJUUs">
             <template #icon>
               <Image />
             </template>
             保存动态
           </MenuBtn>
-          <MenuBtn>
+          <MenuBtn @click.stop="emitter.emit('screenshot')">
             <template #icon>
               <Image />
             </template>
             保存对话
           </MenuBtn>
-          <MenuBtn>
+          <MenuBtn @click.stop="emitter.emit('play')">
             <template #icon>
               <Image />
             </template>
@@ -93,10 +101,11 @@ import MenuBtn from '@/components/common/MenuBtn.vue'
 import { currentJUUs, data, defaultBg } from '@/store/data'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'
-import { Main } from 'star-rail-vue'
+import { Main, screenshot } from 'star-rail-vue'
 import JUUs from './JUUs.vue'
 import JUUsSelect from './JUUsSelect.vue'
 import Loading from './Loading.vue'
+import { emitter } from '@/assets/scripts/event'
 
 const ready = ref(false)
 
@@ -133,9 +142,21 @@ const changeBg = () => {
   }
   input.click()
 }
+
+const dom = ref<HTMLElement | null>(null)
+const saveJUUs = () => {
+  if (dom.value) {
+    screenshot(dom.value)
+  }
+}
 </script>
 
 <style lang="stylus" scoped>
+.main-content
+  position relative
+  width 1280px
+  height 720px
+
 .app-bg
   position fixed
   z-index -1
@@ -155,7 +176,7 @@ const changeBg = () => {
   z-index -1
   z-index 1
   width 100%
-  height calc(100% + 60px)
+  height 100%
   filter blur(10px)
   user-select none
 

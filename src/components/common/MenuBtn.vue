@@ -47,7 +47,7 @@ defineProps<{
     border-radius 0 20px 20px 0
 
   &:hover
-    background rgba(222, 222, 222, 0.5)
+    background rgba(255, 255, 255, 0.5)
 
   .icon
     display flex
