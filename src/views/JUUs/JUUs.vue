@@ -8,11 +8,14 @@
         :img="currentJUUs.bg"
         :type="2"
       />
-      <div class="image">
-        <img
-          src="@/assets/images/logo.jpg"
-          class="logo"
-        />
+      <div class="left">
+        <div class="logo">
+          <div class="icon">
+            <Logo />
+          </div>
+          <div class="line"></div>
+          <span>JUUSTAGRAM</span>
+        </div>
         <div class="img-wrapper">
           <img
             :src="currentJUUs.img"
@@ -21,38 +24,24 @@
             :title="tip.img"
           />
         </div>
-        <div class="icon-left">
+        <div class="info-icon">
           <img
             :src="likeImg"
             class="icon like"
             @click="setLike"
           />
-          <img
-            src="@/assets/images/message.png"
-            class="icon"
-          />
+          <Message />
+          <PaperAirplane />
         </div>
-        <div class="icon-right">
-          <img
-            src="@/assets/images/纸飞机.png"
-            class="icon"
-          />
-        </div>
-        <div class="text text-left">
+        <div class="info-text">
           <span
             contenteditable
             @keydown.enter.prevent=""
           >
             {{ currentJUUs.like.text }}
           </span>
-          次赞
-        </div>
-        <div
-          class="text text-right"
-          contenteditable
-          @keydown.enter.prevent=""
-        >
-          {{ currentJUUs.time }}
+          <span>次赞</span>
+          <span>{{ time }}</span>
         </div>
       </div>
       <Content />
@@ -73,10 +62,21 @@ import like from '@/assets/images/like.png'
 import like_2 from '@/assets/images/like_2.png'
 import Background from '@/components/JUUs/Background.vue'
 import Content from '@/components/JUUs/Content.vue'
+import { Logo, Message, PaperAirplane } from '@/components/common/Icon'
 import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
 import { setting, tip } from '@/store/setting'
 import { computed } from 'vue'
+
+const time = computed(() => {
+  if (!currentJUUs.value) return '-'
+  console.log(Date.now(), currentJUUs.value.time)
+  const diff = parseInt(String((Date.now() - currentJUUs.value.time) / (1000 * 3600 * 24)))
+  if (diff < 1) {
+    return '刚刚'
+  }
+  return `${diff}天前`
+})
 
 const changeImg = () => {
   const input = document.createElement('input')
@@ -107,4 +107,150 @@ const back = () => {
 }
 </script>
 
-<style lang="stylus" src="./JUUs.styl" scoped></style>
+<style lang="stylus" scoped>
+.juus
+  position relative
+  display flex
+  justify-content center
+  align-items center
+  width 100%
+  height 100%
+
+  .juus-wrapper
+    position relative
+    z-index 2
+    display flex
+    overflow hidden
+    width 1050px
+    height 640px
+    border-radius 10px
+    background rgba(200, 200, 200, 0.5)
+    box-shadow 3px 3px 5px rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0, 0, 0, 0.5)
+    backdrop-filter blur(30px)
+
+    *::-webkit-scrollbar
+      width 0
+      height 0
+
+    .left
+      position relative
+      width 650px
+      height 640px
+
+      .logo
+        position absolute
+        top 0
+        left 0
+        display flex
+        align-items center
+        padding 0 5px
+        height 45px
+        border-top-left-radius 10px
+        background #000
+        user-select none
+
+        .icon
+          display flex
+          justify-content center
+          align-items center
+          width 35px
+          height 35px
+          border-radius 5px
+          background #636563
+
+          svg
+            flex-shrink 0
+            width 120%
+            height 120%
+
+        .line
+          margin 0 5px
+          width 1.5px
+          height 35px
+          background #636563
+
+        span
+          color #636563
+          font-size 20px
+
+      .img-wrapper
+        position absolute
+        top 50px
+        left 70px
+        overflow hidden
+        width 500px
+        height 500px
+        border-radius 5px
+        cursor pointer
+
+      .img
+        position absolute
+        top 0
+        left 50%
+        height 100%
+        transform translateX(-50%)
+        user-select none
+
+      .info-icon
+        position absolute
+        bottom 40px
+        left 70px
+        display flex
+        align-items center
+        width 500px
+        color #fff
+
+        svg
+          &:last-child
+            margin-left auto
+
+        .icon
+          width 32px
+          height 32px
+          user-select none
+
+        .like
+          margin-right 15px
+          width 43px
+          height 42px
+          cursor pointer
+
+      .info-text
+        position absolute
+        bottom 10px
+        left 75px
+        display flex
+        align-items center
+        width 500px
+        color #fff
+        font-size 20px
+        user-select none
+
+        span
+          &:first-child
+            margin-right 5px
+          &:last-child
+            margin-left auto
+            margin-right 2px
+            font-size 18px
+
+.back
+  position absolute
+  bottom 10px
+  left 30px
+  z-index 9
+  display flex
+  flex-direction column
+  align-items center
+  align-content center
+  width 55px
+  cursor pointer
+
+  img
+    width 100%
+
+  span
+    margin-top 5px
+    color #eee
+    font-size 24px
+</style>

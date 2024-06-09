@@ -25,13 +25,13 @@ withDefaults(
   justify-content center
   align-items center
   user-select none
+  color #fff
 
   .svg
     animation logo 1s infinite alternate
 
   span
     margin -25px 0 25px
-    color #fff
     text-indent 20px
     letter-spacing 20px
     font-size 26px
