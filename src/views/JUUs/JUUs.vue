@@ -4,6 +4,10 @@
     class="juus"
   >
     <div class="juus-wrapper">
+      <Background
+        :img="currentJUUs.bg"
+        :type="2"
+      />
       <div class="image">
         <img
           src="@/assets/images/logo.jpg"
@@ -67,6 +71,7 @@
 <script lang="ts" setup>
 import like from '@/assets/images/like.png'
 import like_2 from '@/assets/images/like_2.png'
+import Background from '@/components/JUUs/Background.vue'
 import Content from '@/components/JUUs/Content.vue'
 import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'

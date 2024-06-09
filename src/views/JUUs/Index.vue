@@ -1,9 +1,6 @@
 <template>
-  <div class="app-bg">
-    <img
-      :src="bg"
-      alt=""
-    />
+  <div class="global-bg">
+    <img :src="currentBg" />
   </div>
   <Main
     :viewport="{
@@ -11,27 +8,35 @@
       height: 720,
       bottom: 60
     }"
+    :popup="popupManager"
   >
     <div
-      class="main-content"
+      class="main"
       ref="dom"
     >
-      <div class="bg">
-        <img :src="bg" />
-      </div>
+      <Background :img="currentBg" />
+      <div
+        class="mask"
+        v-if="setting.play"
+      ></div>
       <Transition name="fade">
         <Loading v-if="!ready" />
       </Transition>
-      <transition name="fade">
+      <transition name="select">
         <ShipSelect
           v-if="select.show"
           class="select"
         />
       </transition>
-      <JUUsSelect
-        v-show="setting.juus.home"
-        :list="JUUsList"
-      />
+      <Transition
+        name="select"
+        appear
+      >
+        <JUUsSelect
+          v-show="ready && setting.juus.home"
+          :list="JUUsList"
+        />
+      </Transition>
       <JUUs v-show="!setting.juus.home && currentJUUs" />
     </div>
     <div class="link">
@@ -62,7 +67,7 @@
             舰娘聊天
           </MenuBtn>
         </div>
-        <div v-else>
+        <div v-else-if="!setting.play">
           <MenuBtn @click.stop="saveJUUs">
             <template #icon>
               <Image />
@@ -88,6 +93,14 @@
             更换背景
           </MenuBtn>
         </div>
+        <div v-else>
+          <MenuBtn @click.stop="emitter.emit('stop')">
+            <template #icon>
+              <Image />
+            </template>
+            停止播放
+          </MenuBtn>
+        </div>
       </Transition>
     </div>
   </Main>
@@ -95,36 +108,26 @@
 
 <script lang="ts" setup>
 import { loadJUUsDatabase } from '@/assets/scripts/database'
+import { emitter } from '@/assets/scripts/event'
+import { popupManager } from '@/assets/scripts/popup'
 import { screenshot } from '@/assets/scripts/screenshot'
 import ShipSelect from '@/components/Ship/ShipSelect.vue'
 import { Bilibili, Github, Image } from '@/components/common/Icon'
 import MenuBtn from '@/components/common/MenuBtn.vue'
-import { currentJUUs, data, defaultBg } from '@/store/data'
+import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'
 import { Main } from 'star-rail-vue'
+import { JUUsList, currentBg } from './JUUs'
 import JUUs from './JUUs.vue'
 import JUUsSelect from './JUUsSelect.vue'
 import Loading from './Loading.vue'
-import { emitter } from '@/assets/scripts/event'
+import Background from '@/components/JUUs/Background.vue'
 
 const ready = ref(false)
 
 loadJUUsDatabase().then(() => {
   setTimeout(() => (ready.value = true), 1000)
-})
-
-const JUUsList = computed(() => {
-  let list = data.juus
-  list.sort((a, b) => b.time - a.time)
-  return list
-})
-
-const bg = computed(() => {
-  if (currentJUUs.value) return currentJUUs.value.bg
-  if (data.juus[setting.juus.lastID]?.bg) return data.juus[setting.juus.lastID].bg
-  if (JUUsList.value[0]?.bg) return JUUsList.value[0].bg
-  return defaultBg
 })
 
 const changeBg = () => {
@@ -153,16 +156,18 @@ const saveJUUs = () => {
 </script>
 
 <style lang="stylus" scoped>
-.main-content
+.main
   position relative
   width 1280px
   height 720px
 
-.app-bg
+.global-bg
   position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
   z-index -1
-  width 100vw
-  height 100vh
 
   img
     width 100%
@@ -173,11 +178,10 @@ const saveJUUs = () => {
 .bg
   position absolute
   top 0
+  right 0
+  bottom 0
   left 0
   z-index -1
-  z-index 1
-  width 100%
-  height 100%
   filter blur(10px)
   user-select none
 
@@ -187,6 +191,15 @@ const saveJUUs = () => {
     left 50%
     height 100%
     transform translateX(-50%)
+
+.mask
+  position absolute
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index 9
+  user-select none
 
 .select
   position fixed
@@ -212,6 +225,24 @@ const saveJUUs = () => {
     justify-content center
     align-items flex-end
     overflow hidden
+
+.select-enter-active
+.select-leave-active
+  transition all 0.3s
+
+.select-enter-from
+  opacity 0
+  transform translateY(20px)
+
+.select-enter-to
+  opacity 1
+  transform translateY(0)
+
+.select-leave-from
+  opacity 1
+
+.select-leave-to
+  opacity 0
 
 .menu-enter-active
 .menu-leave-active

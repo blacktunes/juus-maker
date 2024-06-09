@@ -40,11 +40,13 @@ defineProps<{
 
   &:first-child
     border-left 2px solid rgba(222, 222, 222, 0.3)
-    border-radius 20px 0 0 20px
+    border-top-left-radius 20px
+    border-bottom-left-radius 20px
 
   &:last-child
     border-right 2px solid rgba(222, 222, 222, 0.3)
-    border-radius 0 20px 20px 0
+    border-top-right-radius 20px
+    border-bottom-right-radius 20px
 
   &:hover
     background rgba(255, 255, 255, 0.5)
@@ -59,7 +61,7 @@ defineProps<{
     width 30px
     height 30px
     border-radius 50%
-    background rgba(255,255,255,0.5)
+    background rgba(255, 255, 255, 0.5)
     color #666
 
     *

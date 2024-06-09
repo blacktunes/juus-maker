@@ -1,8 +1,5 @@
 <template>
   <div class="home-view">
-    <!-- <div class="bg">
-      <img :src="bg" />
-    </div> -->
     <div class="home-wrapper">
       <div class="item-list">
         <div
@@ -49,6 +46,10 @@
           <img src="@/assets/images/camera_add.png" />
         </div>
       </div>
+      <Background
+        :img="currentBg"
+        :type="1"
+      />
     </div>
   </div>
 </template>
@@ -56,9 +57,11 @@
 <script lang="ts" setup>
 import like from '@/assets/images/like.png'
 import like_2 from '@/assets/images/like_2.png'
+import Background from '@/components/JUUs/Background.vue'
 import Avatar from '@/components/common/Avatar3.vue'
 import { data, getDefaultJUUs } from '@/store/data'
 import { setting } from '@/store/setting'
+import { currentBg } from './JUUs'
 
 defineProps<{
   list: JUUsData[]
@@ -89,39 +92,22 @@ const delJUUs = (index: number) => {
 <style lang="stylus" scoped>
 .home-view
   position absolute
+  z-index 5
   display flex
   justify-content center
   align-items center
   width 100%
   height 100%
 
-  .bg
-    position absolute
-    top 0
-    left 0
-    z-index 1
-    width 100%
-    height 110%
-    filter blur(10px)
-    user-select none
-
-    img
-      position absolute
-      top 0
-      left 50%
-      height 100%
-      transform translateX(-50%)
-
   .home-wrapper
+    position relative
     z-index 2
     display flex
     overflow hidden
     width 1050px
     height 550px
     border-radius 5px
-    background rgba(200, 200, 200, 0.5)
     box-shadow 3px 3px 5px rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0, 0, 0, 0.5)
-    backdrop-filter blur(30px)
 
     .item-list
       overflow-y scroll
@@ -141,13 +127,13 @@ const delJUUs = (index: number) => {
         background-color rgba(255, 255, 255, 0.9)
 
       &::-webkit-scrollbar-thumb:active
-        background-color rgba(200, 200, 200, 0.9)
+        background-color rgba(240, 240, 240, 0.9)
 
       .item
         position relative
         display flex
         align-items center
-        margin-bottom 20px
+        margin-bottom 30px
         width 930px
         height 100px
         border-radius 5px
@@ -155,6 +141,9 @@ const delJUUs = (index: number) => {
         cursor pointer
         transition box-shadow 0.25s
         user-select none
+
+        &:last-child
+          margin-bottom 0
 
         &:hover
           box-shadow 1px 1px 10px rgba(0, 0, 0, 0.4)

@@ -1,81 +1,64 @@
 .juus
   position relative
-  width 100%
-  height 100%
   display flex
   justify-content center
   align-items center
-
-  .bg
-    z-index 1
-    position absolute
-    top 0
-    left 0
-    width 100%
-    height 100%
-    filter blur(5px)
-    cursor pointer
-    user-select none
-
-    img
-      position absolute
-      top 0
-      left 50%
-      transform translateX(-50%)
-      height 100%
+  width 100%
+  height 100%
 
   .juus-wrapper
+    overflow hidden
     position relative
     z-index 2
+    display flex
     width 1050px
     height 640px
-    backdrop-filter blur(30px)
+    border-radius 10px
     background rgba(200, 200, 200, 0.5)
     box-shadow 3px 3px 5px rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0, 0, 0, 0.5)
-    border-radius 10px
-    display flex
+    backdrop-filter blur(30px)
 
     *::-webkit-scrollbar
       width 0
       height 0
 
     .image
+      position relative
       width 650px
       height 640px
-      position relative
 
       .logo
         position absolute
         top 0
         left 0
         width 180px
-        user-select none
         border-top-left-radius 10px
+        user-select none
 
       .img-wrapper
-        overflow hidden
         position absolute
         top 50px
         left 70px
-        height 500px
+        overflow hidden
         width 500px
-        cursor pointer
+        height 500px
         border-radius 5px
+        cursor pointer
 
       .img
         position absolute
         top 0
         left 50%
-        transform translateX(-50%)
         height 100%
+        transform translateX(-50%)
         user-select none
 
       .icon-left
-        display flex
-        align-items center
         position absolute
         bottom 40px
         left 70px
+        display flex
+        align-items center
 
         .icon
           width 32px
@@ -83,31 +66,31 @@
           user-select none
 
         .like
+          margin-right 25px
           width 43px
           height 42px
-          margin-right 25px
           cursor pointer
 
       .icon-right
         position absolute
-        bottom 45px
         right 75px
+        bottom 45px
         user-select none
 
       .text-left
         position absolute
         bottom 10px
         left 75px
-        font-size 20px
         color #fff
+        font-size 20px
         user-select none
 
       .text-right
         position absolute
-        bottom 15px
         right 75px
-        font-size 18px
+        bottom 15px
         color #fff
+        font-size 18px
         user-select none
 
       &:hover
@@ -116,14 +99,14 @@
           transform translateX(0)
 
 .back
+  position absolute
+  bottom 10px
+  left 30px
   z-index 9
   display flex
   flex-direction column
-  align-content center
   align-items center
-  position absolute
-  left 30px
-  bottom 10px
+  align-content center
   width 55px
   cursor pointer
 
