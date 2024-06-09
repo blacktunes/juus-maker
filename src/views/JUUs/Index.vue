@@ -95,13 +95,14 @@
 
 <script lang="ts" setup>
 import { loadJUUsDatabase } from '@/assets/scripts/database'
+import { screenshot } from '@/assets/scripts/screenshot'
 import ShipSelect from '@/components/Ship/ShipSelect.vue'
 import { Bilibili, Github, Image } from '@/components/common/Icon'
 import MenuBtn from '@/components/common/MenuBtn.vue'
 import { currentJUUs, data, defaultBg } from '@/store/data'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'
-import { Main, screenshot } from 'star-rail-vue'
+import { Main } from 'star-rail-vue'
 import JUUs from './JUUs.vue'
 import JUUsSelect from './JUUsSelect.vue'
 import Loading from './Loading.vue'

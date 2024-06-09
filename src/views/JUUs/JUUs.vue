@@ -51,10 +51,7 @@
           {{ currentJUUs.time }}
         </div>
       </div>
-      <Content
-        :screenshot="setting.screenshot"
-        ref="content"
-      />
+      <Content />
     </div>
     <div
       v-show="!setting.screenshot"

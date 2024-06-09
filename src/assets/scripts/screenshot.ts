@@ -1,35 +1,23 @@
-import { toPng } from 'html-to-image'
 import { setting } from '@/store/setting'
-import { nextTick } from 'vue'
+import { screenshot } from 'star-rail-vue'
+import { popupManager } from './popup'
 
-export default function (dom: HTMLElement, width?: number, height?: number) {
+const _screenshot = (
+  dom: HTMLElement,
+  config?: {
+    name?: string
+    width?: number
+    height?: number
+    download?: boolean
+  }
+) => {
   setting.screenshot = true
+  popupManager.open('loading')
 
-  nextTick(() => {
-    toPng(dom, {
-      width,
-      height
-    })
-      .then((dataUrl) => {
-        const title = `JUUs-${Date.now()}`
-        if (import.meta.env.MODE === 'development') {
-          const img = new Image()
-          img.src = dataUrl
-          img.alt = title
-          const win = window.open('')
-          if (win) win.document.body.appendChild(img)
-        } else {
-          const link = document.createElement('a')
-          link.download = `${title}.png`
-          link.href = dataUrl
-          link.click()
-        }
-      })
-      .catch((error) => {
-        console.error('截图保存错误', error)
-      })
-      .finally(() => {
-        setting.screenshot = false
-      })
+  screenshot(dom, config).finally(() => {
+    setting.screenshot = false
+    popupManager.close('loading')
   })
 }
+
+export { _screenshot as screenshot }

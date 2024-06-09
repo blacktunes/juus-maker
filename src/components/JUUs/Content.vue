@@ -2,7 +2,7 @@
   <div
     v-if="currentJUUs"
     class="content"
-    :class="{ scroll: !screenshot }"
+    :style="{overflow: setting.screenshot ? 'hidden' : undefined}"
     ref="dom"
   >
     <div class="info-wrapper">
@@ -196,10 +196,8 @@ import input from '@/store/input'
 import { resetSelectData, select } from '@/store/select'
 import { setting } from '@/store/setting'
 import draggable from '@marshallswain/vuedraggable'
-import { screenshot as _screenshot } from 'star-rail-vue'
+import { screenshot } from '@/assets/scripts/screenshot'
 import { computed, nextTick, ref } from 'vue'
-
-defineProps(['screenshot'])
 
 const tempList = ref<JUUsComment[]>([])
 const juusList = computed({
@@ -370,7 +368,7 @@ emitter.on('play', autoPlay)
 emitter.on('stop', stopPlay)
 emitter.on('screenshot', () => {
   if (dom.value) {
-    _screenshot(dom.value, { height: dom.value.scrollHeight })
+    screenshot(dom.value, { height: dom.value.scrollHeight })
   }
 })
 </script>
