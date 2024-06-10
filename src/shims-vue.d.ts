@@ -22,7 +22,8 @@ interface JUUsData {
   bg: string
   like: {
     flag: boolean
-    text: string
+    num: string
+    ellipsis: boolean
   }
   juus: ReplyItem
   comment: JUUsComment[]

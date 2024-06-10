@@ -35,7 +35,7 @@
               <img :src="getLikeImg(item.like.flag)" />
             </div>
             <div class="like-num">
-              {{ item.like.text }}
+              {{ item.like.num }}
             </div>
           </div>
         </div>
@@ -119,6 +119,7 @@ const delJUUs = (index: number) => {
         height 15px
 
       &::-webkit-scrollbar-track
+        margin-top 40px
         border-radius 10px
         background-color rgba(200, 200, 200, 0.5)
 

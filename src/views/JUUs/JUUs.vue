@@ -16,12 +16,14 @@
           <div class="line"></div>
           <span>JUUSTAGRAM</span>
         </div>
-        <div class="img-wrapper">
+        <div
+          class="img-wrapper"
+          @click.stop="imageChange"
+        >
+          <ChangeImage />
           <img
             :src="currentJUUs.img"
             class="img"
-            @click="changeImg"
-            :title="tip.img"
           />
         </div>
         <div class="info-icon">
@@ -34,13 +36,22 @@
           <PaperAirplane />
         </div>
         <div class="info-text">
-          <span
-            contenteditable
-            @keydown.enter.prevent=""
-          >
-            {{ currentJUUs.like.text }}
-          </span>
-          <span>次赞</span>
+          <div>
+            <span
+              contenteditable
+              @keydown.enter.prevent="(e) => (e.target as HTMLElement).blur()"
+              @focus="initLikeInput"
+              @blur="updateLikeNum"
+              @beforeinput="beforeLikeInput"
+            >
+              {{ likeNum }}
+            </span>
+            <span>次赞</span>
+            <EllipsisHorizontalCircleOutline
+              v-if="isLikeMoreThan999"
+              @click.stop="likeEllipsisChange"
+            />
+          </div>
           <span>{{ time }}</span>
         </div>
       </div>
@@ -62,15 +73,20 @@ import like from '@/assets/images/like.png'
 import like_2 from '@/assets/images/like_2.png'
 import Background from '@/components/JUUs/Background.vue'
 import Content from '@/components/JUUs/Content.vue'
-import { Logo, Message, PaperAirplane } from '@/components/common/Icon'
+import {
+  ChangeImage,
+  EllipsisHorizontalCircleOutline,
+  Logo,
+  Message,
+  PaperAirplane
+} from '@/components/common/Icon'
 import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
-import { setting, tip } from '@/store/setting'
+import { setting } from '@/store/setting'
 import { computed } from 'vue'
 
 const time = computed(() => {
   if (!currentJUUs.value) return '-'
-  console.log(Date.now(), currentJUUs.value.time)
   const diff = parseInt(String((Date.now() - currentJUUs.value.time) / (1000 * 3600 * 24)))
   if (diff < 1) {
     return '刚刚'
@@ -78,7 +94,7 @@ const time = computed(() => {
   return `${diff}天前`
 })
 
-const changeImg = () => {
+const imageChange = () => {
   const input = document.createElement('input')
   input.type = 'file'
   input.accept = 'image/*'
@@ -95,10 +111,67 @@ const changeImg = () => {
   input.click()
 }
 
+const isLikeMoreThan999 = computed(() => {
+  if (!currentJUUs.value) return false
+  return Number(currentJUUs.value.like.num) > 999
+})
+
 const likeImg = computed(() => (currentJUUs.value?.like.flag ? like_2 : like))
 const setLike = () => {
   if (!currentJUUs.value) return
   currentJUUs.value.like.flag = !currentJUUs.value.like.flag
+  if (currentJUUs.value.like.flag) {
+    currentJUUs.value.like.num = String(BigInt(currentJUUs.value.like.num) + BigInt(1))
+  } else {
+    currentJUUs.value.like.num = String(BigInt(currentJUUs.value.like.num) - BigInt(1))
+  }
+}
+
+const likeNum = computed(() => {
+  if (!currentJUUs.value) return '0'
+  if (currentJUUs.value.like.ellipsis && isLikeMoreThan999.value) {
+    return '999+'
+  }
+  return currentJUUs.value.like.num
+})
+
+const beforeLikeInput = (e: Event) => {
+  if (isNaN(Number((e as InputEvent).data))) {
+    e.preventDefault()
+  }
+}
+
+const initLikeInput = (e: Event) => {
+  if (!currentJUUs.value) return
+  ;(e.target as HTMLElement).innerText = currentJUUs.value.like.num
+}
+
+const updateLikeNum = (e: Event) => {
+  if (!currentJUUs.value) return
+  const el = e.target as HTMLElement
+  let newText = el.innerText.replace(/[^\d]/g, '')
+
+  if (currentJUUs.value.like.ellipsis && Number(newText) > 999) {
+    el.innerText = '999+'
+  }
+  if (newText === '0' && currentJUUs.value.like.flag) {
+    newText = '1'
+  }
+  if (!newText) {
+    newText = currentJUUs.value.like.flag ? '1' : '0'
+  }
+  if (el.innerText !== newText) {
+    el.innerText = newText
+  }
+
+  if (currentJUUs.value.like.num !== newText) {
+    currentJUUs.value.like.num = newText
+  }
+}
+
+const likeEllipsisChange = () => {
+  if (!currentJUUs.value) return
+  currentJUUs.value.like.ellipsis = !currentJUUs.value.like.ellipsis
 }
 
 const back = () => {
@@ -177,19 +250,38 @@ const back = () => {
         position absolute
         top 50px
         left 70px
+        display flex
+        justify-content center
+        align-items center
         overflow hidden
         width 500px
         height 500px
         border-radius 5px
         cursor pointer
-
-      .img
-        position absolute
-        top 0
-        left 50%
-        height 100%
-        transform translateX(-50%)
         user-select none
+
+        &:hover
+          svg
+            opacity 1
+            transform translateY(0)
+
+        svg
+          position absolute
+          top 20px
+          padding 5px
+          border-radius 50%
+          background rgba(255, 255, 255, 0.8)
+          color #666
+          opacity 0
+          transition all 0.2s
+          transform translateY(-20px)
+          pointer-events none
+
+        img
+          width 100%
+          height 100%
+          pointer-events none
+          object-fit cover
 
       .info-icon
         position absolute
@@ -220,19 +312,39 @@ const back = () => {
         bottom 10px
         left 75px
         display flex
+        justify-content space-between
         align-items center
         width 500px
         color #fff
-        font-size 20px
         user-select none
 
+        & > div
+          display flex
+          align-items center
+
+          &:hover
+            svg
+              opacity 1
+
+          svg
+            margin 2px 0 0 2px
+            opacity 0
+            cursor pointer
+            transition 0.2s all
+
+          span
+            font-size 20px
+
+            &:first-child
+              overflow hidden
+              margin-right 5px
+              max-width 300px
+              text-overflow ellipsis
+              white-space nowrap
+
         span
-          &:first-child
-            margin-right 5px
-          &:last-child
-            margin-left auto
-            margin-right 2px
-            font-size 18px
+          margin-right 4px
+          font-size 18px
 
 .back
   position absolute

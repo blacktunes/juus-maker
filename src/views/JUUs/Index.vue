@@ -88,7 +88,7 @@
           </MenuBtn>
           <MenuBtn @click.stop="changeBg">
             <template #icon>
-              <Image />
+              <ChangeImage style="width: 22px" />
             </template>
             更换背景
           </MenuBtn>
@@ -112,7 +112,7 @@ import { emitter } from '@/assets/scripts/event'
 import { popupManager } from '@/assets/scripts/popup'
 import { screenshot } from '@/assets/scripts/screenshot'
 import ShipSelect from '@/components/Ship/ShipSelect.vue'
-import { Bilibili, Github, Image } from '@/components/common/Icon'
+import { Bilibili, ChangeImage, Github, Image } from '@/components/common/Icon'
 import MenuBtn from '@/components/common/MenuBtn.vue'
 import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
@@ -220,7 +220,7 @@ const saveJUUs = () => {
   height 50px
   gap 5px
 
-  div
+  & > div
     display flex
     justify-content center
     align-items flex-end
