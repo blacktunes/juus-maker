@@ -57,7 +57,7 @@ withDefaults(
   margin 10px
   width 140px
   height 50px
-  filter drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5))
+  filter drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.5))
   cursor pointer
   user-select none
 
@@ -65,12 +65,17 @@ withDefaults(
     .bg
       filter brightness(1.05)
 
+  &:active
+    .bg
+      filter brightness(0.95)
+
   span
     z-index 1
     color #fff
-    text-indent 5px
-    letter-spacing 5px
+    text-indent 10px
+    letter-spacing 10px
     font-size 28px
+    font-family "Noto Serif SC", serif;
 
   .bg
     position absolute
