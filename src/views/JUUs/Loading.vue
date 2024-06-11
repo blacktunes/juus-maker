@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import Logo from '@/components/common/Logo.vue'
+import Logo from '@/components/Common/Logo.vue'
 </script>
 
 <style lang="stylus" scoped>

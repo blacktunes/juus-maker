@@ -79,11 +79,12 @@ import {
   Logo,
   Message,
   PaperAirplane
-} from '@/components/common/Icon'
+} from '@/components/Common/Icon'
 import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'
 import { computed } from 'vue'
+import { popupManager } from '@/assets/scripts/popup'
 
 const time = computed(() => {
   if (!currentJUUs.value) return '-'
@@ -95,20 +96,15 @@ const time = computed(() => {
 })
 
 const imageChange = () => {
-  const input = document.createElement('input')
-  input.type = 'file'
-  input.accept = 'image/*'
-  input.onchange = () => {
-    if (input.files?.[0]) {
-      const file = new FileReader()
-      file.readAsDataURL(input.files[0])
-      file.onload = (e) => {
-        if (!currentJUUs.value) return
-        currentJUUs.value.img = (e.target?.result as string) || ''
-      }
-    }
-  }
-  input.click()
+  popupManager
+    .open('cropper', {
+      aspectRatio: 1,
+      maxWidth: 1280
+    })
+    .then((res) => {
+      if (!currentJUUs.value) return
+      currentJUUs.value.img = res.base64
+    })
 }
 
 const isLikeMoreThan999 = computed(() => {

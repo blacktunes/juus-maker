@@ -190,7 +190,7 @@
 
 <script lang="ts" setup>
 import { emitter } from '@/assets/scripts/event'
-import Avatar from '@/components/common/Avatar.vue'
+import Avatar from '@/components/Common/Avatar.vue'
 import { currentJUUs } from '@/store/data'
 import input from '@/store/input'
 import { resetSelectData, select } from '@/store/select'

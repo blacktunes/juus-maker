@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import Logo from '../common/Logo.vue'
+import Logo from '../Common/Logo.vue'
 
 defineEmits<{
   (event: 'close', name: string): void

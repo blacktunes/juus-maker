@@ -129,7 +129,7 @@
 
 <script lang="ts" setup>
 import _screenshot from '@/assets/scripts/screenshot'
-import Avatar from '@/components/common/Avatar.vue'
+import Avatar from '@/components/Common/Avatar.vue'
 import input from '@/store/input'
 import { resetSelectData, select } from '@/store/select'
 import { setting } from '@/store/setting'

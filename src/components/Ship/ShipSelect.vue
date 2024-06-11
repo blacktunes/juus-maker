@@ -131,7 +131,7 @@ import input from '@/store/input'
 import { filter, select } from '@/store/select'
 import talk from '@/store/talk'
 import { computed, ref } from 'vue'
-import Avatar from '../common/Avatar2.vue'
+import Avatar from '../Common/Avatar2.vue'
 import ShipFilter from './ShipFilter.vue'
 
 const props = withDefaults(
