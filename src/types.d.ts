@@ -1,9 +1,4 @@
-/* eslint-disable */
-declare module '*.vue' {
-  import type { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
-  export default component
-}
+type Unpacked<T> = T extends Promise<infer U> ? U : T
 
 interface ReplyItem {
   key: string

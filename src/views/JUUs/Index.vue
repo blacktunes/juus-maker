@@ -111,9 +111,10 @@ import { loadJUUsDatabase } from '@/assets/scripts/database'
 import { emitter } from '@/assets/scripts/event'
 import { popupManager } from '@/assets/scripts/popup'
 import { screenshot } from '@/assets/scripts/screenshot'
+import { Bilibili, ChangeImage, Github, Image } from '@/components/Common/Icon'
+import MenuBtn from '@/components/Common/MenuBtn.vue'
+import Background from '@/components/JUUs/Background.vue'
 import ShipSelect from '@/components/Ship/ShipSelect.vue'
-import { Bilibili, ChangeImage, Github, Image } from '@/components/common/Icon'
-import MenuBtn from '@/components/common/MenuBtn.vue'
 import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'
@@ -122,7 +123,6 @@ import { JUUsList, currentBg } from './JUUs'
 import JUUs from './JUUs.vue'
 import JUUsSelect from './JUUsSelect.vue'
 import Loading from './Loading.vue'
-import Background from '@/components/JUUs/Background.vue'
 
 const ready = ref(false)
 
@@ -131,20 +131,15 @@ loadJUUsDatabase().then(() => {
 })
 
 const changeBg = () => {
-  const input = document.createElement('input')
-  input.type = 'file'
-  input.accept = 'image/*'
-  input.onchange = () => {
-    if (input.files?.[0]) {
-      const file = new FileReader()
-      file.readAsDataURL(input.files[0])
-      file.onload = (e) => {
-        if (!currentJUUs.value) return
-        currentJUUs.value.bg = (e.target?.result as string) || ''
-      }
-    }
-  }
-  input.click()
+  popupManager
+    .open('cropper', {
+      aspectRatio: 1.7,
+      maxWidth: 1280
+    })
+    .then((res) => {
+      if (!currentJUUs.value) return
+      currentJUUs.value.bg = res.base64
+    })
 }
 
 const dom = ref<HTMLElement | null>(null)

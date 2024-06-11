@@ -17,7 +17,9 @@
     "html-to-image": "^1.11.11",
     "mitt": "^3.0.1",
     "star-rail-vue": "^1.2.0",
+    "super-image-cropper": "^1.0.18",
     "vue": "^3.4.27",
+    "vue-picture-cropper": "^0.7.0",
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
