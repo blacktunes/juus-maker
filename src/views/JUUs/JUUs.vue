@@ -21,15 +21,11 @@
           @click.stop="imageChange"
         >
           <ChangeImage />
-          <img
-            :src="currentJUUs.img"
-            class="img"
-          />
+          <img :src="currentJUUs.img" />
         </div>
         <div class="info-icon">
-          <img
-            :src="likeImg"
-            class="icon like"
+          <Heart
+            :highlight="currentJUUs.like.flag"
             @click="setLike"
           />
           <Message />
@@ -48,7 +44,7 @@
             </span>
             <span>次赞</span>
             <EllipsisHorizontalCircleOutline
-              v-if="isLikeMoreThan999"
+              v-show="isLikeMoreThan999"
               @click.stop="likeEllipsisChange"
             />
           </div>
@@ -69,10 +65,10 @@
 </template>
 
 <script lang="ts" setup>
-import like from '@/assets/images/like.png'
-import like_2 from '@/assets/images/like_2.png'
+import { popupManager } from '@/assets/scripts/popup'
 import Background from '@/components/JUUs/Background.vue'
 import Content from '@/components/JUUs/Content.vue'
+import Heart from '@/components/Public/Heart.vue'
 import {
   ChangeImage,
   EllipsisHorizontalCircleOutline,
@@ -84,7 +80,6 @@ import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'
 import { computed } from 'vue'
-import { popupManager } from '@/assets/scripts/popup'
 
 const time = computed(() => {
   if (!currentJUUs.value) return '-'
@@ -112,7 +107,6 @@ const isLikeMoreThan999 = computed(() => {
   return Number(currentJUUs.value.like.num) > 999
 })
 
-const likeImg = computed(() => (currentJUUs.value?.like.flag ? like_2 : like))
 const setLike = () => {
   if (!currentJUUs.value) return
   currentJUUs.value.like.flag = !currentJUUs.value.like.flag
@@ -147,16 +141,15 @@ const updateLikeNum = (e: Event) => {
   const el = e.target as HTMLElement
   let newText = el.innerText.replace(/[^\d]/g, '').replace(/^0+/, '')
 
-  if (currentJUUs.value.like.ellipsis && Number(newText) > 999) {
-    el.innerText = '999+'
-  }
   if (newText === '0' && currentJUUs.value.like.flag) {
     newText = '1'
-  }
-  if (!newText) {
+  } else if (!newText) {
     newText = currentJUUs.value.like.flag ? '1' : '0'
   }
-  if (el.innerText !== newText) {
+
+  if (currentJUUs.value.like.ellipsis && Number(newText) > 999) {
+    el.innerText = '999+'
+  } else if (el.innerText !== newText) {
     el.innerText = newText
   }
 
@@ -289,28 +282,23 @@ const back = () => {
         color #fff
 
         svg
+          cursor pointer
+
+          &:first-child
+            margin-top 2px
+            margin-right 15px
+
           &:last-child
             margin-left auto
-
-        .icon
-          width 32px
-          height 32px
-          user-select none
-
-        .like
-          margin-right 15px
-          width 43px
-          height 42px
-          cursor pointer
 
       .info-text
         position absolute
         bottom 10px
-        left 75px
+        left 72px
         display flex
         justify-content space-between
         align-items center
-        width 500px
+        width 495px
         color #fff
         user-select none
 
@@ -334,12 +322,13 @@ const back = () => {
             &:first-child
               overflow hidden
               margin-right 5px
+              min-width 35px
               max-width 300px
+              text-align center
               text-overflow ellipsis
               white-space nowrap
 
         span
-          margin-right 4px
           font-size 18px
 
 .back

@@ -8,13 +8,13 @@
           :key="`home-${index}`"
           @click="showJUUs(item.id)"
         >
-          <Close
+          <Delete
             class="del"
             @click.stop="delJUUs(item.id)"
           />
           <div class="info">
             <Avatar
-              :width="70"
+              :width="65"
               :img="item.juus.avatar"
               :type="2"
             />
@@ -29,9 +29,10 @@
             {{ item.juus.text }}
           </div>
           <div class="like">
-            <div class="like-img">
-              <img :src="getLikeImg(item.like.flag)" />
-            </div>
+            <Heart
+              class="like-img"
+              :highlight="item.like.flag"
+            />
             <div class="like-num">
               {{ getLikeText(item.like.num) }}
             </div>
@@ -53,21 +54,18 @@
 </template>
 
 <script lang="ts" setup>
-import like from '@/assets/images/like.png'
-import like_2 from '@/assets/images/like_2.png'
-import Avatar from '@/components/Public/Avatar3.vue'
-import { Close } from '@/components/Public/Icon'
+import { popupManager } from '@/assets/scripts/popup'
 import Background from '@/components/JUUs/Background.vue'
+import Avatar from '@/components/Public/Avatar3.vue'
+import { Delete } from '@/components/Public/Icon'
 import { data, getDefaultJUUs } from '@/store/data'
 import { setting } from '@/store/setting'
 import { currentBg } from './JUUs'
-import { popupManager } from '@/assets/scripts/popup'
+import Heart from '@/components/Public/Heart.vue'
 
 defineProps<{
   list: JUUsData[]
 }>()
-
-const getLikeImg = (flag: boolean) => (flag ? like_2 : like)
 
 const getLikeText = (str: string) => {
   if (Number(str) > 999) return '999+'
@@ -161,20 +159,26 @@ const delJUUs = (id: number) => {
 
           .del
             opacity 1
+            transform translateY(-50%) translateX(0)
 
         .del
           position absolute
-          top 5px
-          right 10px
+          top 50%
+          right -35px
+          padding 5px
           width 20px
           height 20px
+          border-radius 50%
+          background rgba(240, 240, 240, 0.8)
           opacity 0
           cursor pointer
-          transition opacity 0.25s
+          transition all 0.25s
+          transform translateY(-100%)
           user-select none
 
           &:hover
             opacity 1
+            transform translateY(-50%)
 
         .info
           display flex
@@ -223,28 +227,23 @@ const delJUUs = (id: number) => {
           width 100%
 
       .text
+        display -webkit-box
         flex 1
         overflow hidden
-        text-overflow ellipsis
-        white-space nowrap
+        margin-right 10px
+        max-height 50%
+        word-break break-all
         font-size 20px
+        -webkit-line-clamp 2
+        -webkit-box-orient vertical
 
       .like
         display flex
-        flex 0 0 150px
+        flex 0 0 120px
         align-items center
-        overflow hidden
-
-        .like-img
-          width 42px
-          height 42px
-          user-select none
-
-          img
-            height 100%
 
         .like-num
-          margin-left 25px
+          margin-left 20px
           font-size 20px
 
 .add
