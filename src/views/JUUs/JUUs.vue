@@ -79,7 +79,7 @@ import {
   Logo,
   Message,
   PaperAirplane
-} from '@/components/Common/Icon'
+} from '@/components/Public/Icon'
 import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'

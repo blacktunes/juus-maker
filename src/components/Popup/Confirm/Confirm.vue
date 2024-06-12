@@ -33,10 +33,10 @@
 </template>
 
 <script lang="ts" setup>
-import Window from '@/components/Common/Window.vue'
+import Window from '@/components/Public/Window.vue'
 import { callback, data } from './data'
 import { Popup } from 'star-rail-vue'
-import WindowBtn from '@/components/Common/WindowBtn.vue'
+import WindowBtn from '@/components/Public/WindowBtn.vue'
 
 const props = defineProps<{
   name: string

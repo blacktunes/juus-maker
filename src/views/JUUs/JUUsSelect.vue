@@ -55,8 +55,8 @@
 <script lang="ts" setup>
 import like from '@/assets/images/like.png'
 import like_2 from '@/assets/images/like_2.png'
-import Avatar from '@/components/Common/Avatar3.vue'
-import { Close } from '@/components/Common/Icon'
+import Avatar from '@/components/Public/Avatar3.vue'
+import { Close } from '@/components/Public/Icon'
 import Background from '@/components/JUUs/Background.vue'
 import { data, getDefaultJUUs } from '@/store/data'
 import { setting } from '@/store/setting'

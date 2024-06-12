@@ -2,7 +2,7 @@
   <div
     v-if="currentJUUs"
     class="content"
-    :style="{overflow: setting.screenshot ? 'hidden' : undefined}"
+    :style="{ overflow: setting.screenshot ? 'hidden' : undefined }"
     ref="dom"
   >
     <div class="info-wrapper">
@@ -190,7 +190,7 @@
 
 <script lang="ts" setup>
 import { emitter } from '@/assets/scripts/event'
-import Avatar from '@/components/Common/Avatar.vue'
+import Avatar from '@/components/Public/Avatar.vue'
 import { currentJUUs } from '@/store/data'
 import input from '@/store/input'
 import { resetSelectData, select } from '@/store/select'

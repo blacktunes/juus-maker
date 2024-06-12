@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Logo } from '@/components/Common/Icon'
+import { Logo } from './Icon'
 
 withDefaults(
   defineProps<{

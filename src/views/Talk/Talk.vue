@@ -129,7 +129,7 @@
 
 <script lang="ts" setup>
 import { screenshot as _screenshot } from 'star-rail-vue'
-import Avatar from '@/components/Common/Avatar.vue'
+import Avatar from '@/components/Public/Avatar.vue'
 import input from '@/store/input'
 import { resetSelectData, select } from '@/store/select'
 import { setting } from '@/store/setting'

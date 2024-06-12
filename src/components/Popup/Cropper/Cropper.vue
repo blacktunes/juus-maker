@@ -36,7 +36,7 @@
 <script lang="ts" setup>
 import VuePictureCropper, { cropper } from 'vue-picture-cropper'
 import { callback, data, imageCropper } from './data'
-import WindowBtn from '@/components/Common/WindowBtn.vue'
+import WindowBtn from '@/components/Public/WindowBtn.vue'
 
 const scale = inject<ComputedRef<number> | undefined>('scale')
 
