@@ -35,7 +35,7 @@
         </div>
         <div
           class="close"
-          @clic.stop="close"
+          @click.stop="close"
         >
           <div class="cloese-bg-1"></div>
           <div class="cloese-bg-2"></div>
@@ -72,8 +72,8 @@ withDefaults(
   {
     title: '信息',
     subTitle: 'INFORMATION',
-    width: '45%',
-    height: '45%'
+    width: '40%',
+    height: '50%'
   }
 )
 
@@ -334,6 +334,8 @@ const close = () => {
       width 100%
 
       .content
+        box-sizing border-box
+        padding 10px
         width 100%
         height 100%
         background rgba(0, 0, 0, 0.5)

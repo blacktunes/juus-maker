@@ -1,3 +1,4 @@
+import { confirm } from '@/components/Popup/Confirm'
 import { cropper } from '@/components/Popup/Cropper'
 import Loading from '@/components/Popup/Loading.vue'
 
@@ -7,5 +8,6 @@ export const popupManager = createPopupManager({
   loading: {
     component: Loading
   },
-  cropper
+  cropper,
+  confirm
 })

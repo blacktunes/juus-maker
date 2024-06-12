@@ -25,8 +25,8 @@
             transform: `scale(${scale ?? 1}) translateX(-50%)`
           }"
         >
-          <WindowBtn @click.stop="close"> 取消 </WindowBtn>
-          <WindowBtn @click.stop="onCropper" :type="3"> 确认 </WindowBtn>
+          <WindowBtn @click.stop="close">取消</WindowBtn>
+          <WindowBtn @click.stop="onCropper" :type="3">确定</WindowBtn>
         </div>
       </div>
     </Transition>

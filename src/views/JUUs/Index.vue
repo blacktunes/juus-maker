@@ -38,6 +38,7 @@
         />
       </Transition>
       <JUUs v-show="!setting.juus.home && currentJUUs" />
+      <Mask />
     </div>
     <div class="link">
       <Transition
@@ -112,6 +113,7 @@ import { emitter } from '@/assets/scripts/event'
 import { popupManager } from '@/assets/scripts/popup'
 import { screenshot } from '@/assets/scripts/screenshot'
 import { Bilibili, ChangeImage, Github, Image } from '@/components/Common/Icon'
+import Mask from '@/components/Common/Mask.vue'
 import MenuBtn from '@/components/Common/MenuBtn.vue'
 import Background from '@/components/JUUs/Background.vue'
 import ShipSelect from '@/components/Ship/ShipSelect.vue'
