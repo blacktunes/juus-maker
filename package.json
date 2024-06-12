@@ -5,22 +5,23 @@
   "private": true,
   "scripts": {
     "dev": "vite --port 8080 --host",
+    "dev:talk": "cross-env VITE_BUILD_MODE=TALK vite --port 8080 --host",
     "build": "run-p type-check \"build-only {@}\" --",
+    "build:talk": "cross-env VITE_BUILD_MODE=TALK run-p build",
     "preview": "vite preview",
     "build-only": "vite build",
+    "build-only:talk": "cross-env VITE_BUILD_MODE=TALK vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
   "dependencies": {
     "@marshallswain/vuedraggable": "^4.2.0",
-    "html-to-image": "^1.11.11",
     "mitt": "^3.0.1",
     "star-rail-vue": "^1.2.0",
     "super-image-cropper": "^1.0.18",
     "vue": "^3.4.27",
-    "vue-picture-cropper": "^0.7.0",
-    "vue-router": "^4.3.2"
+    "vue-picture-cropper": "^0.7.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.10.3",
@@ -31,6 +32,7 @@
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/tsconfig": "^0.5.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.26.0",
     "fs-extra": "^11.2.0",

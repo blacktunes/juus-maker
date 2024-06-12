@@ -1,10 +1,8 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import JUUs from './views/JUUs/Index.vue'
+import Talk from './views/Talk/Index.vue'
 import './style.styl'
 
 window.BUILD_TIME = new Date(BUILD_TIME)
 
-createApp(App)
-  .use(router)
-  .mount('#app')
+createApp(import.meta.env.VITE_BUILD_MODE === 'TALK' ? Talk : JUUs).mount('#app')
