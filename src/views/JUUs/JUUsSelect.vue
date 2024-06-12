@@ -8,12 +8,10 @@
           :key="`home-${index}`"
           @click="showJUUs(item.id)"
         >
-          <div
+          <Close
             class="del"
-            @click.stop="delJUUs(index)"
-          >
-            ×
-          </div>
+            @click.stop="delJUUs(item.id)"
+          />
           <div class="info">
             <Avatar
               :width="70"
@@ -35,7 +33,7 @@
               <img :src="getLikeImg(item.like.flag)" />
             </div>
             <div class="like-num">
-              {{ item.like.num }}
+              {{ getLikeText(item.like.num) }}
             </div>
           </div>
         </div>
@@ -57,17 +55,24 @@
 <script lang="ts" setup>
 import like from '@/assets/images/like.png'
 import like_2 from '@/assets/images/like_2.png'
-import Background from '@/components/JUUs/Background.vue'
 import Avatar from '@/components/Common/Avatar3.vue'
+import { Close } from '@/components/Common/Icon'
+import Background from '@/components/JUUs/Background.vue'
 import { data, getDefaultJUUs } from '@/store/data'
 import { setting } from '@/store/setting'
 import { currentBg } from './JUUs'
+import { popupManager } from '@/assets/scripts/popup'
 
 defineProps<{
   list: JUUsData[]
 }>()
 
 const getLikeImg = (flag: boolean) => (flag ? like_2 : like)
+
+const getLikeText = (str: string) => {
+  if (Number(str) > 999) return '999+'
+  return str
+}
 
 const showJUUs = (id: number) => {
   setting.juus.home = false
@@ -81,11 +86,16 @@ const addJUUs = () => {
   showJUUs(newJuus.id)
 }
 
-const delJUUs = (index: number) => {
-  const flag = confirm('是否删除该JUUs')
-  if (flag) {
-    data.juus.splice(index, 1)
-  }
+const delJUUs = (id: number) => {
+  popupManager.open('confirm', {
+    text: ['真的要删除吗'],
+    fn: () => {
+      const index = data.juus.findIndex((item) => item.id === id)
+      if (index !== -1) {
+        data.juus.splice(index, 1)
+      }
+    }
+  })
 }
 </script>
 
@@ -156,7 +166,8 @@ const delJUUs = (index: number) => {
           position absolute
           top 5px
           right 10px
-          font-size 20px
+          width 20px
+          height 20px
           opacity 0
           cursor pointer
           transition opacity 0.25s

@@ -41,8 +41,4 @@ const props = defineProps<{
   flex-direction column
   justify-content center
   align-items center
-  background rgba(0, 0, 0, 0.1)
-  background-image radial-gradient(rgba(255, 255, 255, 0.01) 30%, transparent 0)
-  background-size 8px 8px
-  backdrop-filter blur(5px)
 </style>

@@ -38,8 +38,8 @@
         />
       </Transition>
       <JUUs v-show="!setting.juus.home && currentJUUs" />
-      <Mask />
-    </div>
+      </div>
+    <Mask />
     <div class="link">
       <Transition
         name="menu"

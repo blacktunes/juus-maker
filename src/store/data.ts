@@ -12,7 +12,8 @@ export const defaultItem: JUUsData = {
   bg: 'https://patchwiki.biligame.com/images/blhx/e/e8/bhdanvql92zw4a24kv7xcif6i6rlbqk.png',
   like: {
     flag: false,
-    num: '999+'
+    num: '0',
+    ellipsis: false
   },
   juus: getData('塔什干', '北方联合的兔兔，超凶，嘎哦！'),
   comment: [

@@ -145,7 +145,7 @@ const initLikeInput = (e: Event) => {
 const updateLikeNum = (e: Event) => {
   if (!currentJUUs.value) return
   const el = e.target as HTMLElement
-  let newText = el.innerText.replace(/[^\d]/g, '')
+  let newText = el.innerText.replace(/[^\d]/g, '').replace(/^0+/, '')
 
   if (currentJUUs.value.like.ellipsis && Number(newText) > 999) {
     el.innerText = '999+'

@@ -5,8 +5,8 @@
   >
     <Window
       :title="data.title"
-      width="40%"
-      height="50%"
+      width="45%"
+      height="55%"
       confirm
       @close="close"
     >
