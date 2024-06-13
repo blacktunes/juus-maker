@@ -1,71 +1,82 @@
 <template>
-  <div class="home-view">
-    <div class="home-wrapper">
-      <div class="item-list">
-        <div
-          class="item"
-          v-for="(item, index) in list"
-          :key="`home-${index}`"
-          @click="showJUUs(item.id)"
-        >
-          <Delete
-            class="del"
-            @click.stop="delJUUs(item.id)"
-          />
-          <div class="info">
-            <Avatar
-              :width="65"
-              :img="item.juus.avatar"
-              :type="2"
+  <Transition
+    name="select"
+    appear
+  >
+    <div
+      class="home-view"
+      v-show="show"
+    >
+      <div class="home-wrapper">
+        <div class="item-list">
+          <div
+            class="item"
+            v-for="(item, index) in JUUsList"
+            :key="`home-${index}`"
+            @click.stop="showJUUs(item.id)"
+            @contextmenu.prevent.stop="delJUUs(item.id)"
+          >
+            <Delete
+              class="del"
+              @click.stop="delJUUs(item.id)"
             />
-            <div class="name">
-              {{ item.juus.name }}
+            <div class="info">
+              <InfoAvatar
+                :width="65"
+                :img="item.juus.avatar"
+                :type="2"
+              />
+              <div class="name">
+                {{ item.juus.name }}
+              </div>
+            </div>
+            <div class="img">
+              <img :src="item.img" />
+            </div>
+            <div class="text">
+              {{ item.juus.text }}
+            </div>
+            <div class="like">
+              <Heart
+                class="like-img"
+                :highlight="item.like.flag"
+              />
+              <div class="like-num">
+                {{ getLikeText(item.like.num) }}
+              </div>
             </div>
           </div>
-          <div class="img">
-            <img :src="item.img" />
-          </div>
-          <div class="text">
-            {{ item.juus.text }}
-          </div>
-          <div class="like">
-            <Heart
-              class="like-img"
-              :highlight="item.like.flag"
-            />
-            <div class="like-num">
-              {{ getLikeText(item.like.num) }}
-            </div>
+          <div
+            class="item add"
+            @click="addJUUs"
+          >
+            <img src="@/assets/images/camera_add.png" />
           </div>
         </div>
-        <div
-          class="item add"
-          @click="addJUUs"
-        >
-          <img src="@/assets/images/camera_add.png" />
-        </div>
+        <Background
+          :img="currentBg"
+          :type="1"
+        />
       </div>
-      <Background
-        :img="currentBg"
-        :type="1"
-      />
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script lang="ts" setup>
 import { popupManager } from '@/assets/scripts/popup'
 import Background from '@/components/JUUs/Background.vue'
-import Avatar from '@/components/Public/Avatar3.vue'
+import Heart from '@/components/Public/Heart.vue'
 import { Delete } from '@/components/Public/Icon'
+import InfoAvatar from '@/components/Public/InfoAvatar.vue'
 import { data, getDefaultJUUs } from '@/store/data'
 import { setting } from '@/store/setting'
-import { currentBg } from './JUUs'
-import Heart from '@/components/Public/Heart.vue'
+import { JUUsList, currentBg } from './JUUs'
 
-defineProps<{
-  list: JUUsData[]
+const props = defineProps<{
+  ready: boolean
 }>()
+
+const show = computed(() => props.ready && setting.juus.home)
 
 const getLikeText = (str: string) => {
   if (Number(str) > 999) return '999+'
@@ -73,18 +84,21 @@ const getLikeText = (str: string) => {
 }
 
 const showJUUs = (id: number) => {
+  if (!props.ready) return
   setting.juus.home = false
   setting.juus.id = id
   setting.juus.lastID = data.juus.findIndex((item) => item.id === id)
 }
 
 const addJUUs = () => {
+  if (!props.ready) return
   const newJuus = getDefaultJUUs()
   data.juus.push(newJuus)
   showJUUs(newJuus.id)
 }
 
 const delJUUs = (id: number) => {
+  if (!props.ready) return
   popupManager.open('confirm', {
     text: ['真的要删除吗'],
     fn: () => {
@@ -251,4 +265,18 @@ const delJUUs = (id: number) => {
 
   img
     width 45px
+
+.select-enter-from
+  opacity 0
+  transform translateY(20px)
+
+.select-enter-to
+  opacity 1
+  transform translateY(0)
+
+.select-leave-from
+  opacity 1
+
+.select-leave-to
+  opacity 0
 </style>

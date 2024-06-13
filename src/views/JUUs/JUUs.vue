@@ -79,11 +79,10 @@ import {
 import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'
-import { computed } from 'vue'
 
 const time = computed(() => {
   if (!currentJUUs.value) return '-'
-  const diff = parseInt(String((Date.now() - currentJUUs.value.time) / (1000 * 3600 * 24)))
+  const diff = parseInt(((Date.now() - currentJUUs.value.time) / (1000 * 3600 * 24)).toFixed())
   if (diff < 1) {
     return '刚刚'
   }
@@ -257,9 +256,9 @@ const back = () => {
         svg
           position absolute
           top 20px
-          padding 5px
+          padding 8px
           border-radius 50%
-          background rgba(255, 255, 255, 0.8)
+          background rgba(233, 233, 233, 0.95)
           color #666
           opacity 0
           transition all 0.2s
@@ -285,7 +284,6 @@ const back = () => {
           cursor pointer
 
           &:first-child
-            margin-top 2px
             margin-right 15px
 
           &:last-child
@@ -323,7 +321,7 @@ const back = () => {
               overflow hidden
               margin-right 5px
               min-width 35px
-              max-width 300px
+              max-width 200px
               text-align center
               text-overflow ellipsis
               white-space nowrap

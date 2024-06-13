@@ -1,7 +1,7 @@
 import custom from '@/store/custom'
 import { reactive } from 'vue'
 import shipData from '@/assets/data/ship.json'
-import commander from '@/assets/images/commander.jpg'
+import commander from '@/assets/images/commander.webp'
 
 const data = reactive<ShipData[]>(shipData as ShipData[])
 

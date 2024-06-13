@@ -68,10 +68,10 @@ withDefaults(
   &:after
     position absolute
     top -5px
+    right -5px
+    bottom -5px
     left -5px
     box-sizing border-box
-    width calc(100% + 10px)
-    height calc(100% + 10px)
     border 2px solid #333
     border-radius 50%
     content ''

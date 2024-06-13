@@ -4,69 +4,70 @@
     :class="{ highlight }"
     :style="{ width: `${width}px`, height: `${width}px` }"
   >
-    <div :class="[`border-${type}`]">
-      <img v-if="src" :src="src" />
+    <div>
+      <img
+        v-if="img"
+        :src="img"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-defineProps({
-  highlight: {
-    type: Boolean,
-    default: false
-  },
-  src: {
-    type: String,
-    default: ''
-  },
-  type: {
-    type: Number,
-    default: 1
-  },
-  width: {
-    type: Number,
-    default: 45
+withDefaults(
+  defineProps<{
+    highlight?: boolean
+    img?: string
+    width?: number
+  }>(),
+  {
+    width: 40
   }
-})
+)
 </script>
 
 <style lang="stylus" scoped>
 .avatar
-  flex-shrink 0
   position relative
+  flex-shrink 0
   cursor pointer
 
-  div
+  &:before
+    position absolute
+    top -3px
+    right -3px
+    bottom -3px
+    left -3px
     box-sizing border-box
-    overflow hidden
-    background #ddd
+    border 1px solid #dedddb
     border-radius 50%
+    content ''
+
+  div
+    overflow hidden
+    box-sizing border-box
     height 100%
+    border-radius 50%
+    background #ddd
 
     img
       width 100%
       height 100%
+      user-select none
       object-fit cover
       object-position center
-      user-select none
 
 .highlight
   &:after
-    content ''
     position absolute
-    box-sizing border-box
     top -5px
+    right -5px
+    bottom -5px
     left -5px
-    width calc(100% + 10px)
-    height calc(100% + 10px)
-    border-radius 50%
+    box-sizing border-box
+
     border 2px solid #333
+    border-radius 50%
+    content ''
     animation fade 0.8s linear infinite alternate
-
-.border-1
-  border 1px solid #dedddb
-
-.border-2
-  border 2px solid #f7e5a2
 </style>

@@ -1,7 +1,7 @@
 import { nextTick, reactive, toRaw, watch } from 'vue'
 import { setting } from './setting'
 import input from './input'
-import commander from '@/assets/images/commander.jpg'
+import commander from '@/assets/images/commander.webp'
 
 export const defaultItem: Omit<TalkData, 'time'> = {
   title: '谢谢你，碧蓝航线',

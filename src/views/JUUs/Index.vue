@@ -28,16 +28,10 @@
           class="select"
         />
       </transition>
-      <Transition
-        name="select"
-        appear
-      >
-        <JUUsSelect
-          v-show="ready && setting.juus.home"
-          :list="JUUsList"
-        />
+      <JUUsSelect :ready />
+      <Transition name="fade">
+        <JUUs v-show="!setting.juus.home && currentJUUs" />
       </Transition>
-      <JUUs v-show="!setting.juus.home && currentJUUs" />
     </div>
     <Mask />
     <div class="link">
@@ -61,7 +55,7 @@
           <MenuBtn href="/talk">
             <template #icon>
               <img
-                src="../../assets/images/commander.jpg"
+                src="../../assets/images/commander.webp"
                 alt=""
               />
             </template>
@@ -112,16 +106,16 @@ import { loadJUUsDatabase } from '@/assets/scripts/database'
 import { emitter } from '@/assets/scripts/event'
 import { popupManager } from '@/assets/scripts/popup'
 import { screenshot } from '@/assets/scripts/screenshot'
+import Background from '@/components/JUUs/Background.vue'
 import { Bilibili, ChangeImage, Github, Image } from '@/components/Public/Icon'
 import Mask from '@/components/Public/Mask.vue'
 import MenuBtn from '@/components/Public/MenuBtn.vue'
-import Background from '@/components/JUUs/Background.vue'
 import ShipSelect from '@/components/Ship/ShipSelect.vue'
 import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'
 import { Main } from 'star-rail-vue'
-import { JUUsList, currentBg } from './JUUs'
+import { currentBg } from './JUUs'
 import JUUs from './JUUs.vue'
 import JUUsSelect from './JUUsSelect.vue'
 import Loading from './Loading.vue'
@@ -226,20 +220,6 @@ const saveJUUs = () => {
 .select-enter-active
 .select-leave-active
   transition all 0.3s
-
-.select-enter-from
-  opacity 0
-  transform translateY(20px)
-
-.select-enter-to
-  opacity 1
-  transform translateY(0)
-
-.select-leave-from
-  opacity 1
-
-.select-leave-to
-  opacity 0
 
 .menu-enter-active
 .menu-leave-active

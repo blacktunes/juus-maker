@@ -22,6 +22,9 @@ input
 .chosen
   cursor grabbing
 
+  .del
+    opacity 0 !important
+
   &:before
     position absolute
     top 0
@@ -33,11 +36,11 @@ input
     border-radius 10px
     content ''
 
-.mask
-  position fixed
-  z-index 999
-  width 100%
-  height 100%
+.hidden
+  overflow hidden !important
+
+.fallback
+  display none !important
 
 @keyframes fade
   from
@@ -81,24 +84,3 @@ input
 .enter-enter-to
 .enter-leave-from
   filter none
-
-.list-enter-active
-  transition all 0.2s
-
-.list-enter-from
-  transform scaleY(0)
-
-.list-enter-to
-  transform scaleY(1)
-
-.horizontal-list-enter-active
-  transition all 0.3s
-  transform-origin left
-
-.horizontal-list-enter-from
-  opacity 0
-  transform translateX(-100%)
-
-.horizontal-list-enter-to
-  opacity 1
-  transform translateX(0)

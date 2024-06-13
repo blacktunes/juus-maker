@@ -2,47 +2,41 @@
   <div
     v-if="currentJUUs"
     class="content"
-    :style="{ overflow: setting.screenshot ? 'hidden' : undefined }"
+    :class="{ hidden: setting.screenshot }"
     ref="dom"
   >
     <div class="info-wrapper">
       <div class="tip">·FOLLOWING·</div>
       <div class="info">
-        <Avatar
+        <InfoAvatar
           :highlight="select.show && select.type === 1"
-          :src="currentJUUs.juus.avatar"
-          :type="2"
-          :width="65"
+          :img="currentJUUs.juus.avatar"
+          :width="70"
           style="margin-left: 30px"
           @click="avatarClick(1)"
         />
-        <img
-          src="@/assets/images/sep.png"
-          class="sep"
-        />
+        <div class="sep"></div>
         <div class="name">
           <span>@</span>
           <span
             class="name-text"
             contenteditable
-            @keydown.enter.prevent=""
-            @input="juusChange('name', $event)"
+            v-blur
+            @blur="juusChange('name', $event)"
           >
             {{ currentJUUs.juus.name }}
           </span>
         </div>
-        <img
-          src="@/assets/images/icon.png"
-          style="margin-right: 10px"
-        />
+        <Follow />
       </div>
     </div>
     <div class="text-wrapper">
       <div
         class="text"
+        :class="{ hidden: setting.screenshot }"
         contenteditable
-        @keydown.enter.prevent=""
-        @input="juusChange('text', $event)"
+        v-blur
+        @blur="juusChange('text', $event)"
       >
         {{ currentJUUs.juus.text }}
       </div>
@@ -50,23 +44,27 @@
     </div>
     <div
       class="comment-list"
+      :class="{ hidden: setting.screenshot }"
       ref="listDom"
     >
       <draggable
-        tag="transition-group"
-        :component-data="{ name: 'list', type: 'transition' }"
         v-model="juusList"
         :item-key="(item: JUUsComment) => `comment-${juusList.indexOf(item)}`"
+        :component-data="{ name: 'list', type: 'transition-group' }"
+        tag="transition-group"
         animation="100"
         delay="100"
         chosen-class="chosen"
+        scroll-sensitivity="50"
+        scroll-speed="30"
       >
         <template #item="{ element, index }: { element: JUUsComment; index: number }">
           <div class="comment-card">
             <div class="comment">
               <Avatar
                 :highlight="select.show && select.type === 2 && select.index === index"
-                :src="element.avatar"
+                :img="element.avatar"
+                :type="2"
                 style="margin: 0 15px 0 10px"
                 @click="avatarClick(2, index)"
               />
@@ -74,8 +72,8 @@
                 <span class="name">
                   <span
                     contenteditable
-                    @keydown.enter.prevent=""
-                    @input="commentChange('name', index, $event)"
+                    v-blur
+                    @blur="commentChange('name', index, $event)"
                   >
                     {{ element.name }}
                   </span>
@@ -84,27 +82,23 @@
                 <span
                   class="comment-text"
                   contenteditable
-                  @keydown.enter.prevent=""
-                  @input="commentChange('text', index, $event)"
+                  v-blur
+                  @blur="commentChange('text', index, $event)"
                 >
                   {{ element.text }}
                 </span>
               </div>
             </div>
-            <div
-              class="comment-del"
-              @click="delComment(index)"
-            >
-              ×
-            </div>
             <div class="reply-num-wrapper">
-              <div></div>
+              <div
+                class="del"
+                @click="delComment(index)"
+              >
+                delete
+              </div>
               <div>reply</div>
               <div class="reply-num">
-                <img
-                  src="@/assets/images/message_3.png"
-                  @click="addReply(index, $event)"
-                />
+                <Message @click="addReply(index, $event)" />
                 <div class="text">{{ element.reply.length }}</div>
               </div>
             </div>
@@ -112,18 +106,20 @@
               <draggable
                 v-model="element.reply"
                 :item-key="(item: ReplyItem) => 'reply' + element.reply.indexOf(item)"
+                :component-data="{ name: 'list', type: 'transition-group' }"
+                tag="transition-group"
                 animation="100"
+                delay="100"
                 chosen-class="chosen"
-                group="reply"
+                scroll-sensitivity="50"
+                scroll-speed="30"
               >
                 <template #item="item">
                   <div class="reply">
-                    <div
-                      class="reply-del"
+                    <Close
+                      class="del"
                       @click="delReply(index, item.index)"
-                    >
-                      ×
-                    </div>
+                    />
                     <Avatar
                       :highlight="
                         select.show &&
@@ -131,7 +127,7 @@
                         select.index === index &&
                         select.key === item.index
                       "
-                      :src="item.element.avatar"
+                      :img="item.element.avatar"
                       style="margin: 0 15px 0 10px"
                       @click="avatarClick(3, index, item.index)"
                     />
@@ -139,8 +135,8 @@
                       <span class="name"
                         ><span
                           contenteditable
-                          @keydown.enter.prevent=""
-                          @input="replyChange('name', index, item.index, $event)"
+                          v-blur
+                          @blur="replyChange('name', index, item.index, $event)"
                         >
                           {{ item.element.name }}</span
                         >
@@ -149,8 +145,8 @@
                       <span
                         class="comment-text"
                         contenteditable
-                        @keydown.enter.prevent=""
-                        @input="replyChange('text', index, item.index, $event)"
+                        v-blur
+                        @blur="replyChange('text', index, item.index, $event)"
                       >
                         {{ item.element.text }}
                       </span>
@@ -167,8 +163,8 @@
       <div class="left">
         <Avatar
           :highlight="select.show && select.type === 0"
-          :src="input.avatar"
-          style="margin: 0 15px 0 10px"
+          :img="input.avatar"
+          style="margin-left: 10px"
           @click="avatarClick(0)"
         />
         <input
@@ -179,10 +175,7 @@
         />
       </div>
       <div class="right">
-        <img
-          src="@/assets/images/message_2.png"
-          @click="addComment"
-        />
+        <SendMessage @click.stop="addComment" />
       </div>
     </div>
   </div>
@@ -190,14 +183,17 @@
 
 <script lang="ts" setup>
 import { emitter } from '@/assets/scripts/event'
+import { screenshot } from '@/assets/scripts/screenshot'
 import Avatar from '@/components/Public/Avatar.vue'
+import InfoAvatar from '@/components/Public/InfoAvatar.vue'
 import { currentJUUs } from '@/store/data'
 import input from '@/store/input'
 import { resetSelectData, select } from '@/store/select'
 import { setting } from '@/store/setting'
 import draggable from '@marshallswain/vuedraggable'
-import { screenshot } from '@/assets/scripts/screenshot'
 import { computed, nextTick, ref } from 'vue'
+import { Close, Follow, Message, SendMessage } from '../Public/Icon'
+import { popupManager } from '@/assets/scripts/popup'
 
 const tempList = ref<JUUsComment[]>([])
 const juusList = computed({
@@ -214,7 +210,7 @@ const listDom = ref<HTMLElement | null>(null)
 
 const scrollToBottom = () => {
   nextTick(() => {
-    dom.value?.scrollTo({
+    listDom.value?.scrollTo({
       top: listDom.value?.scrollHeight,
       behavior: 'smooth'
     })
@@ -232,8 +228,19 @@ const addComment = () => {
 }
 
 const delComment = (index: number) => {
-  resetSelectData()
-  currentJUUs.value!.comment.splice(index, 1)
+  if (!currentJUUs.value) return
+  if (currentJUUs.value.comment[index].reply.length > 0) {
+    popupManager.open('confirm', {
+      text: ['真的要删除吗'],
+      fn: () => {
+        resetSelectData()
+        currentJUUs.value!.comment.splice(index, 1)
+      }
+    })
+  } else {
+    resetSelectData()
+    currentJUUs.value.comment.splice(index, 1)
+  }
 }
 
 const addReply = (index: number, e: Event) => {
@@ -258,15 +265,42 @@ const delReply = (index: number, key: number) => {
 }
 
 const juusChange = (key: 'name' | 'text', e: Event) => {
-  currentJUUs.value!.juus[key] = (e.target as HTMLInputElement).innerText
+  if (!currentJUUs.value) return
+  const el = e.target as HTMLInputElement
+  const newText = el.innerText
+  if (newText) {
+    if (newText !== currentJUUs.value.juus[key]) {
+      currentJUUs.value.juus[key] = newText
+    }
+  } else {
+    el.innerText = currentJUUs.value.juus[key]
+  }
 }
 
 const commentChange = (key: 'name' | 'text', index: number, e: Event) => {
-  currentJUUs.value!.comment[index][key] = (e.target as HTMLInputElement).innerText
+  if (!currentJUUs.value) return
+  const el = e.target as HTMLInputElement
+  const newText = el.innerText
+  if (newText) {
+    if (newText !== currentJUUs.value.comment[index][key]) {
+      currentJUUs.value.comment[index][key] = newText
+    }
+  } else {
+    el.innerText = currentJUUs.value.comment[index][key]
+  }
 }
 
 const replyChange = (key: 'name' | 'text', comment: number, index: number, e: Event) => {
-  currentJUUs.value!.comment[comment].reply[index][key] = (e.target as HTMLInputElement).innerText
+  if (!currentJUUs.value) return
+  const el = e.target as HTMLInputElement
+  const newText = el.innerText
+  if (newText) {
+    if (newText !== currentJUUs.value!.comment[comment].reply[index][key]) {
+      currentJUUs.value!.comment[comment].reply[index][key] = newText
+    }
+  } else {
+    el.innerText = currentJUUs.value!.comment[comment].reply[index][key]
+  }
 }
 
 interface AvatarClick {
@@ -368,9 +402,256 @@ emitter.on('play', autoPlay)
 emitter.on('stop', stopPlay)
 emitter.on('screenshot', () => {
   if (dom.value) {
-    screenshot(dom.value, { height: dom.value.scrollHeight })
+    let commentHeight = 0
+    if (listDom.value) {
+      commentHeight = listDom.value.scrollHeight - listDom.value.offsetHeight
+    }
+    screenshot(dom.value, { height: dom.value.scrollHeight + commentHeight })
   }
 })
 </script>
 
-<style lang="stylus" src="./Content.styl" scoped></style>
+<style lang="stylus" scoped>
+.content
+  display flex
+  flex 1
+  flex-direction column
+  overflow-x hidden
+  overflow-y auto
+  width 400px
+  border-radius 0 10px 10px 0
+  background #eff7ff
+  box-shadow -1px 0 5px rgba(0, 0, 0, 0.5)
+
+  .info-wrapper
+    z-index 2
+    width 100%
+    border-radius 0 0 25px 25px
+    background #fff
+    box-shadow 0 3px 20px 0px rgba(0, 0, 0, 0.5)
+
+    .tip
+      position absolute
+      top 5px
+      right 5px
+      color #85a7ff
+      user-select none
+
+    .info
+      display flex
+      align-items center
+      height 120px
+
+      .sep
+        margin 0 10px 0 15px
+        width 5px
+        height 5px
+        border-radius 50%
+        background #000
+
+      .name
+        display flex
+        margin-right 5px
+        max-width 200px
+        font-weight bold
+        font-size 20px
+
+        .name-text
+          overflow hidden
+          text-overflow ellipsis
+          white-space nowrap
+
+      svg
+        margin-top 2px
+
+  .text-wrapper
+    z-index 1
+    padding-bottom 15px
+    background #eff7ff
+
+    .text
+      overflow auto
+      box-sizing border-box
+      margin 10px 0
+      padding 20px 25px
+      max-height 200px
+      font-size 18px
+      line-height 25px
+
+    .line
+      flex-shrink 0
+      box-sizing border-box
+      margin-left 10%
+      width 90%
+      height 1px
+      background rgba(0, 0, 0, 0.8)
+      transform scaleY(0.2)
+
+  .comment-list
+    flex 1
+    overflow auto
+    background #eff7ff
+    color #a1a1a2
+
+    .comment-card
+      position relative
+      display flex
+      flex-direction column
+      box-sizing border-box
+      margin 20px 5px 20px 15px
+      padding 15px 0 5px 15px
+      width 380px
+      border-radius 5px
+      background #fff
+
+      &:first-child
+        margin-top 0
+
+      &:last-child
+        margin-bottom 0
+
+      &:hover
+        .reply-num-wrapper
+          .del
+            opacity 1
+
+      .comment
+        display flex
+        flex 1
+        margin-right 15px
+
+        .name
+          color #000
+          font-weight bold
+
+      .reply-num-wrapper
+        position relative
+        display flex
+        justify-content space-between
+        align-items center
+        margin 10px 0 5px
+        padding-left 10px
+        height 30px
+        font-size 14px
+        user-select none
+
+        .del
+          opacity 0
+          cursor pointer
+          transition opacity 0.25s
+          user-select none
+
+          &:hover
+            opacity 1
+
+        .reply-num
+          display flex
+          align-items center
+          margin-right 10px
+          width 45px
+
+          svg
+            flex-shrink 0
+            width 20px
+            height 20px
+            cursor pointer
+
+          .text
+            overflow hidden
+            margin-left 5px
+            text-overflow ellipsis
+
+      .reply-list
+        display flex
+        flex-direction column
+
+        .reply
+          position relative
+          display flex
+          margin-right 10px
+          padding 15px 0px 15px 55px
+
+          &:first-child
+            margin-top -5px
+
+          &:last-child
+            margin-top -5px
+
+          &:hover
+            .del
+              opacity 1
+
+          .del
+            position absolute
+            top 23px
+            right 0px
+            width 18px
+            height 18px
+            opacity 0
+            cursor pointer
+            transition opacity 0.25s
+            user-select none
+
+            &:hover
+              opacity 1
+
+          .reply-item
+            flex 1
+            margin 8px 15px 0 0
+            width 230px
+            line-height 20px
+
+            .name
+              color #000
+              font-weight bold
+
+  .add-comment
+    display flex
+    justify-content space-between
+    align-items center
+    box-sizing border-box
+    margin-top 10px
+    width 100%
+    height 60px
+    border-top 1px solid rgba(0, 0, 0, 0.2)
+    background #fff
+
+    .left
+      display flex
+      flex 1
+      align-items center
+      height 60px
+
+      .input
+        flex 1
+        margin 0 10px
+        padding 5px 10px
+        width 240px
+        height 26px
+        border none
+        color #666
+        font-size 20px
+
+    .right
+      display flex
+      justify-content center
+      align-items center
+      margin-right 10px
+      width 40px
+      color #cecece
+      cursor pointer
+      user-select none
+
+.comment-text
+  white-space break-spaces
+  word-break break-all
+
+.list-enter-active
+  transition all 0.2s
+
+.list-enter-from
+  transform scaleY(0)
+
+.list-enter-to
+  transform scaleY(1)
+</style>

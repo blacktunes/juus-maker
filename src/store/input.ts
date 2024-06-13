@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import commander from '@/assets/images/commander.jpg'
+import commander from '@/assets/images/commander.webp'
 
 const input = reactive({
   key: '指挥官',
