@@ -178,7 +178,7 @@ const delJUUs = (id: number) => {
         .del
           position absolute
           top 50%
-          right -35px
+          right -36px
           padding 5px
           width 20px
           height 20px

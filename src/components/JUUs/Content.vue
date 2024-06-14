@@ -89,7 +89,7 @@
                 </span>
               </div>
             </div>
-            <div class="reply-num-wrapper">
+            <div class="comment-menu">
               <div
                 class="del"
                 @click="delComment(index)"
@@ -159,24 +159,20 @@
         </template>
       </draggable>
     </div>
-    <div class="add-comment">
-      <div class="left">
-        <Avatar
-          :highlight="select.show && select.type === 0"
-          :img="input.avatar"
-          style="margin-left: 10px"
-          @click="avatarClick(0)"
-        />
-        <input
-          class="input"
-          v-model="input.text"
-          placeholder="Add a comment..."
-          @keydown.enter="addComment"
-        />
-      </div>
-      <div class="right">
-        <SendMessage @click.stop="addComment" />
-      </div>
+    <div class="menu">
+      <Avatar
+        :highlight="select.show && select.type === 0"
+        :img="input.avatar"
+        style="margin-left: 10px"
+        @click="avatarClick(0)"
+      />
+      <input
+        v-model="input.text"
+        ref="inputDom"
+        placeholder="Add a comment..."
+        @keydown.enter="addComment"
+      />
+      <SendMessage @click.stop="addComment" />
     </div>
   </div>
 </template>
@@ -401,6 +397,10 @@ const stopPlay = () => {
 emitter.on('play', autoPlay)
 emitter.on('stop', stopPlay)
 emitter.on('screenshot', () => {
+  saveJUUs()
+})
+
+const saveJUUs = () => {
   if (dom.value) {
     let commentHeight = 0
     if (listDom.value) {
@@ -408,7 +408,17 @@ emitter.on('screenshot', () => {
     }
     screenshot(dom.value, { height: dom.value.scrollHeight + commentHeight })
   }
-})
+}
+
+const inputDom = ref<HTMLInputElement | null>(null)
+
+const inputFource = () => {
+  if (inputDom.value) {
+    inputDom.value.focus()
+  }
+}
+
+defineExpose({ saveJUUs, inputFource })
 </script>
 
 <style lang="stylus" scoped>
@@ -481,8 +491,8 @@ emitter.on('screenshot', () => {
     .line
       flex-shrink 0
       box-sizing border-box
-      margin-left 10%
-      width 90%
+      margin-left 25px
+      width 100%
       height 1px
       background rgba(0, 0, 0, 0.8)
       transform scaleY(0.2)
@@ -501,7 +511,7 @@ emitter.on('screenshot', () => {
       margin 20px 5px 20px 15px
       padding 15px 0 5px 15px
       width 380px
-      border-radius 5px
+      border-radius 6px
       background #fff
 
       &:first-child
@@ -511,7 +521,7 @@ emitter.on('screenshot', () => {
         margin-bottom 0
 
       &:hover
-        .reply-num-wrapper
+        .comment-menu
           .del
             opacity 1
 
@@ -524,7 +534,7 @@ emitter.on('screenshot', () => {
           color #000
           font-weight bold
 
-      .reply-num-wrapper
+      .comment-menu
         position relative
         display flex
         justify-content space-between
@@ -605,10 +615,11 @@ emitter.on('screenshot', () => {
               color #000
               font-weight bold
 
-  .add-comment
+  .menu
     display flex
     justify-content space-between
     align-items center
+    overflow hidden
     box-sizing border-box
     margin-top 10px
     width 100%
@@ -616,23 +627,17 @@ emitter.on('screenshot', () => {
     border-top 1px solid rgba(0, 0, 0, 0.2)
     background #fff
 
-    .left
-      display flex
+    input
       flex 1
-      align-items center
-      height 60px
+      margin 0 10px
+      padding 5px 10px
+      width 240px
+      height 26px
+      border none
+      color #666
+      font-size 20px
 
-      .input
-        flex 1
-        margin 0 10px
-        padding 5px 10px
-        width 240px
-        height 26px
-        border none
-        color #666
-        font-size 20px
-
-    .right
+    svg
       display flex
       justify-content center
       align-items center

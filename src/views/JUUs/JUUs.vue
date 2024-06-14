@@ -8,7 +8,7 @@
         :img="currentJUUs.bg"
         :type="2"
       />
-      <div class="left">
+      <div class="image-wrapper">
         <div class="logo">
           <div class="icon">
             <Logo />
@@ -17,7 +17,7 @@
           <span>JUUSTAGRAM</span>
         </div>
         <div
-          class="img-wrapper"
+          class="image"
           @click.stop="imageChange"
         >
           <ChangeImage />
@@ -28,8 +28,8 @@
             :highlight="currentJUUs.like.flag"
             @click="setLike"
           />
-          <Message />
-          <PaperAirplane />
+          <Message @click.stop="contentRef?.inputFource()" />
+          <PaperAirplane @click.stop="contentRef?.saveJUUs()" />
         </div>
         <div class="info-text">
           <div>
@@ -51,7 +51,7 @@
           <span>{{ time }}</span>
         </div>
       </div>
-      <Content />
+      <Content ref="contentRef" />
     </div>
     <div
       v-show="!setting.screenshot"
@@ -162,6 +162,8 @@ const likeEllipsisChange = () => {
   currentJUUs.value.like.ellipsis = !currentJUUs.value.like.ellipsis
 }
 
+const contentRef = ref<InstanceType<typeof Content> | null>(null)
+
 const back = () => {
   select.show = false
   setting.juus.home = true
@@ -193,7 +195,7 @@ const back = () => {
       width 0
       height 0
 
-    .left
+    .image-wrapper
       position relative
       width 650px
       height 640px
@@ -234,7 +236,7 @@ const back = () => {
           color #636563
           font-size 20px
 
-      .img-wrapper
+      .image
         position absolute
         top 50px
         left 70px
