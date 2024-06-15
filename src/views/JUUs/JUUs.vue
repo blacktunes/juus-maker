@@ -82,7 +82,7 @@ import {
   Message,
   PaperAirplane
 } from '@/components/Public/Icon'
-import { currentJUUs } from '@/store/data'
+import { currentJUUs } from '@/store/juus'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'
 

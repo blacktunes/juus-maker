@@ -1,4 +1,5 @@
-import { data } from '@/store/data'
+import { data } from '@/store/juus'
+import { ship } from '@/store/ship'
 import { createDatabase } from 'star-rail-vue'
 // import { popupManager } from './popup'
 
@@ -27,6 +28,11 @@ export const loadJUUsDatabase = () => {
         data: data,
         key: 'juus',
         name: 'juus'
+      })
+      .add({
+        data: ship,
+        key: 'custom',
+        name: 'ship'
       })
       .next()
       .then(() => {

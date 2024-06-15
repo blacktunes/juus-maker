@@ -1,9 +1,10 @@
 type Unpacked<T> = T extends Promise<infer U> ? U : T
 
 interface ReplyItem {
-  key: string
-  avatar: string
+  key: string | number
   name: string
+  nickname: string
+  avatar: string
   text: string
   img?: string
 }
@@ -32,12 +33,13 @@ interface TalkData {
 
 type ShipLevel = '普通' | '稀有' | '精锐' | '超稀有' | '海上传奇' | '最高方案' | '决战方案' | ''
 
-interface ShipData {
-  empty?: boolean
+interface ShipData<T extends string | number = string> {
   avatar: string
-  key: string
-  alias: string
+  key: T
   name: string
+  alias: string
+  nickname: string
+  qchar?: string
   data: {
     param0?: unknown
     param1: string
@@ -45,4 +47,8 @@ interface ShipData {
     param3: string
     param4: string
   }
+}
+
+interface ShipDataList {
+  [key: string]: ShipData
 }

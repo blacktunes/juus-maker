@@ -65,7 +65,7 @@ import Background from '@/components/JUUs/Background.vue'
 import Heart from '@/components/Public/Heart.vue'
 import { Delete } from '@/components/Public/Icon'
 import InfoAvatar from '@/components/Public/InfoAvatar.vue'
-import { data, getDefaultJUUs } from '@/store/data'
+import { data, getDefaultJUUs } from '@/store/juus'
 import { setting } from '@/store/setting'
 import { JUUsList, currentBg } from './JUUs'
 

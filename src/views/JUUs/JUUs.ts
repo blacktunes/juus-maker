@@ -1,4 +1,4 @@
-import { currentJUUs, data, defaultBg } from '@/store/data'
+import { currentJUUs, data, defaultBg } from '@/store/juus'
 import { setting } from '@/store/setting'
 
 export const JUUsList = computed(() => data.juus.sort((a, b) => b.time - a.time))
