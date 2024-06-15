@@ -16,7 +16,7 @@ const getShipInfo = async (page) => {
   console.log(new Date().toLocaleString(), '获取图鉴列表')
   await page.goto('https://wiki.biligame.com/blhx/%E8%88%B0%E8%88%B9%E5%9B%BE%E9%89%B4')
   shipList = await page.$$eval('.jntj-1', (el) => {
-    const _data = []
+    const _shipList = []
     el.forEach((item) => {
       const name = item.children[1].children[0].innerText.split('\n')
       const srcset = item.children[0].children[0].srcset.split(',')
@@ -30,16 +30,17 @@ const getShipInfo = async (page) => {
         }
       }
 
-      _data.push({
+      _shipList.push({
         key: name[0],
+        name: name[0],
         alias: name[1] || '',
-        name: '',
+        nickname: '',
         avatar: image,
         data: JSON.parse(JSON.stringify(item.dataset))
       })
     })
     console.log(new Date().toLocaleString(), '图鉴列表已获取')
-    return _data
+    return _shipList
   })
 }
 
@@ -64,7 +65,7 @@ const loadText = (text) => {
         .split('@')
       const key = temp[0].split('|')[0]
       list[key] = {
-        name: temp[1],
+        nickname: temp[1],
         type,
         group
       }
@@ -100,14 +101,11 @@ const getShip = async (page) => {
     console.log(new Date().toLocaleString(), `获取${key}昵称`)
     temp = await getNickname(page, ID[key])
     for (const i in shipList) {
-      if (shipList[i].name) continue
-      shipList[i].name = temp?.[shipList[i].key]?.name || temp?.[shipList[i].alias]?.name || ''
+      if (shipList[i].nickname) continue
+      shipList[i].nickname = temp?.[shipList[i].key]?.nickname || temp?.[shipList[i].alias]?.nickname || ''
     }
     console.log(new Date().toLocaleString(), `${key}昵称已获取 - [${Object.keys(temp).length}]`)
   }
-
-  fs.writeJsonSync(path.join(__dirname, '../src/assets/data/ship.json'), shipList, { spaces: 2 })
-  console.log(new Date().toLocaleString(), `舰船数据已保存 - [${shipList.length}]`)
 }
 
 const start = async (browser) => {
@@ -115,6 +113,9 @@ const start = async (browser) => {
 
   await getShipInfo(page)
   await getShip(page)
+
+  fs.writeJsonSync(path.join(__dirname, '../src/assets/data/ship.json'), shipList, { spaces: 2 })
+  console.log(new Date().toLocaleString(), `舰船数据已保存 - [${shipList.length}]`)
 
   browser.close()
 }
