@@ -84,3 +84,21 @@ input
 .enter-enter-to
 .enter-leave-from
   filter none
+
+.select-enter-active
+.select-leave-active
+  transition all 0.3s
+
+.select-enter-from
+  opacity 0
+  transform translateY(20px)
+
+.select-enter-to
+  opacity 1
+  transform translateY(0)
+
+.select-leave-from
+  opacity 1
+
+.select-leave-to
+  opacity 0

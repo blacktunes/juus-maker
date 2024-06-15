@@ -1,11 +1,8 @@
 <template>
-  <Transition
-    name="select"
-    appear
-  >
+  <Transition name="select">
     <div
       class="home-view"
-      v-show="show"
+      v-if="show"
     >
       <div class="home-wrapper">
         <div class="item-list">
@@ -265,18 +262,4 @@ const delJUUs = (id: number) => {
 
   img
     width 45px
-
-.select-enter-from
-  opacity 0
-  transform translateY(20px)
-
-.select-enter-to
-  opacity 1
-  transform translateY(0)
-
-.select-leave-from
-  opacity 1
-
-.select-leave-to
-  opacity 0
 </style>

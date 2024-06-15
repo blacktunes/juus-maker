@@ -1,67 +1,73 @@
 <template>
-  <div
-    v-if="currentJUUs"
-    class="juus"
-  >
-    <div class="juus-wrapper">
-      <Background
-        :img="currentJUUs.bg"
-        :type="2"
-      />
-      <div class="image-wrapper">
-        <div class="logo">
-          <div class="icon">
-            <Logo />
-          </div>
-          <div class="line"></div>
-          <span>JUUSTAGRAM</span>
-        </div>
-        <div
-          class="image"
-          @click.stop="imageChange"
-        >
-          <ChangeImage />
-          <img :src="currentJUUs.img" />
-        </div>
-        <div class="info-icon">
-          <Heart
-            :highlight="currentJUUs.like.flag"
-            @click="setLike"
-          />
-          <Message @click.stop="contentRef?.inputFource()" />
-          <PaperAirplane @click.stop="contentRef?.saveJUUs()" />
-        </div>
-        <div class="info-text">
-          <div>
-            <span
-              contenteditable
-              @keydown.enter.prevent="(e) => (e.target as HTMLElement).blur()"
-              @focus="initLikeInput"
-              @blur="updateLikeNum"
-              @beforeinput="beforeLikeInput"
-            >
-              {{ likeNum }}
-            </span>
-            <span>次赞</span>
-            <EllipsisHorizontalCircleOutline
-              v-show="isLikeMoreThan999"
-              @click.stop="likeEllipsisChange"
-            />
-          </div>
-          <span>{{ time }}</span>
-        </div>
-      </div>
-      <Content ref="contentRef" />
-    </div>
+  <Transition name="fade">
     <div
-      v-show="!setting.screenshot"
-      class="back"
-      @click="back"
+      v-if="!setting.juus.home && currentJUUs"
+      class="juus"
     >
-      <img src="@/assets/images/back.png" />
-      <span>返回</span>
+      <div
+        class="mask"
+        v-if="setting.play"
+      ></div>
+      <div class="juus-wrapper">
+        <Background
+          :img="currentJUUs.bg"
+          :type="2"
+        />
+        <div class="image-wrapper">
+          <div class="logo">
+            <div class="icon">
+              <Logo />
+            </div>
+            <div class="line"></div>
+            <span>JUUSTAGRAM</span>
+          </div>
+          <div
+            class="image"
+            @click.stop="imageChange"
+          >
+            <ChangeImage />
+            <img :src="currentJUUs.img" />
+          </div>
+          <div class="info-icon">
+            <Heart
+              :highlight="currentJUUs.like.flag"
+              @click="setLike"
+            />
+            <Message @click.stop="contentRef?.inputFource()" />
+            <PaperAirplane @click.stop="$emit('screenshot')" />
+          </div>
+          <div class="info-text">
+            <div>
+              <span
+                contenteditable
+                @keydown.enter.prevent="(e) => (e.target as HTMLElement).blur()"
+                @focus="initLikeInput"
+                @blur="updateLikeNum"
+                @beforeinput="beforeLikeInput"
+              >
+                {{ likeNum }}
+              </span>
+              <span>次赞</span>
+              <EllipsisHorizontalCircleOutline
+                v-show="isLikeMoreThan999"
+                @click.stop="likeEllipsisChange"
+              />
+            </div>
+            <span>{{ time }}</span>
+          </div>
+        </div>
+        <Content ref="contentRef" />
+      </div>
+      <div
+        v-show="!setting.screenshot"
+        class="back"
+        @click="back"
+      >
+        <img src="@/assets/images/back.png" />
+        <span>返回</span>
+      </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script lang="ts" setup>
@@ -79,6 +85,8 @@ import {
 import { currentJUUs } from '@/store/data'
 import { select } from '@/store/select'
 import { setting } from '@/store/setting'
+
+defineEmits(['screenshot'])
 
 const time = computed(() => {
   if (!currentJUUs.value) return '-'
@@ -178,6 +186,15 @@ const back = () => {
   align-items center
   width 100%
   height 100%
+
+  .mask
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    z-index 9
+    user-select none
 
   .juus-wrapper
     position relative

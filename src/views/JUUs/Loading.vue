@@ -1,13 +1,22 @@
 <template>
-  <div class="loading">
-    <div class="loading-window">
-      <Logo />
+  <Transition name="fade">
+    <div
+      class="loading"
+      v-if="show"
+    >
+      <div class="loading-window">
+        <Logo />
+      </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script lang="ts" setup>
 import Logo from '@/components/Public/Logo.vue'
+
+defineProps<{
+  show: boolean
+}>()
 </script>
 
 <style lang="stylus" scoped>
