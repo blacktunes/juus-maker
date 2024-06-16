@@ -5,10 +5,7 @@
       v-show="select.show"
     >
       <div class="header">
-        <Avatar
-          class="avatar"
-          :src="avatarData.avatar"
-        />
+        <img :src="avatarData.avatar" />
         <div class="name">
           <span>{{ typeof avatarData.key === 'number' ? avatarData.name : avatarData.key }}</span>
           <input v-model="avatarData.name" />
@@ -34,48 +31,34 @@
             :item
             @click.stop="change(item)"
           />
-          <div class="label">自定义角色</div>
-          <div
-            class="item"
-            style="cursor: pointer"
-            @click.stop="createCustom"
-          >
-            <svg
-              style="height: 30px"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-            >
-              <path
-                d="M512 832a32 32 0 0 0 32-32v-256h256a32 32 0 0 0 0-64h-256V224a32 32 0 0 0-64 0v256H224a32 32 0 0 0 0 64h256v256a32 32 0 0 0 32 32"
-                fill="#8a8a8a"
-              ></path>
-            </svg>
-          </div>
-          <ShipItem
-            v-for="item in showData.custom"
-            :key="item.key"
-            :highlight="item.key === avatarData.key"
-            :item
-            @click.stop="change(item)"
-          >
+          <template v-if="!hasFilter || (hasFilter && showData.custom.length > 0)">
+            <div class="label">自定义角色</div>
             <div
-              class="del"
-              @click.stop="delShip(item.key)"
+              class="item"
+              @click.stop="createCustom"
             >
-              ×
+              <Add />
             </div>
-          </ShipItem>
-          <div class="label">游戏角色</div>
-          <ShipItem
-            v-for="item in showData.game"
-            :key="item.key"
-            :highlight="item.key === avatarData.key"
-            :item
-            @click.stop="change(item)"
-          />
+            <ShipItem
+              v-for="item in showData.custom"
+              :key="item.key"
+              :highlight="item.key === avatarData.key"
+              :item
+              @click.stop="change(item)"
+              @contextmenu.prevent.stop="delShip(item.key)"
+            >
+            </ShipItem>
+          </template>
+          <template v-if="!hasFilter || (hasFilter && showData.game.length > 0)">
+            <div class="label">游戏角色</div>
+            <ShipItem
+              v-for="item in showData.game"
+              :key="item.key"
+              :highlight="item.key === avatarData.key"
+              :item
+              @click.stop="change(item)"
+            />
+          </template>
         </div>
       </div>
       <transition name="fade">
@@ -93,34 +76,14 @@
             @click="clear"
             v-show="searchText"
           >
-            ×
+            <Close />
           </div>
         </transition>
         <div
           class="filter"
-          @click="onFilterClick"
+          @click.stop="onFilterClick"
         >
-          <svg
-            viewBox="0 0 1025 1024"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-          >
-            <path
-              d="M1024 0H0v1024h1024V0z"
-              fill="#bbb"
-              fill-opacity=".01"
-            ></path>
-            <path
-              d="M85.12 106.88a42.24 42.24 0 0 0-42.24 42.24 42.88 42.88 0 0 0 42.24 42.88V106.88zM938.88 192a42.24 42.24 0 0 0 42.24-42.88 41.6 41.6 0 0 0-42.24-42.24V192zM85.12 192h853.76V106.88H85.12V192zM85.12 448a42.88 42.88 0 0 0-42.24 42.88 42.24 42.24 0 0 0 42.24 42.24V448zM320 533.12a42.24 42.24 0 0 0 42.88-42.24A42.88 42.88 0 0 0 320 448v85.12z m-234.88 0H320V448H85.12v85.12zM85.12 789.12a42.88 42.88 0 0 0 0 85.76v-85.76zM320 874.88a42.88 42.88 0 0 0 0-85.76v85.76z m-234.88 0H320v-85.76H85.12v85.76zM672 320A224 224 0 1 0 896 544 224 224 0 0 0 672 320z m0 362.88a138.88 138.88 0 1 1 138.88-138.88 138.88 138.88 0 0 1-138.88 138.88z"
-              fill="#bbb"
-            ></path>
-            <path
-              d="M819.84 652.8a42.88 42.88 0 1 0-64 60.16l64-60.16z m88.32 210.56a43.52 43.52 0 0 0 64 0 42.24 42.24 0 0 0 0-60.16l-64 60.16z m-149.12-150.4l149.12 150.4 64-60.16-152.32-150.4-64 60.16z"
-              fill="#bbb"
-            ></path>
-          </svg>
+          <Filter />
         </div>
       </div>
     </div>
@@ -134,8 +97,7 @@ import { filter, select } from '@/store/select'
 import { ship } from '@/store/ship'
 import talk from '@/store/talk'
 import { computed, ref } from 'vue'
-import Avatar from '../Public/Avatar2.vue'
-import { Close } from '../Public/Icon'
+import { Close, Add, Filter } from '../Public/Icon'
 import ShipFilter from './ShipFilter.vue'
 import ShipItem from './ShipItem.vue'
 
@@ -190,6 +152,14 @@ const usedShipList = computed(() => {
   return usedShip
 })
 
+const hasFilter = computed(
+  () =>
+    filter.param1.size > 0 ||
+    filter.param2.size > 0 ||
+    filter.param3.size > 0 ||
+    filter.param4.size > 0
+)
+
 const isFilter = (data: { param1: string; param2: ShipLevel; param3: string; param4: string }) => {
   const flag = [false, false, false, false]
 
@@ -243,21 +213,17 @@ const showData = computed(() => {
     }
 
     return list
-  } else if (
-    filter.param1.size > 0 ||
-    filter.param2.size > 0 ||
-    filter.param3.size > 0 ||
-    filter.param4.size > 0
-  ) {
+  } else if (hasFilter.value) {
     for (const i in ship.game) {
       if (isFilter(ship.game[i].data)) {
         list.game.push(ship.game[i])
       }
     }
 
-    for (const key in ship.custom) {
-      if (isFilter(ship.custom[key].data)) {
-        list.custom[key] = ship.custom[key]
+    for (const i in ship.custom) {
+      console.log(ship.custom[i].data)
+      if (isFilter(ship.custom[i].data)) {
+        list.custom.push(ship.custom[i])
       }
     }
 
@@ -329,7 +295,7 @@ const addCustom = (avatar: string, name: string) => {
     data: {
       param1: '',
       param2: '',
-      param3: '其它',
+      param3: '其他',
       param4: '自定义'
     }
   })
@@ -373,7 +339,7 @@ item()
 
 .select-view
   position relative
-  z-index 99
+  z-index 9
   display flex
   flex-direction column
   box-sizing border-box
@@ -404,18 +370,19 @@ item()
         height 5px
 
       &::-webkit-scrollbar-track
-        border-radius 4px
-        box-shadow inset 0 0 6px rgba(0, 0, 0, 0.4)
+        border-radius 5px
+        background-color rgba(200, 200, 200, 0.5)
 
       &::-webkit-scrollbar-thumb
-        border-radius 4px
-        box-shadow inset 0 0 6px rgba(0, 0, 0, 0.3)
+        border-radius 10px
+        background-color rgba(180, 180, 180, 0.9)
 
       &::-webkit-scrollbar-thumb:active
-        background-color #aaa
+        background-color rgba(150, 150, 150, 0.9)
 
       .label
         margin 10px 0
+        margin-left 10px
         padding-bottom 10px
         width 95%
         border-bottom 1px solid rgba(0, 0, 0, 0.3)
@@ -423,30 +390,13 @@ item()
         font-size 18px
 
       .item
-        position relative
         height 70px
+        color #8a8a8a
+        cursor pointer
         item()
 
         &:hover
-          background rgb(240, 240, 240)
-
-        .del
-          position absolute
-          top 0
-          right 0
-          display flex
-          justify-content center
-          align-items center
-          width 15px
-          height 15px
-          color #888
-          opacity 0
-          cursor pointer
-          transition opacity 0.25s
-          user-select none
-
-          &:hover
-            opacity 1
+          background rgba(240, 240, 240, 0.5)
 
   .search
     position relative
@@ -462,7 +412,7 @@ item()
       height 35px
       outline none
       border 2px solid #ddd
-      border-radius 17.5px
+      border-radius 3px
       color #999
       font-size 16px
 
@@ -470,6 +420,9 @@ item()
       position absolute
       top 50%
       right 60px
+      display flex
+      justify-content center
+      align-items center
       width 20px
       height 20px
       outline none
@@ -482,29 +435,41 @@ item()
       transform translateY(-50%)
       user-select none
 
+      svg
+        width 15px
+        height 15px
+
     .filter
       display flex
+      flex-shrink 0
       justify-content center
       align-items center
       box-sizing border-box
       margin-left 5px
-      width 40px
+      width 35px
       height 35px
-      border 2px solid #bbb
+      border 2px solid #ddd
       border-radius 5px
       background #fff
+      color #ddd
       cursor pointer
 
+      svg
+        width 20px
+
 .header
-  z-index 100
+  z-index 10
   flex-shrink 0
   overflow hidden
   width 100%
   height 80px
   item()
 
-  .avatar
-    margin-left 15px
+  img
+    margin 0 15px
+    width 45px
+    height 45px
+    border-radius 50%
 
   .name
     display flex
@@ -518,8 +483,9 @@ item()
 
   input
     overflow hidden
+    box-sizing border-box
     padding 0 5px
-    width 90%
+    width 100%
     border none
     color #444
     text-overflow ellipsis
@@ -527,8 +493,9 @@ item()
     font-size 20px
 
   .close
-    margin-bottom 3px
-    font-size 40px
+    margin-left 10px
+    width 30px
+    height 30px
     line-height 40px
     cursor pointer
 </style>

@@ -50,7 +50,7 @@ withDefaults(
 
 .window-btn
   position relative
-  z-index 999
+  z-index 20
   display flex
   justify-content center
   align-items center

@@ -179,17 +179,17 @@
 
 <script lang="ts" setup>
 import { emitter } from '@/assets/scripts/event'
+import { popupManager } from '@/assets/scripts/popup'
 import { screenshot } from '@/assets/scripts/screenshot'
 import Avatar from '@/components/Public/Avatar.vue'
 import InfoAvatar from '@/components/Public/InfoAvatar.vue'
-import { currentJUUs } from '@/store/juus'
 import input from '@/store/input'
+import { currentJUUs } from '@/store/juus'
 import { resetSelectData, select } from '@/store/select'
 import { setting } from '@/store/setting'
 import draggable from '@marshallswain/vuedraggable'
 import { computed, nextTick, ref } from 'vue'
 import { Close, Follow, Message, SendMessage } from '../Public/Icon'
-import { popupManager } from '@/assets/scripts/popup'
 
 const tempList = ref<JUUsComment[]>([])
 const juusList = computed({
@@ -217,7 +217,8 @@ const addComment = () => {
   currentJUUs.value!.comment.push({
     ...input,
     text: input.text || '谢谢你，碧蓝航线',
-    reply: []
+    reply: [],
+    nickname: ''
   })
   scrollToBottom()
   input.text = ''
@@ -242,7 +243,8 @@ const delComment = (index: number) => {
 const addReply = (index: number, e: Event) => {
   currentJUUs.value!.comment?.[index].reply.push({
     ...input,
-    text: input.text || '谢谢你，碧蓝航线'
+    text: input.text || '谢谢你，碧蓝航线',
+    nickname: ''
   })
   nextTick(() => {
     const temp = (e.target as HTMLElement)?.parentElement?.parentElement?.parentElement

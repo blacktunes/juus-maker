@@ -58,6 +58,9 @@ const saveJUUs = () => {
   position relative
   width 1280px
   height 720px
+  box-shadow 0 0 10px 5px rgba(0, 0, 0, 0.2)
+  border-radius 10px
+  margin-top 10px 
 
 .global-bg
   position fixed

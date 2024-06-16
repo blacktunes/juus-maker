@@ -58,7 +58,7 @@ const outline = {
   user-select none
 
   &:hover
-    background rgb(240, 240, 240)
+    background rgba(240, 240, 240, 0.5)
 
   .name
     display flex
