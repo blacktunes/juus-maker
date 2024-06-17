@@ -5,6 +5,12 @@
       v-if="show"
     >
       <div class="home-wrapper">
+        <div
+          class="help"
+          @click.stop="showHelp"
+        >
+          <img src="@/assets//images/help.webp" />
+        </div>
         <div class="item-list">
           <div
             class="item"
@@ -47,7 +53,7 @@
             class="item add"
             @click="addJUUs"
           >
-            <img src="@/assets/images/camera_add.png" />
+            <Camera />
           </div>
         </div>
         <Background
@@ -63,7 +69,7 @@
 import { popupManager } from '@/assets/scripts/popup'
 import Background from '@/components/JUUs/Background.vue'
 import Heart from '@/components/Public/Heart.vue'
-import { Delete } from '@/components/Public/Icon'
+import { Delete, Camera } from '@/components/Public/Icon'
 import InfoAvatar from '@/components/Public/InfoAvatar.vue'
 import { data, getDefaultJUUs } from '@/store/juus'
 import { setting } from '@/store/setting'
@@ -78,6 +84,14 @@ const show = computed(() => props.ready && setting.juus.home)
 const getLikeText = (str: string) => {
   if (Number(str) > 999) return '999+'
   return str
+}
+
+const showHelp = () => {
+  popupManager.open('confirm', {
+    text: [
+      '<div style="width: 100%;height: 270px;display: flex;flex-direction: column;align-items: center;justify-content: center;font-size: 40px;"><span>本来应该在这写使用说明的</span><span>但是好像没啥好说明的</span></div>'
+    ]
+  })
 }
 
 const showJUUs = (id: number) => {
@@ -128,6 +142,16 @@ const delJUUs = (id: number) => {
     border-radius 5px
     box-shadow 3px 3px 5px rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0, 0, 0, 0.5)
 
+    .help
+      position absolute
+      top 30px
+      right 20px
+      width 35px
+      cursor pointer
+
+      img
+        width 100%
+
     .item-list
       overflow-y scroll
       margin 30px
@@ -138,7 +162,7 @@ const delJUUs = (id: number) => {
         height 15px
 
       &::-webkit-scrollbar-track
-        margin-top 40px
+        margin-top 45px
         border-radius 10px
         background-color rgba(200, 200, 200, 0.5)
 

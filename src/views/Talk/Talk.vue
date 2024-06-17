@@ -113,13 +113,11 @@
         placeholder="Aa"
         @keydown.enter="addComment()"
       />
-      <img
-        src="@/assets/images/图片.png"
+      <Image
         style="cursor: pointer; width: 34px; margin-right: 2px"
         @click="addImage"
       />
-      <img
-        src="@/assets/images/message_2.png"
+      <SendMessage
         style="cursor: pointer; width: 29px"
         @click="addComment()"
       />
@@ -128,13 +126,14 @@
 </template>
 
 <script lang="ts" setup>
-import { screenshot as _screenshot } from 'star-rail-vue'
 import Avatar from '@/components/Public/Avatar.vue'
+import { Image, SendMessage } from '@/components/Public/Icon'
 import input from '@/store/input'
 import { resetSelectData, select } from '@/store/select'
 import { setting } from '@/store/setting'
 import data from '@/store/talk'
 import draggable from '@marshallswain/vuedraggable'
+import { screenshot as _screenshot } from 'star-rail-vue'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const emit = defineEmits<{

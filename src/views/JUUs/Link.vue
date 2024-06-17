@@ -30,19 +30,19 @@
       <div v-else-if="!setting.play">
         <MenuBtn @click.stop="$emit('screenshot')">
           <template #icon>
-            <Image />
+            <Logo />
           </template>
           保存动态
         </MenuBtn>
         <MenuBtn @click.stop="emitter.emit('screenshot')">
           <template #icon>
-            <Image />
+            <Message style="width: 25px" />
           </template>
           保存对话
         </MenuBtn>
         <MenuBtn @click.stop="emitter.emit('play')">
           <template #icon>
-            <Image />
+            <Play />
           </template>
           自动播放
         </MenuBtn>
@@ -56,7 +56,7 @@
       <div v-else>
         <MenuBtn @click.stop="emitter.emit('stop')">
           <template #icon>
-            <Image />
+            <Stop />
           </template>
           停止播放
         </MenuBtn>
@@ -68,7 +68,15 @@
 <script lang="ts" setup>
 import { emitter } from '@/assets/scripts/event'
 import { popupManager } from '@/assets/scripts/popup'
-import { Bilibili, ChangeImage, Github, Image } from '@/components/Public/Icon'
+import {
+  Bilibili,
+  ChangeImage,
+  Github,
+  Logo,
+  Message,
+  Play,
+  Stop
+} from '@/components/Public/Icon'
 import MenuBtn from '@/components/Public/MenuBtn.vue'
 import { currentJUUs } from '@/store/juus'
 import { setting } from '@/store/setting'

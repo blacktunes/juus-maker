@@ -63,7 +63,7 @@
         class="back"
         @click="back"
       >
-        <img src="@/assets/images/back.png" />
+        <Back />
         <span>返回</span>
       </div>
     </div>
@@ -80,7 +80,8 @@ import {
   EllipsisHorizontalCircleOutline,
   Logo,
   Message,
-  PaperAirplane
+  PaperAirplane,
+  Back
 } from '@/components/Public/Icon'
 import { currentJUUs } from '@/store/juus'
 import { select } from '@/store/select'
@@ -360,8 +361,8 @@ const back = () => {
   width 55px
   cursor pointer
 
-  img
-    width 100%
+  svg
+    width 55px
 
   span
     margin-top 5px
