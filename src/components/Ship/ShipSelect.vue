@@ -91,13 +91,14 @@
 </template>
 
 <script lang="ts" setup>
+import { popupManager } from '@/assets/scripts/popup'
 import input from '@/store/input'
 import { currentJUUs, getMessage } from '@/store/juus'
 import { filter, select } from '@/store/select'
 import { ship } from '@/store/ship'
 import talk from '@/store/talk'
 import { computed, ref } from 'vue'
-import { Close, Add, Filter } from '../Public/Icon'
+import { Add, Close, Filter } from '../Public/Icon'
 import ShipFilter from './ShipFilter.vue'
 import ShipItem from './ShipItem.vue'
 
@@ -263,21 +264,24 @@ const close = () => {
 }
 
 const createCustom = () => {
-  const input = document.createElement('input')
-  input.type = 'file'
-  input.accept = 'image/*'
-  input.onchange = () => {
-    if (input.files?.[0]) {
-      const file = new FileReader()
-      file.readAsDataURL(input.files[0])
-      file.onload = (e) => {
-        const avatar = (e.target?.result as string) || ''
-        const key = prompt('请输入角色昵称') || ''
-        addCustom(avatar, key)
-      }
-    }
-  }
-  input.click()
+  popupManager
+    .open('cropper', {
+      aspectRatio: 1,
+      maxWidth: 500
+    })
+    .then((res) => {
+      popupManager
+        .open('input', {
+          title: '创建角色',
+          subTitle: 'ADD CHARACTER',
+          tip: '请输入姓名'
+        })
+        .then((name) => {
+          if (name !== null) {
+            addCustom(res.base64, name)
+          }
+        })
+    })
 }
 
 const addCustom = (avatar: string, name: string) => {
@@ -302,12 +306,15 @@ const addCustom = (avatar: string, name: string) => {
 }
 
 const delShip = (key: string | number) => {
-  const flag = confirm('是否删除该角色')
-  if (!flag) return
-  const index = ship.custom.findIndex((item) => item.key === key)
-  if (index !== -1) {
-    ship.custom.splice(index, 1)
-  }
+  popupManager.open('confirm', {
+    text: ['真的要删除吗'],
+    fn: () => {
+      const index = ship.custom.findIndex((item) => item.key === key)
+      if (index !== -1) {
+        ship.custom.splice(index, 1)
+      }
+    }
+  })
 }
 
 const onFilterClick = () => {
