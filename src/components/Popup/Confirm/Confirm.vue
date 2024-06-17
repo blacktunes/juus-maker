@@ -63,6 +63,7 @@ callback.confirm = onConfirml
 <style lang="stylus" scoped>
 .text
   display flex
+  flex-direction column
   justify-content center
   align-items center
   width 100%

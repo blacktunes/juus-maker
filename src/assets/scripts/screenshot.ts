@@ -1,23 +1,27 @@
 import { setting } from '@/store/setting'
-import { screenshot } from 'star-rail-vue'
+import { screenshot as _screenshot } from 'star-rail-vue'
 import { popupManager } from './popup'
 
-const _screenshot = (
+const screenshot = (
   dom: HTMLElement,
   config?: {
-    name?: string
     width?: number
     height?: number
-    download?: boolean
   }
 ) => {
   setting.screenshot = true
   popupManager.open('loading')
 
-  screenshot(dom, config).finally(() => {
-    setting.screenshot = false
-    popupManager.close('loading')
-  })
+  _screenshot(dom, { ...config, name: 'JUUs', download: setting.download })
+    .catch(() => {
+      popupManager.open('confirm', {
+        text: ['图片保存异常', '请尝试在设置中切换下载模式']
+      })
+    })
+    .finally(() => {
+      setting.screenshot = false
+      popupManager.close('loading')
+    })
 }
 
-export { _screenshot as screenshot }
+export { screenshot }

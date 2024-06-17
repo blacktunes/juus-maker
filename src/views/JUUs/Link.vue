@@ -34,23 +34,29 @@
           </template>
           保存动态
         </MenuBtn>
-        <MenuBtn @click.stop="emitter.emit('screenshot')">
+        <MenuBtn @click.stop="emitter.emit('save_juus')">
           <template #icon>
             <Message style="width: 25px" />
           </template>
           保存对话
         </MenuBtn>
-        <MenuBtn @click.stop="emitter.emit('play')">
+        <MenuBtn @click.stop="changeSaveMode">
           <template #icon>
-            <Play />
+            <Setting style="width: 22px" />
           </template>
-          自动播放
+          保存方式
         </MenuBtn>
         <MenuBtn @click.stop="changeBg">
           <template #icon>
             <ChangeImage style="width: 22px" />
           </template>
           更换背景
+        </MenuBtn>
+        <MenuBtn @click.stop="emitter.emit('play')">
+          <template #icon>
+            <Play />
+          </template>
+          自动播放
         </MenuBtn>
       </div>
       <div v-else>
@@ -75,6 +81,7 @@ import {
   Logo,
   Message,
   Play,
+  Setting,
   Stop
 } from '@/components/Public/Icon'
 import MenuBtn from '@/components/Public/MenuBtn.vue'
@@ -93,6 +100,18 @@ const changeBg = () => {
       if (!currentJUUs.value) return
       currentJUUs.value.bg = res.base64
     })
+}
+
+const changeSaveMode = () => {
+  popupManager.open('confirm', {
+    text: [
+      '是否把保存方式修改为',
+      `<span style="font-size: 30px;">${setting.download ? '打开新窗口' : '下载'}</span>`
+    ],
+    fn: () => {
+      setting.download = !setting.download
+    }
+  })
 }
 
 const tip = () => {

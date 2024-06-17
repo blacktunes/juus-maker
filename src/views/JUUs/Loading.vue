@@ -22,7 +22,7 @@ defineProps<{
 <style lang="stylus" scoped>
 .loading
   position absolute
-  z-index 99
+  z-index 9
   display flex
   justify-content center
   align-items center
