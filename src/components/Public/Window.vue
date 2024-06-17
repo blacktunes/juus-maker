@@ -73,7 +73,6 @@ withDefaults(
     title: '信息',
     subTitle: 'INFORMATION',
     width: '40%',
-    height: '50%'
   }
 )
 
@@ -261,7 +260,7 @@ const close = () => {
           position relative
           z-index 4
           display flex
-          align-items baseline
+          align-items flex-end
           color #fff
           text-indent 1px
           letter-spacing 1px
@@ -284,6 +283,7 @@ const close = () => {
               font-family 'Noto Serif SC', serif
 
             &:nth-child(2)
+              margin-bottom 4px
               font-size 14px
               font-family 'Oxygen', sans-serif
 
