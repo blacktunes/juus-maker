@@ -38,6 +38,7 @@ import JUUs from './JUUs.vue'
 import JUUsSelect from './JUUsSelect.vue'
 import Link from './Link.vue'
 import Loading from './Loading.vue'
+import { emitter } from '@/assets/scripts/event'
 
 const ready = ref(false)
 
@@ -51,6 +52,8 @@ const saveJUUs = () => {
     screenshot(dom.value)
   }
 }
+
+emitter.on('save_juus', saveJUUs)
 </script>
 
 <style lang="stylus" scoped>

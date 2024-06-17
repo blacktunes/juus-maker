@@ -398,7 +398,7 @@ const stopPlay = () => {
 
 emitter.on('play', autoPlay)
 emitter.on('stop', stopPlay)
-emitter.on('screenshot', () => {
+emitter.on('save_talk', () => {
   saveJUUs()
 })
 

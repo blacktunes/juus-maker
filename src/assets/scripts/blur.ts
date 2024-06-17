@@ -7,6 +7,7 @@ export default {
     app.directive('blur', {
       mounted(el: HTMLElement) {
         fn = (e: KeyboardEvent) => {
+          e.stopPropagation()
           if (e.key === 'Escape' || e.key === 'Enter') {
             el.blur()
           }
