@@ -1,10 +1,13 @@
-# JUUs Maker
+<h1 align="center">JUUs Maker</h1>
+<h3 align="center">碧蓝航线JUUs动态生成器</h3>
 
-### 碧蓝航线JUUs动态生成器
+![JUUs选择](public/juus_1.webp)
 
-<https://juus.shenmedouyou.top>
+![JUUs](public/juus_2.webp)
 
-![JUUs](readme/screenshot.jpg)
+<h4 align="center">
+  <a href="https://juus.shenmedouyou.top">https://juus.shenmedouyou.top</a>
+</h4>
 
 #### 使用方法
 
@@ -24,13 +27,7 @@
 - [ ] I18N
 - [x] 舰娘筛选
 - [x] 自定义头像
-- [x] 已使用的头像在选择页常驻
+- [x] 已使用的角色置顶
 - [x] 自动播放
 - [x] 数据持久化
 - [ ] 数据导出/导入
-
-### 碧蓝航线舰娘群聊生成器
-
-<https://juus.shenmedouyou.top/talk>
-
-![群聊](readme/talk_screenshot.jpg)

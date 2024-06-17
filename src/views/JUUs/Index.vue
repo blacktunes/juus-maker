@@ -39,11 +39,15 @@ import JUUsSelect from './JUUsSelect.vue'
 import Link from './Link.vue'
 import Loading from './Loading.vue'
 import { emitter } from '@/assets/scripts/event'
+import { updateCheck } from '@/assets/scripts/update'
 
 const ready = ref(false)
 
 loadJUUsDatabase().then(() => {
-  nextTick(() => (ready.value = true))
+  nextTick(() => {
+    ready.value = true
+    updateCheck()
+  })
 })
 
 const dom = ref<HTMLElement | null>(null)
@@ -59,11 +63,11 @@ emitter.on('save_juus', saveJUUs)
 <style lang="stylus" scoped>
 .main
   position relative
+  margin-top 10px
   width 1280px
   height 720px
-  box-shadow 0 0 10px 5px rgba(0, 0, 0, 0.2)
   border-radius 10px
-  margin-top 10px 
+  box-shadow 0 0 10px 5px rgba(0, 0, 0, 0.2)
 
 .global-bg
   position fixed
