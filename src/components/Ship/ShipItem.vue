@@ -16,7 +16,12 @@
     </div>
     <div>
       <div class="name">{{ item.name }}</div>
-      <div class="alias">{{ item.nickname || item.alias || item.name }}</div>
+      <div
+        class="alias"
+        v-if="typeof item.key === 'string'"
+      >
+        {{ item.nickname || item.alias || item.name }}
+      </div>
     </div>
     <slot></slot>
   </div>

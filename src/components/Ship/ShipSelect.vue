@@ -7,7 +7,7 @@
       <div class="header">
         <img :src="avatarData.avatar" />
         <div class="name">
-          <span>{{ typeof avatarData.key === 'number' ? avatarData.name : avatarData.key }}</span>
+          <span v-if="typeof avatarData.key === 'string'">{{ avatarData.key }}</span>
           <input v-model="avatarData.name" />
         </div>
         <Close
@@ -23,6 +23,7 @@
             :highlight="player.key === avatarData.key"
             :item="player"
             @click.stop="change(player)"
+            class="player"
           />
           <ShipItem
             v-for="item in usedShipList"
@@ -101,6 +102,7 @@ import { computed, ref } from 'vue'
 import { Add, Close, Filter } from '../Public/Icon'
 import ShipFilter from './ShipFilter.vue'
 import ShipItem from './ShipItem.vue'
+import { getAvatarBase64 } from '@/assets/scripts/avatar'
 
 withDefaults(
   defineProps<{
@@ -234,10 +236,14 @@ const showData = computed(() => {
   return ship
 })
 
-const change = (data: ShipData<any>) => {
+const change = async (data: ShipData<any>) => {
   avatarData.value.key = data.key
-  avatarData.value.avatar = data.avatar
   avatarData.value.name = data.nickname || data.alias || data.name
+  if (data.key === '指挥官' || typeof data.key === 'number') {
+    avatarData.value.avatar = data.avatar
+  } else {
+    avatarData.value.avatar = await getAvatarBase64(data.key)
+  }
 }
 
 const avatarData = computed(() => {
@@ -267,7 +273,7 @@ const createCustom = () => {
   popupManager
     .open('cropper', {
       aspectRatio: 1,
-      maxWidth: 500
+      maxWidth: 1280
     })
     .then((res) => {
       popupManager
@@ -395,6 +401,10 @@ item()
         border-bottom 1px solid rgba(0, 0, 0, 0.3)
         font-weight bold
         font-size 18px
+
+      .player
+        :deep(.avatar)
+          border-radius 50%
 
       .item
         height 70px
