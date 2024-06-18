@@ -247,6 +247,7 @@ const change = async (data: ShipData<any>) => {
 }
 
 const avatarData = computed(() => {
+  if (!currentJUUs.value) return input
   switch (select.type) {
     case 0:
       return input
