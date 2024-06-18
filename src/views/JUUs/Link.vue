@@ -34,7 +34,7 @@
           </template>
           保存动态
         </MenuBtn>
-        <MenuBtn @click.stop="emitter.emit('save_juus')">
+        <MenuBtn @click.stop="emitter.emit('save_talk')">
           <template #icon>
             <Message style="width: 25px" />
           </template>
