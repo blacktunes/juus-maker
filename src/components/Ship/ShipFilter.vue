@@ -57,6 +57,7 @@ import { filter } from '@/store/select'
 import WindowBtn from '../Public/WindowBtn.vue'
 import FilterItem from './FilterItem.vue'
 import FilterLabel from './FilterLabel.vue'
+import { ship } from '@/store/ship'
 
 const filterSetting = reactive({
   param1: new Set<string>(),
@@ -121,18 +122,7 @@ const data = {
       '自由鸢尾',
       '维希教廷',
       '余烬',
-      '飓风',
-      'META-???',
-      '海王星',
-      '哔哩哔哩',
-      '传颂之物',
-      'KizunaAI',
-      'Hololive',
-      '维纳斯假期',
-      '偶像大师',
-      'SSSS',
-      'Atelier Ryza',
-      '其他'
+      '飓风'
     ]
   },
   param2: {
@@ -143,9 +133,34 @@ const data = {
   param4: {
     name: '附加索引',
     sub: 'INDEX',
-    list: ['改造', '方案', 'META', '联动', '特殊', '誓约', '专属兵装', '自定义']
+    list: ['自定义']
   }
 }
+
+ship.game.forEach((item) => {
+  const param1 = item.data.param1.split(',')
+  param1.forEach((i) => {
+    if (i && !data.param1.list.includes(i)) {
+      data.param1.list.push(i)
+    }
+  })
+
+  const param3 = item.data.param3.split(',')
+  param3.forEach((i) => {
+    if (i && i !== '其他' && !data.param3.list.includes(i)) {
+      data.param3.list.push(i)
+    }
+  })
+
+  const param4 = item.data.param4.split(',')
+  param4.forEach((i) => {
+    if (i && !data.param4.list.includes(i)) {
+      data.param4.list.unshift(i)
+    }
+  })
+
+})
+data.param3.list.push('其他')
 
 const addFilter = (type: 'param1' | 'param2' | 'param3' | 'param4', name: string) => {
   const param = filterSetting[type]
