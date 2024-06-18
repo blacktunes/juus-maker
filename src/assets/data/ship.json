@@ -45,7 +45,7 @@
     "key": "武藏",
     "name": "武藏",
     "alias": "鳄",
-    "nickname": "",
+    "nickname": "Musashi",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/18/9qxf4u3v78cp7pckwwouguqfk9dukpl.jpg",
     "data": {
       "param0": "0",
@@ -87,7 +87,7 @@
     "key": "苏维埃同盟",
     "name": "苏维埃同盟",
     "alias": "",
-    "nickname": "",
+    "nickname": "Sovetsky Soyuz",
     "avatar": "https://patchwiki.biligame.com/images/blhx/e/ee/rg7q3nfnjgqau1oplif032gaz4dxk92.jpg",
     "data": {
       "param0": "0",
@@ -157,7 +157,7 @@
     "key": "俾斯麦Zwei",
     "name": "俾斯麦Zwei",
     "alias": "奥德莉亚Zwei",
-    "nickname": "",
+    "nickname": "Bismarck",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/94/2xb3s4l5pauohbxezyv5lj8tttnuvtu.jpg",
     "data": {
       "param0": "0",
@@ -171,7 +171,7 @@
     "key": "云仙",
     "name": "云仙",
     "alias": "猃",
-    "nickname": "",
+    "nickname": "Unzen",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/6d/c6ilrajaal7y25anajhrnkkgldiyx5g.jpg",
     "data": {
       "param0": "0",
@@ -185,7 +185,7 @@
     "key": "拉菲II",
     "name": "拉菲II",
     "alias": "",
-    "nickname": "",
+    "nickname": "Laffey II",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/b7/frgvz0emq9wxvsxnk7f6g9umbojr6ta.jpg",
     "data": {
       "param0": "0",
@@ -199,7 +199,7 @@
     "key": "关岛",
     "name": "关岛",
     "alias": "",
-    "nickname": "",
+    "nickname": "Guam",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/17/3lfspllidx44ie9i7umgide8685mcdw.jpg",
     "data": {
       "param0": "0",
@@ -325,7 +325,7 @@
     "key": "布雷斯特",
     "name": "布雷斯特",
     "alias": "",
-    "nickname": "",
+    "nickname": "Brest",
     "avatar": "https://patchwiki.biligame.com/images/blhx/c/c1/aifyle733511x0w16g9rczzmqkm3arp.jpg",
     "data": {
       "param0": "0",
@@ -339,7 +339,7 @@
     "key": "奇尔沙治",
     "name": "奇尔沙治",
     "alias": "",
-    "nickname": "",
+    "nickname": "Kearsarge",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/65/cnsrg8xu4qgrixso3ts7dsej2hxiyo1.jpg",
     "data": {
       "param0": "0",
@@ -353,7 +353,7 @@
     "key": "兴登堡",
     "name": "兴登堡",
     "alias": "希尔德加德",
-    "nickname": "",
+    "nickname": "Hindenburg",
     "avatar": "https://patchwiki.biligame.com/images/blhx/f/fd/8hf4yi79uwrgpbxjuwewq5gncmgo9gh.jpg",
     "data": {
       "param0": "0",
@@ -381,7 +381,7 @@
     "key": "埃尔德里奇",
     "name": "埃尔德里奇",
     "alias": "",
-    "nickname": "EldridgeCoil",
+    "nickname": "EldridegCoil",
     "avatar": "https://patchwiki.biligame.com/images/blhx/a/a4/qnf89zn62ovim4w7dtw7brtyrc9emcw.jpg",
     "data": {
       "param0": "0",
@@ -395,7 +395,7 @@
     "key": "圣地亚哥",
     "name": "圣地亚哥",
     "alias": "圣戴安娜",
-    "nickname": "NO1Sandiego！",
+    "nickname": "NO1Sandiego!",
     "avatar": "https://patchwiki.biligame.com/images/blhx/a/af/ahb9scx313u8kkgkqqjdv022e7duzww.jpg",
     "data": {
       "param0": "0",
@@ -437,7 +437,7 @@
     "key": "华盛顿",
     "name": "华盛顿",
     "alias": "",
-    "nickname": "",
+    "nickname": "Washington",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/70/jwlmdtyg99umlje0qdb4hotd71rktid.jpg",
     "data": {
       "param0": "0",
@@ -633,7 +633,7 @@
     "key": "雪风",
     "name": "雪风",
     "alias": "莲",
-    "nickname": "SnowStorm",
+    "nickname": "SnowStrom",
     "avatar": "https://patchwiki.biligame.com/images/blhx/4/47/boy7kqqgbv1ekisqgubb3mkjydsk77w.jpg",
     "data": {
       "param0": "0",
@@ -885,7 +885,7 @@
     "key": "提尔比茨",
     "name": "提尔比茨",
     "alias": "阿尔芙莉达",
-    "nickname": "",
+    "nickname": "Tirpitz",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/8e/krr70s6dahu8na0l3qf7lbjf02xb1b8.jpg",
     "data": {
       "param0": "0",
@@ -899,7 +899,7 @@
     "key": "齐柏林伯爵",
     "name": "齐柏林伯爵",
     "alias": "海拉伯爵",
-    "nickname": "TrägerZeepelin",
+    "nickname": "TrägerZeppelin",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/9c/jhyzx1pr15mzgm2r5e6ip2r9ihzmulf.jpg",
     "data": {
       "param0": "0",
@@ -983,7 +983,7 @@
     "key": "酒匂",
     "name": "酒匂",
     "alias": "貄",
-    "nickname": "",
+    "nickname": "Sakawa",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/72/ilsbqid6z0n9lju4hyzoobbk69j1csp.jpg",
     "data": {
       "param0": "0",
@@ -1347,7 +1347,7 @@
     "key": "加斯科涅(μ兵装)",
     "name": "加斯科涅(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "GascogueT8",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/13/ad49uwaid1590e3mgxpgjmrcid8me02.jpg",
     "data": {
       "param0": "0",
@@ -1361,7 +1361,7 @@
     "key": "赤城(μ兵装)",
     "name": "赤城(μ兵装)",
     "alias": "凰(μ兵装)",
-    "nickname": "",
+    "nickname": "Ootori_Shikikan",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/96/mneae7fh81a0cmk3diw76i7dq5oxpmu.jpg",
     "data": {
       "param0": "0",
@@ -1627,7 +1627,7 @@
     "key": "大凤(μ兵装)",
     "name": "大凤(μ兵装)",
     "alias": "鹩(μ兵装)",
-    "nickname": "",
+    "nickname": "G_Albacore",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/93/kyml73g6hm68fj9gvds5qvma4hr37ng.jpg",
     "data": {
       "param0": "0",
@@ -1641,7 +1641,7 @@
     "key": "塔什干(μ兵装)",
     "name": "塔什干(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "Ташкент",
     "avatar": "https://patchwiki.biligame.com/images/blhx/0/0f/8c3pmo2p8vkhh8c4lfhwmmz8e6ul3og.jpg",
     "data": {
       "param0": "0",
@@ -1655,7 +1655,7 @@
     "key": "黛朵(μ兵装)",
     "name": "黛朵(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "Dido_Doll",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/b8/fop7yeea6wn7i8i16oqw2oo68yvbnhb.jpg",
     "data": {
       "param0": "0",
@@ -1669,7 +1669,7 @@
     "key": "罗恩(μ兵装)",
     "name": "罗恩(μ兵装)",
     "alias": "艾伯塔(μ兵装)",
-    "nickname": "",
+    "nickname": "RoonDESU",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/84/7bdotj56gymp31sazsqg1jlnkn74bcb.jpg",
     "data": {
       "param0": "0",
@@ -1683,7 +1683,7 @@
     "key": "光辉(μ兵装)",
     "name": "光辉(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "Illustrious",
     "avatar": "https://patchwiki.biligame.com/images/blhx/0/06/076s2neqpm6e8vrvesz2nkl8ds53e39.jpg",
     "data": {
       "param0": "0",
@@ -1697,7 +1697,7 @@
     "key": "恶毒(μ兵装)",
     "name": "恶毒(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "VivaLaze",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/1d/5oajg6jo3zwp8nbh7oqwd4oa5b5y971.jpg",
     "data": {
       "param0": "0",
@@ -1879,7 +1879,7 @@
     "key": "风云",
     "name": "风云",
     "alias": "枟",
-    "nickname": "",
+    "nickname": "Kazagumo",
     "avatar": "https://patchwiki.biligame.com/images/blhx/0/03/hkn9jxd476a0ogmegaj2xaq8rcwghk1.jpg",
     "data": {
       "param0": "0",
@@ -1935,7 +1935,7 @@
     "key": "可怖",
     "name": "可怖",
     "alias": "",
-    "nickname": "",
+    "nickname": "Le Terrible",
     "avatar": "https://patchwiki.biligame.com/images/blhx/a/ac/n93ccitndcpnank0v5lz1rxgry1jrqk.jpg",
     "data": {
       "param0": "0",
@@ -2131,7 +2131,7 @@
     "key": "霞飞",
     "name": "霞飞",
     "alias": "",
-    "nickname": "",
+    "nickname": "Joffre",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/81/t545vyb0bdetkh9isghd5z8mw31ex43.jpg",
     "data": {
       "param0": "0",
@@ -2145,7 +2145,7 @@
     "key": "不屈",
     "name": "不屈",
     "alias": "",
-    "nickname": "",
+    "nickname": "L'Indomptable",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/b2/aypducxvtfnb8janw9ofhysunvk3da5.jpg",
     "data": {
       "param0": "0",
@@ -2187,7 +2187,7 @@
     "key": "罗马",
     "name": "罗马",
     "alias": "",
-    "nickname": "",
+    "nickname": "Roma",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/19/4c79o9df9l3vfay2jtgx5hfggszc52h.jpg",
     "data": {
       "param0": "0",
@@ -2215,7 +2215,7 @@
     "key": "若月",
     "name": "若月",
     "alias": "若",
-    "nickname": "",
+    "nickname": "Wakatsuki",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/99/q8cmh6laj2h8u4yhidskmyv3c89bbjc.jpg",
     "data": {
       "param0": "0",
@@ -2229,7 +2229,7 @@
     "key": "雅努斯",
     "name": "雅努斯",
     "alias": "",
-    "nickname": "",
+    "nickname": "Janus",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/69/q9r5sh34x7eix8qw12o8uhuwb0v0t57.jpg",
     "data": {
       "param0": "0",
@@ -2243,7 +2243,7 @@
     "key": "阿尔比恩",
     "name": "阿尔比恩",
     "alias": "",
-    "nickname": "",
+    "nickname": "Albion",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/b4/jp1pkglkcd4pk18s0i4r1rkgs71pcbw.jpg",
     "data": {
       "param0": "0",
@@ -2257,7 +2257,7 @@
     "key": "皇家财富号",
     "name": "皇家财富号",
     "alias": "",
-    "nickname": "",
+    "nickname": "Royal Fortune",
     "avatar": "https://patchwiki.biligame.com/images/blhx/f/fa/hht632x7ixdj45zky5you1a4hx20wqk.jpg",
     "data": {
       "param0": "0",
@@ -2355,7 +2355,7 @@
     "key": "库尔斯克",
     "name": "库尔斯克",
     "alias": "",
-    "nickname": "",
+    "nickname": "Kursk",
     "avatar": "https://patchwiki.biligame.com/images/blhx/d/d0/oqyf7pgko2xlsmkdzxvzzrfdp13t177.jpg",
     "data": {
       "param0": "0",
@@ -2369,7 +2369,7 @@
     "key": "伏罗希洛夫",
     "name": "伏罗希洛夫",
     "alias": "",
-    "nickname": "",
+    "nickname": "Voroshilov",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/77/brkaz92m5brff0h9u2q8bg2uwl6kqfm.jpg",
     "data": {
       "param0": "0",
@@ -2383,7 +2383,7 @@
     "key": "奥托·冯·阿尔文斯莱本",
     "name": "奥托·冯·阿尔文斯莱本",
     "alias": "奥莉薇娅·冯·阿诺德",
-    "nickname": "",
+    "nickname": "Alvensleben",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/12/slnty6ri7uyn8r8nbbwu03949izzm1d.jpg",
     "data": {
       "param0": "0",
@@ -2397,7 +2397,7 @@
     "key": "雷根斯堡",
     "name": "雷根斯堡",
     "alias": "瑞吉娜",
-    "nickname": "",
+    "nickname": "Regensburg",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/bc/k5q7emoo2e5pb2oqfjviowlr2gtlwvm.jpg",
     "data": {
       "param0": "0",
@@ -2411,7 +2411,7 @@
     "key": "阿蒂利奥·雷戈洛",
     "name": "阿蒂利奥·雷戈洛",
     "alias": "",
-    "nickname": "",
+    "nickname": "Attilio",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/7a/gxmykkd9680drpfib6hqdnu8di1tzg7.jpg",
     "data": {
       "param0": "0",
@@ -2425,7 +2425,7 @@
     "key": "戈里齐亚",
     "name": "戈里齐亚",
     "alias": "",
-    "nickname": "",
+    "nickname": "Gorizia",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/7a/okx06ecz5bghgmyr4jre1cophkcccgp.jpg",
     "data": {
       "param0": "0",
@@ -2453,7 +2453,7 @@
     "key": "伴尔维",
     "name": "伴尔维",
     "alias": "",
-    "nickname": "",
+    "nickname": "Painlevé",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/11/decc08tzo8wkqupvpdwql1rl7u2h36f.jpg",
     "data": {
       "param0": "0",
@@ -2467,7 +2467,7 @@
     "key": "吉尚",
     "name": "吉尚",
     "alias": "",
-    "nickname": "",
+    "nickname": "Guichen",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/ba/jimoqnaihtifq65fei4ckbn4cxkh4kj.jpg",
     "data": {
       "param0": "0",
@@ -2481,7 +2481,7 @@
     "key": "克莱蒙梭",
     "name": "克莱蒙梭",
     "alias": "",
-    "nickname": "",
+    "nickname": "Clemenceau",
     "avatar": "https://patchwiki.biligame.com/images/blhx/2/2a/39asch0ghkcm9o3nmvqlwx5d538duh7.jpg",
     "data": {
       "param0": "0",
@@ -2495,7 +2495,7 @@
     "key": "尾张",
     "name": "尾张",
     "alias": "鳂",
-    "nickname": "",
+    "nickname": "Owari",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/6f/k3vu474kxw1m2b74q5hn3sc6clmkh7j.jpg",
     "data": {
       "param0": "0",
@@ -2509,7 +2509,7 @@
     "key": "初月",
     "name": "初月",
     "alias": "檚",
-    "nickname": "",
+    "nickname": "Hatsuzuki",
     "avatar": "https://patchwiki.biligame.com/images/blhx/a/a6/aek90b8n63kx88niz8p21d84gsdzofz.jpg",
     "data": {
       "param0": "0",
@@ -2523,7 +2523,7 @@
     "key": "休斯敦II",
     "name": "休斯敦II",
     "alias": "",
-    "nickname": "",
+    "nickname": "Houston II",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/88/1encjmm246fv1l08a56qnwsekkw7vmz.jpg",
     "data": {
       "param0": "0",
@@ -2537,7 +2537,7 @@
     "key": "金鹿号",
     "name": "金鹿号",
     "alias": "",
-    "nickname": "",
+    "nickname": "Golden Hind",
     "avatar": "https://patchwiki.biligame.com/images/blhx/3/3b/p5mijognf4rd58nor714d2t2wo6z1st.jpg",
     "data": {
       "param0": "0",
@@ -2551,7 +2551,7 @@
     "key": "玛丽·西莱斯特号",
     "name": "玛丽·西莱斯特号",
     "alias": "",
-    "nickname": "",
+    "nickname": "Mary Celeste",
     "avatar": "https://patchwiki.biligame.com/images/blhx/e/ec/1m5fr5eqaf4edvml1120uuugmfg9ou8.jpg",
     "data": {
       "param0": "0",
@@ -2565,7 +2565,7 @@
     "key": "圣马丁号",
     "name": "圣马丁号",
     "alias": "",
-    "nickname": "",
+    "nickname": "São Martinho",
     "avatar": "https://patchwiki.biligame.com/images/blhx/d/d9/1w64og12bc05tvi9myxz77ky9yo4ol4.jpg",
     "data": {
       "param0": "0",
@@ -2579,7 +2579,7 @@
     "key": "星座",
     "name": "星座",
     "alias": "",
-    "nickname": "",
+    "nickname": "Constellation",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/86/5manjkbdi0zhgt08f313phkux8bj0mq.jpg",
     "data": {
       "param0": "0",
@@ -2593,7 +2593,7 @@
     "key": "松鲷",
     "name": "松鲷",
     "alias": "",
-    "nickname": "",
+    "nickname": "Flasher",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/88/q01hmo62w54h6grlzz0rjkt5s753edp.jpg",
     "data": {
       "param0": "0",
@@ -2607,7 +2607,7 @@
     "key": "寰昌",
     "name": "寰昌",
     "alias": "",
-    "nickname": "",
+    "nickname": "Huan Ch'ang",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/19/0ytrm3kspe5hh0ccai0ixs2n7jn4e8x.jpg",
     "data": {
       "param0": "0",
@@ -2621,7 +2621,7 @@
     "key": "火力",
     "name": "火力",
     "alias": "",
-    "nickname": "",
+    "nickname": "Ognevoy",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/9d/s5feopmgh1he4mj3462qkx2d2gut4qs.jpg",
     "data": {
       "param0": "0",
@@ -2635,7 +2635,7 @@
     "key": "努比亚人",
     "name": "努比亚人",
     "alias": "",
-    "nickname": "",
+    "nickname": "Nubian",
     "avatar": "https://patchwiki.biligame.com/images/blhx/d/d8/se8p64edx2tkc8kgr0tfh3rrz9anbvp.jpg",
     "data": {
       "param0": "0",
@@ -2649,7 +2649,7 @@
     "key": "可畏(μ兵装)",
     "name": "可畏(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "Formidable",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/75/h0we5r3ea6fe3prbnbq9p0wvqa9ebm4.jpg",
     "data": {
       "param0": "0",
@@ -2663,7 +2663,7 @@
     "key": "欧根亲王(μ兵装)",
     "name": "欧根亲王(μ兵装)",
     "alias": "萨沃伊亲王(μ兵装)",
-    "nickname": "",
+    "nickname": "P.Eugen",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/1b/de1t1q4z0czbjx49wzc9ftnokcchilj.jpg",
     "data": {
       "param0": "0",
@@ -2677,7 +2677,7 @@
     "key": "能代(μ兵装)",
     "name": "能代(μ兵装)",
     "alias": "貅(μ兵装)",
-    "nickname": "",
+    "nickname": "Nshiro",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/b9/2lnwd03dlre3aiybfemlfkqj1opf2em.jpg",
     "data": {
       "param0": "0",
@@ -2859,7 +2859,7 @@
     "key": "玛莉萝丝",
     "name": "玛莉萝丝",
     "alias": "",
-    "nickname": "",
+    "nickname": "Marie",
     "avatar": "https://patchwiki.biligame.com/images/blhx/f/f3/ifdzw1u8mjemy8toyy7pzjd97fl16ep.jpg",
     "data": {
       "param0": "0",
@@ -2873,7 +2873,7 @@
     "key": "穗香",
     "name": "穗香",
     "alias": "",
-    "nickname": "",
+    "nickname": "Honoka",
     "avatar": "https://patchwiki.biligame.com/images/blhx/0/0f/6147fdcz0gvjm8t6vnlxzfuohllnnlq.jpg",
     "data": {
       "param0": "0",
@@ -2887,7 +2887,7 @@
     "key": "霞DOA",
     "name": "霞DOA",
     "alias": "",
-    "nickname": "",
+    "nickname": "Kasumi",
     "avatar": "https://patchwiki.biligame.com/images/blhx/f/fd/287cw5nsmspcoc2czbiegeacmkffmi8.jpg",
     "data": {
       "param0": "0",
@@ -2901,7 +2901,7 @@
     "key": "海咲",
     "name": "海咲",
     "alias": "",
-    "nickname": "",
+    "nickname": "Misaki",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/97/e608j4gg8zxqo2d0ebzfntkv34p9czy.jpg",
     "data": {
       "param0": "0",
@@ -2943,7 +2943,7 @@
     "key": "天海春香",
     "name": "天海春香",
     "alias": "",
-    "nickname": "",
+    "nickname": "Haruka_Amami",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/b2/359msuyjsjsp5yuyqwlhrblm7t1wwp3.jpg",
     "data": {
       "param0": "0",
@@ -2957,7 +2957,7 @@
     "key": "如月千早",
     "name": "如月千早",
     "alias": "",
-    "nickname": "",
+    "nickname": "Chihaya_Kisaragi",
     "avatar": "https://patchwiki.biligame.com/images/blhx/e/e0/4nq7f8t2gddojny4f0a022shwiofafe.jpg",
     "data": {
       "param0": "0",
@@ -2971,7 +2971,7 @@
     "key": "水濑伊织",
     "name": "水濑伊织",
     "alias": "",
-    "nickname": "",
+    "nickname": "Iori_Minase",
     "avatar": "https://patchwiki.biligame.com/images/blhx/3/38/s2sl8mumzocaxkulsu2l0qgenbixoym.jpg",
     "data": {
       "param0": "0",
@@ -2985,7 +2985,7 @@
     "key": "三浦梓",
     "name": "三浦梓",
     "alias": "",
-    "nickname": "",
+    "nickname": "Azusa_Miura",
     "avatar": "https://patchwiki.biligame.com/images/blhx/c/c8/aci8mgxtdznvrpzbna6rr7uud9vzal6.jpg",
     "data": {
       "param0": "0",
@@ -2999,7 +2999,7 @@
     "key": "宝多六花",
     "name": "宝多六花",
     "alias": "",
-    "nickname": "",
+    "nickname": "Rikka",
     "avatar": "https://patchwiki.biligame.com/images/blhx/f/fd/ibdhl4aojkzvmi43c3lpje5yc5vvjv5.jpg",
     "data": {
       "param0": "0",
@@ -3013,7 +3013,7 @@
     "key": "新条茜",
     "name": "新条茜",
     "alias": "",
-    "nickname": "",
+    "nickname": "Akane",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/91/ld10e9zqk3m0ssvowism8037l627rsa.jpg",
     "data": {
       "param0": "0",
@@ -3027,7 +3027,7 @@
     "key": "南梦芽",
     "name": "南梦芽",
     "alias": "",
-    "nickname": "",
+    "nickname": "Yume",
     "avatar": "https://patchwiki.biligame.com/images/blhx/3/34/5ocrdw78j43vl63rr9bf1v2qvk57ior.jpg",
     "data": {
       "param0": "0",
@@ -3041,7 +3041,7 @@
     "key": "飞鸟川千濑",
     "name": "飞鸟川千濑",
     "alias": "",
-    "nickname": "",
+    "nickname": "Chise",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/9e/mrcr8gw612dpazjluurdzem87yc9ce6.jpg",
     "data": {
       "param0": "0",
@@ -3083,7 +3083,7 @@
     "key": "莱莎琳·斯托特",
     "name": "莱莎琳·斯托特",
     "alias": "",
-    "nickname": "",
+    "nickname": "Reisalin Stout",
     "avatar": "https://patchwiki.biligame.com/images/blhx/4/46/ff844v5ikl50pga7vcweup4xs38xve5.jpg",
     "data": {
       "param0": "0",
@@ -3097,7 +3097,7 @@
     "key": "科洛蒂娅·巴兰茨",
     "name": "科洛蒂娅·巴兰茨",
     "alias": "",
-    "nickname": "",
+    "nickname": "Klaudia Valentz",
     "avatar": "https://patchwiki.biligame.com/images/blhx/3/3d/3b61fsgo1tbjd2rji1itz5a1hwf5gi4.jpg",
     "data": {
       "param0": "0",
@@ -3111,7 +3111,7 @@
     "key": "帕特莉夏·阿贝尔海姆",
     "name": "帕特莉夏·阿贝尔海姆",
     "alias": "",
-    "nickname": "",
+    "nickname": "Patricia Abelheim",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/82/1enyk9aynhazxpx7z8xk7uzharga4y0.jpg",
     "data": {
       "param0": "0",
@@ -3139,7 +3139,7 @@
     "key": "飞鸟",
     "name": "飞鸟",
     "alias": "",
-    "nickname": "",
+    "nickname": "Asuka",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/85/o539tgikun9iwbp7d9lgg2r6okkf3eb.jpg",
     "data": {
       "param0": "0",
@@ -3153,7 +3153,7 @@
     "key": "斑鸠",
     "name": "斑鸠",
     "alias": "",
-    "nickname": "",
+    "nickname": "Ikaruga",
     "avatar": "https://patchwiki.biligame.com/images/blhx/c/c0/15zch8dj5xm7plzvqhet3m7gsphq5kz.jpg",
     "data": {
       "param0": "0",
@@ -3167,7 +3167,7 @@
     "key": "焰",
     "name": "焰",
     "alias": "",
-    "nickname": "",
+    "nickname": "Homura",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/17/mzzk8m8qzlbfzj87ux79kfiwh925t0k.jpg",
     "data": {
       "param0": "0",
@@ -3181,7 +3181,7 @@
     "key": "雪泉",
     "name": "雪泉",
     "alias": "",
-    "nickname": "",
+    "nickname": "Yumi",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/71/oldqes9c5ebq70eomihdhjpr9kujx0f.jpg",
     "data": {
       "param0": "0",
@@ -3195,7 +3195,7 @@
     "key": "雪不归",
     "name": "雪不归",
     "alias": "",
-    "nickname": "",
+    "nickname": "Fubuki",
     "avatar": "https://patchwiki.biligame.com/images/blhx/a/ae/5i25c0a1htv474noz9ssz0nsveq2v78.jpg",
     "data": {
       "param0": "0",
@@ -3489,7 +3489,7 @@
     "key": "伊吹",
     "name": "伊吹",
     "alias": "峦",
-    "nickname": "lbuki",
+    "nickname": "Ibuki",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/77/pp4453w8lav4apzgl3za5wt95edjelc.jpg",
     "data": {
       "param0": "0",
@@ -3559,7 +3559,7 @@
     "key": "佐治亚",
     "name": "佐治亚",
     "alias": "",
-    "nickname": "GA",
+    "nickname": "GA@ColaLove",
     "avatar": "https://patchwiki.biligame.com/images/blhx/c/c9/et9uph48be0gpssyl9adppqknepkr0c.jpg",
     "data": {
       "param0": "0",
@@ -3657,7 +3657,7 @@
     "key": "安克雷奇",
     "name": "安克雷奇",
     "alias": "",
-    "nickname": "",
+    "nickname": "Anchorage",
     "avatar": "https://patchwiki.biligame.com/images/blhx/d/d0/oifgggzgik1o88paxxikmtxv8fvuc52.jpg",
     "data": {
       "param0": "0",
@@ -3741,7 +3741,7 @@
     "key": "四万十",
     "name": "四万十",
     "alias": "虒",
-    "nickname": "",
+    "nickname": "Shimanto",
     "avatar": "https://patchwiki.biligame.com/images/blhx/3/3e/3ws33xdsoz2xs849ob35zev6f3lm7g7.jpg",
     "data": {
       "param0": "0",
@@ -3755,7 +3755,7 @@
     "key": "菲利克斯·舒尔茨",
     "name": "菲利克斯·舒尔茨",
     "alias": "弗郎西斯卡·舒伯特",
-    "nickname": "",
+    "nickname": "Felix Schultz",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/96/n6nw5i0e4xh53g767nr26onngckowgr.jpg",
     "data": {
       "param0": "0",
@@ -3769,7 +3769,7 @@
     "key": "弗兰德尔",
     "name": "弗兰德尔",
     "alias": "",
-    "nickname": "",
+    "nickname": "Flandre",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/6f/9ud39qpqu68bbmdxk6njiut2cvhvgkp.jpg",
     "data": {
       "param0": "0",
@@ -4021,7 +4021,7 @@
     "key": "列克星敦",
     "name": "列克星敦",
     "alias": "",
-    "nickname": "",
+    "nickname": "Lexington",
     "avatar": "https://patchwiki.biligame.com/images/blhx/a/ad/npawf4rawwhk09ynylwvmsfg58as57w.jpg",
     "data": {
       "param0": "0",
@@ -4175,7 +4175,7 @@
     "key": "曼彻斯特",
     "name": "曼彻斯特",
     "alias": "",
-    "nickname": "",
+    "nickname": "Manchester",
     "avatar": "https://patchwiki.biligame.com/images/blhx/f/fd/6rsorkjm7veh5n77zvly8x4snv0q596.jpg",
     "data": {
       "param0": "0",
@@ -4189,7 +4189,7 @@
     "key": "格罗斯特",
     "name": "格罗斯特",
     "alias": "",
-    "nickname": "",
+    "nickname": "Gloucester",
     "avatar": "https://patchwiki.biligame.com/images/blhx/d/d1/f6cn48klh5lyrvj7xzgkk34jp4yd8ya.jpg",
     "data": {
       "param0": "0",
@@ -4203,7 +4203,7 @@
     "key": "爱丁堡",
     "name": "爱丁堡",
     "alias": "",
-    "nickname": "☆Royal Maid☆",
+    "nickname": "☆ Royal Maid ☆",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/9e/rjj5uuehm6ttuxqyn9vsuhkr7tbvs3i.jpg",
     "data": {
       "param0": "0",
@@ -4287,7 +4287,7 @@
     "key": "声望",
     "name": "声望",
     "alias": "",
-    "nickname": "",
+    "nickname": "Renown",
     "avatar": "https://patchwiki.biligame.com/images/blhx/5/53/any95u1kgnana1ten3wvms5s98eg9fo.jpg",
     "data": {
       "param0": "0",
@@ -4399,7 +4399,7 @@
     "key": "黑暗界",
     "name": "黑暗界",
     "alias": "",
-    "nickname": "",
+    "nickname": "Erebus",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/1e/5werd24kg1em6hx33mlaz7dm0l70v9p.jpg",
     "data": {
       "param0": "0",
@@ -4441,7 +4441,7 @@
     "key": "白雪",
     "name": "白雪",
     "alias": "杉",
-    "nickname": "",
+    "nickname": "Shirayuki",
     "avatar": "https://patchwiki.biligame.com/images/blhx/2/29/qohn9fgpw6trhapq75ocb21ptr3i45k.jpg",
     "data": {
       "param0": "0",
@@ -4455,7 +4455,7 @@
     "key": "深雪",
     "name": "深雪",
     "alias": "梧",
-    "nickname": "",
+    "nickname": "Miyuki",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/6c/hs9mu4ud1jz7a31raw03zsyr2qivjbt.jpg",
     "data": {
       "param0": "0",
@@ -4497,7 +4497,7 @@
     "key": "时雨",
     "name": "时雨",
     "alias": "栴",
-    "nickname": "LuckyShigure",
+    "nickname": "LuckShigure",
     "avatar": "https://patchwiki.biligame.com/images/blhx/4/4d/247wd64u0a7m577i5cro6zwaabb38sb.jpg",
     "data": {
       "param0": "0",
@@ -4539,7 +4539,7 @@
     "key": "名取",
     "name": "名取",
     "alias": "猽",
-    "nickname": "",
+    "nickname": "Natori",
     "avatar": "https://patchwiki.biligame.com/images/blhx/0/0d/jw3kqnmm0wxyxfq6dggaja5s40rly14.jpg",
     "data": {
       "param0": "0",
@@ -4609,7 +4609,7 @@
     "key": "足柄",
     "name": "足柄",
     "alias": "狳",
-    "nickname": "",
+    "nickname": "Ashigara",
     "avatar": "https://patchwiki.biligame.com/images/blhx/4/4c/r1qui9ar8zlly97hfvzt66oijnot1x3.jpg",
     "data": {
       "param0": "0",
@@ -4623,7 +4623,7 @@
     "key": "羽黑",
     "name": "羽黑",
     "alias": "犰",
-    "nickname": "",
+    "nickname": "Haguro",
     "avatar": "https://patchwiki.biligame.com/images/blhx/2/25/88yrnbwo978agid6j5pw0dswpz73og1.jpg",
     "data": {
       "param0": "0",
@@ -4707,7 +4707,7 @@
     "key": "凤翔",
     "name": "凤翔",
     "alias": "凤",
-    "nickname": "",
+    "nickname": "Hōshō",
     "avatar": "https://patchwiki.biligame.com/images/blhx/2/2b/l1j0ij9732dftf4okl13ansuez3aswz.jpg",
     "data": {
       "param0": "0",
@@ -4749,7 +4749,7 @@
     "key": "飞龙",
     "name": "飞龙",
     "alias": "龙",
-    "nickname": "GoKou",
+    "nickname": "Gokou",
     "avatar": "https://patchwiki.biligame.com/images/blhx/5/5e/eddi92gfpxv0lts2r9ip77peaew66hs.jpg",
     "data": {
       "param0": "0",
@@ -4931,7 +4931,7 @@
     "key": "逸仙",
     "name": "逸仙",
     "alias": "",
-    "nickname": "YIXIAN",
+    "nickname": "Yi Xian",
     "avatar": "https://patchwiki.biligame.com/images/blhx/a/a5/3e234m2jzr488y40z09jpz5z9zcn418.jpg",
     "data": {
       "param0": "0",
@@ -5365,7 +5365,7 @@
     "key": "铃谷",
     "name": "铃谷",
     "alias": "狺",
-    "nickname": "Suzu☆",
+    "nickname": "Suzu✩",
     "avatar": "https://patchwiki.biligame.com/images/blhx/0/09/flhfsyl9jmmmaxvmj1a3jo6530bu7fz.jpg",
     "data": {
       "param0": "0",
@@ -5645,7 +5645,7 @@
     "key": "克利夫兰(μ兵装)",
     "name": "克利夫兰(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "Cleveland☆Knight",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/b3/b507sn1pbedz3sbfwqykcgbeauljrq1.jpg",
     "data": {
       "param0": "0",
@@ -5659,7 +5659,7 @@
     "key": "谢菲尔德(μ兵装)",
     "name": "谢菲尔德(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "ShiningS",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/6e/ho816unf938s19rz9vpc7petnx44w1z.jpg",
     "data": {
       "param0": "0",
@@ -5673,7 +5673,7 @@
     "key": "希佩尔海军上将(μ兵装)",
     "name": "希佩尔海军上将(μ兵装)",
     "alias": "芙兰希卡(μ兵装)",
-    "nickname": "",
+    "nickname": "R-Guitarist",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/8e/pkrtqxq0iasdrmjmfgs0quvxyo7s5sw.jpg",
     "data": {
       "param0": "0",
@@ -5757,7 +5757,7 @@
     "key": "水星纪念",
     "name": "水星纪念",
     "alias": "",
-    "nickname": "Pamiat' Merkuria",
+    "nickname": "Pamiat'Merkuria",
     "avatar": "https://patchwiki.biligame.com/images/blhx/c/c8/h25p1b7z7sry7fscblp8ownqugg7mfs.jpg",
     "data": {
       "param0": "0",
@@ -5981,7 +5981,7 @@
     "key": "熊野",
     "name": "熊野",
     "alias": "猁",
-    "nickname": "Kuma☆",
+    "nickname": "Kuma✩",
     "avatar": "https://patchwiki.biligame.com/images/blhx/3/38/4ver9azci24joiv1lmreljlfgp7oedb.jpg",
     "data": {
       "param0": "0",
@@ -6051,7 +6051,7 @@
     "key": "大青花鱼(μ兵装)",
     "name": "大青花鱼(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "G_Albacore",
     "avatar": "https://patchwiki.biligame.com/images/blhx/c/c0/gkl7xx8udzpsjlzx2xlgc3vlp5mdsii.jpg",
     "data": {
       "param0": "0",
@@ -6065,7 +6065,7 @@
     "key": "巴尔的摩(μ兵装)",
     "name": "巴尔的摩(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "Justice_B",
     "avatar": "https://patchwiki.biligame.com/images/blhx/e/e3/i5vlhr5660z32utabkvayfj1pjhdajs.jpg",
     "data": {
       "param0": "0",
@@ -6401,7 +6401,7 @@
     "key": "马耶·布雷泽",
     "name": "马耶·布雷泽",
     "alias": "",
-    "nickname": "",
+    "nickname": "Brézé",
     "avatar": "https://patchwiki.biligame.com/images/blhx/0/05/r2i4ihpjkzz22jz95x5oy3tf38tjzbf.jpg",
     "data": {
       "param0": "0",
@@ -6415,7 +6415,7 @@
     "key": "福煦",
     "name": "福煦",
     "alias": "",
-    "nickname": "",
+    "nickname": "Foch",
     "avatar": "https://patchwiki.biligame.com/images/blhx/c/ce/ohmwj9xc2lohro907eq10a48njg0tbg.jpg",
     "data": {
       "param0": "0",
@@ -6639,7 +6639,7 @@
     "key": "进取",
     "name": "进取",
     "alias": "",
-    "nickname": "",
+    "nickname": "RoyalMaid.E",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/6c/l6jqi4t8ibpk4gy8a23yti6wtdvflqc.jpg",
     "data": {
       "param0": "0",
@@ -6653,7 +6653,7 @@
     "key": "博尔扎诺",
     "name": "博尔扎诺",
     "alias": "",
-    "nickname": "",
+    "nickname": "Bolzano",
     "avatar": "https://patchwiki.biligame.com/images/blhx/5/57/pggzccf4lllbrwgx4eyfkw6xzuuog58.jpg",
     "data": {
       "param0": "0",
@@ -6695,7 +6695,7 @@
     "key": "Z16",
     "name": "Z16",
     "alias": "弗蕾德贡",
-    "nickname": "",
+    "nickname": "F.Eckoldt",
     "avatar": "https://patchwiki.biligame.com/images/blhx/f/ff/23oz3ihph9hf8ylpahldxaozfgmpem7.jpg",
     "data": {
       "param0": "0",
@@ -6807,7 +6807,7 @@
     "key": "塞瓦斯托波尔",
     "name": "塞瓦斯托波尔",
     "alias": "",
-    "nickname": "",
+    "nickname": "Sevastopol",
     "avatar": "https://patchwiki.biligame.com/images/blhx/c/ca/6t0iwx1fy9jddsrcpj7198gz6ra4x66.jpg",
     "data": {
       "param0": "0",
@@ -6835,7 +6835,7 @@
     "key": "亚德",
     "name": "亚德",
     "alias": "阿黛尔",
-    "nickname": "",
+    "nickname": "Jade",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/7d/auewsrxbk0mto2mypbeh2cgzdmbquki.jpg",
     "data": {
       "param0": "0",
@@ -6863,7 +6863,7 @@
     "key": "安德烈亚·多利亚",
     "name": "安德烈亚·多利亚",
     "alias": "",
-    "nickname": "",
+    "nickname": "Andrea",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/6d/4vu8wpqynfty2o77vi7x6ecpqtxj94v.jpg",
     "data": {
       "param0": "0",
@@ -6877,7 +6877,7 @@
     "key": "絮弗伦",
     "name": "絮弗伦",
     "alias": "",
-    "nickname": "",
+    "nickname": "Suffren",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/7a/je04y5f5dt05yxyx5nqdwy0ur8tcdsl.jpg",
     "data": {
       "param0": "0",
@@ -6891,7 +6891,7 @@
     "key": "凯尔圣",
     "name": "凯尔圣",
     "alias": "",
-    "nickname": "",
+    "nickname": "Kersaint",
     "avatar": "https://patchwiki.biligame.com/images/blhx/d/d3/ntoapqdxadpzxcvf08omdkkufp95k4d.jpg",
     "data": {
       "param0": "0",
@@ -6905,7 +6905,7 @@
     "key": "里昂",
     "name": "里昂",
     "alias": "",
-    "nickname": "",
+    "nickname": "Lyon",
     "avatar": "https://patchwiki.biligame.com/images/blhx/3/38/tpkj2xlf0c3k08egsj5bh7c7hrl2di9.jpg",
     "data": {
       "param0": "0",
@@ -6919,7 +6919,7 @@
     "key": "朝凪",
     "name": "朝凪",
     "alias": "桎",
-    "nickname": "",
+    "nickname": "Asanagi",
     "avatar": "https://patchwiki.biligame.com/images/blhx/a/a4/g6zcagw10h319vw7xw920n65k6gm28o.jpg",
     "data": {
       "param0": "0",
@@ -6933,7 +6933,7 @@
     "key": "加里冒险号",
     "name": "加里冒险号",
     "alias": "",
-    "nickname": "",
+    "nickname": "Adventure Galley",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/bc/ns8wd9a39s0nazoxo3e6zqxgzl2zaxy.jpg",
     "data": {
       "param0": "0",
@@ -6947,7 +6947,7 @@
     "key": "维达号",
     "name": "维达号",
     "alias": "",
-    "nickname": "",
+    "nickname": "Whydah",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/8e/i6v2rvwzzdw2dizhema4e83ne53pv9u.jpg",
     "data": {
       "param0": "0",
@@ -6961,7 +6961,7 @@
     "key": "圣哈辛托",
     "name": "圣哈辛托",
     "alias": "",
-    "nickname": "",
+    "nickname": "San Jacinto",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/b8/7zdt61dj8za4bkux6u8pnogr7tjqmjd.jpg",
     "data": {
       "param0": "0",
@@ -6975,7 +6975,7 @@
     "key": "路易斯维尔",
     "name": "路易斯维尔",
     "alias": "",
-    "nickname": "",
+    "nickname": "Louisville",
     "avatar": "https://patchwiki.biligame.com/images/blhx/3/3f/9a1y03h7kuk9o617xesddirp7m49aq0.jpg",
     "data": {
       "param0": "0",
@@ -6989,7 +6989,7 @@
     "key": "济安",
     "name": "济安",
     "alias": "",
-    "nickname": "",
+    "nickname": "Chi An",
     "avatar": "https://patchwiki.biligame.com/images/blhx/c/c5/jzt62s3bbu075pyf4sc13mrq7s0bdkj.jpg",
     "data": {
       "param0": "0",
@@ -7003,7 +7003,7 @@
     "key": "龙武",
     "name": "龙武",
     "alias": "",
-    "nickname": "",
+    "nickname": "Lung Wu",
     "avatar": "https://patchwiki.biligame.com/images/blhx/0/00/1bs52cu0e2ve6b436kthsdktpf9b4u6.jpg",
     "data": {
       "param0": "0",
@@ -7017,7 +7017,7 @@
     "key": "虎贲",
     "name": "虎贲",
     "alias": "",
-    "nickname": "",
+    "nickname": "Hu Pen",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/66/5vm6l77we161mmx7wlpy9up86ibq88g.jpg",
     "data": {
       "param0": "0",
@@ -7031,7 +7031,7 @@
     "key": "飞云",
     "name": "飞云",
     "alias": "",
-    "nickname": "",
+    "nickname": "Fei Yuen",
     "avatar": "https://patchwiki.biligame.com/images/blhx/5/5a/cvhhiw912jp43x559kcz45k24rxh56k.jpg",
     "data": {
       "param0": "0",
@@ -7045,7 +7045,7 @@
     "key": "凶猛",
     "name": "凶猛",
     "alias": "",
-    "nickname": "",
+    "nickname": "Svirepy",
     "avatar": "https://patchwiki.biligame.com/images/blhx/0/00/n0z9ztd9kt7gq91ddut8ajggda1782u.jpg",
     "data": {
       "param0": "0",
@@ -7059,7 +7059,7 @@
     "key": "波尔塔瓦",
     "name": "波尔塔瓦",
     "alias": "",
-    "nickname": "",
+    "nickname": "Poltava",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/6b/a5h2prixa6v65k87334ugqw10b31mxs.jpg",
     "data": {
       "param0": "0",
@@ -7073,7 +7073,7 @@
     "key": "利物浦",
     "name": "利物浦",
     "alias": "",
-    "nickname": "",
+    "nickname": "Liverpool",
     "avatar": "https://patchwiki.biligame.com/images/blhx/4/44/73rrlrp8ogxvcogg5zoudoq1gj77pq6.jpg",
     "data": {
       "param0": "0",
@@ -7087,7 +7087,7 @@
     "key": "德文郡",
     "name": "德文郡",
     "alias": "",
-    "nickname": "",
+    "nickname": "Devonshire",
     "avatar": "https://patchwiki.biligame.com/images/blhx/2/2f/594bk8cd7oodh5b6q39mdpfabp8p7ld.jpg",
     "data": {
       "param0": "0",
@@ -7101,7 +7101,7 @@
     "key": "金刚(μ兵装)",
     "name": "金刚(μ兵装)",
     "alias": "鲤(μ兵装)",
-    "nickname": "",
+    "nickname": "BarrowYoKo",
     "avatar": "https://patchwiki.biligame.com/images/blhx/5/57/fcwud2okok0f4jdq2ere9f7a6lkjy02.jpg",
     "data": {
       "param0": "0",
@@ -7115,7 +7115,7 @@
     "key": "鲁莽(μ兵装)",
     "name": "鲁莽(μ兵装)",
     "alias": "",
-    "nickname": "",
+    "nickname": "L.Téméraire",
     "avatar": "https://patchwiki.biligame.com/images/blhx/2/28/cjrdt5c8sl1fl1l3amwgpca2dh7do61.jpg",
     "data": {
       "param0": "0",
@@ -7129,7 +7129,7 @@
     "key": "博伊西(μ兵装)",
     "name": "博伊西(μ兵装)",
     "alias": "树城(μ兵装)",
-    "nickname": "",
+    "nickname": "USSBOISE",
     "avatar": "https://patchwiki.biligame.com/images/blhx/5/5f/hda8afhpvn8io53kyf20ck4athodmgn.jpg",
     "data": {
       "param0": "0",
@@ -7339,7 +7339,7 @@
     "key": "凪咲",
     "name": "凪咲",
     "alias": "",
-    "nickname": "",
+    "nickname": "Nagisa",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/81/6jr68mlo7u9uz30oj6dkk2ry3brxb6n.jpg",
     "data": {
       "param0": "0",
@@ -7353,7 +7353,7 @@
     "key": "女天狗",
     "name": "女天狗",
     "alias": "",
-    "nickname": "",
+    "nickname": "Nyotengu",
     "avatar": "https://patchwiki.biligame.com/images/blhx/4/42/3cqtxr1g1py8rg3ttx7oypnsxwkzi47.jpg",
     "data": {
       "param0": "0",
@@ -7367,7 +7367,7 @@
     "key": "莫妮卡",
     "name": "莫妮卡",
     "alias": "",
-    "nickname": "",
+    "nickname": "Monica",
     "avatar": "https://patchwiki.biligame.com/images/blhx/b/b3/31x52owxzjtq76xnh31itfqd1h1jxv1.jpg",
     "data": {
       "param0": "0",
@@ -7381,7 +7381,7 @@
     "key": "秋月律子",
     "name": "秋月律子",
     "alias": "",
-    "nickname": "",
+    "nickname": "Ritsuko_Akizuki",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/6d/bzesztp32h17bb12phyg2ba3tm60xts.jpg",
     "data": {
       "param0": "0",
@@ -7395,7 +7395,7 @@
     "key": "双海亚美",
     "name": "双海亚美",
     "alias": "",
-    "nickname": "",
+    "nickname": "Ami_Futami",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/17/dfuw32072jj83fjnel3c3jzu2rhbwj0.jpg",
     "data": {
       "param0": "0",
@@ -7409,7 +7409,7 @@
     "key": "双海真美",
     "name": "双海真美",
     "alias": "",
-    "nickname": "",
+    "nickname": "Mami_Futami",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/12/eyjv2t2mrdvdv25sexm730fpbuucviz.jpg",
     "data": {
       "param0": "0",
@@ -7423,7 +7423,7 @@
     "key": "莲SSSS",
     "name": "莲SSSS",
     "alias": "",
-    "nickname": "",
+    "nickname": "Hass",
     "avatar": "https://patchwiki.biligame.com/images/blhx/e/ec/j45ie8wbryu5pnaccc0xpzyvpmr580g.jpg",
     "data": {
       "param0": "0",
@@ -7437,7 +7437,7 @@
     "key": "奈美子",
     "name": "奈美子",
     "alias": "",
-    "nickname": "",
+    "nickname": "Namiko",
     "avatar": "https://patchwiki.biligame.com/images/blhx/7/76/p43k583d77hz0z7ot99bixaqibw8a6z.jpg",
     "data": {
       "param0": "0",
@@ -7451,7 +7451,7 @@
     "key": "貉SSSS",
     "name": "貉SSSS",
     "alias": "",
-    "nickname": "",
+    "nickname": "Mujina",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/98/s8sn1kqg7a0qcmdtztd4diisqcvd0t7.jpg",
     "data": {
       "param0": "0",
@@ -7465,7 +7465,7 @@
     "key": "莉拉·德西亚斯",
     "name": "莉拉·德西亚斯",
     "alias": "",
-    "nickname": "",
+    "nickname": "Lila Decyrus",
     "avatar": "https://patchwiki.biligame.com/images/blhx/1/13/ha6gf91v2spp0q6404v291g1onkatss.jpg",
     "data": {
       "param0": "0",
@@ -7479,7 +7479,7 @@
     "key": "赛莉·古劳斯",
     "name": "赛莉·古劳斯",
     "alias": "",
-    "nickname": "",
+    "nickname": "Serri Glaus",
     "avatar": "https://patchwiki.biligame.com/images/blhx/0/0e/9snnqnefwkp8i94brelymhqcpxm0gul.jpg",
     "data": {
       "param0": "0",
@@ -7493,7 +7493,7 @@
     "key": "紫",
     "name": "紫",
     "alias": "",
-    "nickname": "",
+    "nickname": "Murasaki",
     "avatar": "https://patchwiki.biligame.com/images/blhx/5/54/hlkijb5vkuxt7yfslcltxresmwwaa56.jpg",
     "data": {
       "param0": "0",
@@ -7507,7 +7507,7 @@
     "key": "夕烧",
     "name": "夕烧",
     "alias": "",
-    "nickname": "",
+    "nickname": "Yūyaki",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/9f/misb9zj9belcto94nlv3lh66251d150.jpg",
     "data": {
       "param0": "0",
@@ -7815,7 +7815,7 @@
     "key": "本森",
     "name": "本森",
     "alias": "",
-    "nickname": "",
+    "nickname": "Benson",
     "avatar": "https://patchwiki.biligame.com/images/blhx/e/e7/fpvgpcxyeu6ovlir8yqwi3tnj3b677t.jpg",
     "data": {
       "param0": "0",
@@ -7899,7 +7899,7 @@
     "key": "朱诺",
     "name": "朱诺",
     "alias": "",
-    "nickname": "",
+    "nickname": "Juneau",
     "avatar": "https://patchwiki.biligame.com/images/blhx/e/e8/hxckchxd30036cdozzlgjzmztjxzfzy.jpg",
     "data": {
       "param0": "0",
@@ -8011,7 +8011,7 @@
     "key": "胡蜂",
     "name": "胡蜂",
     "alias": "",
-    "nickname": "",
+    "nickname": "Wasp",
     "avatar": "https://patchwiki.biligame.com/images/blhx/f/f1/96zx47yu4p3ulripdw4q8hnoak1xhdj.jpg",
     "data": {
       "param0": "0",
@@ -8123,7 +8123,7 @@
     "key": "阿贾克斯",
     "name": "阿贾克斯",
     "alias": "",
-    "nickname": "",
+    "nickname": "Ajax",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/61/exs7a8ecwjhg74z34fmml9q9qzgq1z6.jpg",
     "data": {
       "param0": "0",
@@ -8235,7 +8235,7 @@
     "key": "反击",
     "name": "反击",
     "alias": "",
-    "nickname": "",
+    "nickname": "Repulse",
     "avatar": "https://patchwiki.biligame.com/images/blhx/c/cb/ripd3yrs3ia18nf503hykqpb8nzhcq7.jpg",
     "data": {
       "param0": "0",
@@ -8403,7 +8403,7 @@
     "key": "亲潮",
     "name": "亲潮",
     "alias": "藮",
-    "nickname": "",
+    "nickname": "亲潮",
     "avatar": "https://patchwiki.biligame.com/images/blhx/8/81/cg8h8ck9x8wyfsxnfw4d4zgxucmwf5i.jpg",
     "data": {
       "param0": "0",
@@ -8487,7 +8487,7 @@
     "key": "伊势",
     "name": "伊势",
     "alias": "鳌",
-    "nickname": "Isei",
+    "nickname": "Lsei",
     "avatar": "https://patchwiki.biligame.com/images/blhx/4/4e/gnebqd4n7igp6y6bt0cjbcqg96lv30d.jpg",
     "data": {
       "param0": "0",
@@ -8501,7 +8501,7 @@
     "key": "日向",
     "name": "日向",
     "alias": "螯",
-    "nickname": "",
+    "nickname": "Hyūga",
     "avatar": "https://patchwiki.biligame.com/images/blhx/9/94/5xegwpzs2afsf2x8pvjlobz145o4uc9.jpg",
     "data": {
       "param0": "0",
@@ -8599,7 +8599,7 @@
     "key": "神风",
     "name": "神风",
     "alias": "榊",
-    "nickname": "",
+    "nickname": "Kamikaze",
     "avatar": "https://patchwiki.biligame.com/images/blhx/f/fe/izo01h2r6uah8z61df441p3bflclf5b.jpg",
     "data": {
       "param0": "0",
@@ -8753,7 +8753,7 @@
     "key": "那珂",
     "name": "那珂",
     "alias": "豻",
-    "nickname": "",
+    "nickname": "Naka",
     "avatar": "https://patchwiki.biligame.com/images/blhx/5/55/0l5f6yfhft21xx7a4pgst4mtuzbyfwq.jpg",
     "data": {
       "param0": "0",
@@ -8781,7 +8781,7 @@
     "key": "矶风",
     "name": "矶风",
     "alias": "柉",
-    "nickname": "",
+    "nickname": "Isokaze",
     "avatar": "https://patchwiki.biligame.com/images/blhx/a/ac/h3sj0ltp3rv9yddkr8xqsp6d0jdp3re.jpg",
     "data": {
       "param0": "0",
@@ -8879,7 +8879,7 @@
     "key": "满潮",
     "name": "满潮",
     "alias": "樠",
-    "nickname": "Michishio ",
+    "nickname": "Michishio",
     "avatar": "https://patchwiki.biligame.com/images/blhx/6/6e/066bdachuib5j7shdptbr9zaupck71o.jpg",
     "data": {
       "param0": "0",
@@ -9299,7 +9299,7 @@
     "key": "卡辛",
     "name": "卡辛",
     "alias": "",
-    "nickname": "",
+    "nickname": "Cassin",
     "avatar": "https://patchwiki.biligame.com/images/blhx/5/56/oqrwncy92shrmwwqjhr2sl1k9oxhx51.jpg",
     "data": {
       "param0": "0",
@@ -9467,7 +9467,7 @@
     "key": "俄克拉荷马",
     "name": "俄克拉荷马",
     "alias": "",
-    "nickname": "",
+    "nickname": "Oklahoma",
     "avatar": "https://patchwiki.biligame.com/images/blhx/d/d8/9kxzzd2cvm6ps6f0pjlwjc5o5682bhm.jpg",
     "data": {
       "param0": "0",
@@ -9621,7 +9621,7 @@
     "key": "竞技神",
     "name": "竞技神",
     "alias": "",
-    "nickname": "",
+    "nickname": "Hermes@Dual",
     "avatar": "https://patchwiki.biligame.com/images/blhx/a/ac/pbuzxc3o5b4b42y5pg0j6qv58qfjwbe.jpg",
     "data": {
       "param0": "0",
