@@ -82,6 +82,7 @@
         </transition>
         <div
           class="filter"
+          :class="{ 'filter-highlight': hasFilter }"
           @click.stop="onFilterClick"
         >
           <Filter />
@@ -184,56 +185,63 @@ const isFilter = (data: { param1: string; param2: ShipLevel; param3: string; par
 }
 
 const showData = computed(() => {
-  const list: { game: ShipData[]; custom: ShipData<number>[] } = {
+  if (!hasFilter.value && !searchText.value) return ship
+
+  const filterList: { game: ShipData[]; custom: ShipData<number>[] } = {
     game: [],
     custom: []
   }
-  if (searchText.value) {
+  if (hasFilter.value) {
     for (const i in ship.game) {
+      if (isFilter(ship.game[i].data)) {
+        filterList.game.push(ship.game[i])
+      }
+    }
+
+    for (const i in ship.custom) {
+      if (isFilter(ship.custom[i].data)) {
+        filterList.custom.push(ship.custom[i])
+      }
+    }
+  }
+
+  if (searchText.value) {
+    const searchList: { game: ShipData[]; custom: ShipData<number>[] } = {
+      game: [],
+      custom: []
+    }
+
+    const data = hasFilter.value ? filterList : ship
+    for (const i in data.game) {
       try {
         const reg = new RegExp(searchText.value, 'gi')
         if (
-          reg.test(ship.game[i].key) ||
-          reg.test(ship.game[i].name) ||
-          reg.test(ship.game[i].alias)
+          reg.test(data.game[i].key) ||
+          reg.test(data.game[i].name) ||
+          reg.test(data.game[i].alias)
         ) {
-          list.game.push(ship.game[i])
+          searchList.game.push(data.game[i])
         }
       } catch {
-        break
+        continue
       }
     }
 
-    for (const i in ship.custom) {
+    for (const i in data.custom) {
       try {
         const reg = new RegExp(searchText.value, 'gi')
-        if (reg.test(ship.custom[i].name) || reg.test(ship.custom[i].alias)) {
-          list.custom.push(ship.custom[i])
+        if (reg.test(data.custom[i].name) || reg.test(data.custom[i].alias)) {
+          filterList.custom.push(data.custom[i])
         }
       } catch {
-        break
+        continue
       }
     }
 
-    return list
-  } else if (hasFilter.value) {
-    for (const i in ship.game) {
-      if (isFilter(ship.game[i].data)) {
-        list.game.push(ship.game[i])
-      }
-    }
-
-    for (const i in ship.custom) {
-      console.log(ship.custom[i].data)
-      if (isFilter(ship.custom[i].data)) {
-        list.custom.push(ship.custom[i])
-      }
-    }
-
-    return list
+    return searchList
   }
 
-  return ship
+  return filterList
 })
 
 const change = async (data: ShipData<any>) => {
@@ -516,4 +524,8 @@ item()
     height 30px
     line-height 40px
     cursor pointer
+
+.filter-highlight
+  background #87cefa !important
+  color #fff !important
 </style>
