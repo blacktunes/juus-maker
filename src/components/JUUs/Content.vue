@@ -396,12 +396,6 @@ const stopPlay = () => {
   })
 }
 
-emitter.on('play', autoPlay)
-emitter.on('stop', stopPlay)
-emitter.on('save_talk', () => {
-  saveJUUs()
-})
-
 const saveJUUs = () => {
   if (dom.value) {
     let commentHeight = 0
@@ -411,6 +405,16 @@ const saveJUUs = () => {
     screenshot(dom.value, { height: dom.value.scrollHeight + commentHeight })
   }
 }
+
+emitter.on('play', autoPlay)
+emitter.on('stop', stopPlay)
+emitter.on('save_talk', saveJUUs)
+
+onUnmounted(() => {
+  emitter.off('play')
+  emitter.off('stop')
+  emitter.off('save_talk')
+})
 
 const inputDom = ref<HTMLInputElement | null>(null)
 
