@@ -9,7 +9,7 @@ export const getMessage = <T extends string | number>(
   if (key === '指挥官') {
     return {
       text,
-      ...ship.player as ShipData<T>
+      ...(ship.player as ShipData<T>)
     }
   }
 
@@ -17,14 +17,14 @@ export const getMessage = <T extends string | number>(
   if (gameIndex !== -1) {
     return {
       text,
-      ...ship.game[gameIndex] as ShipData<T>
+      ...(ship.game[gameIndex] as ShipData<T>)
     }
   } else {
     const customIndex = ship.custom.findIndex((item) => item.key === key)
     if (customIndex !== -1) {
       return {
         text,
-        ...ship.custom[customIndex] as ShipData<T>
+        ...(ship.custom[customIndex] as ShipData<T>)
       }
     } else {
       return {
@@ -75,8 +75,13 @@ export const getDefaultJUUs = () => ({
 export const data = reactive<{
   juus: JUUsData[]
 }>({
-  juus: [getDefaultJUUs()]
+  juus: []
 })
+const lastTime = localStorage.getItem('juus-last-time')
+if (!lastTime) {
+  data.juus.push(getDefaultJUUs())
+}
+localStorage.setItem('juus-last-time', Date.now().toString())
 
 export const currentJUUs = computed<JUUsData | undefined>(() => {
   const index = data.juus.findIndex((item) => item.id === setting.juus.id)
