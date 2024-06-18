@@ -1,4 +1,5 @@
 import { reactive } from 'vue'
+import { resetFilterData, resetSelectData } from './select'
 
 const setting = reactive<{
   screenshot: boolean
@@ -38,4 +39,16 @@ try {
   })
 }
 
+watch(
+  () => setting.juus.home,
+  () => {
+    if (setting.juus.home) {
+      setting.play = false
+      resetSelectData()
+      resetFilterData()
+    }
+  }
+)
+
 export { setting }
+

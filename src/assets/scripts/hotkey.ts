@@ -1,5 +1,4 @@
 import { currentJUUs } from '@/store/juus'
-import { select } from '@/store/select'
 import { setting } from '@/store/setting'
 import { emitter } from './event'
 import { popupManager } from './popup'
@@ -36,7 +35,6 @@ export const hotkey = () => {
         if (setting.play) {
           emitter.emit('stop')
         } else if (!popupManager.hasPopup() && !setting.juus.home) {
-          select.show = false
           setting.juus.home = true
         } else {
           popupManager.closeCurrentComponent()

@@ -26,4 +26,12 @@ const filter = reactive({
   param4: new Set<string>()
 })
 
-export { select, resetSelectData, filter }
+const resetFilterData = () => {
+  filter.show = false
+  filter.param1.clear()
+  filter.param2.clear()
+  filter.param3.clear()
+  filter.param4.clear()
+}
+
+export { select, resetSelectData, filter, resetFilterData }

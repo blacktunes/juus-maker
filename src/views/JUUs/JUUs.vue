@@ -1,7 +1,8 @@
 <template>
   <Transition name="fade">
     <div
-      v-if="!setting.juus.home && currentJUUs"
+      v-if="currentJUUs"
+      v-show="!setting.juus.home"
       class="juus"
     >
       <div
@@ -76,15 +77,14 @@ import Background from '@/components/JUUs/Background.vue'
 import Content from '@/components/JUUs/Content.vue'
 import Heart from '@/components/Public/Heart.vue'
 import {
+  Back,
   ChangeImage,
   EllipsisHorizontalCircleOutline,
   Logo,
   Message,
-  PaperAirplane,
-  Back
+  PaperAirplane
 } from '@/components/Public/Icon'
 import { currentJUUs } from '@/store/juus'
-import { select } from '@/store/select'
 import { setting } from '@/store/setting'
 
 defineEmits(['screenshot'])
@@ -174,7 +174,6 @@ const likeEllipsisChange = () => {
 const contentRef = ref<InstanceType<typeof Content> | null>(null)
 
 const back = () => {
-  select.show = false
   setting.juus.home = true
 }
 </script>
