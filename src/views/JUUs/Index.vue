@@ -15,9 +15,9 @@
       ref="dom"
     >
       <Background :img="currentBg" />
-      <JUUsSelect :ready />
+      <JUUsSelect />
       <JUUs @screenshot="saveJUUs" />
-      <Loading :show="!ready" />
+      <Loading />
     </div>
     <ShipSelect class="select" />
     <Mask />
@@ -27,25 +27,24 @@
 
 <script lang="ts" setup>
 import { loadJUUsDatabase } from '@/assets/scripts/database'
+import { emitter } from '@/assets/scripts/event'
 import { popupManager } from '@/assets/scripts/popup'
 import { screenshot } from '@/assets/scripts/screenshot'
+import { updateCheck } from '@/assets/scripts/update'
 import Background from '@/components/JUUs/Background.vue'
 import Mask from '@/components/Public/Mask.vue'
 import ShipSelect from '@/components/Ship/ShipSelect.vue'
+import { setting } from '@/store/setting'
 import { Main } from 'star-rail-vue'
 import { currentBg } from './JUUs'
 import JUUs from './JUUs.vue'
 import JUUsSelect from './JUUsSelect.vue'
 import Link from './Link.vue'
 import Loading from './Loading.vue'
-import { emitter } from '@/assets/scripts/event'
-import { updateCheck } from '@/assets/scripts/update'
-
-const ready = ref(false)
 
 loadJUUsDatabase().then(() => {
   nextTick(() => {
-    ready.value = true
+    setting.ready = true
     updateCheck()
   })
 })

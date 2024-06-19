@@ -76,11 +76,6 @@ export const data = reactive<{
 }>({
   juus: []
 })
-const lastTime = localStorage.getItem('juus-last-time')
-if (!lastTime) {
-  data.juus.push(getDefaultJUUs())
-}
-localStorage.setItem('juus-last-time', Date.now().toString())
 
 export const currentJUUs = computed<JUUsData | undefined>(() => {
   const index = data.juus.findIndex((item) => item.id === setting.juus.id)

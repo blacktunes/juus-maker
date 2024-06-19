@@ -2,6 +2,7 @@ import { reactive } from 'vue'
 import { resetFilterData, resetSelectData } from './select'
 
 const setting = reactive<{
+  ready: boolean
   screenshot: boolean
   play: boolean
   interval: number
@@ -12,6 +13,7 @@ const setting = reactive<{
   }
   download: boolean
 }>({
+  ready: false,
   screenshot: false,
   play: false,
   interval: 1500,

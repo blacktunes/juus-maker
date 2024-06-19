@@ -2,7 +2,7 @@
   <Transition name="select">
     <div
       class="home-view"
-      v-if="show"
+      v-if="setting.ready && setting.juus.home"
     >
       <div class="home-wrapper">
         <div
@@ -75,11 +75,23 @@ import { data, getDefaultJUUs } from '@/store/juus'
 import { setting } from '@/store/setting'
 import { JUUsList, currentBg } from './JUUs'
 
-const props = defineProps<{
-  ready: boolean
-}>()
-
-const show = computed(() => props.ready && setting.juus.home)
+watch(
+  () => setting.ready,
+  () => {
+    if (setting.ready) {
+      const key = 'juus-first-start'
+      const firstStart = localStorage.getItem(key)
+      if (!firstStart) {
+        data.juus.push(getDefaultJUUs())
+        showJUUs(data.juus[0].id)
+        localStorage.setItem(key, Date.now().toString())
+      }
+    }
+  },
+  {
+    once: true
+  }
+)
 
 const getLikeText = (str: string) => {
   if (Number(str) > 999) return '999+'
@@ -95,21 +107,21 @@ const showHelp = () => {
 }
 
 const showJUUs = (id: number) => {
-  if (!props.ready) return
+  if (!setting.ready) return
   setting.juus.home = false
   setting.juus.id = id
   setting.juus.lastID = data.juus.findIndex((item) => item.id === id)
 }
 
 const addJUUs = () => {
-  if (!props.ready) return
+  if (!setting.ready) return
   const newJuus = getDefaultJUUs()
   data.juus.push(newJuus)
   showJUUs(newJuus.id)
 }
 
 const delJUUs = (id: number) => {
-  if (!props.ready) return
+  if (!setting.ready) return
   popupManager.open('confirm', {
     text: ['真的要删除吗'],
     fn: () => {

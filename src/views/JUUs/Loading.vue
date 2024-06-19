@@ -2,7 +2,7 @@
   <Transition name="fade">
     <div
       class="loading"
-      v-if="show"
+      v-if="!setting.ready"
     >
       <div class="loading-window">
         <Logo />
@@ -13,10 +13,7 @@
 
 <script lang="ts" setup>
 import Logo from '@/components/Public/Logo.vue'
-
-defineProps<{
-  show: boolean
-}>()
+import { setting } from '@/store/setting'
 </script>
 
 <style lang="stylus" scoped>
