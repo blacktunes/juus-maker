@@ -1,171 +1,231 @@
 <template>
-  <div class="home-view">
-    <div class="bg">
-      <img :src="bg" />
-    </div>
-    <div class="home-wrapper">
-      <div class="item-list">
+  <Transition name="select">
+    <div
+      class="home-view"
+      v-if="setting.ready && setting.juus.home"
+    >
+      <div class="home-wrapper">
         <div
-          class="item"
-          v-for="(item, index) in data.list"
-          :key="`home-${index}`"
-          @click="showJUUs(index)"
+          class="help"
+          @click.stop="showHelp"
         >
-          <div class="del" @click.stop="delJUUs(index)">×</div>
-          <div class="info">
-            <div class="avatar">
-              <div>
-                <img v-if="item.juus.avatar" :src="item.juus.avatar" />
+          <img src="@/assets//images/help.webp" />
+        </div>
+        <div class="item-list">
+          <div
+            class="item"
+            v-for="(item, index) in JUUsList"
+            :key="`home-${index}`"
+            @click.stop="showJUUs(item.id)"
+            @contextmenu.prevent.stop="delJUUs(item.id)"
+          >
+            <Delete
+              class="del"
+              @click.stop="delJUUs(item.id)"
+            />
+            <div class="info">
+              <InfoAvatar
+                :width="65"
+                :img="item.juus.avatar"
+                :type="2"
+              />
+              <div class="name">
+                {{ item.juus.name }}
               </div>
             </div>
-            <div class="name">
-              {{ item.juus.name }}
+            <div class="img">
+              <img :src="item.img" />
+            </div>
+            <div class="text">
+              {{ item.juus.text }}
+            </div>
+            <div class="like">
+              <Heart
+                class="like-img"
+                :highlight="item.like.flag"
+              />
+              <div class="like-num">
+                {{ getLikeText(item.like.num) }}
+              </div>
             </div>
           </div>
-          <div class="img">
-            <img :src="item.img" />
-          </div>
-          <div class="text">
-            {{ item.juus.text }}
-          </div>
-          <div class="like">
-            <div class="like-img">
-              <img :src="getLikeImg(item.like.flag)" />
-            </div>
-            <div class="like-num">
-              {{ item.like.text }}
-            </div>
+          <div
+            class="item add"
+            @click.stop="addJUUs"
+          >
+            <Camera />
           </div>
         </div>
-        <div class="item add" @click="addJUUs">
-          <img src="@/assets/images/camera_add.png" />
-        </div>
+        <Background
+          :img="currentBg"
+          :type="1"
+        />
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script lang="ts" setup>
-import data, { defaultItem } from '@/store/juus'
-import { computed } from 'vue'
+import { popupManager } from '@/assets/scripts/popup'
+import Background from '@/components/JUUs/Background.vue'
+import Heart from '@/components/Public/Heart.vue'
+import { Delete, Camera } from '@/components/Public/Icon'
+import InfoAvatar from '@/components/Public/InfoAvatar.vue'
+import { data, getDefaultJUUs } from '@/store/juus'
+import { setting } from '@/store/setting'
+import { JUUsList, currentBg } from './JUUs'
 
-const bg = computed(() =>
-  data.index >= 0 && data.list?.[data.index]?.bg
-    ? data.list[data.index].bg
-    : data.bg
+watch(
+  () => setting.ready,
+  () => {
+    if (setting.ready) {
+      const key = 'juus-first-start'
+      const firstStart = localStorage.getItem(key)
+      if (!firstStart) {
+        data.juus.push(getDefaultJUUs())
+        showJUUs(data.juus[0].id)
+        localStorage.setItem(key, Date.now().toString())
+      }
+    }
+  },
+  {
+    once: true
+  }
 )
 
-const getLikeImg = (flag: boolean) =>
-  flag
-    ? require('@/assets/images/like_2.png')
-    : require('@/assets/images/like.png')
+const getLikeText = (str: string) => {
+  if (Number(str) > 999) return '999+'
+  return str
+}
 
-const showJUUs = (index: number) => {
-  data.index = index
-  data.home = false
+const showHelp = () => {
+  popupManager.open('confirm', {
+    text: [
+      '<div style="width: 100%;height: 270px;display: flex;flex-direction: column;align-items: center;justify-content: center;font-size: 40px;"><span>本来应该在这写使用说明的</span><span>但是好像没啥好说明的</span></div>'
+    ]
+  })
+}
+
+const showJUUs = (id: number) => {
+  if (!setting.ready) return
+  setting.juus.home = false
+  setting.juus.id = id
+  setting.juus.lastID = data.juus.findIndex((item) => item.id === id)
 }
 
 const addJUUs = () => {
-  data.list.unshift(JSON.parse(JSON.stringify(defaultItem)))
-  showJUUs(0)
+  if (!setting.ready) return
+  const newJuus = getDefaultJUUs()
+  data.juus.push(newJuus)
+  showJUUs(newJuus.id)
 }
 
-const delJUUs = (index: number) => {
-  const flag = confirm('是否删除该JUUs')
-  if (flag) {
-    data.list.splice(index, 1)
-  }
+const delJUUs = (id: number) => {
+  if (!setting.ready) return
+  popupManager.open('confirm', {
+    text: ['真的要删除吗'],
+    fn: () => {
+      const index = data.juus.findIndex((item) => item.id === id)
+      if (index !== -1) {
+        data.juus.splice(index, 1)
+      }
+    }
+  })
 }
 </script>
 
 <style lang="stylus" scoped>
 .home-view
   position absolute
-  width 100%
-  height 100%
+  z-index 5
   display flex
   justify-content center
   align-items center
-
-  .bg
-    z-index 1
-    position absolute
-    top 0
-    left 0
-    width 100%
-    height 100%
-    filter blur(10px)
-    user-select none
-
-    img
-      position absolute
-      top 0
-      left 50%
-      transform translateX(-50%)
-      height 100%
+  width 100%
+  height 100%
 
   .home-wrapper
+    position relative
     z-index 2
+    display flex
     overflow hidden
     width 1050px
     height 550px
-    backdrop-filter blur(30px)
-    background rgba(200, 200, 200, 0.5)
-    box-shadow 3px 3px 5px rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0, 0, 0, 0.5)
     border-radius 5px
-    display flex
+    box-shadow 3px 3px 5px rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0, 0, 0, 0.5)
+
+    .help
+      position absolute
+      top 30px
+      right 20px
+      width 35px
+      cursor pointer
+
+      img
+        width 100%
 
     .item-list
-      width 100%
       overflow-y scroll
       margin 30px
+      width 100%
 
       &::-webkit-scrollbar
         width 15px
         height 15px
 
       &::-webkit-scrollbar-track
-        background-color rgba(200, 200, 200, 0.5)
+        margin-top 45px
         border-radius 10px
+        background-color rgba(200, 200, 200, 0.5)
 
       &::-webkit-scrollbar-thumb
-        background-color rgba(255, 255, 255, 0.9)
         border-radius 10px
+        background-color rgba(255, 255, 255, 0.9)
 
       &::-webkit-scrollbar-thumb:active
-        background-color rgba(200, 200, 200, 0.9)
+        background-color rgba(240, 240, 240, 0.9)
 
       .item
         position relative
         display flex
         align-items center
+        margin-bottom 30px
         width 930px
         height 100px
-        background #eee
         border-radius 5px
-        margin-bottom 20px
-        user-select none
+        background #eee
         cursor pointer
         transition box-shadow 0.25s
+        user-select none
+
+        &:last-child
+          margin-bottom 0
 
         &:hover
           box-shadow 1px 1px 10px rgba(0, 0, 0, 0.4)
 
           .del
             opacity 1
+            transform translateY(-50%) translateX(0)
 
         .del
-          opacity 0
           position absolute
-          right 10px
-          top 5px
-          font-size 20px
+          top 50%
+          right -36px
+          padding 5px
+          width 20px
+          height 20px
+          border-radius 50%
+          background rgba(240, 240, 240, 0.8)
+          opacity 0
           cursor pointer
+          transition all 0.25s
+          transform translateY(-100%)
           user-select none
-          transition opacity 0.25s
 
           &:hover
             opacity 1
+            transform translateY(-50%)
 
         .info
           display flex
@@ -176,66 +236,61 @@ const delJUUs = (index: number) => {
 
           .avatar
             position relative
-            cursor pointer
             width 65px
             height 65px
+            cursor pointer
 
             div
-              box-sizing border-box
               overflow hidden
-              background #ddd
-              border-radius 50%
-              border 1px solid #666
+              box-sizing border-box
               padding 1px
               height 100%
+              border 1px solid #666
+              border-radius 50%
+              background #ddd
 
               img
                 width 100%
                 height 100%
+                user-select none
                 object-fit cover
                 object-position center
-                user-select none
 
           .name
+            overflow hidden
             width 100%
+            text-align center
             text-overflow ellipsis
             white-space nowrap
-            overflow hidden
-            text-align center
 
       .img
-        width 70px
-        margin auto 20px
         display flex
-        align-items center
         justify-content center
+        align-items center
+        margin auto 20px
+        width 70px
 
         img
           width 100%
 
       .text
+        display -webkit-box
         flex 1
-        font-size 20px
-        text-overflow ellipsis
-        white-space nowrap
         overflow hidden
+        margin-right 10px
+        max-height 50%
+        word-break break-all
+        font-size 20px
+        -webkit-line-clamp 2
+        -webkit-box-orient vertical
 
       .like
-        overflow hidden
-        flex 0 0 150px
         display flex
+        flex 0 0 120px
         align-items center
 
-        .like-img
-          width 42px
-          height 42px
-          user-select none
-
-          img
-            height 100%
-
         .like-num
-          margin-left 25px
+          margin-left 20px
           font-size 20px
 
 .add

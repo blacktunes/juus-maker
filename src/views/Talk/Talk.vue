@@ -113,13 +113,11 @@
         placeholder="Aa"
         @keydown.enter="addComment()"
       />
-      <img
-        src="@/assets/images/图片.png"
+      <Image
         style="cursor: pointer; width: 34px; margin-right: 2px"
         @click="addImage"
       />
-      <img
-        src="@/assets/images/message_2.png"
+      <SendMessage
         style="cursor: pointer; width: 29px"
         @click="addComment()"
       />
@@ -128,13 +126,14 @@
 </template>
 
 <script lang="ts" setup>
-import _screenshot from '@/assets/scripts/screenshot'
-import Avatar from '@/components/common/Avatar.vue'
+import Avatar from '@/components/Public/Avatar.vue'
+import { Image, SendMessage } from '@/components/Public/Icon'
 import input from '@/store/input'
 import { resetSelectData, select } from '@/store/select'
 import { setting } from '@/store/setting'
 import data from '@/store/talk'
 import draggable from '@marshallswain/vuedraggable'
+import { screenshot as _screenshot } from 'star-rail-vue'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const emit = defineEmits<{
@@ -172,7 +171,7 @@ const addComment = (img?: string) => {
   data.list[data.index].list.push({
     ...input,
     img,
-    text: img ? input.text : input.text || '谢谢你，碧蓝航线'
+    text: img ? input.text : input.text || '谢谢你，碧蓝航线',
   })
   scrollToBottom()
   input.text = ''
@@ -246,7 +245,10 @@ const timeUpdate = () => {
 const screenshot = () => {
   if (dom.value && listDom.value) {
     reset()
-    _screenshot(dom.value, dom.value.offsetWidth, listDom.value.scrollHeight + 60 + 50)
+    _screenshot(dom.value, {
+      width: dom.value.offsetWidth,
+      height: listDom.value.scrollHeight + 60 + 50
+    })
   }
 }
 
@@ -315,21 +317,21 @@ $text-color = #555
     align-items center
     height 35px
     color $text-color
-    font-size 16px
     font-weight bold
+    font-size 16px
 
     .back
-      cursor pointer
-      height 100%
       display flex
-      align-items center
       justify-content center
+      align-items center
+      height 100%
+      cursor pointer
 
     .title-text
-      max-width 60%
-      white-space nowrap
       overflow hidden
+      max-width 60%
       text-overflow ellipsis
+      white-space nowrap
 
   .talk-list
     flex 1
@@ -338,31 +340,31 @@ $text-color = #555
 
     .item
       position relative
-      box-sizing border-box
       display flex
+      box-sizing border-box
+      padding 10px 10px 0
       width 100%
-      padding 10px 10px 0 10px
 
       .empty
         width 45px
 
       .name
-        font-weight bold
+        overflow hidden
         margin-left 10px
         text-overflow ellipsis
         white-space nowrap
-        overflow hidden
+        font-weight bold
 
       .text
         position relative
-        padding 10px
         margin 5px 10px
+        padding 10px
+        max-width 90%
+        width fit-content
         border-radius 0px 10px 10px 10px
         background #fff
-        color $text-color
-        width fit-content
-        max-width 90%
         box-shadow 0px 0px 6px rgba(0, 0, 0, 0.12)
+        color $text-color
 
         &:hover
           .del
@@ -370,16 +372,16 @@ $text-color = #555
 
         .del
           position absolute
-          right -20px
           top 50%
-          transform translateY(-50%)
+          right -20px
           color #000
           font-size 20px
           line-height 20px
-          user-select none
-          cursor pointer
           opacity 0
+          cursor pointer
           transition opacity 0.2s
+          transform translateY(-50%)
+          user-select none
 
           &:hover
             opacity 1
@@ -388,42 +390,42 @@ $text-color = #555
   position sticky
   bottom 0
   display flex
-  align-items center
   justify-content space-between
+  align-items center
   box-sizing border-box
-  height 50px
   padding 10px 5px
+  height 50px
   background #eee
 
   .input
     flex 1
     box-sizing border-box
+    margin 0 5px
+    padding 5px 15px
     width 100px
     height 34px
-    font-size 18px
-    color #666
-    padding 5px 15px
-    margin 0 5px
-    border-radius 17px
-    border 2px solid #ddd
     outline none
+    border 2px solid #ddd
+    border-radius 17px
+    color #666
+    font-size 18px
 
 .right
   flex-direction row-reverse
 
   .text
-    background #87cefa !important
     border-radius 10px 0px 10px 10px !important
+    background #87cefa !important
 
     .del
-      left -20px
       right unset !important
+      left -20px
       color #000
 
 .right-text
-  text-align right
   margin-right 10px
   margin-left unset !important
+  text-align right
 
 .img
   width 100%

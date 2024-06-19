@@ -1,194 +1,370 @@
 <template>
-  <div
-    class="juus"
-    ref="juus"
-  >
+  <Transition name="fade">
     <div
-      class="mask"
-      @click.stop="stopPlay"
-      v-show="setting.play"
-    ></div>
-    <div
-      class="bg"
-      @click="changeBg"
-      :title="tip.bg"
+      v-if="currentJUUs"
+      v-show="!setting.juus.home"
+      class="juus"
     >
-      <img :src="data.list[data.index].bg" />
-    </div>
-    <div class="juus-wrapper">
-      <div class="image">
-        <img
-          src="@/assets/images/logo.jpg"
-          class="logo"
-        />
-        <div class="img-wrapper">
-          <img
-            :src="data.list[data.index].img"
-            class="img"
-            @click="changeImg"
-            :title="tip.img"
-          />
-        </div>
-        <div class="icon-left">
-          <img
-            :src="likeImg"
-            class="icon like"
-            @click="setLike"
-          />
-          <img
-            src="@/assets/images/message.png"
-            class="icon"
-          />
-        </div>
-        <div class="icon-right">
-          <img
-            src="@/assets/images/纸飞机.png"
-            class="icon"
-          />
-        </div>
-        <div class="text text-left">
-          <span
-            contenteditable
-            @keydown.enter.prevent=""
-          >
-            {{ data.list[data.index].like.text }}
-          </span>
-          次赞
-        </div>
-        <div
-          class="text text-right"
-          contenteditable
-          @keydown.enter.prevent=""
-        >
-          {{ data.list[data.index].time }}
-        </div>
-        <div
-          v-show="!select.show"
-          class="menu menu-icon save-all"
-          :class="{ hide: setting.screenshot }"
-          @click="screenshot(false)"
-          :title="tip.screenshot"
-        >
-          <img src="@/assets/images/save.png" />
-        </div>
-      </div>
-      <Content
-        class="content-wrapper"
-        :screenshot="setting.screenshot"
-        ref="content"
-      />
       <div
-        v-show="!select.show"
-        class="menu save-right"
-        :class="{ hide: setting.screenshot }"
+        class="mask"
+        v-if="setting.play"
+      ></div>
+      <div class="juus-wrapper">
+        <Background
+          :img="currentJUUs.bg"
+          :type="2"
+        />
+        <div class="image-wrapper">
+          <div class="logo">
+            <div class="icon">
+              <Logo />
+            </div>
+            <div class="line"></div>
+            <span>JUUSTAGRAM</span>
+          </div>
+          <div
+            class="image"
+            @click.stop="imageChange"
+          >
+            <ChangeImage />
+            <img :src="currentJUUs.img" />
+          </div>
+          <div class="info-icon">
+            <Heart
+              :highlight="currentJUUs.like.flag"
+              @click.stop="setLike"
+            />
+            <Message @click.stop="contentRef?.inputFource()" />
+            <PaperAirplane @click.stop="$emit('screenshot')" />
+          </div>
+          <div class="info-text">
+            <div>
+              <span
+                contenteditable
+                @keydown.enter.prevent="(e) => (e.target as HTMLElement).blur()"
+                @focus="initLikeInput"
+                @blur="updateLikeNum"
+                @beforeinput="beforeLikeInput"
+              >
+                {{ likeNum }}
+              </span>
+              <span>次赞</span>
+              <EllipsisHorizontalCircleOutline
+                v-show="isLikeMoreThan999"
+                @click.stop="likeEllipsisChange"
+              />
+            </div>
+            <span>{{ time }}</span>
+          </div>
+        </div>
+        <Content ref="contentRef" />
+      </div>
+      <div
+        v-show="!setting.screenshot"
+        class="back"
+        @click.stop="back"
       >
-        <div
-          class="menu-icon"
-          @click="screenshot(true)"
-          :title="tip.screenshotTalk"
-        >
-          <img src="@/assets/images/save.png" />
-        </div>
-        <div
-          class="menu-icon"
-          style="margin-top: 6px"
-          @click="autoPlay"
-        >
-          <img src="@/assets/images/play.png" />
-        </div>
+        <Back />
+        <span>返回</span>
       </div>
     </div>
-    <div
-      v-show="!setting.screenshot"
-      class="back"
-      @click="back"
-    >
-      <img src="@/assets/images/back.png" />
-      <span>返回</span>
-    </div>
-  </div>
+  </Transition>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
+import { popupManager } from '@/assets/scripts/popup'
+import Background from '@/components/JUUs/Background.vue'
 import Content from '@/components/JUUs/Content.vue'
-import data from '@/store/juus'
-import { tip, setting } from '@/store/setting'
-import input from '@/store/input'
-import { select } from '@/store/select'
-import _screenshot from '@/assets/scripts/screenshot'
+import Heart from '@/components/Public/Heart.vue'
+import {
+  Back,
+  ChangeImage,
+  EllipsisHorizontalCircleOutline,
+  Logo,
+  Message,
+  PaperAirplane
+} from '@/components/Public/Icon'
+import { currentJUUs } from '@/store/juus'
+import { setting } from '@/store/setting'
 
-const changeBg = () => {
-  const input = document.createElement('input')
-  input.type = 'file'
-  input.accept = 'image/*'
-  input.onchange = () => {
-    if (input.files?.[0]) {
-      const file = new FileReader()
-      file.readAsDataURL(input.files[0])
-      file.onload = (e) => {
-        data.list[data.index].bg = (e.target?.result as string) || ''
-      }
-    }
+defineEmits(['screenshot'])
+
+const time = computed(() => {
+  if (!currentJUUs.value) return '-'
+  const diff = parseInt(((Date.now() - currentJUUs.value.time) / (1000 * 3600 * 24)).toFixed())
+  if (diff < 1) {
+    return '刚刚'
   }
-  input.click()
+  return `${diff}天前`
+})
+
+const imageChange = () => {
+  popupManager
+    .open('cropper', {
+      aspectRatio: 1,
+      maxWidth: 1280
+    })
+    .then((res) => {
+      if (!currentJUUs.value) return
+      currentJUUs.value.img = res.base64
+    })
 }
 
-const changeImg = () => {
-  const input = document.createElement('input')
-  input.type = 'file'
-  input.accept = 'image/*'
-  input.onchange = () => {
-    if (input.files?.[0]) {
-      const file = new FileReader()
-      file.readAsDataURL(input.files[0])
-      file.onload = (e) => {
-        data.list[data.index].img = (e.target?.result as string) || ''
-      }
-    }
-  }
-  input.click()
-}
+const isLikeMoreThan999 = computed(() => {
+  if (!currentJUUs.value) return false
+  return Number(currentJUUs.value.like.num) > 999
+})
 
-const likeImg = computed(() =>
-  data.list[data.index].like.flag
-    ? require('@/assets/images/like_2.png')
-    : require('@/assets/images/like.png')
-)
 const setLike = () => {
-  data.list[data.index].like.flag = !data.list[data.index].like.flag
+  if (!currentJUUs.value) return
+  currentJUUs.value.like.flag = !currentJUUs.value.like.flag
+  if (currentJUUs.value.like.flag) {
+    currentJUUs.value.like.num = String(BigInt(currentJUUs.value.like.num) + BigInt(1))
+  } else {
+    currentJUUs.value.like.num = String(BigInt(currentJUUs.value.like.num) - BigInt(1))
+  }
 }
+
+const likeNum = computed(() => {
+  if (!currentJUUs.value) return '0'
+  if (currentJUUs.value.like.ellipsis && isLikeMoreThan999.value) {
+    return '999+'
+  }
+  return currentJUUs.value.like.num
+})
+
+const beforeLikeInput = (e: Event) => {
+  if (isNaN(Number((e as InputEvent).data))) {
+    e.preventDefault()
+  }
+}
+
+const initLikeInput = (e: Event) => {
+  if (!currentJUUs.value) return
+  ;(e.target as HTMLElement).innerText = currentJUUs.value.like.num
+}
+
+const updateLikeNum = (e: Event) => {
+  if (!currentJUUs.value) return
+  const el = e.target as HTMLElement
+  let newText = el.innerText.replace(/[^\d]/g, '').replace(/^0+/, '')
+
+  if (newText === '0' && currentJUUs.value.like.flag) {
+    newText = '1'
+  } else if (!newText) {
+    newText = currentJUUs.value.like.flag ? '1' : '0'
+  }
+
+  if (currentJUUs.value.like.ellipsis && Number(newText) > 999) {
+    el.innerText = '999+'
+  } else if (el.innerText !== newText) {
+    el.innerText = newText
+  }
+
+  if (currentJUUs.value.like.num !== newText) {
+    currentJUUs.value.like.num = newText
+  }
+}
+
+const likeEllipsisChange = () => {
+  if (!currentJUUs.value) return
+  currentJUUs.value.like.ellipsis = !currentJUUs.value.like.ellipsis
+}
+
+const contentRef = ref<InstanceType<typeof Content> | null>(null)
 
 const back = () => {
-  select.show = false
-  data.home = true
+  setting.juus.home = true
 }
-
-const juus = ref<HTMLElement | null>(null)
-const content = ref<InstanceType<typeof Content> | null>(null)
-const screenshot = (flag?: boolean) => {
-  select.type = 0
-  input.key = '指挥官'
-  input.avatar = require('@/assets/images/commander.jpg')
-  input.name = '指挥官'
-  if (flag) {
-    if (content.value?.dom) {
-      _screenshot(content.value.dom, content.value.dom.offsetWidth, content.value.dom.scrollHeight)
-    }
-  } else {
-    if (juus.value) _screenshot(juus.value)
-  }
-}
-
-const autoPlay = () => {
-  content.value?.autoPlay()
-}
-
-const stopPlay = () => {
-  content.value?.stopPlay()
-}
-
-defineExpose({ screenshot })
 </script>
 
-<style lang="stylus" src="./JUUs.styl" scoped></style>
+<style lang="stylus" scoped>
+.juus
+  position relative
+  display flex
+  justify-content center
+  align-items center
+  width 100%
+  height 100%
+
+  .mask
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    z-index 9
+    user-select none
+
+  .juus-wrapper
+    position relative
+    z-index 2
+    display flex
+    overflow hidden
+    width 1050px
+    height 640px
+    border-radius 10px
+    background rgba(200, 200, 200, 0.5)
+    box-shadow 3px 3px 5px rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0, 0, 0, 0.5)
+    backdrop-filter blur(30px)
+
+    *::-webkit-scrollbar
+      width 0
+      height 0
+
+    .image-wrapper
+      position relative
+      width 650px
+      height 640px
+
+      .logo
+        position absolute
+        top 0
+        left 0
+        display flex
+        align-items center
+        padding 0 5px
+        height 45px
+        border-top-left-radius 10px
+        background #000
+        user-select none
+
+        .icon
+          display flex
+          justify-content center
+          align-items center
+          width 35px
+          height 35px
+          border-radius 5px
+          background #636563
+
+          svg
+            flex-shrink 0
+            width 120%
+            height 120%
+
+        .line
+          margin 0 5px
+          width 1.5px
+          height 35px
+          background #636563
+
+        span
+          color #636563
+          font-size 20px
+
+      .image
+        position absolute
+        top 50px
+        left 70px
+        display flex
+        justify-content center
+        align-items center
+        overflow hidden
+        width 500px
+        height 500px
+        border-radius 5px
+        cursor pointer
+        user-select none
+
+        &:hover
+          svg
+            opacity 1
+            transform translateY(0)
+
+        svg
+          position absolute
+          top 20px
+          padding 8px
+          border-radius 50%
+          background rgba(233, 233, 233, 0.95)
+          color #666
+          opacity 0
+          transition all 0.2s
+          transform translateY(-20px)
+          pointer-events none
+
+        img
+          width 100%
+          height 100%
+          pointer-events none
+          object-fit cover
+
+      .info-icon
+        position absolute
+        bottom 40px
+        left 70px
+        display flex
+        align-items center
+        width 500px
+        color #fff
+
+        svg
+          cursor pointer
+
+          &:first-child
+            margin-right 15px
+
+          &:last-child
+            margin-left auto
+
+      .info-text
+        position absolute
+        bottom 10px
+        left 72px
+        display flex
+        justify-content space-between
+        align-items center
+        width 495px
+        color #fff
+        user-select none
+
+        & > div
+          display flex
+          align-items center
+
+          &:hover
+            svg
+              opacity 1
+
+          svg
+            margin 2px 0 0 2px
+            opacity 0
+            cursor pointer
+            transition 0.2s all
+
+          span
+            font-size 20px
+
+            &:first-child
+              overflow hidden
+              margin-right 5px
+              min-width 35px
+              max-width 200px
+              text-align center
+              text-overflow ellipsis
+              white-space nowrap
+
+        span
+          font-size 18px
+
+.back
+  position absolute
+  bottom 10px
+  left 30px
+  z-index 9
+  display flex
+  flex-direction column
+  align-items center
+  align-content center
+  width 55px
+  cursor pointer
+
+  svg
+    width 55px
+
+  span
+    margin-top 5px
+    color #eee
+    font-size 24px
+</style>

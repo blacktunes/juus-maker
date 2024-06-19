@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="ship-filter"
-  >
-    <div class="top"></div>
+  <div class="ship-filter">
     <div
       class="filter-wrapper"
       @click.stop
@@ -11,41 +8,45 @@
         <div
           v-for="(item, key) in data"
           :key="key"
-          class="btn-group"
+          class="item-group"
         >
-          <div class="btn-label">{{ item.name }}</div>
-          <div class="btn-list">
-            <div
-              class="btn"
-              @click="resetType(key)"
+          <FilterLabel
+            :title="item.name"
+            :sub-title="item.sub"
+          />
+          <div class="item-list">
+            <FilterItem
+              :highlight="filterSetting[key].size === 0"
+              @click.stop="resetType(key)"
             >
               全部
-            </div>
-            <div
+            </FilterItem>
+            <FilterItem
               v-for="name in item.list"
               :key="name"
-              class="btn"
-              :class="{ highlight: filterSetting[key].has(name) }"
+              :highlight="filterSetting[key].has(name)"
               @click.stop="addFilter(key, name)"
             >
               {{ name }}
-            </div>
+            </FilterItem>
           </div>
         </div>
       </div>
-    </div>
-    <div class="btn-wrapper">
-      <div
-        class="reset"
-        @click="reset"
-      >
-        重置
-      </div>
-      <div
-        class="submit"
-        @click="hide"
-      >
-        确定
+      <div class="btn-wrapper">
+        <WindowBtn
+          class="btn"
+          :type="2"
+          @click.stop="reset"
+        >
+          重置
+        </WindowBtn>
+        <WindowBtn
+          class="btn"
+          :type="3"
+          @click.stop="hide"
+        >
+          确定
+        </WindowBtn>
       </div>
     </div>
   </div>
@@ -53,7 +54,10 @@
 
 <script lang="ts" setup>
 import { filter } from '@/store/select'
-import { reactive, watch } from 'vue'
+import WindowBtn from '../Public/WindowBtn.vue'
+import FilterItem from './FilterItem.vue'
+import FilterLabel from './FilterLabel.vue'
+import { ship } from '@/store/ship'
 
 const filterSetting = reactive({
   param1: new Set<string>(),
@@ -80,12 +84,9 @@ watch(
 )
 
 const data = {
-  param4: {
-    name: '分类',
-    list: ['改造', '方案', 'META', '联动', '特殊', '誓约', '专属兵装', '自定义']
-  },
   param1: {
-    name: '类型',
+    name: '索引',
+    sub: 'INDEX',
     list: [
       '前排先锋',
       '后排主力',
@@ -106,12 +107,10 @@ const data = {
       '风帆'
     ]
   },
-  param2: {
-    name: '稀有度',
-    list: ['普通', '稀有', '精锐', '超稀有', '海上传奇', '最高方案', '决战方案']
-  },
+
   param3: {
     name: '阵营',
+    sub: 'CAMP',
     list: [
       '白鹰',
       '皇家',
@@ -123,21 +122,45 @@ const data = {
       '自由鸢尾',
       '维希教廷',
       '余烬',
-      '飓风',
-      'META-???',
-      '海王星',
-      '哔哩哔哩',
-      '传颂之物',
-      'KizunaAI',
-      'Hololive',
-      '维纳斯假期',
-      '偶像大师',
-      'SSSS',
-      'Atelier Ryza',
-      '其他'
+      '飓风'
     ]
+  },
+  param2: {
+    name: '稀有度',
+    sub: 'RARITY',
+    list: ['普通', '稀有', '精锐', '超稀有', '海上传奇', '最高方案', '决战方案']
+  },
+  param4: {
+    name: '附加索引',
+    sub: 'INDEX',
+    list: ['自定义']
   }
 }
+
+ship.game.forEach((item) => {
+  const param1 = item.data.param1.split(',')
+  param1.forEach((i) => {
+    if (i && !data.param1.list.includes(i)) {
+      data.param1.list.push(i)
+    }
+  })
+
+  const param3 = item.data.param3.split(',')
+  param3.forEach((i) => {
+    if (i && i !== '其他' && !data.param3.list.includes(i)) {
+      data.param3.list.push(i)
+    }
+  })
+
+  const param4 = item.data.param4.split(',')
+  param4.forEach((i) => {
+    if (i && !data.param4.list.includes(i)) {
+      data.param4.list.unshift(i)
+    }
+  })
+
+})
+data.param3.list.push('其他')
 
 const addFilter = (type: 'param1' | 'param2' | 'param3' | 'param4', name: string) => {
   const param = filterSetting[type]
@@ -166,128 +189,71 @@ const hide = () => {
 
 <style lang="stylus" scoped>
 item()
-  padding 10px
   margin 5px
-  user-select none
+  padding 10px
   border 1px solid #ddd
   border-radius 10px
   background #fff
+  user-select none
 
 .ship-filter
-  z-index 99
   position absolute
   bottom 0px
-  width 100%
   left 0
-  height 100%
-  box-sizing border-box
+  z-index 11
   display flex
   flex-direction column
-
-  .top
-    flex-shrink 0
-    height 100px
+  box-sizing border-box
+  width 100%
+  height 100%
 
   .filter-wrapper
-    flex 1
+    position relative
+    display flex
+    flex-direction column
     box-sizing border-box
-    background rgba(255, 255, 255, 0.9)
-    user-select none
-    color #fff
-    font-weight bold
-    height 100px
+    margin 15px 15px 10px
     padding 10px
-    margin 5px 15px
+    height calc(100% - 25px)
     border 1px solid #ddd
     border-radius 10px
+    background rgba(255, 255, 255, 0.8)
 
     .scroll-view
+      flex 1
       overflow auto
-      height 100%
 
       &::-webkit-scrollbar
         width 0
         height 0
 
-      .btn-group
+      .item-group
         display flex
-        align-items baseline
-        margin 5px
+        flex-direction column
+        align-items flex-start
+        margin-bottom 10px
 
-        .btn-label
-          z-index 0
-          flex-shrink 0
-          position relative
-          width 80px
-          height 30px
-          padding 3px 2px 2px 10px
-          background rgba(83, 112, 178, 0.7)
+        &:last-child
+          margin-bottom none
 
-          &:before
-            z-index -1
-            content ''
-            position absolute
-            height 100%
-            width 100%
-            top -3px
-            left -3px
-            border 1px solid rgba(255, 255, 255, 0.2)
-            box-sizing border-box
-            background rgba(90, 141, 255, 0.5)
-
-        .btn-list
-          display flex
-          flex-wrap wrap
-          margin-left 20px
-
-          .btn
-            box-sizing border-box
-            margin 5px
-            color #fff
-            text-align center
-            min-width 100px
-            height 35px
-            padding 5px 15px
-            background #7a8b9b
-            border-radius 3px
-            border 1px solid rgba(255, 255, 255, 0.5)
-            cursor pointer
+        .item-list
+          z-index 1
+          display grid
+          flex 1
+          justify-content space-evenly
+          box-sizing border-box
+          grid-template-columns 25% 25% 25% 25%
+          justify-items center
 
   .btn-wrapper
-    box-sizing border-box
     display flex
-    align-items center
     justify-content center
-    background #fff
-    color #fff
-    font-weight bold
+    align-items center
+    box-sizing border-box
+    margin-top 10px
     height 55px
-    padding 10px
-    margin 5px 15px
-    border 1px solid #ddd
-    border-radius 10px
+    color #fff
 
-    .reset, .submit
-      box-sizing border-box
-      display flex
-      justify-content center
-      align-items center
-      width 100px
-      height 40px
-      margin 10px 20px
-      border-radius 3px
-      border 1px solid rgba(255, 255, 255, 0.5)
-      font-size 20px
-      font-weight bold
-      cursor pointer
-
-    .reset
-      background #ce6d64
-
-    .submit
-      background #558ad0
-
-.highlight
-  background #8abdff !important
-  text-shadow 1px 1px 3px rgba(0, 0, 0, 0.5)
+    .btn
+      transform scale(0.8)
 </style>

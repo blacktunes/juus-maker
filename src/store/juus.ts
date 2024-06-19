@@ -1,99 +1,84 @@
-import { nextTick, reactive, toRef, toRaw, watch } from 'vue'
-import { getData } from '@/assets/data'
+import { reactive } from 'vue'
 import { setting } from './setting'
+import { ship } from './ship'
+
+export const getMessage = <T extends string | number>(
+  key: T,
+  text = ''
+): ReplyItem & { reply?: ReplyItem[] } => {
+  if (key === '指挥官') {
+    return {
+      text,
+      key,
+      name: ship.player.nickname,
+      avatar: ship.player.avatar
+    }
+  }
+
+  const gameIndex = ship.game.findIndex((item) => item.key === key)
+  if (gameIndex !== -1) {
+    return {
+      text,
+      key,
+      name:
+        ship.game[gameIndex].nickname || ship.game[gameIndex].alias || ship.game[gameIndex].name,
+      avatar: ship.game[gameIndex].avatar
+    }
+  } else {
+    const customIndex = ship.custom.findIndex((item) => item.key === key)
+    if (customIndex !== -1) {
+      return {
+        text,
+        key,
+        name: ship.custom[customIndex].name,
+        avatar: ship.custom[customIndex].avatar
+      }
+    } else {
+      return {
+        text,
+        key,
+        avatar: '',
+        name: ''
+      }
+    }
+  }
+}
+
+export const defaultBg =
+  'https://patchwiki.biligame.com/images/blhx/e/e8/bhdanvql92zw4a24kv7xcif6i6rlbqk.png'
 
 export const defaultItem: JUUsData = {
+  id: 0,
+  time: 0,
   img: 'https://patchwiki.biligame.com/images/blhx/d/d7/47ho3fxsc16dnjl59ivd6uf4j1pmaw6.png',
   bg: 'https://patchwiki.biligame.com/images/blhx/e/e8/bhdanvql92zw4a24kv7xcif6i6rlbqk.png',
   like: {
     flag: false,
-    text: '999+'
+    num: '0',
+    ellipsis: false
   },
-  time: '刚刚',
-  juus: getData('塔什干', '北方联合的兔兔，超凶，嘎哦！'),
+  juus: getMessage('塔什干', '北方联合的兔兔，超凶，嘎哦！'),
   comment: [
     {
-      ...getData('U-110', '嘎哦！~'),
-      reply: [
-        getData('塔什干', '嘎哦！！')
-      ]
+      ...getMessage('U-110', '嘎哦！~'),
+      reply: [getMessage('塔什干', '嘎哦！！')]
     }
   ]
 }
 
-const data = reactive<{
-  home: boolean
-  index: number
-  bg: string
-  list: JUUsData[]
-}>({
-  home: true,
-  index: 0,
-  bg: 'https://patchwiki.biligame.com/images/blhx/e/e8/bhdanvql92zw4a24kv7xcif6i6rlbqk.png',
-  list: [
-    JSON.parse(JSON.stringify(defaultItem))
-  ]
+export const getDefaultJUUs = () => ({
+  ...JSON.parse(JSON.stringify(defaultItem)),
+  ...{ id: Date.now(), time: Date.now() }
 })
 
-const setWatch = () => {
-  data.index = Number(localStorage.getItem('juus-last-index')) || 0
+export const data = reactive<{
+  juus: JUUsData[]
+}>({
+  juus: []
+})
 
-  watch(data.list, () => {
-    if (setting.play) return
-
-    nextTick(() => {
-      updateDB()
-    })
-  })
-
-  const index = toRef(data, 'index')
-  watch(index, () => {
-    localStorage.setItem('juus-last-index', String(data.index))
-  })
-}
-
-let hasDB = true
-let db: IDBDatabase
-
-export const updateDB = () => {
-  db.transaction('data', 'readwrite')
-    .objectStore('data')
-    .put({
-      id: 0,
-      data: JSON.stringify(toRaw(data.list))
-    })
-}
-
-export const getDB = () => {
-  console.log('GET - JUUs indexDB...')
-  const _db = window.indexedDB.open('juus')
-  _db.onsuccess = event => {
-    db = (event.target as IDBOpenDBRequest).result
-    if (hasDB) {
-      db.transaction('data', 'readonly')
-        .objectStore('data')
-        .get(0)
-        .onsuccess = (e) => {
-          try {
-            data.list = JSON.parse((e.target as IDBRequest).result?.data || '[]')
-          } finally {
-            setWatch()
-          }
-        }
-    } else {
-      updateDB()
-      setWatch()
-      data.home = false
-    }
-  }
-
-  _db.onupgradeneeded = event => {
-    db = (event.target as IDBOpenDBRequest).result
-    if (!db.objectStoreNames.contains('data')) {
-      hasDB = false
-      db.createObjectStore('data', { keyPath: 'id' })
-    }
-  }
-}
-
-export default data
+export const currentJUUs = computed<JUUsData | undefined>(() => {
+  const index = data.juus.findIndex((item) => item.id === setting.juus.id)
+  if (index === -1) return
+  return data.juus[index]
+})

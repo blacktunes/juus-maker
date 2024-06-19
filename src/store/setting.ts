@@ -1,16 +1,56 @@
 import { reactive } from 'vue'
+import { resetFilterData, resetSelectData } from './select'
 
-const tip = {
-  bg: '修改背景图',
-  img: '修改图片',
-  screenshot: '保存截图',
-  screenshotTalk: '保存对话截图'
-}
-
-const setting = reactive({
+const setting = reactive<{
+  ready: boolean
+  screenshot: boolean
+  play: boolean
+  interval: number
+  juus: {
+    home: boolean
+    id?: number
+    lastID: number
+  }
+  download: boolean
+}>({
+  ready: false,
   screenshot: false,
   play: false,
-  interval: 1500
+  interval: 1500,
+  juus: {
+    home: true,
+    id: undefined,
+    lastID: -1
+  },
+  download: true
 })
 
-export { setting, tip }
+try {
+  const _setting = JSON.parse(localStorage.getItem('juus-setting') || '{}')
+  if (_setting.download !== undefined) {
+    setting.download = _setting.download
+  }
+} finally {
+  watch([() => setting.download], () => {
+    localStorage.setItem(
+      'sr-light-cone-setting',
+      JSON.stringify({
+        download: setting.download
+      })
+    )
+  })
+}
+
+watch(
+  () => setting.juus.home,
+  () => {
+    if (setting.juus.home) {
+      setting.play = false
+      resetSelectData()
+      resetFilterData()
+    }
+  }
+)
+
+export { setting }
+

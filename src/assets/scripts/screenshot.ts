@@ -1,35 +1,27 @@
-import { toPng } from 'html-to-image'
 import { setting } from '@/store/setting'
-import { nextTick } from 'vue'
+import { screenshot as _screenshot } from 'star-rail-vue'
+import { popupManager } from './popup'
 
-export default function (dom: HTMLElement, width?: number, height?: number) {
+const screenshot = (
+  dom: HTMLElement,
+  config?: {
+    width?: number
+    height?: number
+  }
+) => {
   setting.screenshot = true
+  popupManager.open('loading')
 
-  nextTick(() => {
-    toPng(dom, {
-      width,
-      height
+  _screenshot(dom, { ...config, name: 'JUUs', download: setting.download })
+    .catch(() => {
+      popupManager.open('confirm', {
+        text: ['图片保存异常', '请尝试在设置中切换下载模式']
+      })
     })
-      .then((dataUrl) => {
-        const title = `JUUs-${Date.now()}`
-        if (process.env.NODE_ENV === 'development') {
-          const img = new Image()
-          img.src = dataUrl
-          img.alt = title
-          const win = window.open('')
-          if (win) win.document.body.appendChild(img)
-        } else {
-          const link = document.createElement('a')
-          link.download = `${title}.png`
-          link.href = dataUrl
-          link.click()
-        }
-      })
-      .catch((error) => {
-        console.error('截图保存错误', error)
-      })
-      .finally(() => {
-        setting.screenshot = false
-      })
-  })
+    .finally(() => {
+      setting.screenshot = false
+      popupManager.close('loading')
+    })
 }
+
+export { screenshot }

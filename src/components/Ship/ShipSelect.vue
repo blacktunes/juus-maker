@@ -1,140 +1,111 @@
 <template>
-  <div class="select-view">
-    <div class="fixed">
-      <Avatar
-        class="avatar"
-        :src="avatarData.avatar"
-      />
-      <div class="name">
-        <span>{{ avatarData.key }}</span>
-        <input v-model="avatarData.name" />
-      </div>
-      <div
-        v-if="showClose"
-        class="close"
-        @click="close"
-      >
-        ×
-      </div>
-    </div>
-    <div class="scroll-box">
-      <div class="scroll-view">
-        <div
-          class="item"
-          style="cursor: pointer"
-          @click.stop="createCustom"
-        >
-          <svg
-            style="height: 30px"
-            viewBox="0 0 1024 1024"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            width="40"
-            height="40"
-          >
-            <path
-              d="M512 832a32 32 0 0 0 32-32v-256h256a32 32 0 0 0 0-64h-256V224a32 32 0 0 0-64 0v256H224a32 32 0 0 0 0 64h256v256a32 32 0 0 0 32 32"
-              fill="#8a8a8a"
-            ></path>
-          </svg>
+  <Transition name="select">
+    <div
+      class="select-view"
+      v-show="select.show"
+    >
+      <div class="header">
+        <img :src="avatarData.avatar" />
+        <div class="name">
+          <span v-if="typeof avatarData.key === 'string'">{{ avatarData.key }}</span>
+          <input v-model="avatarData.name" />
         </div>
-        <div
-          class="item"
-          :class="{ highlight: player.key === avatarData.key }"
-          @click="change(player.key)"
-          key="player"
-        >
-          <Avatar :src="defaultUser?.avatar || player.avatar" />
-          <div>
-            <div class="name">{{ defaultUser?.name || player.key }}</div>
-            <div class="alias">你</div>
-          </div>
-        </div>
-        <div
-          v-for="item in showData"
-          :key="item.key"
-          class="item"
-          :class="{ highlight: item.key === avatarData.key }"
-          @click="change(item.key)"
-        >
-          <Avatar
-            :src="item.avatar"
-            :level="item.data.param2"
+        <Close
+          v-if="showClose"
+          class="close"
+          @click.stop="close"
+        />
+      </div>
+      <div class="ship-wrapper">
+        <div class="scroll-view">
+          <div class="label">已使用角色</div>
+          <ShipItem
+            :highlight="ship.player.key === avatarData.key"
+            :item="ship.player"
+            @click.stop="change(ship.player)"
+            class="player"
           />
-          <div>
-            <div class="name">{{ item.key }}</div>
-            <div class="alias">{{ item.name || item.alias || item.key }}</div>
-          </div>
-          <div
-            class="del-ship"
-            @click.stop="delShip(item.key)"
-            v-if="item.data.param4 === '自定义'"
-          >
-            ×
-          </div>
+          <ShipItem
+            v-for="item in usedShipList"
+            :key="item.key"
+            :highlight="item.key === avatarData.key"
+            :item
+            @click.stop="change(item)"
+          />
+          <template v-if="!hasFilter || (hasFilter && showData.custom.length > 0)">
+            <div class="label">自定义角色</div>
+            <div
+              class="item"
+              @click.stop="createCustom"
+            >
+              <Add />
+            </div>
+            <ShipItem
+              v-for="item in showData.custom"
+              :key="item.key"
+              :highlight="item.key === avatarData.key"
+              :item
+              @click.stop="change(item)"
+              @contextmenu.prevent.stop="delShip(item.key)"
+            >
+            </ShipItem>
+          </template>
+          <template v-if="!hasFilter || (hasFilter && showData.game.length > 0)">
+            <div class="label">游戏角色</div>
+            <ShipItem
+              v-for="item in showData.game"
+              :key="item.key"
+              :highlight="item.key === avatarData.key"
+              :item
+              @click.stop="change(item)"
+            />
+          </template>
         </div>
       </div>
-    </div>
-    <transition name="fade">
-      <ShipFilter v-show="filter.show" />
-    </transition>
-    <div class="search">
-      <input
-        v-model="searchText"
-        placeholder="请输入舰娘名/昵称"
-        @keydown.esc="clear"
-      />
       <transition name="fade">
-        <div
-          class="clear"
-          @click="clear"
-          v-show="searchText"
-        >
-          ×
-        </div>
+        <ShipFilter v-show="filter.show" />
       </transition>
-      <div
-        class="filter"
-        @click="onFilterClick"
-      >
-        <svg
-          viewBox="0 0 1025 1024"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
+      <div class="search">
+        <input
+          v-model="searchText"
+          placeholder="请输入舰娘名/昵称"
+          @keydown.esc="clear"
+        />
+        <transition name="fade">
+          <div
+            class="clear"
+            @click.stop="clear"
+            v-show="searchText"
+          >
+            <Close />
+          </div>
+        </transition>
+        <div
+          class="filter"
+          :class="{ 'filter-highlight': hasFilter }"
+          @click.stop="onFilterClick"
         >
-          <path
-            d="M1024 0H0v1024h1024V0z"
-            fill="#bbb"
-            fill-opacity=".01"
-          ></path>
-          <path
-            d="M85.12 106.88a42.24 42.24 0 0 0-42.24 42.24 42.88 42.88 0 0 0 42.24 42.88V106.88zM938.88 192a42.24 42.24 0 0 0 42.24-42.88 41.6 41.6 0 0 0-42.24-42.24V192zM85.12 192h853.76V106.88H85.12V192zM85.12 448a42.88 42.88 0 0 0-42.24 42.88 42.24 42.24 0 0 0 42.24 42.24V448zM320 533.12a42.24 42.24 0 0 0 42.88-42.24A42.88 42.88 0 0 0 320 448v85.12z m-234.88 0H320V448H85.12v85.12zM85.12 789.12a42.88 42.88 0 0 0 0 85.76v-85.76zM320 874.88a42.88 42.88 0 0 0 0-85.76v85.76z m-234.88 0H320v-85.76H85.12v85.76zM672 320A224 224 0 1 0 896 544 224 224 0 0 0 672 320z m0 362.88a138.88 138.88 0 1 1 138.88-138.88 138.88 138.88 0 0 1-138.88 138.88z"
-            fill="#bbb"
-          ></path>
-          <path
-            d="M819.84 652.8a42.88 42.88 0 1 0-64 60.16l64-60.16z m88.32 210.56a43.52 43.52 0 0 0 64 0 42.24 42.24 0 0 0 0-60.16l-64 60.16z m-149.12-150.4l149.12 150.4 64-60.16-152.32-150.4-64 60.16z"
-            fill="#bbb"
-          ></path>
-        </svg>
+          <Filter />
+        </div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script lang="ts" setup>
-import ship, { getData } from '@/assets/data'
-import custom from '@/store/custom'
+import { getAvatarBase64 } from '@/assets/scripts/avatar'
+import { popupManager } from '@/assets/scripts/popup'
 import input from '@/store/input'
-import juus from '@/store/juus'
+import { currentJUUs } from '@/store/juus'
 import { filter, select } from '@/store/select'
+import { ship } from '@/store/ship'
 import talk from '@/store/talk'
 import { computed, ref } from 'vue'
-import Avatar from '../common/Avatar2.vue'
+import { Add, Close, Filter } from '../Public/Icon'
 import ShipFilter from './ShipFilter.vue'
+import ShipItem from './ShipItem.vue'
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     showClose?: boolean
     defaultUser?: {
@@ -154,102 +125,144 @@ const clear = () => {
   searchText.value = ''
 }
 
-const player = getData('指挥官')
+const usedShipList = computed(() => {
+  const used: (string | number)[] = []
 
-const showData = computed(() => {
-  const temp: ShipData[] = []
-  let list = [...custom.value, ...ship]
+  if (currentJUUs.value) {
+    used.push(currentJUUs.value!.juus.key)
+    currentJUUs.value!.comment.forEach((comment) => {
+      if (!used.includes(comment.key) && comment.key !== '指挥官') used.push(comment.key)
+      comment.reply.forEach((reply) => {
+        if (!used.includes(reply.key) && reply.key !== '指挥官') used.push(reply.key)
+      })
+    })
+  }
 
-  if (
+  const usedShip: ShipData<any>[] = []
+  used.forEach((key) => {
+    const gameIndex = ship.game.findIndex((item) => item.key === key)
+    if (gameIndex !== -1) {
+      usedShip.push(ship.game[gameIndex])
+    } else {
+      const customIndex = ship.custom.findIndex((item) => item.key === key)
+      if (customIndex !== -1) {
+        usedShip.push(ship.custom[customIndex])
+      }
+    }
+  })
+
+  return usedShip
+})
+
+const hasFilter = computed(
+  () =>
     filter.param1.size > 0 ||
     filter.param2.size > 0 ||
     filter.param3.size > 0 ||
     filter.param4.size > 0
-  ) {
-    list = list.filter((item) => {
-      const flag = [false, false, false, false]
+)
 
-      for (let i = 0; i < 4; i++) {
-        const index = i + 1
-        if (filter[`param${index as 1 | 2 | 3 | 4}`].size > 0) {
-          for (const name of filter[`param${index as 1 | 2 | 3 | 4}`]) {
-            if (item.data[`param${index as 1 | 2 | 3 | 4}`].includes(name)) {
-              flag[i] = true
-              break
-            }
-          }
-        } else {
+const isFilter = (data: { param1: string; param2: ShipLevel; param3: string; param4: string }) => {
+  const flag = [false, false, false, false]
+
+  for (let i = 0; i < 4; i++) {
+    const index = (i + 1) as 1 | 2 | 3 | 4
+    if (filter[`param${index}`].size > 0) {
+      for (const name of filter[`param${index}`]) {
+        if (data[`param${index}`].includes(name)) {
           flag[i] = true
+          break
         }
       }
+    } else {
+      flag[i] = true
+    }
+  }
 
-      return flag[0] && flag[1] && flag[2] && flag[3]
-    })
+  return flag[0] && flag[1] && flag[2] && flag[3]
+}
+
+const showData = computed(() => {
+  if (!hasFilter.value && !searchText.value) return ship
+
+  const filterList: { game: ShipData[]; custom: ShipData<number>[] } = {
+    game: [],
+    custom: []
+  }
+  if (hasFilter.value) {
+    for (const i in ship.game) {
+      if (isFilter(ship.game[i].data)) {
+        filterList.game.push(ship.game[i])
+      }
+    }
+
+    for (const i in ship.custom) {
+      if (isFilter(ship.custom[i].data)) {
+        filterList.custom.push(ship.custom[i])
+      }
+    }
   }
 
   if (searchText.value) {
-    for (const i in list) {
+    const searchList: { game: ShipData[]; custom: ShipData<number>[] } = {
+      game: [],
+      custom: []
+    }
+
+    const data = hasFilter.value ? filterList : ship
+    for (const i in data.game) {
       try {
         const reg = new RegExp(searchText.value, 'gi')
-        if (reg.test(list[i].key) || reg.test(list[i].name) || reg.test(list[i].alias)) {
-          temp.push(list[i])
+        if (
+          reg.test(data.game[i].key) ||
+          reg.test(data.game[i].name) ||
+          reg.test(data.game[i].alias)
+        ) {
+          searchList.game.push(data.game[i])
         }
-      } catch (e) {
-        break
+      } catch {
+        continue
       }
     }
-  } else {
-    const used: string[] = []
 
-    if (!juus.home) {
-      used.push(juus.list[juus.index].juus.key)
-      juus.list?.[juus.index].comment.forEach((comment) => {
-        if (!used.includes(comment.key)) used.push(comment.key)
-        comment.reply.forEach((reply) => {
-          if (!used.includes(reply.key)) used.push(reply.key)
-        })
-      })
-    }
-    if (!talk.home) {
-      talk.list?.[talk.index]?.list.forEach((comment) => {
-        if (!used.includes(comment.key)) used.push(comment.key)
-      })
-    }
-    for (const key of used) {
-      if (key && key !== '指挥官') {
-        const data = getData(key)
-        if (!data.empty) {
-          temp.push(getData(key))
+    for (const i in data.custom) {
+      try {
+        const reg = new RegExp(searchText.value, 'gi')
+        if (reg.test(data.custom[i].name) || reg.test(data.custom[i].alias)) {
+          filterList.custom.push(data.custom[i])
         }
+      } catch {
+        continue
       }
     }
-    for (const i in list) {
-      if (temp.findIndex((item) => item.key === list[i].key) === -1) {
-        temp.push(list[i])
-      }
-    }
+
+    return searchList
   }
 
-  return temp
+  return filterList
 })
 
-const change = (name: string) => {
-  const data = getData(name, undefined, props.defaultUser)
-  avatarData.value.key = name
-  avatarData.value.avatar = data.avatar
-  avatarData.value.name = data.name || data.alias || data.key
+const change = async (data: ShipData<any>) => {
+  avatarData.value.key = data.key
+  avatarData.value.name = data.nickname || data.alias || data.name
+  if (data.key === '指挥官' || typeof data.key === 'number') {
+    avatarData.value.avatar = data.avatar
+  } else {
+    avatarData.value.avatar = await getAvatarBase64(data.key)
+  }
 }
 
 const avatarData = computed(() => {
+  if (!currentJUUs.value) return input
   switch (select.type) {
     case 0:
       return input
     case 1:
-      return juus.list[juus.index].juus
+      return currentJUUs.value!.juus
     case 2:
-      return juus.list[juus.index].comment[select.index]
+      return currentJUUs.value!.comment[select.index]
     case 3:
-      return juus.list[juus.index].comment[select.index].reply[select.key]
+      return currentJUUs.value!.comment[select.index].reply[select.key]
     case 4:
       return talk.list[talk.index].list[select.index]
     default:
@@ -264,60 +277,57 @@ const close = () => {
 }
 
 const createCustom = () => {
-  const input = document.createElement('input')
-  input.type = 'file'
-  input.accept = 'image/*'
-  input.onchange = () => {
-    if (input.files?.[0]) {
-      const file = new FileReader()
-      file.readAsDataURL(input.files[0])
-      file.onload = (e) => {
-        const avatar = (e.target?.result as string) || ''
-        const key = prompt('请输入角色昵称') || ''
-        addCustom(avatar, key)
-      }
-    }
-  }
-  input.click()
+  popupManager
+    .open('cropper', {
+      aspectRatio: 1,
+      maxWidth: 1280
+    })
+    .then((res) => {
+      popupManager
+        .open('input', {
+          title: '创建角色',
+          subTitle: 'ADD CHARACTER',
+          tip: '请输入姓名'
+        })
+        .then((name) => {
+          if (name !== null) {
+            addCustom(res.base64, name)
+          }
+        })
+    })
 }
 
-const addCustom = (avatar: string, key: string) => {
-  if (key.length < 1) {
+const addCustom = (avatar: string, name: string) => {
+  if (name.length < 1) {
     console.warn('key不能为空')
     return
   }
-
-  const index = custom.value.findIndex((item) => item.key === key)
-
-  if (index === -1) {
-    custom.value.unshift({
-      avatar: avatar,
-      key: key,
-      alias: '',
-      name: '',
-      data: {
-        param1: '',
-        param2: '',
-        param3: '其它',
-        param4: '自定义'
-      }
-    })
-  } else {
-    const flag = confirm('该角色已存在，是否覆盖？')
-    if (!flag) return
-
-    custom.value[index].avatar = avatar
-    custom.value[index].key = key
-  }
+  const time = Date.now()
+  ship.custom.push({
+    avatar: avatar,
+    key: time,
+    name: name,
+    nickname: name,
+    alias: '',
+    data: {
+      param1: '',
+      param2: '',
+      param3: '其他',
+      param4: '自定义'
+    }
+  })
 }
 
-const delShip = (key: string) => {
-  const flag = confirm('是否删除该角色')
-  if (!flag) return
-  const index = custom.value.findIndex((item) => item.key === key)
-  if (index !== -1) {
-    custom.value.splice(index, 1)
-  }
+const delShip = (key: string | number) => {
+  popupManager.open('confirm', {
+    text: ['真的要删除吗'],
+    fn: () => {
+      const index = ship.custom.findIndex((item) => item.key === key)
+      if (index !== -1) {
+        ship.custom.splice(index, 1)
+      }
+    }
+  })
 }
 
 const onFilterClick = () => {
@@ -330,154 +340,160 @@ item()
   display flex
   align-items center
   box-sizing border-box
-  align-items center
-  padding 10px
   margin 5px
-  user-select none
+  padding 10px
   border 1px solid #ddd
   border-radius 10px
   background #fff
+  user-select none
 
   .name
     display flex
-    align-items center
     flex 1
-    font-size 20px
+    align-items center
     font-weight bolder
+    font-size 20px
 
     span
       flex-shrink 0
 
 .select-view
-  z-index 99
   position relative
-  box-sizing border-box
+  z-index 9
   display flex
   flex-direction column
-  background rgba(255, 255, 255, 0.7)
+  box-sizing border-box
   padding 10px 20px 5px 10px
   border-radius 5px 0 0 5px
+  background rgba(255, 255, 255, 0.7)
   color #444
 
-  .scroll-box
+  .ship-wrapper
     flex 1
+    flex-direction column
     width 100%
     height 100px
     item()
+    align-items flex-start
 
     .scroll-view
-      overflow-y scroll
       display flex
       flex-wrap wrap
       justify-content flex-start
       align-content flex-start
-      height 100%
+      overflow-y scroll
       width 100%
+      height 100%
 
       &::-webkit-scrollbar
         width 5px
         height 5px
 
       &::-webkit-scrollbar-track
-        box-shadow inset 0 0 6px rgba(0, 0, 0, 0.4)
-        border-radius 4px
+        border-radius 5px
+        background-color rgba(200, 200, 200, 0.5)
 
       &::-webkit-scrollbar-thumb
-        box-shadow inset 0 0 6px rgba(0, 0, 0, 0.3)
-        border-radius 4px
+        border-radius 10px
+        background-color rgba(180, 180, 180, 0.9)
 
       &::-webkit-scrollbar-thumb:active
-        background-color #aaa
+        background-color rgba(150, 150, 150, 0.9)
+
+      .label
+        margin 10px 0
+        margin-left 10px
+        padding-bottom 10px
+        width 95%
+        border-bottom 1px solid rgba(0, 0, 0, 0.3)
+        font-weight bold
+        font-size 18px
+
+      .player
+        :deep(.avatar)
+          border-radius 50%
 
       .item
-        position relative
         height 70px
+        color #8a8a8a
+        cursor pointer
         item()
 
         &:hover
-          background rgb(240, 240, 240)
-
-          .del-ship
-            opacity 1
-
-        .alias
-          font-size 14px
-
-        .del-ship
-          color #888
-          opacity 0
-          position absolute
-          right 0
-          top 0
-          cursor pointer
-          user-select none
-          transition opacity 0.25s
-          width 15px
-          height 15px
-          display flex
-          justify-content center
-          align-items center
-
-          &:hover
-            opacity 1
+          background rgba(240, 240, 240, 0.5)
 
   .search
-    display flex
     position relative
+    display flex
     width 100%
     height 50px
     item()
 
     input
       box-sizing border-box
+      padding 5px 35px 5px 20px
       width 100%
       height 35px
-      padding 5px 35px 5px 20px
-      border-radius 17.5px
-      border 2px solid #ddd
       outline none
-      font-size 16px
+      border 2px solid #ddd
+      border-radius 3px
       color #999
+      font-size 16px
 
     .clear
       position absolute
       top 50%
       right 60px
-      border 2px solid #ddd
-      border-radius 50%
-      outline none
-      width 20px
-      height 20px
-      line-height 20px
-      text-align center
-      user-select none
-      cursor pointer
-      transform translateY(-50%)
-      color #bbb
-
-    .filter
       display flex
       justify-content center
       align-items center
-      height 35px
-      width 40px
-      margin-left 5px
+      width 20px
+      height 20px
+      outline none
+      border 2px solid #ddd
+      border-radius 50%
+      color #bbb
+      text-align center
+      line-height 20px
+      cursor pointer
+      transform translateY(-50%)
+      user-select none
+
+      svg
+        width 15px
+        height 15px
+
+    .filter
+      display flex
+      flex-shrink 0
+      justify-content center
+      align-items center
       box-sizing border-box
+      margin-left 5px
+      width 35px
+      height 35px
+      border 2px solid #ddd
       border-radius 5px
-      border 2px solid #bbb
       background #fff
+      color #ddd
       cursor pointer
 
-.fixed
-  overflow hidden
-  z-index 100
+      svg
+        width 20px
+
+.header
+  z-index 10
   flex-shrink 0
+  overflow hidden
   width 100%
   height 80px
   item()
 
-  .avatar
-    margin-left 15px
+  img
+    margin 0 15px
+    width 45px
+    height 45px
+    border-radius 50%
 
   .name
     display flex
@@ -485,30 +501,29 @@ item()
     align-items flex-start
 
     span
-      font-size 14px
       margin-left 5px
       color #999
+      font-size 14px
 
   input
-    font-size 20px
-    font-weight bolder
-    padding 0 5px
-    border none
-    width 90%
-    color #444
     overflow hidden
+    box-sizing border-box
+    padding 0 5px
+    width 100%
+    border none
+    color #444
     text-overflow ellipsis
+    font-weight bolder
+    font-size 20px
 
   .close
-    font-size 40px
+    margin-left 10px
+    width 30px
+    height 30px
     line-height 40px
-    margin-bottom 3px
     cursor pointer
 
-.highlight
+.filter-highlight
   background #87cefa !important
-
-  .name, .alias
-    color #fff !important
-    text-shadow 1px 1px 3px rgba(0, 0, 0, 0.5)
+  color #fff !important
 </style>

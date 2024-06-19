@@ -1,4 +1,13 @@
+@keyframes first
+  from
+    filter blur(10px)
+    opacity 0
+
+html
+  animation first 0.5s
+
 body
+  overflow hidden
   margin 0
 
 img
@@ -7,28 +16,29 @@ img
 input
   border 2px solid #ddd
 
-::-webkit-input-placeholder
+::placeholder
   color #dfdfdf
 
 .chosen
-  cursor grabbing
+  .del
+    opacity 0 !important
 
   &:before
-    content ''
-    box-sizing border-box
     position absolute
     top 0
     right 0
     bottom 0
     left 0
+    box-sizing border-box
     border 3px solid rgba(0, 0, 0, 0.2)
     border-radius 10px
+    content ''
 
-.mask
-  position fixed
-  width 100%
-  height 100%
-  z-index 999
+.hidden
+  overflow hidden !important
+
+.fallback
+  display none !important
 
 @keyframes fade
   from
@@ -37,50 +47,56 @@ input
   to
     opacity 1
 
-.fade-enter-active, .fade-leave-active
+.fade-enter-active
+.fade-leave-active
   transition all 0.3s
 
-.fade-enter-from, .fade-leave-to
+.fade-enter-from
+.fade-leave-to
   opacity 0
 
-.fade-enter-to, .fade-leave-from
+.fade-enter-to
+.fade-leave-from
   opacity 1
 
-.slide-enter-active, .slide-leave-active
+.slide-enter-active
+.slide-leave-active
   transition all 0.3s
 
-.slide-enter-from, .slide-leave-to
+.slide-enter-from
+.slide-leave-to
   transform translateX(100%)
 
-.slide-enter-to, .slide-leave-from
+.slide-enter-to
+.slide-leave-from
   transform translateX(0)
 
-.enter-enter-active, .enter-leave-active
+.enter-enter-active
+.enter-leave-active
   transition all 0.6s
 
-.enter-enter-from, .enter-leave-to
+.enter-enter-from
+.enter-leave-to
   filter blur(50px)
 
-.enter-enter-to, .enter-leave-from
+.enter-enter-to
+.enter-leave-from
   filter none
 
-.list-enter-active
-  transition all 0.2s
-
-.list-enter-from
-  transform scaleY(0)
-
-.list-enter-to
-  transform scaleY(1)
-
-.horizontal-list-enter-active
+.select-enter-active
+.select-leave-active
   transition all 0.3s
-  transform-origin left
 
-.horizontal-list-enter-from
-  transform translateX(-100%)
+.select-enter-from
   opacity 0
+  transform translateY(20px)
 
-.horizontal-list-enter-to
-  transform translateX(0)
+.select-enter-to
   opacity 1
+  transform translateY(0)
+
+.select-leave-from
+  opacity 1
+
+.select-leave-to
+  opacity 0
