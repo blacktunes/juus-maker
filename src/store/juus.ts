@@ -5,11 +5,13 @@ import { ship } from './ship'
 export const getMessage = <T extends string | number>(
   key: T,
   text = ''
-): ShipData<T> & { text: string } => {
+): ReplyItem & { reply?: ReplyItem[] } => {
   if (key === '指挥官') {
     return {
       text,
-      ...(ship.player as ShipData<T>)
+      key,
+      name: ship.player.nickname,
+      avatar: ship.player.avatar
     }
   }
 
@@ -17,29 +19,26 @@ export const getMessage = <T extends string | number>(
   if (gameIndex !== -1) {
     return {
       text,
-      ...(ship.game[gameIndex] as ShipData<T>)
+      key,
+      name:
+        ship.game[gameIndex].nickname || ship.game[gameIndex].alias || ship.game[gameIndex].name,
+      avatar: ship.game[gameIndex].avatar
     }
   } else {
     const customIndex = ship.custom.findIndex((item) => item.key === key)
     if (customIndex !== -1) {
       return {
         text,
-        ...(ship.custom[customIndex] as ShipData<T>)
+        key,
+        name: ship.custom[customIndex].name,
+        avatar: ship.custom[customIndex].avatar
       }
     } else {
       return {
         text,
         key,
         avatar: '',
-        name: '',
-        alias: '',
-        nickname: '',
-        data: {
-          param1: '',
-          param2: '',
-          param3: '',
-          param4: ''
-        }
+        name: ''
       }
     }
   }

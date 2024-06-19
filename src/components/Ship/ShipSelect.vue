@@ -20,9 +20,9 @@
         <div class="scroll-view">
           <div class="label">已使用角色</div>
           <ShipItem
-            :highlight="player.key === avatarData.key"
-            :item="player"
-            @click.stop="change(player)"
+            :highlight="ship.player.key === avatarData.key"
+            :item="ship.player"
+            @click.stop="change(ship.player)"
             class="player"
           />
           <ShipItem
@@ -93,9 +93,10 @@
 </template>
 
 <script lang="ts" setup>
+import { getAvatarBase64 } from '@/assets/scripts/avatar'
 import { popupManager } from '@/assets/scripts/popup'
 import input from '@/store/input'
-import { currentJUUs, getMessage } from '@/store/juus'
+import { currentJUUs } from '@/store/juus'
 import { filter, select } from '@/store/select'
 import { ship } from '@/store/ship'
 import talk from '@/store/talk'
@@ -103,7 +104,6 @@ import { computed, ref } from 'vue'
 import { Add, Close, Filter } from '../Public/Icon'
 import ShipFilter from './ShipFilter.vue'
 import ShipItem from './ShipItem.vue'
-import { getAvatarBase64 } from '@/assets/scripts/avatar'
 
 withDefaults(
   defineProps<{
@@ -124,8 +124,6 @@ const searchText = ref('')
 const clear = () => {
   searchText.value = ''
 }
-
-const player = getMessage('指挥官')
 
 const usedShipList = computed(() => {
   const used: (string | number)[] = []

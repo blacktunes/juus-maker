@@ -218,7 +218,6 @@ const addComment = () => {
     ...input,
     text: input.text || '谢谢你，碧蓝航线',
     reply: [],
-    nickname: ''
   })
   scrollToBottom()
   input.text = ''
@@ -244,7 +243,6 @@ const addReply = (index: number, e: Event) => {
   currentJUUs.value!.comment?.[index].reply.push({
     ...input,
     text: input.text || '谢谢你，碧蓝航线',
-    nickname: ''
   })
   nextTick(() => {
     const temp = (e.target as HTMLElement)?.parentElement?.parentElement?.parentElement

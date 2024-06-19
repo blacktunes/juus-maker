@@ -3,7 +3,6 @@ type Unpacked<T> = T extends Promise<infer U> ? U : T
 interface ReplyItem {
   key: string | number
   name: string
-  nickname: string
   avatar: string
   text: string
   img?: string

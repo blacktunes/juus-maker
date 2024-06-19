@@ -172,7 +172,6 @@ const addComment = (img?: string) => {
     ...input,
     img,
     text: img ? input.text : input.text || '谢谢你，碧蓝航线',
-    nickname: ''
   })
   scrollToBottom()
   input.text = ''
