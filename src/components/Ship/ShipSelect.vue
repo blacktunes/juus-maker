@@ -216,7 +216,8 @@ const showData = computed(() => {
         if (
           reg.test(data.game[i].key) ||
           reg.test(data.game[i].name) ||
-          reg.test(data.game[i].alias)
+          reg.test(data.game[i].alias) ||
+          reg.test(data.game[i].nickname)
         ) {
           searchList.game.push(data.game[i])
         }
@@ -228,8 +229,8 @@ const showData = computed(() => {
     for (const i in data.custom) {
       try {
         const reg = new RegExp(searchText.value, 'gi')
-        if (reg.test(data.custom[i].name) || reg.test(data.custom[i].alias)) {
-          filterList.custom.push(data.custom[i])
+        if (reg.test(data.custom[i].name) || reg.test(data.custom[i].nickname)) {
+          searchList.custom.push(data.custom[i])
         }
       } catch {
         continue
@@ -298,10 +299,6 @@ const createCustom = () => {
 }
 
 const addCustom = (avatar: string, name: string) => {
-  if (name.length < 1) {
-    console.warn('key不能为空')
-    return
-  }
   const time = Date.now()
   ship.custom.push({
     avatar: avatar,
