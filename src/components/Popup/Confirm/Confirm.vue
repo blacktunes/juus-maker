@@ -21,10 +21,10 @@
         #footer
         v-if="data.fn"
       >
-        <WindowBtn @click="close">取消</WindowBtn>
+        <WindowBtn @click.stop="close">取消</WindowBtn>
         <WindowBtn
           :type="3"
-          @click="onConfirml"
+          @click.stop="onConfirml"
           >确定</WindowBtn
         >
       </template>

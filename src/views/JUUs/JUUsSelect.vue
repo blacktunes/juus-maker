@@ -51,7 +51,7 @@
           </div>
           <div
             class="item add"
-            @click="addJUUs"
+            @click.stop="addJUUs"
           >
             <Camera />
           </div>

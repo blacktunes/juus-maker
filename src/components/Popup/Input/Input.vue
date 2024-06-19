@@ -36,13 +36,13 @@
       <template #footer>
         <WindowBtn
           :type="2"
-          @click="close"
+          @click.stop="close"
           >取消
         </WindowBtn>
         <WindowBtn
           name="确认"
           :type="data.required && (!data.fn || data.text.length < 1) ? 1 : 3"
-          @click="onConfirmlClick"
+          @click.stop="onConfirmlClick"
           >确定</WindowBtn
         >
       </template>

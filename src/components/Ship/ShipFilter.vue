@@ -17,7 +17,7 @@
           <div class="item-list">
             <FilterItem
               :highlight="filterSetting[key].size === 0"
-              @click="resetType(key)"
+              @click.stop="resetType(key)"
             >
               全部
             </FilterItem>
@@ -36,14 +36,14 @@
         <WindowBtn
           class="btn"
           :type="2"
-          @click="reset"
+          @click.stop="reset"
         >
           重置
         </WindowBtn>
         <WindowBtn
           class="btn"
           :type="3"
-          @click="hide"
+          @click.stop="hide"
         >
           确定
         </WindowBtn>

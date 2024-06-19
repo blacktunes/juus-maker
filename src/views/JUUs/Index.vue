@@ -9,6 +9,7 @@
       bottom: 60
     }"
     :popup="popupManager"
+    @click.stop
   >
     <div
       class="main"

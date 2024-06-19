@@ -32,7 +32,7 @@
           <div class="info-icon">
             <Heart
               :highlight="currentJUUs.like.flag"
-              @click="setLike"
+              @click.stop="setLike"
             />
             <Message @click.stop="contentRef?.inputFource()" />
             <PaperAirplane @click.stop="$emit('screenshot')" />
@@ -62,7 +62,7 @@
       <div
         v-show="!setting.screenshot"
         class="back"
-        @click="back"
+        @click.stop="back"
       >
         <Back />
         <span>返回</span>

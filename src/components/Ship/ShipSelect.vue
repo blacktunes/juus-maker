@@ -13,7 +13,7 @@
         <Close
           v-if="showClose"
           class="close"
-          @click="close"
+          @click.stop="close"
         />
       </div>
       <div class="ship-wrapper">
@@ -74,7 +74,7 @@
         <transition name="fade">
           <div
             class="clear"
-            @click="clear"
+            @click.stop="clear"
             v-show="searchText"
           >
             <Close />

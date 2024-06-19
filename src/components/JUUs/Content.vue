@@ -13,7 +13,7 @@
           :img="currentJUUs.juus.avatar"
           :width="70"
           style="margin-left: 30px"
-          @click="avatarClick(1)"
+          @click.stop="avatarClick(1)"
         />
         <div class="sep"></div>
         <div class="name">
@@ -66,7 +66,7 @@
                 :img="element.avatar"
                 :type="2"
                 style="margin: 0 15px 0 10px"
-                @click="avatarClick(2, index)"
+                @click.stop="avatarClick(2, index)"
               />
               <div>
                 <span class="name">
@@ -92,13 +92,13 @@
             <div class="comment-menu">
               <div
                 class="del"
-                @click="delComment(index)"
+                @click.stop="delComment(index)"
               >
                 delete
               </div>
               <div>reply</div>
               <div class="reply-num">
-                <Message @click="addReply(index, $event)" />
+                <Message @click.stop="addReply(index, $event)" />
                 <div class="text">{{ element.reply.length }}</div>
               </div>
             </div>
@@ -118,7 +118,7 @@
                   <div class="reply">
                     <Close
                       class="del"
-                      @click="delReply(index, item.index)"
+                      @click.stop="delReply(index, item.index)"
                     />
                     <Avatar
                       :highlight="
@@ -129,7 +129,7 @@
                       "
                       :img="item.element.avatar"
                       style="margin: 0 15px 0 10px"
-                      @click="avatarClick(3, index, item.index)"
+                      @click.stop="avatarClick(3, index, item.index)"
                     />
                     <div class="reply-item">
                       <span class="name"
@@ -164,7 +164,7 @@
         :highlight="select.show && select.type === 0"
         :img="input.avatar"
         style="margin-left: 10px"
-        @click="avatarClick(0)"
+        @click.stop="avatarClick(0)"
       />
       <input
         v-model="input.text"
